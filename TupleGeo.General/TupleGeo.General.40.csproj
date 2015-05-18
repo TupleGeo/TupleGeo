@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug40</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E303F1F2-2643-4100-B4F9-0D6109669837}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TupleGeo.General</RootNamespace>
+    <AssemblyName>TupleGeo.General</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug40|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug40\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug40\TupleGeo.General.xml</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release40|AnyCPU'">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release40\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <CodeAnalysisIgnoreBuiltInRuleSets>false</CodeAnalysisIgnoreBuiltInRuleSets>
+    <CodeAnalysisIgnoreBuiltInRules>false</CodeAnalysisIgnoreBuiltInRules>
+    <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
+    <DocumentationFile>bin\Release40\TupleGeo.General.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\AttributeHelper.cs" />
+    <Compile Include="Attributes\DescriptionAttribute.cs" />
+    <Compile Include="ComponentModel\EnumDescriptionConverter.cs" />
+    <Compile Include="ComponentModel\EnumNameDescriptionPair.cs" />
+    <Compile Include="ComponentModel\ObservableObjectOfT.cs" />
+    <Compile Include="Data\FilterType.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Utilities\MimeTypesHelper.cs" />
+    <Compile Include="Utilities\UniqueCheckedItemsGroup.cs" />
+    <None Include="Data\Linq\TableExtensions.cs" />
+    <Compile Include="Data\SqlServer\ConnectionDetails.cs" />
+    <Compile Include="Data\SqlServer\SqlServerUser.cs" />
+    <Compile Include="FileSystem\PathsUtility.cs" />
+    <Compile Include="FileTypes\EsriFileTypes.cs" />
+    <Compile Include="FileTypes\ExecutableFileTypes.cs" />
+    <Compile Include="FileTypes\RasterFileTypes.cs" />
+    <Compile Include="FileTypes\SystemFileTypes.cs" />
+    <Compile Include="FileTypes\TextFileTypes.cs" />
+    <Compile Include="FileTypes\VectorFileTypes.cs" />
+    <Compile Include="IValidation.cs" />
+    <None Include="Linq\IEnumerableExtensions.cs" />
+    <Compile Include="Linq\IQueyrableExtentions.cs" />
+    <Compile Include="ObjectExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Attributes\Attributes.cd" />
+    <None Include="ComponentModel\ComponentModel.cd" />
+    <None Include="Data\Data.cd" />
+    <None Include="FileSystem\FileSystem.cd" />
+    <None Include="FileTypes\FileTypes.cd" />
+    <None Include="Linq\Linq.cd" />
+    <None Include="Reflection\Reflection.cd" />
+    <None Include="Security\Security.cd" />
+    <None Include="Serialization\ClassFactory.cs" />
+    <None Include="Serialization\LinqXmlSerializer.cs" />
+    <None Include="Serialization\PropertyCaller.cs" />
+    <Compile Include="Reflection\AssemblyExtensions.cs" />
+    <Compile Include="Security\CryptographicString.cs" />
+    <Compile Include="Serialization\XmlSerializer.cs" />
+    <Compile Include="StringExtensions.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Text\CodePages.cs" />
+    <Compile Include="Text\GreekToLatinConversionMode.cs" />
+    <Compile Include="Text\Transcribe.cs" />
+    <None Include="Utilities\Utilities.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Serialization\Serialization.cd" />
+    <None Include="Text\Text.cd" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="EraNet.Global.40.shfbproj" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

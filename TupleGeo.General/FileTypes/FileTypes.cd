@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Enum Name="TupleGeo.General.FileTypes.EsriFileTypes">
+    <Position X="1" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAQgAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>FileTypes\EsriFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TupleGeo.General.FileTypes.VectorFileTypes">
+    <Position X="5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYhEQ8ERBAEQIhpAFQwDBIAgKGAgEbBNdAiGghAuUIA=</HashCode>
+      <FileName>FileTypes\VectorFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TupleGeo.General.FileTypes.ExecutableFileTypes">
+    <Position X="3" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>FileTypes\ExecutableFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TupleGeo.General.FileTypes.RasterFileTypes">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAABAACAEAAAAACAAAAIAAAAAAAAAEAE=</HashCode>
+      <FileName>FileTypes\RasterFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TupleGeo.General.FileTypes.SystemFileTypes">
+    <Position X="1" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>IAQAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>FileTypes\SystemFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="TupleGeo.General.FileTypes.TextFileTypes">
+    <Position X="3" Y="2.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAADAQAAAAAAAAAAAAAAAAAGEAAFAAAAAAAAAAAAAA=</HashCode>
+      <FileName>FileTypes\TextFileTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

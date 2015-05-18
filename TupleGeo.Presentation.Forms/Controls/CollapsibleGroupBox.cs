@@ -40,7 +40,7 @@ namespace TupleGeo.Presentation.Controls {
     private bool _collapsed = false;
     private bool _resizingFromCollapse = false;
 
-    private const int _collapsedHeight = 20;
+    private readonly int _collapsedHeight = 20;
     private Size _fullSize = Size.Empty;
 
     /// <summary>
@@ -66,6 +66,9 @@ namespace TupleGeo.Presentation.Controls {
     /// The <see cref="IContainer"/> used for initialization.
     /// </param>
     public CollapsibleGroupBox(IContainer container) {
+      if (container == null) {
+        throw new ArgumentNullException("container");
+      }
       container.Add(this);
       InitializeComponent();
     }
@@ -126,18 +129,25 @@ namespace TupleGeo.Presentation.Controls {
 
     #endregion
 
-    #region Overriden Methods
+    #region Overridden Methods
 
     /// <summary>
     /// Called on mouse up.
     /// </summary>
     /// <param name="e">The <see cref="MouseEventArgs"/>.</param>
     protected override void OnMouseUp(MouseEventArgs e) {
-      if (_toggleRect.Contains(e.Location)) {
-        ToggleCollapsed();
-      }
-      else {
-        base.OnMouseUp(e);
+      if (e != null) {
+        if (e.Location != null) {
+          if (_toggleRect.Contains(e.Location)) {
+            ToggleCollapsed();
+          }
+          else {
+            base.OnMouseUp(e);
+          }
+        }
+        else {
+          base.OnMouseUp(e);
+        }
       }
     }
 
@@ -146,9 +156,13 @@ namespace TupleGeo.Presentation.Controls {
     /// </summary>
     /// <param name="e">The <see cref="PaintEventArgs"/>.</param>
     protected override void OnPaint(PaintEventArgs e) {
-      HandleResize();
-      DrawGroupBox(e.Graphics);
-      DrawToggleButton(e.Graphics);
+      if (e != null) {
+        if (e.Graphics != null) {
+          HandleResize();
+          DrawGroupBox(e.Graphics);
+          DrawToggleButton(e.Graphics);
+        }
+      }
     }
 
     #endregion
@@ -170,7 +184,6 @@ namespace TupleGeo.Presentation.Controls {
       GroupBoxRenderer.DrawGroupBox(g, bounds, Enabled ? GroupBoxState.Normal : GroupBoxState.Disabled);
 
       // Text Formating positioning & Size.
-      StringFormat sf = new StringFormat();
       int textPos = (bounds.X + 8) + _toggleRect.Width + 2;
       int textSize = (int)g.MeasureString(Text, this.Font).Width;
       textSize = textSize < 1 ? 1 : textSize;

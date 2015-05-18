@@ -58,15 +58,15 @@ namespace TupleGeo.General {
             return Convert.ToString(propertyInfo.GetValue(@object, null));
           }
           else {
-            throw new Exception(Resources.Global_PropertyNullableTypeIsNotOfAPrimitiveType);
+            throw new Exception(Resources.General_PropertyNullableTypeIsNotOfAPrimitiveType);
           }
         }
         else {
-          throw new Exception(Resources.Global_PropertyHasMoreThanOneGenericArguments);
+          throw new Exception(Resources.General_PropertyHasMoreThanOneGenericArguments);
         }
       }
       else {
-        throw new Exception(Resources.Global_PropertyCouldNotConvertValueToString);
+        throw new Exception(Resources.General_PropertyCouldNotConvertValueToString);
       }
     }
 

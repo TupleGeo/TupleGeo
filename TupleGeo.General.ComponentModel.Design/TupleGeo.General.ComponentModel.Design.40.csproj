@@ -81,7 +81,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TupleGeo.Global\TupleGeo.General.40.csproj">
+    <ProjectReference Include="..\TupleGeo.General\TupleGeo.General.40.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
       <Name>TupleGeo.General.40</Name>
     </ProjectReference>

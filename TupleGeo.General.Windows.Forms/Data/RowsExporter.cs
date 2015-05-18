@@ -14,8 +14,8 @@
 //                    added preprocessor directives for the same reason.
 //                  : 02/05/2014, 12:03, Vasilis Vlastaras.
 //                    1.0.4 - Changed private method names.
-//                  : 18/05/2015, 03:27, Vasilis Vlastaras
-//                    1.0.5 - Cleaned file, added resource strings.
+//                  : 18/05/2015, 04:49, Vasilis Vlastaras
+//                    1.0.5 - Changed class to static, cleaned file, added resource strings.
 // Version          : 1.0.5
 // Contact Details  : TupleGeo.
 // License          : Apache License.
@@ -44,7 +44,7 @@ namespace TupleGeo.General.Data {
   /// <summary>
   /// Exports rows from a series of sources.
   /// </summary>
-  public sealed class RowsExporter {
+  public static class RowsExporter {
 
     #region Public Methods
 
@@ -60,7 +60,7 @@ namespace TupleGeo.General.Data {
     /// <param name="separator">
     /// The separator <see cref="string"/> used to separate the field values.
     /// </param>
-    public void ExportText(DataGridView dataGridView, StreamWriter streamWriter, bool exportSelected, string separator) {
+    public static void ExportText(DataGridView dataGridView, StreamWriter streamWriter, bool exportSelected, string separator) {
 
       if (dataGridView == null) {
         throw new ArgumentNullException("dataGridView");
@@ -116,7 +116,7 @@ namespace TupleGeo.General.Data {
     /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
-    public void ExportXml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
+    public static void ExportXml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
 
       if (dataGridView == null) {
         throw new ArgumentNullException("dataGridView");
@@ -168,7 +168,7 @@ namespace TupleGeo.General.Data {
     /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
-    public void ExportHtml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
+    public static void ExportHtml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
 
       if (dataGridView == null) {
         throw new ArgumentNullException("dataGridView");

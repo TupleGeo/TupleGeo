@@ -53,9 +53,9 @@ namespace TupleGeo.Presentation.Controls {
     /// <summary>
     /// Occurs upon painting the control.
     /// </summary>
-    /// <param name="pe">The <see cref="PaintEventArgs"/>.</param>
-    protected override void OnPaint(PaintEventArgs pe) {
-      base.OnPaint(pe);
+    /// <param name="e">The <see cref="PaintEventArgs"/>.</param>
+    protected override void OnPaint(PaintEventArgs e) {
+      base.OnPaint(e);
     }
 
     #endregion

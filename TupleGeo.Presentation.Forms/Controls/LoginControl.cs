@@ -43,7 +43,7 @@ namespace TupleGeo.Presentation.Controls {
     #region Constructors - Destructors
 
     /// <summary>
-    /// The constructor of the control.
+    /// Initializes the <see cref="LoginControl"/>.
     /// </summary>
     public LoginControl() {
       InitializeComponent();
@@ -53,12 +53,10 @@ namespace TupleGeo.Presentation.Controls {
 
     #region Public Properties
 
-    //private string _sCurrentUsername; // TODO *** Check if this line needs to be removed ***
-
     /// <summary>
-    /// Gets the usernames <see cref="ComboBox"/>.
+    /// Gets the user names <see cref="ComboBox"/>.
     /// </summary>
-    public ComboBox UsernamesComboBox {
+    public ComboBox UserNamesComboBox {
       get {
         return this.cboUsername;
       }
@@ -94,7 +92,7 @@ namespace TupleGeo.Presentation.Controls {
     /// <summary>
     /// Gets the OK <see cref="Button"/>.
     /// </summary>
-    public Button OKButton {
+    public Button OkButton {
       get {
         return this.btnOK;
       }

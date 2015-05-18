@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : CodePages
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : The codepages enumeration.
 // Created by       : 21/07/2009, 16:54, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 21:44, Vasilis Vlastaras.
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Text {
+namespace TupleGeo.General.Text {
 
   /// <summary>
   /// The codepages enumeration.

@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : ObservableObject<T>.
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : An object that its property value changes can be observed by other objects.
 // Created by       : 26/05/2011, 15:08, Vasilis Vlastaras.
 // Updated by       : 09/06/2011, 14:43, Vasilis Vlastaras. - Added overloaded OnPropertyChanged event procedure.
@@ -24,7 +24,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel {
+namespace TupleGeo.General.ComponentModel {
 
   /// <summary>
   /// An object that its property value changes can be observed by other objects.

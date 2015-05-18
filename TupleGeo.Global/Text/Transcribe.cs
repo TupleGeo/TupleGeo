@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : Transcribe
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Transcribes from Greek to Latin according to ELOT specification.
 // Created by       : 06/04/2010, 14:12, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 22:08, Vasilis Vlastaras.
@@ -22,7 +22,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Text {
+namespace TupleGeo.General.Text {
 
   /// <summary>
   /// Transcribes from Greek to Latin according to ELOT specification.

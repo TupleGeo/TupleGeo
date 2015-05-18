@@ -1,4 +1,4 @@
-﻿namespace TupleGeo.Global.ComponentModel.Design {
+﻿namespace TupleGeo.General.ComponentModel.Design {
   partial class EnumDescriptionEditorControl {
     /// <summary> 
     /// Required designer variable.

@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : UniqueCheckedItemsGroup
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Groups a list of items having a Checked property together
 //                  : so as to ensure that only one of these items will be checked at a time.
 // Created by       : 27/04/2009, 06:00, Vasilis Vlastaras.
@@ -25,7 +25,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Utilities {
+namespace TupleGeo.General.Utilities {
 
   /// <summary>
   /// Groups a list of items having a Checked property together

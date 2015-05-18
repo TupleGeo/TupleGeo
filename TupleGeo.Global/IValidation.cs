@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global {
+namespace TupleGeo.General {
 
   /// <summary>
   /// A generic interface used by any class that needs to provide validation logic.

@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GeneralObjectEditorControl
-// Member of        : TupleGeo.Global.ComponentModel.Design.dll
+// Member of        : TupleGeo.General.ComponentModel.Design.dll
 // Description      : A control providing a way to add or remove new objects.
 // Created by       : 14/04/2009, 16:54, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 00:59, Vasilis Vlastaras.
@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel.Design {
+namespace TupleGeo.General.ComponentModel.Design {
 
   /// <summary>
   /// A control providing a way to add or remove new objects.

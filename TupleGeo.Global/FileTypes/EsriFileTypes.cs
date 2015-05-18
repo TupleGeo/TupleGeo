@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : EsriFileTypes
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Vector file types enumeration.
 // Created by       : 19/05/2009, 03:55, Vasilis Vlastaras
 // Updated by       : 22/02/2011, 22:12, Vasilis Vlastaras.
@@ -19,11 +19,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
-using TupleGeo.Global.Attributes;
+using TupleGeo.General.Attributes;
 
 #endregion
 
-namespace TupleGeo.Global.FileTypes {
+namespace TupleGeo.General.FileTypes {
 
   /// <summary>
   /// Types of vector files.

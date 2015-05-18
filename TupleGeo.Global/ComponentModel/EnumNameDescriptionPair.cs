@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : EnumNameDescription
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : An object containing an enumeration name and an enumeration description.
 // Created by       : 03/03/2010, 15:19, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 22:49, Vasilis Vlastaras.
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel {
+namespace TupleGeo.General.ComponentModel {
   
   /// <summary>
   /// An object containing an enumeration name and an enumeration description.

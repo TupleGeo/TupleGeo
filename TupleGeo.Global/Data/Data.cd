@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="TupleGeo.Global.Data.RowsExporter">
+  <Class Name="TupleGeo.General.Data.RowsExporter">
     <Position X="2.5" Y="0.5" Width="7" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAARAAAAAAAgAEgAAABAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Data\RowsExporter.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TupleGeo.Global.Data.SqlServer.ConnectionDetails">
+  <Class Name="TupleGeo.General.Data.SqlServer.ConnectionDetails">
     <Position X="0.5" Y="3.5" Width="5.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -20,7 +20,7 @@
       <Property Name="SqlServerUserList" />
     </ShowAsCollectionAssociation>
   </Class>
-  <Class Name="TupleGeo.Global.Data.SqlServer.SqlServerUser">
+  <Class Name="TupleGeo.General.Data.SqlServer.SqlServerUser">
     <Position X="8.5" Y="3.5" Width="3" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -30,14 +30,14 @@
       <FileName>Data\SqlServer\SqlServerUser.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TupleGeo.Global.Data.Linq.TableExtensions">
+  <Class Name="TupleGeo.General.Data.Linq.TableExtensions">
     <Position X="0.5" Y="7.5" Width="5.75" />
     <TypeIdentifier>
       <HashCode>AEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Data\Linq\TableExtensions.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="TupleGeo.Global.Data.FilterType">
+  <Enum Name="TupleGeo.General.Data.FilterType">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAQA=</HashCode>

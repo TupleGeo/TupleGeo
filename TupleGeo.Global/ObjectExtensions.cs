@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : ObjectExtensions
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Contains a set of extension methods for the System.Object type.
 // Created by       : 12/06/2009, 15:53, Vasilis Vlastaras.
 // Updated by       : 
@@ -19,11 +19,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Reflection;
-using TupleGeo.Global.Properties;
+using TupleGeo.General.Properties;
 
 #endregion
 
-namespace TupleGeo.Global {
+namespace TupleGeo.General {
 
   /// <summary>
   /// Contains a set of extension methods for the <see cref="System.Object"/> type.

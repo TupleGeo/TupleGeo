@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : PathsUtility
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : The PathsUtility is a static class providing common
 //                    utilities for managing paths.
 // Created by       : 17/02/2009, 20:19, Vasilis Vlastaras.
@@ -24,7 +24,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.FileSystem {
+namespace TupleGeo.General.FileSystem {
 
   /// <summary>
   /// The PathsUtility is a static class providing common utilities for managing paths.

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
-  <Class Name="TupleGeo.Global.ComponentModel.Design.EnumDescriptionEditor">
+  <Class Name="TupleGeo.General.ComponentModel.Design.EnumDescriptionEditor">
     <Position X="0.5" Y="0.5" Width="5.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -10,7 +10,7 @@
       <FileName>ComponentModel\Design\EnumDescriptionEditor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TupleGeo.Global.ComponentModel.Design.GeneralObjectEditor">
+  <Class Name="TupleGeo.General.ComponentModel.Design.GeneralObjectEditor">
     <Position X="7" Y="0.5" Width="5.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -20,7 +20,7 @@
       <FileName>ComponentModel\Design\GeneralObjectEditor.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TupleGeo.Global.ComponentModel.Design.EnumDescriptionEditorControl">
+  <Class Name="TupleGeo.General.ComponentModel.Design.EnumDescriptionEditorControl">
     <Position X="0.5" Y="4" Width="5.25" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
@@ -30,7 +30,7 @@
       <FileName>ComponentModel\Design\EnumDescriptionEditorControl.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="TupleGeo.Global.ComponentModel.Design.GeneralObjectEditorControl">
+  <Class Name="TupleGeo.General.ComponentModel.Design.GeneralObjectEditorControl">
     <Position X="6.5" Y="4" Width="4.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />

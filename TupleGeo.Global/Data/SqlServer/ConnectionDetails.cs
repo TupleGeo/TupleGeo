@@ -19,12 +19,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
-using TupleGeo.Global.Properties;
-using TupleGeo.Global.Security;
+using TupleGeo.General.Properties;
+using TupleGeo.General.Security;
 
 #endregion
 
-namespace TupleGeo.Global.Data.SqlServer {
+namespace TupleGeo.General.Data.SqlServer {
 
   /// <summary>
   /// The details used to define an SQL Server connection as they appear in a connection string.

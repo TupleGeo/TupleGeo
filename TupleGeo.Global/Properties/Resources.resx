@@ -168,16 +168,16 @@
   <data name="Data_SqlServer_ConnectionDetials_UserID" xml:space="preserve">
     <value>User ID=</value>
   </data>
-  <data name="Global_PropertyCouldNotConvertValueToString" xml:space="preserve">
+  <data name="General_PropertyCouldNotConvertValueToString" xml:space="preserve">
     <value>Could not convert property value to string.</value>
   </data>
-  <data name="Global_PropertyHasMoreThanOneGenericArguments" xml:space="preserve">
+  <data name="General_PropertyHasMoreThanOneGenericArguments" xml:space="preserve">
     <value>Property has more than one generic arguments.</value>
   </data>
-  <data name="Global_PropertyIsNotOfAPrimitiveTypeException" xml:space="preserve">
+  <data name="General_PropertyIsNotOfAPrimitiveTypeException" xml:space="preserve">
     <value>Property is not of a primitive type.</value>
   </data>
-  <data name="Global_PropertyNullableTypeIsNotOfAPrimitiveType" xml:space="preserve">
+  <data name="General_PropertyNullableTypeIsNotOfAPrimitiveType" xml:space="preserve">
     <value>Property nullable type is not of a primitive type.</value>
   </data>
   <data name="Security_CryptographicString_ExceptionNullKeyOrInitializationVector" xml:space="preserve">

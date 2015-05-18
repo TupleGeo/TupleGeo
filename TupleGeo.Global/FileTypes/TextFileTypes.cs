@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : TextFileTypes
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Text file types enumeration.
 // Created by       : 10/02/2009, 15:20, Vasilis Vlastaras
 // Updated by       : 19/02/2009, 00:47, Vasilis Vlastaras.
@@ -24,11 +24,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
-using TupleGeo.Global.Attributes;
+using TupleGeo.General.Attributes;
 
 #endregion
 
-namespace TupleGeo.Global.FileTypes {
+namespace TupleGeo.General.FileTypes {
 
   /// <summary>
   /// Types of text files.

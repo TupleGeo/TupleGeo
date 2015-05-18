@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : SqlServerUser
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Defines an SQL Server user as it appears in a connection string.
 // Created by       : 12/03/2009, 22:50, Vasilis Vlastaras.
 // Updated by       : 23/03/2009, 20:55, Vasilis Vlastaras.
@@ -24,7 +24,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace TupleGeo.Global.Data.SqlServer {
+namespace TupleGeo.General.Data.SqlServer {
 
   /// <summary>
   /// Defines an SQL Server user as it appears in a connection string.

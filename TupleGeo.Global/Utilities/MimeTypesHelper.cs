@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : MimeTypesHelper
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : A helper class for mime types.
 // Created by       : 16/03/2010, 18:35, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 17:54, Vasilis Vlastaras.
@@ -23,7 +23,7 @@ using Microsoft.Win32;
 
 #endregion
 
-namespace TupleGeo.Global.Utilities {
+namespace TupleGeo.General.Utilities {
 
   /// <summary>
   /// A helper class for mime types.

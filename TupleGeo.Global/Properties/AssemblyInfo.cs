@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TupleGeo.Global")]
+[assembly: AssemblyTitle("TupleGeo.General")]
 [assembly: AssemblyDescription("Generic foundation for building .NET Applications.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TupleGeo")]
-[assembly: AssemblyProduct("TupleGeo.Global")]
+[assembly: AssemblyProduct("TupleGeo.General")]
 [assembly: AssemblyCopyright("Copyright © 2009 - 2015, TupleGeo.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

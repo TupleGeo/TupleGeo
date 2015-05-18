@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : StringExtensions
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Contains a set of extension methods for the System.String type.
 // Created by       : 15/05/2009, 02:39, Vasilis Vlastaras.
 // Updated by       : 
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global {
+namespace TupleGeo.General {
 
   /// <summary>
   /// Contains a set of extension methods for the <see cref="System.String"/> type.

@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GeneralObjectEditor
-// Member of        : TupleGeo.Global.ComponentModel.Design.dll
+// Member of        : TupleGeo.General.ComponentModel.Design.dll
 // Description      : A general editor used to edit an object using a property grid.
 // Created by       : 12/03/2010, 15:51, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 01:00, Vasilis Vlastaras.
@@ -25,7 +25,7 @@ using System.Windows.Forms.Design;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel.Design {
+namespace TupleGeo.General.ComponentModel.Design {
   
   /// <summary>
   /// A general editor used to edit an object using a property grid.

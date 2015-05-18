@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : RowsExporter
-// Member of        : TupleGeo.Global.Windows.Forms.dll
+// Member of        : TupleGeo.General.Windows.Forms.dll
 // Description      : Exports rows from a series of sources.
 // Created by       : 27/05/2009, 01:45, Vasilis Vlastaras.
 // Updated by       : 16/06/2009, 14:52, Vasilis Vlastaras.
@@ -14,7 +14,9 @@
 //                    added preprocessor directives for the same reason.
 //                  : 02/05/2014, 12:03, Vasilis Vlastaras.
 //                    1.0.4 - Changed private method names.
-// Version          : 1.0.4
+//                  : 18/05/2015, 03:27, Vasilis Vlastaras
+//                    1.0.5 - Cleaned file, added resource strings.
+// Version          : 1.0.5
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -32,11 +34,12 @@ using System.Windows.Forms;
 
 #if !NET20
 using System.Xml.Linq;
+using TupleGeo.General.Windows.Forms.Properties;
 #endif
 
 #endregion
 
-namespace TupleGeo.Global.Data {
+namespace TupleGeo.General.Data {
 
   /// <summary>
   /// Exports rows from a series of sources.
@@ -48,23 +51,32 @@ namespace TupleGeo.Global.Data {
     /// <summary>
     /// Exports the contents of a <see cref="DataGridView"/> in to a text file.
     /// </summary>
-    /// <param name="dgv">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
     /// <param name="streamWriter">
     /// The <see cref="StreamWriter"/> that will be used to write the rows.</param>
-    /// <param name="bExportSelected">
+    /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
-    /// <param name="sSeparator">
+    /// <param name="separator">
     /// The separator <see cref="string"/> used to separate the field values.
     /// </param>
-    public void ExportText(DataGridView dgv, StreamWriter streamWriter, bool bExportSelected, string sSeparator) {
+    public void ExportText(DataGridView dataGridView, StreamWriter streamWriter, bool exportSelected, string separator) {
+
+      if (dataGridView == null) {
+        throw new ArgumentNullException("dataGridView");
+      }
+
+      if (streamWriter == null) {
+        throw new ArgumentNullException("streamWriter");
+      }
+
       try {
         // Loops through the columns of the DataGridView and writes them using the stream writer.
-        foreach (DataGridViewColumn colN in dgv.Columns) {
+        foreach (DataGridViewColumn colN in dataGridView.Columns) {
           if (colN.Visible) {
             streamWriter.Write(colN.Name);
-            if (colN.Index != dgv.Columns.Count - 1) {
-              streamWriter.Write(sSeparator);
+            if (colN.Index != dataGridView.Columns.Count - 1) {
+              streamWriter.Write(separator);
             }
             else {
               streamWriter.WriteLine();
@@ -72,45 +84,53 @@ namespace TupleGeo.Global.Data {
           }
         }
 
-        if (bExportSelected) {
+        if (exportSelected) {
           // Writes the selected rows in a stream.
-          foreach (DataGridViewRow rowN in dgv.SelectedRows) {
-            WriteRowString(dgv, sSeparator, streamWriter, rowN);
+          foreach (DataGridViewRow rowN in dataGridView.SelectedRows) {
+            WriteRowString(dataGridView, separator, streamWriter, rowN);
           }
         }
         else {
           // Writes all rows in a stream.
-          foreach (DataGridViewRow rowN in dgv.Rows) {
-            WriteRowString(dgv, sSeparator, streamWriter, rowN);
+          foreach (DataGridViewRow rowN in dataGridView.Rows) {
+            WriteRowString(dataGridView, separator, streamWriter, rowN);
           }
         }
       }
-      catch (Exception ex) {
-        throw ex;
+      catch (Exception) {
+        throw;
       }
       finally {
         streamWriter.Close();
-        streamWriter.Dispose();
       }
     }
 
 #if !NET20
 
     /// <summary>
-    /// Exports the rows of a DataGridView as xml.
+    /// Exports the rows of a DataGridView as XML.
     /// </summary>
-    /// <param name="dgv">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
     /// <param name="textWriter">
     /// The <see cref="TextWriter"/> that will be used to write the rows.</param>
-    /// <param name="bExportSelected">
+    /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
-    public void ExportXml(DataGridView dgv, TextWriter textWriter, bool bExportSelected) {
+    public void ExportXml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
+
+      if (dataGridView == null) {
+        throw new ArgumentNullException("dataGridView");
+      }
+
+      if (textWriter == null) {
+        throw new ArgumentNullException("textWriter");
+      }
+
       try {
-        if (bExportSelected) {
-          if (dgv.SelectedRows.Count > 0) {
-            XElement xElement = new XElement(XName.Get(dgv.SelectedRows[0].DataBoundItem.GetType().Name + "_Array")); // HARDCODE
-            foreach (DataGridViewRow row in dgv.SelectedRows) {
+        if (exportSelected) {
+          if (dataGridView.SelectedRows.Count > 0) {
+            XElement xElement = new XElement(XName.Get(dataGridView.SelectedRows[0].DataBoundItem.GetType().Name + "_Array")); // HARDCODE
+            foreach (DataGridViewRow row in dataGridView.SelectedRows) {
               if (row.DataBoundItem != null) {
                 xElement.Add(GetXElement(row.DataBoundItem));
               }
@@ -119,9 +139,9 @@ namespace TupleGeo.Global.Data {
           }
         }
         else {
-          if (dgv.Rows.Count > 0) {
-            XElement xElement = new XElement(XName.Get(dgv.Rows[0].DataBoundItem.GetType().Name + "_Array")); // HARDCODE
-            foreach (DataGridViewRow row in dgv.Rows) {
+          if (dataGridView.Rows.Count > 0) {
+            XElement xElement = new XElement(XName.Get(dataGridView.Rows[0].DataBoundItem.GetType().Name + "_Array")); // HARDCODE
+            foreach (DataGridViewRow row in dataGridView.Rows) {
               if (row.DataBoundItem != null) {
                 xElement.Add(GetXElement(row.DataBoundItem));
               }
@@ -130,33 +150,42 @@ namespace TupleGeo.Global.Data {
           }
         }
       }
-      catch (Exception ex) {
-        throw ex;
+      catch (Exception) {
+        throw;
       }
       finally {
         textWriter.Close();
-        textWriter.Dispose();
       }
+
     }
 
     /// <summary>
-    /// Exports the rows of a DataGridView as html.
+    /// Exports the rows of a DataGridView as HTML.
     /// </summary>
-    /// <param name="dgv">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
     /// <param name="textWriter">
     /// The <see cref="TextWriter"/> that will be used to write the rows.</param>
-    /// <param name="bExportSelected">
+    /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
-    public void ExportHtml(DataGridView dgv, TextWriter textWriter, bool bExportSelected) {
+    public void ExportHtml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
+
+      if (dataGridView == null) {
+        throw new ArgumentNullException("dataGridView");
+      }
+
+      if (textWriter == null) {
+        throw new ArgumentNullException("textWriter");
+      }
+
       try {
         XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
         XElement xTableBody = new XElement(xnsHtml + "tbody");
         object sample = null;
-        if (bExportSelected) {
-          if (dgv.SelectedRows.Count > 0) {
-            sample = dgv.SelectedRows[0].DataBoundItem;
-            foreach (DataGridViewRow row in dgv.SelectedRows) {
+        if (exportSelected) {
+          if (dataGridView.SelectedRows.Count > 0) {
+            sample = dataGridView.SelectedRows[0].DataBoundItem;
+            foreach (DataGridViewRow row in dataGridView.SelectedRows) {
               if (row.DataBoundItem != null) {
                 xTableBody.Add(GetRowElement(row.DataBoundItem));
               }
@@ -164,9 +193,9 @@ namespace TupleGeo.Global.Data {
           }
         }
         else {
-          if (dgv.Rows.Count > 0) {
-            sample = dgv.Rows[0].DataBoundItem;
-            foreach (DataGridViewRow row in dgv.Rows) {
+          if (dataGridView.Rows.Count > 0) {
+            sample = dataGridView.Rows[0].DataBoundItem;
+            foreach (DataGridViewRow row in dataGridView.Rows) {
               if (row.DataBoundItem != null) {
                 xTableBody.Add(GetRowElement(row.DataBoundItem));
               }
@@ -184,7 +213,7 @@ namespace TupleGeo.Global.Data {
             }
           }
           if (title == null) {
-            title = bExportSelected ? "Επιλεγμένες εγγραφές" : "Όλες οι εγγραφές"; // TODO: Add this to resources !!!
+            title = exportSelected ? Resources.Data_RowsExporter_SelectedRecords : Resources.Data_RowsExporter_AllRecords;
           }
           
           XElement xMeta = new XElement(xnsHtml + "meta", new XAttribute("http-equiv", "Content-Type"), new XAttribute("content", "text/html; charset=utf-8"));
@@ -206,12 +235,14 @@ namespace TupleGeo.Global.Data {
 
           doc.Save(textWriter);
         }
-
+      }
+      catch (Exception) {
+        throw;
       }
       finally {
         textWriter.Close();
-        textWriter.Dispose();
       }
+
     }
 
 #endif
@@ -222,9 +253,9 @@ namespace TupleGeo.Global.Data {
 
     /// <summary>
     /// Writes a string representing the contents of a <see cref="DataGridView"/>
-    /// row in to the <see cref="Stringbuilder"/>.
+    /// row in to the <see cref="StringBuilder"/>.
     /// </summary>
-    /// <param name="dgv">
+    /// <param name="dataGridView">
     /// The <see cref="DataGridView"/> containing the row.
     /// </param>
     /// <param name="separator">
@@ -233,33 +264,28 @@ namespace TupleGeo.Global.Data {
     /// <param name="streamWriter">
     /// The <see cref="StreamWriter"/> used to write the row string.
     /// </param>
-    /// <param name="rowN">
+    /// <param name="row">
     /// The <see cref="DataGridViewRow"/> used to extract the field values from.
     /// </param>
-    private void WriteRowString(DataGridView dgv, string sSeparator, StreamWriter streamWriter, DataGridViewRow rowN) {
-      try {
-        foreach (DataGridViewCell cellN in rowN.Cells) {
-          if (cellN.OwningColumn.Name == "OBJECTID") {  // TODO *** Move to Resource file ***
-            if (cellN.Value == null) {
-              break;
-            }
-          }
-          if (cellN.Value != null) {
-            streamWriter.Write(cellN.Value.ToString().Replace("\r", "").Replace("\n", ""));
-          }
-          else {
-            streamWriter.Write("NULL");
-          }
-          if (cellN.ColumnIndex != dgv.Columns.Count - 1) {
-            streamWriter.Write(sSeparator);
-          }
-          else {
-            streamWriter.WriteLine();
+    private static void WriteRowString(DataGridView dataGridView, string separator, StreamWriter streamWriter, DataGridViewRow row) {
+      foreach (DataGridViewCell cellN in row.Cells) {
+        if (cellN.OwningColumn.Name == Resources.Data_RowsExporter_ObjectId) {
+          if (cellN.Value == null) {
+            break;
           }
         }
-      }
-      catch (Exception ex) {
-        throw ex;
+        if (cellN.Value != null) {
+          streamWriter.Write(cellN.Value.ToString().Replace("\r", "").Replace("\n", ""));
+        }
+        else {
+          streamWriter.Write(Resources.Data_RowsExporter_NullValue);
+        }
+        if (cellN.ColumnIndex != dataGridView.Columns.Count - 1) {
+          streamWriter.Write(separator);
+        }
+        else {
+          streamWriter.WriteLine();
+        }
       }
     }
 
@@ -268,86 +294,59 @@ namespace TupleGeo.Global.Data {
     /// <summary>
     /// Gets an <see cref="XElement"/> representing the object.
     /// </summary>
-    /// <param name="o">The object to be transformed in to an xml element.</param>
+    /// <param name="o">The object to be transformed in to an XML element.</param>
     /// <returns>An <see cref="XElement"/> representing the object.</returns>
-    private XElement GetXElement(object o) {
-      try {
-        XElement xElement = new XElement(XName.Get(o.GetType().Name));
+    private static XElement GetXElement(object o) {
+      XElement xElement = new XElement(XName.Get(o.GetType().Name));
 
-        PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
+      PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
 
-        if (properties != null) {
-          for (int i = 0; i < properties.Count; i++) {
-            PropertyDescriptor pd = properties[i];
-            xElement.Add(new XElement(XName.Get(pd.Name), pd.GetValue(o)));
-          }
-          return xElement;
-        }
-        else {
-          throw new Exception("Object properties could not be retrieved"); // HARDCODE
-        }
+      for (int i = 0; i < properties.Count; i++) {
+        PropertyDescriptor pd = properties[i];
+        xElement.Add(new XElement(XName.Get(pd.Name), pd.GetValue(o)));
       }
-      catch (Exception ex) {
-        throw ex;
-      }
+
+      return xElement;
     }
 
     /// <summary>
     /// Gets an <see cref="XElement"/> representing the object's table row.
     /// </summary>
-    /// <param name="o">The object to be transformed in to an xml element.</param>
+    /// <param name="o">The object to be transformed in to an XML element.</param>
     /// <returns>An <see cref="XElement"/> representing the object.</returns>
-    private XElement GetRowElement(object o) {
-      try {
-        XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
-        XElement xRow = new XElement(xnsHtml + "tr");
+    private static XElement GetRowElement(object o) {
+      XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
+      XElement xRow = new XElement(xnsHtml + "tr");
 
-        PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
+      PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
 
-        if (properties != null) {
-          for (int i = 0; i < properties.Count; i++) {
-            PropertyDescriptor pd = properties[i];
-            xRow.Add(new XElement(xnsHtml + "td", pd.GetValue(o)));
-          }
-          return xRow;
-        }
-        else {
-          throw new Exception("Object properties could not be retrieved"); // HARDCODE
-        }
+      for (int i = 0; i < properties.Count; i++) {
+        PropertyDescriptor pd = properties[i];
+        xRow.Add(new XElement(xnsHtml + "td", pd.GetValue(o)));
       }
-      catch (Exception ex) {
-        throw ex;
-      }
+      
+      return xRow;
     }
 
     /// <summary>
     /// Gets an <see cref="XElement"/> representing the table header containing row like the object.
     /// </summary>
-    /// <param name="o">The object to be transformed in to an xml element.</param>
+    /// <param name="o">The object to be transformed in to an XML element.</param>
     /// <returns>An <see cref="XElement"/> representing the object.</returns>
-    private XElement GetHeaderElement(object o) {
-      try {
-        XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
-        XElement xTHead = new XElement(xnsHtml + "thead");
-        XElement xRow = new XElement(xnsHtml + "tr");
-        xTHead.Add(xRow);
+    private static XElement GetHeaderElement(object o) {
+      XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
+      XElement xTHead = new XElement(xnsHtml + "thead");
+      XElement xRow = new XElement(xnsHtml + "tr");
+      xTHead.Add(xRow);
 
-        PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
+      PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
 
-        if (properties != null) {
-          for (int i = 0; i < properties.Count; i++) {
-            PropertyDescriptor pd = properties[i];
-            xRow.Add(new XElement(xnsHtml + "th", pd.DisplayName));
-          }
-          return xTHead;
-        }
-        else {
-          throw new Exception("Object properties could not be retrieved"); // HARDCODE
-        }
+      for (int i = 0; i < properties.Count; i++) {
+        PropertyDescriptor pd = properties[i];
+        xRow.Add(new XElement(xnsHtml + "th", pd.DisplayName));
       }
-      catch (Exception ex) {
-        throw ex;
-      }
+
+      return xTHead;
     }
 
 #endif

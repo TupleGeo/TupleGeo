@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : RasterFileTypes
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Raster file types enumeration.
 // Created by       : 10/02/2009, 15:22, Vasilis Vlastaras.
 // Updated by       : 19/02/2009, 00:49, Vasilis Vlastaras.
@@ -23,11 +23,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
-using TupleGeo.Global.Attributes;
+using TupleGeo.General.Attributes;
 
 #endregion
 
-namespace TupleGeo.Global.FileTypes {
+namespace TupleGeo.General.FileTypes {
 
   /// <summary>
   /// Types of raster files.

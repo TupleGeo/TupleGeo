@@ -11,7 +11,7 @@ using System.Xml.Linq;
 
 #endregion
 
-namespace TupleGeo.Global.Serialization {
+namespace TupleGeo.General.Serialization {
 
   /// <summary>
   /// 

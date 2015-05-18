@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : AssemblyHelper
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Provides methods for manipulating the Assembly object more efficiently.
 // Created by       : 17/05/2009, 19:49, Vasilis Vlastaras.
 // Updated by       : 
@@ -22,7 +22,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Reflection {
+namespace TupleGeo.General.Reflection {
 
   /// <summary>
   /// Provides methods for manipulating the Assembly object more efficiently.

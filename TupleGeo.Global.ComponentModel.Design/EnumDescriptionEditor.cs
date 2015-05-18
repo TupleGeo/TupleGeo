@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : EnumDescriptionEditor
-// Member of        : TupleGeo.Global.ComponentModel.Design.dll
+// Member of        : TupleGeo.General.ComponentModel.Design.dll
 // Description      : Provides an editor for enumerations that is displaying value descriptions.
 // Created by       : 03/03/2010, 17:23, Vasilis Vlastaras.
 // Updated by       : 23/02/2010, 16:57, Vasilis Vlastaras.
@@ -30,7 +30,7 @@ using System.Windows.Forms.Design;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel.Design {
+namespace TupleGeo.General.ComponentModel.Design {
 
   /// <summary>
   /// Provides an editor for enumerations that is displaying value descriptions.

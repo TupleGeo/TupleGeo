@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : ExecutableFileTypes
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Executable file types enumeration
 // Created by       : 26/03/2009, 19:43, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 22:16, Vasilis Vlastaras.
@@ -19,11 +19,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Xml.Serialization;
-using TupleGeo.Global.Attributes;
+using TupleGeo.General.Attributes;
 
 #endregion
 
-namespace TupleGeo.Global.FileTypes {
+namespace TupleGeo.General.FileTypes {
 
   /// <summary>
   /// Types of executable files.

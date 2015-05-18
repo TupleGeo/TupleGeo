@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : DescriptionAttribute
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Defines a custom attribute used for adding descriptive information in code Metadata.
 // Created by       : 10/02/2009, 17:10, Vasilis Vlastaras.
 // Updated by       : 16/02/2009, 20:10, Vasilis Vlastaras.
@@ -25,7 +25,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Attributes {
+namespace TupleGeo.General.Attributes {
 
   /// <summary>
   /// A custom attribute used to add descriptive information.
@@ -93,16 +93,16 @@ namespace TupleGeo.Global.Attributes {
 
     /// <summary>
     /// Gets the neutral culture
-    /// <see cref="TupleGeo.Global.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </summary>
     /// <param name="enumValue">
     /// The Enumerated value used to retrieve its
-    /// <see cref="TupleGeo.Global.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </param>
     /// <returns>A string with the neutral culture description.</returns>
     /// <remarks>
     /// The neutral culture description is not associated with a specific culture.
-    /// Thus the <see cref="TupleGeo.Global.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
+    /// Thus the <see cref="TupleGeo.General.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
     /// property must be null. In such a case a neutral culture description is specified. If no neutral culture
     /// description has been specified, a zero length string will be returned instead.
     /// </remarks>
@@ -113,12 +113,12 @@ namespace TupleGeo.Global.Attributes {
       Type type = enumValue.GetType();
 
       object[] descriptionAttributes = TypeDescriptor.GetReflectionType(type).GetField(
-        Enum.GetName(type, enumValue)).GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false
+        Enum.GetName(type, enumValue)).GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false
       );
 
       if (descriptionAttributes != null) {
         for (int i = 0; i < descriptionAttributes.Length; i++) {
-          TupleGeo.Global.Attributes.DescriptionAttribute descAttr = (TupleGeo.Global.Attributes.DescriptionAttribute)descriptionAttributes[i];
+          TupleGeo.General.Attributes.DescriptionAttribute descAttr = (TupleGeo.General.Attributes.DescriptionAttribute)descriptionAttributes[i];
           if (descAttr != null) {
             if (descAttr.Culture == null) {
               description = descAttr.Description;
@@ -134,11 +134,11 @@ namespace TupleGeo.Global.Attributes {
 
     /// <summary>
     /// Gets the neutral culture
-    /// <see cref="TupleGeo.Global.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </summary>
     /// <param name="enumValue">
     /// The Enumerated value used to retrieve its
-    /// <see cref="TupleGeo.Global.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </param>
     /// <param name="useCurrentCulture">
     /// If set to true use the current culture setting to find out the relevant description,
@@ -147,7 +147,7 @@ namespace TupleGeo.Global.Attributes {
     /// <returns>A string with the description.</returns>
     /// <remarks>
     /// The neutral culture description is not associated with a specific culture.
-    /// Thus the <see cref="TupleGeo.Global.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
+    /// Thus the <see cref="TupleGeo.General.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
     /// property must be null. In such a case a neutral culture description is specified. If no neutral culture
     /// description has been specified, a zero length string will be returned instead.
     /// </remarks>
@@ -158,14 +158,14 @@ namespace TupleGeo.Global.Attributes {
       Type type = enumValue.GetType();
 
       object[] descriptionAttributes = TypeDescriptor.GetReflectionType(type).GetField(
-        Enum.GetName(type, enumValue)).GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false
+        Enum.GetName(type, enumValue)).GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false
       );
 
       string currentCulture = CultureInfo.CurrentCulture.ToString();
 
       if (descriptionAttributes != null) {
         for (int i = 0; i < descriptionAttributes.Length; i++) {
-          TupleGeo.Global.Attributes.DescriptionAttribute descAttr = (TupleGeo.Global.Attributes.DescriptionAttribute)descriptionAttributes[i];
+          TupleGeo.General.Attributes.DescriptionAttribute descAttr = (TupleGeo.General.Attributes.DescriptionAttribute)descriptionAttributes[i];
           if (descAttr != null) {
             if (useCurrentCulture) {
               if (descAttr.Culture != null) {

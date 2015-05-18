@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TupleGeo.Global.Properties {
+namespace TupleGeo.General.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TupleGeo.Global.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.Global.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.General.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -216,36 +216,36 @@ namespace TupleGeo.Global.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Could not convert property value to string..
         /// </summary>
-        internal static string Global_PropertyCouldNotConvertValueToString {
+        internal static string General_PropertyCouldNotConvertValueToString {
             get {
-                return ResourceManager.GetString("Global_PropertyCouldNotConvertValueToString", resourceCulture);
+                return ResourceManager.GetString("General_PropertyCouldNotConvertValueToString", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Property has more than one generic arguments..
         /// </summary>
-        internal static string Global_PropertyHasMoreThanOneGenericArguments {
+        internal static string General_PropertyHasMoreThanOneGenericArguments {
             get {
-                return ResourceManager.GetString("Global_PropertyHasMoreThanOneGenericArguments", resourceCulture);
+                return ResourceManager.GetString("General_PropertyHasMoreThanOneGenericArguments", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Property is not of a primitive type..
         /// </summary>
-        internal static string Global_PropertyIsNotOfAPrimitiveTypeException {
+        internal static string General_PropertyIsNotOfAPrimitiveTypeException {
             get {
-                return ResourceManager.GetString("Global_PropertyIsNotOfAPrimitiveTypeException", resourceCulture);
+                return ResourceManager.GetString("General_PropertyIsNotOfAPrimitiveTypeException", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized string similar to Property nullable type is not of a primitive type..
         /// </summary>
-        internal static string Global_PropertyNullableTypeIsNotOfAPrimitiveType {
+        internal static string General_PropertyNullableTypeIsNotOfAPrimitiveType {
             get {
-                return ResourceManager.GetString("Global_PropertyNullableTypeIsNotOfAPrimitiveType", resourceCulture);
+                return ResourceManager.GetString("General_PropertyNullableTypeIsNotOfAPrimitiveType", resourceCulture);
             }
         }
         

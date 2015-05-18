@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GryptographicString
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Defines a cryptographic string object.
 // Created by       : 18/03/2009, 18:34, Source code in public domain.
 // Updated by       : 22/02/2011, 21:51, Source code in public domain.
@@ -20,11 +20,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
-using TupleGeo.Global.Properties;
+using TupleGeo.General.Properties;
 
 #endregion
 
-namespace TupleGeo.Global.Security {
+namespace TupleGeo.General.Security {
 
   /// <summary>
   /// Defines a cryptographic string object.

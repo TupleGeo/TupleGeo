@@ -5,7 +5,7 @@ using System.Text;
 using System.Data.Linq;
 using System.ComponentModel;
 
-namespace TupleGeo.Global.Data.Linq {
+namespace TupleGeo.General.Data.Linq {
 
 
   public static class TableExtensions {

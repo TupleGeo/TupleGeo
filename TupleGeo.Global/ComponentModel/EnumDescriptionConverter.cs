@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : EnumDescriptionConverter
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : A type converter used to convert values of an enumeration in to its corresponding descriptions.
 // Created by       : 03/03/2010, 15:54, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 22:50, Vasilis Vlastaras.
@@ -24,7 +24,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel {
+namespace TupleGeo.General.ComponentModel {
 
   /// <summary>
   /// Converts an enumerated value to a string holding its description attribute and vice versa.
@@ -65,7 +65,7 @@ namespace TupleGeo.Global.ComponentModel {
     /// </remarks>
     public static string GetEnumDescription(Enum enumValue) {
       FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
-      TupleGeo.Global.Attributes.DescriptionAttribute[] attributes = (TupleGeo.Global.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false);
+      TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
       return (attributes.Length > 0) ? attributes[0].Description : enumValue.ToString();
     }
 
@@ -83,7 +83,7 @@ namespace TupleGeo.Global.ComponentModel {
     /// </remarks>
     public static string GetEnumDescription(Type type, string name) {
       FieldInfo fi = type.GetField(name);
-      TupleGeo.Global.Attributes.DescriptionAttribute[] attributes = (TupleGeo.Global.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false);
+      TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
       return (attributes.Length > 0) ? attributes[0].Description : name;
     }
 
@@ -143,9 +143,9 @@ namespace TupleGeo.Global.ComponentModel {
       if (fis.Length > 0) {
         for (int i = 0; i < fis.Length; i++) {
           
-          object[] atts = fis[i].GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), true);
+          object[] atts = fis[i].GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), true);
           
-          TupleGeo.Global.Attributes.DescriptionAttribute[] attributes = (TupleGeo.Global.Attributes.DescriptionAttribute[])fis[i].GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false);
+          TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fis[i].GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
           descriptions[i] = (attributes.Length > 0) ? attributes[0].Description : fis[i].Name;
         }
       }
@@ -164,7 +164,7 @@ namespace TupleGeo.Global.ComponentModel {
     public static object GetEnumValue(Type type, string description) {
       FieldInfo[] fis = type.GetFields();
       foreach (FieldInfo fi in fis) {
-        TupleGeo.Global.Attributes.DescriptionAttribute[] attributes = (TupleGeo.Global.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.Global.Attributes.DescriptionAttribute), false);
+        TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
         if (attributes.Length > 0) {
           if (attributes[0].Description == description) {
             return fi.GetValue(fi.Name);

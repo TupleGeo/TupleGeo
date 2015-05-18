@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GreekToLatinConversionMode
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : The Greek to Latin conversion mode enumeration.
 // Created by       : 06/04/2010, 14:14, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 21:43, Vasilis Vlastaras.
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Text {
+namespace TupleGeo.General.Text {
   
   /// <summary>
   /// The Greek to Latin conversion mode enumeration.

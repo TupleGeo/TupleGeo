@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : XmlSerializer
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Provides methods to serialize and deserialize objects to or from xml.
 // Created by       : 16/02/2009, 20:08, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 21:45, Vasilis Vlastaras.
@@ -23,7 +23,7 @@ using System.Xml.Serialization;
 
 #endregion
 
-namespace TupleGeo.Global.Serialization {
+namespace TupleGeo.General.Serialization {
 
   /// <summary>
   /// Provides methods to serialize and deserialize objects to or from xml.

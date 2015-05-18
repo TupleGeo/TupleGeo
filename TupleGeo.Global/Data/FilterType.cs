@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : FilterType
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Specifies the types of filter queries.
 // Created by       : 13/05/2009, 05:53, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 23:00, Vasilis Vlastaras.
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Data {
+namespace TupleGeo.General.Data {
 
   /// <summary>
   /// Specifies the types of filter queries.

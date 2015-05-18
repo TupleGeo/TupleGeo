@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : IEnumerableExtentions
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : Provides extension methods for IEnumerable<T>.
 // Created by       : 13/05/2009, 20:39, Vasilis Vlastaras.
 // Updated by       : 
@@ -18,12 +18,12 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using TupleGeo.Global.Data;
+using TupleGeo.General.Data;
 using System.Linq.Expressions;
 
 #endregion
 
-namespace TupleGeo.Global.Linq {
+namespace TupleGeo.General.Linq {
 
   /// <summary>
   /// Provides extension methods for <see cref="IEnumerable of T"/>.

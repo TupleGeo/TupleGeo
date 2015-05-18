@@ -10,7 +10,7 @@ using System.Reflection.Emit;
 
 #endregion
 
-namespace TupleGeo.Global.Serialization {
+namespace TupleGeo.General.Serialization {
 
   /// <summary>
   /// 

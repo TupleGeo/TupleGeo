@@ -1,15 +1,16 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TupleGeo.Global.Windows.Forms")]
+[assembly: AssemblyTitle("TupleGeo.General.Windows.Forms")]
 [assembly: AssemblyDescription("Generic set of .NET objects for Windows Forms applications.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TupleGeo")]
-[assembly: AssemblyProduct("TupleGeo.Global.Windows.Forms")]
+[assembly: AssemblyProduct("TupleGeo.General.Windows.Forms")]
 [assembly: AssemblyCopyright("Copyright © 2009 - 2015, TupleGeo.")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -34,3 +35,5 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.1.4.*")]
 [assembly: AssemblyFileVersion("1.1.4")]
+
+[assembly: CLSCompliant(true)]

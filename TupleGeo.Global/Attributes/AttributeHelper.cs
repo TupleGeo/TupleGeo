@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : AttributeHelper
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : A Helper object to deal with attributes.
 // Created by       : 18/02/2009, 22:50, Vasilis Vlastaras.
 // Updated by       : 27/03/2009. 01:38, Vasilis Vlastaras.
@@ -27,7 +27,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Attributes {
+namespace TupleGeo.General.Attributes {
 
   /// <summary>
   /// A Helper object to deal with <see cref="Attribute">attributes</see>.

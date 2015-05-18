@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : EnumDescriptionControl
-// Member of        : TupleGeo.Global.ComponentModel.Design.dll
+// Member of        : TupleGeo.General.ComponentModel.Design.dll
 // Description      : A control providing a list having the descriptions of enumerated values.
 // Created by       : 12/03/2009, 15:02, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 00:58, Vasilis Vlastaras.
@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace TupleGeo.Global.ComponentModel.Design {
+namespace TupleGeo.General.ComponentModel.Design {
 
   /// <summary>
   /// A control providing a list having the descriptions of enumerated values.

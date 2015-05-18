@@ -41,10 +41,10 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #endregion
 
-    #region Consructors - Destructors
+    #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the GeneralObjectEditorControl.
+    /// Initializes the <see cref="GeneralObjectEditorControl"/>.
     /// </summary>
     public GeneralObjectEditorControl() {
       InitializeComponent();
@@ -55,7 +55,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     #region Event Procedures
 
     /// <summary>
-    /// Occurs upon clicking the <see cref="NewObjectToolStripButton"/>
+    /// Occurs upon clicking the <see cref="NewObjectToolStripButton"/>.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The <see cref="EventArgs"/>.</param>
@@ -66,7 +66,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     }
 
     /// <summary>
-    /// Occurs upon clicking the <see cref="DeleteObjectToolStripButton"/>
+    /// Occurs upon clicking the <see cref="DeleteObjectToolStripButton"/>.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The <see cref="EventArgs"/>.</param>

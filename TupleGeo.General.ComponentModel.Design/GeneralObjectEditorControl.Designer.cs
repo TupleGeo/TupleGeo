@@ -48,7 +48,7 @@
       this.NewObjectToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("NewObjectToolStripButton.Image")));
       this.NewObjectToolStripButton.ImageTransparentColor = System.Drawing.Color.Transparent;
       this.NewObjectToolStripButton.Name = "NewObjectToolStripButton";
-      this.NewObjectToolStripButton.Size = new System.Drawing.Size(48, 22);
+      this.NewObjectToolStripButton.Size = new System.Drawing.Size(51, 22);
       this.NewObjectToolStripButton.Text = "New";
       this.NewObjectToolStripButton.Click += new System.EventHandler(this.NewObjectToolStripButton_Click);
       // 
@@ -57,7 +57,7 @@
       this.DeleteObjectToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteObjectToolStripButton.Image")));
       this.DeleteObjectToolStripButton.ImageTransparentColor = System.Drawing.Color.Transparent;
       this.DeleteObjectToolStripButton.Name = "DeleteObjectToolStripButton";
-      this.DeleteObjectToolStripButton.Size = new System.Drawing.Size(58, 22);
+      this.DeleteObjectToolStripButton.Size = new System.Drawing.Size(60, 22);
       this.DeleteObjectToolStripButton.Text = "Delete";
       this.DeleteObjectToolStripButton.Click += new System.EventHandler(this.DeleteObjectToolStripButton_Click);
       // 

@@ -32,42 +32,31 @@
       // 
       // GeneralObjectEditorToolStrip
       // 
+      resources.ApplyResources(this.GeneralObjectEditorToolStrip, "GeneralObjectEditorToolStrip");
       this.GeneralObjectEditorToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
       this.GeneralObjectEditorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewObjectToolStripButton,
             this.DeleteObjectToolStripButton});
-      this.GeneralObjectEditorToolStrip.Location = new System.Drawing.Point(0, 0);
-      this.GeneralObjectEditorToolStrip.Margin = new System.Windows.Forms.Padding(2);
       this.GeneralObjectEditorToolStrip.Name = "GeneralObjectEditorToolStrip";
-      this.GeneralObjectEditorToolStrip.Size = new System.Drawing.Size(132, 25);
-      this.GeneralObjectEditorToolStrip.TabIndex = 0;
-      this.GeneralObjectEditorToolStrip.Text = "GeneralObjectEditorToolStrip";
       // 
       // NewObjectToolStripButton
       // 
-      this.NewObjectToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("NewObjectToolStripButton.Image")));
-      this.NewObjectToolStripButton.ImageTransparentColor = System.Drawing.Color.Transparent;
+      resources.ApplyResources(this.NewObjectToolStripButton, "NewObjectToolStripButton");
       this.NewObjectToolStripButton.Name = "NewObjectToolStripButton";
-      this.NewObjectToolStripButton.Size = new System.Drawing.Size(51, 22);
-      this.NewObjectToolStripButton.Text = "New";
       this.NewObjectToolStripButton.Click += new System.EventHandler(this.NewObjectToolStripButton_Click);
       // 
       // DeleteObjectToolStripButton
       // 
-      this.DeleteObjectToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteObjectToolStripButton.Image")));
-      this.DeleteObjectToolStripButton.ImageTransparentColor = System.Drawing.Color.Transparent;
+      resources.ApplyResources(this.DeleteObjectToolStripButton, "DeleteObjectToolStripButton");
       this.DeleteObjectToolStripButton.Name = "DeleteObjectToolStripButton";
-      this.DeleteObjectToolStripButton.Size = new System.Drawing.Size(60, 22);
-      this.DeleteObjectToolStripButton.Text = "Delete";
       this.DeleteObjectToolStripButton.Click += new System.EventHandler(this.DeleteObjectToolStripButton_Click);
       // 
       // GeneralObjectEditorControl
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+      resources.ApplyResources(this, "$this");
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.Controls.Add(this.GeneralObjectEditorToolStrip);
       this.Name = "GeneralObjectEditorControl";
-      this.Size = new System.Drawing.Size(132, 29);
       this.GeneralObjectEditorToolStrip.ResumeLayout(false);
       this.GeneralObjectEditorToolStrip.PerformLayout();
       this.ResumeLayout(false);

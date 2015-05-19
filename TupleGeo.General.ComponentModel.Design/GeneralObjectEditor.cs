@@ -159,7 +159,7 @@ namespace TupleGeo.General.ComponentModel.Design {
         }
       }
       else {
-        throw new NullReferenceException("Sender button was null. Expected ToolStripButton.");
+        throw new ArgumentNullException("Sender button was null. Expected ToolStripButton.");
       }
 
       _windowsFormsEditorService.CloseDropDown();

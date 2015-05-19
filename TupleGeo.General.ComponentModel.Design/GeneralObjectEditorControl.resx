@@ -117,42 +117,113 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="GeneralObjectEditorToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="NewObjectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ9SURBVDhPrZP9S1NRGMfv36JFBCtQNDISfCFKMBIvla9N
-        cmq65qYucurdNJ1z15z4NjfMLGgrt8VIN92cjlTMxKmli9TrUKKNIghqw1+/3Su3DcOEoC88v5zn+XzP
-        eZ5zDvHfRc/I4zvcMqrVIWGaxyvCileisPxlCVNrFVKS57fi+bKjRXtqSI2rJvRstR/LoXn4v61h9esS
-        XAE7VG4JKk03QmUjuSRfflgc3OaURDw7duz93MHM5wmYmCE82dLDvmvCwpfXoOcUEA7lRIqM2YdNNB5Z
-        XJtTFpzctmDnxyaGN3vRt9IBna8Nen8nBvw0dOutmNyzg3KLQRquBHP1mXE8zhq4pMrBRTU+fl9ndxxA
-        /wYN7VsV+DShXlGgaV4M5aIUzl0bbj6+hOyeNCWfJghuYBMBG3tUMx4ut6B9qQmKmeqoQZWtEPenS1A3
-        VQTj+070LjTjsu4iw6cJQjlWvu/9NIHBD50s3BAF/5TMlQ/lbCUs/mFkdCTv88sE0WAv3R8PjIJeo9Di
-        u3esAeWtgNX/CKnqhJiB3CZkDD4a+g0tGt6IIZstRZn1etSIA7modRdi0KdGl7cRKa1nYy1IR4uVd6wk
-        HAELFLMi1HiFBz3z6QODamce5JNFcGybkdl9HkktgtgQK00FceVPySDlrsIY8yI6MA6UOrng4EKMb5lw
-        11KApAeC4BnVydg1cro9co0sNl6N1DtEcLImBp8G1HQ5mqZEMCy3w8HCYkseklSnIwnUqaNfY74xiyT7
-        MkI5xnR0z1Ewv9PDvKaH1luPjK5zLCwI/RX+rZye9PgsXSqVSV9g0rTJ4RRNYjiZHVhis4BKbDxx/Gf6
-        dxHEL7raf87SbdSdAAAAAElFTkSuQmCC
-</value>
+  <data name="$this.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 29</value>
+  </data>
+  <data name="&gt;&gt;GeneralObjectEditorToolStrip.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="DeleteObjectToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Transparent</value>
+  </data>
+  <data name="&gt;&gt;NewObjectToolStripButton.Name" xml:space="preserve">
+    <value>NewObjectToolStripButton</value>
+  </data>
+  <data name="NewObjectToolStripButton.Text" xml:space="preserve">
+    <value>New</value>
   </data>
   <data name="DeleteObjectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJoSURBVDhPrZPtS1NhGMbP36JFYWCB+aEIoaLIOZ1ua7rc
-        K6em2zIWsTTlnGGaQcliGn4ItdRetfKLs5wQmZK9KL0oKh0X07VTG7Wm52xuS7madmKJSwi64Ppyc/3u
-        h+d+7of475qrqEj3mEyUu8zAzOp13Ae9lpvRqZkpspSa0BSnC7HU8prNslmTif3WbEd0+AliE2OIvR4B
-        39eNeYsB7zQydlwlkQnx9VqF3eXl/OKDbqzMziDueoh4lwPxtsv4ca8Vy6Mu+GsseFki5l8pD69vMmc0
-        prkNZT7uThdWmEnEr11EyGHDgr0a0as2xJpoRBvPItp/F95TJEblh3zD0oNpAk4QHqORDtRRWJ4cXztx
-        qZlG8JIVkfqT68ydIxHtvYm3khw8k+fQAk4QHxMDC/feQrynDaHGSnzVylN6sZIEb6+F31aFp0V7GQEn
-        iBkDGYkN9CLebEPoggVCeYP8ynwETRostLVgUJwVEcoEMU1qI0s9HYg2WBA5X75pg4BBhYXWFgzk7/yj
-        gVbJBBtrseSgwZ1RYzWY0qUShOpqMF9jhUuUmbzCpLaYZhR5iPR0InRcgaBBugFmS8Rgj0kR7rqOkcLd
-        eCzKSA7xvV6a9kYj83nNeoTvd6wNLKAq/AUqC8AqErCiEHxnO6Z0cjhzM3x9eVuTz7iqcaVY9kKRy3tO
-        qBC+3YHvDTT8ZCk+q5UI1lPgb7RjWl2EPtF23pm7LfU2jiY27PnRA+yYdB++VFsRbLqy5k9VpzGUn5WA
-        d7B/hX9rpHh/+pBkDzVYlM24CrK5AdEuzlmQyTzKy6D6j2zZ/DP9uwjiJ/3xoyNWiYm5AAAAAElFTkSu
-        QmCC
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAJnSURBVDhPrZPtS1NhGMbP3zJ7gUVSlB+KECqK3Kab25ou
+        N09y7OC2jEUsTdkZphmUGGr4IZyl61UrIXyZBpE5HJTSizals8KXdmpSa7qzuS3larMTQ1xC0AXXl5vr
+        dz8893M/xH/XbHl5xozRaP1I06yXJEMfEp4m9ayHKrJOFBdkCLH0mjeZVKzRyH1vaUR05BliE2OIvXKB
+        7+3CnJnG22IVN66Tq4T4eiVhb1kZv/SoC6veacSHHiPuaELcfhU/H7RhxT0Ef7UZbo2Mf6k9ur7JrMEg
+        8tK0L3TPgVV2EvEblxFssmGxsQrR6zbEmhlEG84j2n8f82couFVHfCPKwyIBJ4gZg4FZqLViZXJ87cTl
+        FgaBKxZE6k6vc+gChWjPbbyRZ+OFOpsRcIL4lBhYuOcO4t12BBsq8I1Up/VSBQW+sQZ+WyWe5+9nBZwg
+        PKVUJDbYg3iLDcFLZgjlDfJrcxEwFmPR3opBye6IUCaI9xQZWe7uQLTejMjFsk0bLNA6LLa1windmWow
+        RRaygYYaLDcxCJ3TIxlM6yI5grXVmKu2YEiSmbrCJFnAsBopIt2dCJZqEKCVG2CuUAbuhBJhx024FHvh
+        lIhTQ3xXohS91qt886YShB92rA1sQaf4DWrzwGkSsEYBvrMdnpNq9OWIfb3SralnTGpcK1ONqnP4mVM6
+        hO924Ec9Az9VhC96LQJ1VvC32jGlz8cTyTa+L2d7+m10JzZs9Pghbkx5AF+rLAg0X1vz58qzGM7dk4B3
+        cH+F/8hVcDBjWL7P+jQ/i3XKskIDkl2h3rxMdkAqtvYf27L5Z/p3EcQvlTGi7iwk3dEAAAAASUVORK5C
+        YII=
 </value>
   </data>
+  <data name="&gt;&gt;DeleteObjectToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;NewObjectToolStripButton.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GeneralObjectEditorToolStrip.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="NewObjectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsIAAA7CARUoSoAAAAJ+SURBVDhPrZP9S1NRGMfv36K9/LKEhkpFgi9ECUbipfK1
+        VU5Ll27qKqfezalz7poT3+ZGmQVt5bYY6aabLyMVM3Fq6SL1OpRoowiC2vDXb/fKbcMwIegLzy/neT7f
+        c57nnEP8d9FT8vg2j4xqdlYwjSPi8L1XN8LylyKm2iaiKp5fi+fLDhY9UUVq3VWhZ8u9WAzNwv9tBctf
+        F+AOOKDyVKDMfCVUMphD8uX7xcHq4fLIxJYDOz+3MPV5FGbmIZ5sGODYNmPuy2vQMwqIjNmRQlPWfhPt
+        hCyuxSULjm1asfVjHQPr3ehZaoPe1wKDvx19fhr61WaM7ThAeSQgjReCOYaMOB5nDdxSZf+8Bh+/r7I7
+        9qF3jYburQp8mtAsKdAwK4FyXgrXth1XH59DVleqkk8TBDew0YCdPaoFDxbVaF1ogGKqMmpQbi/A/cnr
+        qBkvhOl9O7rnGnFef5bh0wShHC7e9X4aRf+Hdhaui4J/SubOg3K6DFb/ANI1wl1+mSDqHMW7I4Eh0CsU
+        1L67hxpQ3luw+R8hpSkhZiC3ixijj4ZhTYe6NxLIpotRYrscNeJALqo9Bej3adDhrcfp5oRYC9KhIuVt
+        GwlnwArFtBhVXtFez3x6z6DSlQv5WCGcmxZkdJ5ColoQG2KZOT+u9CkZpDzlGGZeRAfGgVIXFxxcgJEN
+        M+5Y85HYJAieUB2NXSOnm4OXyCLDxUitUwwXa2L0aUFNlqJhXAzjYiucLCyx5iJRdSxykjp+8GvMM2WS
+        ZE96KNuUhs4ZCpZ3BlhWDNB5a5HekczCgtBf4d/K7kqLz9SnUBn0GSZVlxRO1grDSezAhI0CSlh/5PDP
+        9O8iiF9LJn+gILCTNgAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="DeleteObjectToolStripButton.Text" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="GeneralObjectEditorToolStrip.Size" type="System.Drawing.Size, System.Drawing">
+    <value>132, 25</value>
+  </data>
+  <data name="&gt;&gt;GeneralObjectEditorToolStrip.Name" xml:space="preserve">
+    <value>GeneralObjectEditorToolStrip</value>
+  </data>
+  <data name="NewObjectToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 22</value>
+  </data>
+  <data name="&gt;&gt;DeleteObjectToolStripButton.Name" xml:space="preserve">
+    <value>DeleteObjectToolStripButton</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DeleteObjectToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 22</value>
+  </data>
+  <data name="GeneralObjectEditorToolStrip.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GeneralObjectEditorToolStrip.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>2, 2, 2, 2</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>GeneralObjectEditorControl</value>
+  </data>
+  <data name="&gt;&gt;GeneralObjectEditorToolStrip.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStrip, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="GeneralObjectEditorToolStrip.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
+  <data name="NewObjectToolStripButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
+    <value>Transparent</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="GeneralObjectEditorToolStrip.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

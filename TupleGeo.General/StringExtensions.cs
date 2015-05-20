@@ -28,10 +28,17 @@ namespace TupleGeo.General {
   /// </summary>
   public static class StringExtensions {
 
+    #region Member Variables
+
     private static Dictionary<char, char> greekNormalizedChars;
+    //private static int iCounter = 0;
+
+    #endregion
+
+    #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the StringExtensions.
+    /// Initializes the <see cref="StringExtensions"/>.
     /// </summary>
     static StringExtensions() {
       greekNormalizedChars = new Dictionary<char, char>();
@@ -106,15 +113,17 @@ namespace TupleGeo.General {
       //greekNormalizedChars.Add('ω', 'ω');
     }
 
-    //private static int iCounter = 0;
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
-    /// Normalizes the puncuated Greek characters of a string to non puncuated Greek characters.
+    /// Normalizes the punctuated Greek characters of a string to non punctuated Greek characters.
     /// </summary>
     /// <param name="s">
     /// The string which chars will be normalized.
     /// </param>
-    /// <returns>A string containing non puncuated Greek characters.</returns>
+    /// <returns>A string containing non punctuated Greek characters.</returns>
     public static string NormalizeGreekChars(this string s) {
       char[] chars = new char[s.Length];
 
@@ -129,6 +138,8 @@ namespace TupleGeo.General {
 
       return Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(chars));
     }
+
+    #endregion
 
   }
 

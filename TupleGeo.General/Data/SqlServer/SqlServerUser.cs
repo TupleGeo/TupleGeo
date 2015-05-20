@@ -32,7 +32,7 @@ namespace TupleGeo.General.Data.SqlServer {
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
   [XmlRootAttribute(Namespace = "urn:TupleGeo:Global:Data:SqlServer", IsNullable = false)]
-  public class SqlServerUser {
+  public sealed class SqlServerUser {
 
     #region Public Properties
 

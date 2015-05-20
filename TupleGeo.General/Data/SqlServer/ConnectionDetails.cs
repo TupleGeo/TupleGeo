@@ -32,12 +32,12 @@ namespace TupleGeo.General.Data.SqlServer {
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
   [XmlRootAttribute(Namespace = "urn:TupleGeo:Global:Data:SqlServer", IsNullable = false)]
-  public class ConnectionDetails {
+  public sealed class ConnectionDetails {
 
     #region Constructors - Destructors
 
     /// <summary>
-    /// Default constructor.
+    /// Initializes the <see cref="ConnectionDetails"/>.
     /// </summary>
     public ConnectionDetails() {
       this._dataSource = "";
@@ -47,7 +47,7 @@ namespace TupleGeo.General.Data.SqlServer {
     }
 
     /// <summary>
-    /// Updates the connection details using a connection string.
+    /// Initializes the <see cref="ConnectionDetails"/>.
     /// </summary>
     /// <param name="connectionString">
     /// The connection string used to updated the ConnectionDetails object.

@@ -31,7 +31,7 @@ namespace TupleGeo.General.ComponentModel {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the EnumNameDescriptionPair.
+    /// Initializes the <see cref="EnumNameDescriptionPair"/>.
     /// </summary>
     /// <param name="name">The name of the enumeration value.</param>
     /// <param name="description">The description of the enumeration value.</param>

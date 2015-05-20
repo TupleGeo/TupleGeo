@@ -88,6 +88,10 @@
       <Project>{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}</Project>
       <Name>TupleGeo.General.ComponentModel.Design.40</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TupleGeo.General\TupleGeo.General.40.csproj">
+      <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
+      <Name>TupleGeo.General.40</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

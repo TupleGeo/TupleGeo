@@ -1,6 +1,6 @@
 ﻿
 #region Header
-// Title Name       : Transcribe
+// Title Name       : GreekToLatinTranscribe
 // Member of        : TupleGeo.General.dll
 // Description      : Transcribes from Greek to Latin according to ELOT specification.
 // Created by       : 06/04/2010, 14:12, Vasilis Vlastaras.
@@ -27,7 +27,7 @@ namespace TupleGeo.General.Text {
   /// <summary>
   /// Transcribes from Greek to Latin according to ELOT specification.
   /// </summary>
-  public class Transcribe {
+  public static class GreekToLatinTranscribe {
 
     #region Member Variables
     
@@ -85,7 +85,7 @@ namespace TupleGeo.General.Text {
           string str = "" + current + input[i + 1];
           replacement = Replace(str, wordStart, mode);
           if (replacement == null) {
-            // Elegxo an to methepomeno einai ixiro
+            // Check if next incoming is voiced.
             bool voiced = false;
             if (i + 2 < input.Length) {
               voiced = CharVoiced.IndexOf(input[i + 2]) >= 0;
@@ -167,7 +167,7 @@ namespace TupleGeo.General.Text {
     /// </summary>
     /// <param name="current">The <see cref="string"/> to replace.</param>
     /// <param name="wordStart">
-    /// Indicates whether this <see cref="string"/> is the beggning of the word to be converted or not.
+    /// Indicates whether this <see cref="string"/> is the beginning of the word to be converted or not.
     /// </param>
     /// <param name="mode">
     /// The <see cref="GreekToLatinConversionMode">mode</see> used for the replacement.

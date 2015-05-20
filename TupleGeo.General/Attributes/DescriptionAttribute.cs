@@ -36,8 +36,8 @@ namespace TupleGeo.General.Attributes {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes a DescriptionAttribute by setting its description
-    /// irrelevant to a <see cref="CultureInfo">culture</see>.
+    /// Initializes a <see cref="DescriptionAttribute"/> by setting its description
+    /// irrelevant to a culture.
     /// </summary>
     /// <param name="description">The description that this <see cref="Attribute"/> sets.</param>
     public DescriptionAttribute(string description) {
@@ -45,8 +45,8 @@ namespace TupleGeo.General.Attributes {
     }
 
     /// <summary>
-    /// Initializes a DescriptionAttribute by setting its description
-    /// for a specified <see cref="CultureInfo">culture</see>.
+    /// Initializes a <see cref="DescriptionAttribute"/> by setting its description
+    /// for a specified culture.
     /// </summary>
     /// <param name="description">The description that this <see cref="Attribute"/> sets.</param>
     /// <param name="culture">The culture string representation associated with this description.</param>

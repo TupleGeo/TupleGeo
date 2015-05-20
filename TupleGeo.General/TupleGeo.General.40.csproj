@@ -106,7 +106,7 @@
     </Compile>
     <Compile Include="Text\CodePages.cs" />
     <Compile Include="Text\GreekToLatinConversionMode.cs" />
-    <Compile Include="Text\Transcribe.cs" />
+    <Compile Include="Text\GreekToLatinTranscribe.cs" />
     <None Include="Utilities\Utilities.cd" />
   </ItemGroup>
   <ItemGroup>

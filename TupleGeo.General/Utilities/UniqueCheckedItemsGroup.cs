@@ -42,14 +42,14 @@ namespace TupleGeo.General.Utilities {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the UniqueCheckedItemsGroup.
+    /// Initializes the <see cref="UniqueCheckedItemsGroup"/>.
     /// </summary>
     public UniqueCheckedItemsGroup() {
       _checkedItem = null;
     }
 
     /// <summary>
-    /// Initializes the UniqueCheckedItemsGroup with an item already checked.
+    /// Initializes the <see cref="UniqueCheckedItemsGroup"/> with an item already checked.
     /// </summary>
     /// <param name="checkedItem">
     /// The item in the group being already checked.

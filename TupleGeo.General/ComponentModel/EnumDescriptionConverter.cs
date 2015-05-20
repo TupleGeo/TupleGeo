@@ -34,7 +34,7 @@ using System.Text;
 namespace TupleGeo.General.ComponentModel {
 
   /// <summary>
-  /// Converts an enumerated value to a string holding its description attribute and vice versa.
+  /// Converts an enumerated value to its attribute description and vice versa.
   /// </summary>
   public class EnumDescriptionConverter : EnumConverter {
 
@@ -47,7 +47,7 @@ namespace TupleGeo.General.ComponentModel {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the EnumDescriptionConverter.
+    /// Initializes the <see cref="EnumDescriptionConverter"/>.
     /// </summary>
     /// <param name="type">The <see cref="Type"/> to be used.</param>
     public EnumDescriptionConverter(Type type)

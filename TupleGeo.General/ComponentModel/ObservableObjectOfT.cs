@@ -27,7 +27,7 @@ using System.Text;
 namespace TupleGeo.General.ComponentModel {
 
   /// <summary>
-  /// An object that its property value changes can be observed by other objects.
+  /// An object that is observed by other objects for value changes in its properties.
   /// </summary>
   /// <typeparam name="T">Any object need to be observed.</typeparam>
   public abstract class ObservableObject<T> : INotifyPropertyChanged {

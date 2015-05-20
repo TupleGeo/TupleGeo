@@ -57,7 +57,7 @@ namespace TupleGeo.General.Reflection {
     /// </summary>
     /// <param name="assembly">The <see cref="Assembly"/>.</param>
     /// <param name="interfaceType">
-    /// The <see cref="Type"/> of interface implemented by the object to be instanciated.
+    /// The <see cref="Type"/> of interface implemented by the object to be instantiated.
     /// </param>
     /// <returns>An <see cref="object"/> instance implementing the specified interface.</returns>
     /// <remarks>

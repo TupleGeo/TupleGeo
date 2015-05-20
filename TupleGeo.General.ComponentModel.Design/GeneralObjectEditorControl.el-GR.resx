@@ -121,35 +121,46 @@
   <data name="NewObjectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJ+SURBVDhPrZP7S1NhGMfP36JJv8xA0ahI8EKUYCQeKq9N
-        mlpz6aZNcurZJS9zx5x4O9sos6Ct3BZD3XTzMlIxE6eWLlLnUKKNIghqw1+/nSOnDcOCoC88v7zP8/m+
-        7/O870v8d9Gz8sROj4xqddYE1OOiSMNoeUT+Uhiotwmpmuc3Evmy40VP15Fad1342doAVsIL8H9dx9qX
-        ZbiDDqg8NRCbr4UrhwtIvvyoOFg9Ko5O7zqw/2MXs58mYA48xJNtBo49MxY/vwI9r4DQkB8tNeUdNdFO
-        yxLaXLLQ5I4Vu9+3MLTVh/7VTuh9bWD8XRj009BvtGJy3wHKIwFpvBQqYHISeJw1cEuVhqV2fPi2we44
-        iIFNGro3KvBpon1VgZYFCZRLUrj27Lj++ALyejOVfJoguIFNBO3sUS14sKJBx3ILFLO1MYNqewnuzZTj
-        7lQpTO+60LeoxkX9+QCfJgjlmOjA+3EChvddLNwUA3+XzF0E5ZwYVv8QsttSDvhlgmhyiA7GgyOg1ylo
-        fA1/NaC8t2DzP0KGJjluILcLA0YfDWZTh6bXEsjmRKi0XY0ZcSAX9Z4SGHzt6PY242zrqXgL0pEy5W0b
-        CWfQCsVcBeq8wsOe+fShQa2rEPLJUjh3LMjpOYM0jSA+RLG5OKHqKRmiPNUYC7yIDYwDpS4uOLgE49tm
-        3LEWI+2+IJSsSopfI6ebw1fIMuZytNFZARdrYvRpQc1UoWWqAsaVDjhZWGItRJoqKZpCnTz+NRaZckmy
-        Pzucb8pCzzwFy1sGlnUGOm8jsrtPs7Ag/Ef4l/J7sxJz9RlUDn0ukKlLj6RrUyPp7MBS1QIqtfnE3z/T
-        v4sgfgIqWn+TXEdUcwAAAABJRU5ErkJggg==
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJ+SURBVDhPrZP7S1NhGMfP3+KKfmgViUZFgheiBCPxUHlt
+        lZfUpZu2yKln8z53zIm340aZBW3lthjpppuXkYqZbLrSRepxKNFGEQS14a/fzpHThmFC0BeeX97n+Xzf
+        93ne9yX+u+hphajdJaea7RVsw+jNsOKVJKx4KWGrLRKq4vl1kVC2v+jJKlLjrAo9W+6DJzQH/zcflr8u
+        whmwQe2qQJnxaqh4KIsUyveKh9W20sjkpg3bPzcx/XkMRvYhnqwzsG0ZMf/lNehZJSRMZiTfkLHXRDMp
+        j2txyIPjG2Zs/ljD4FoPepfaofO2gPF3oN9PQ7fSjPFtGyiXFKT+YjCLSYsTcM7AKVMNLLTi4/cVbsd+
+        9K3S0L5VQ0gTrUtK1M9JoVqQwbFlxbXH55HRnawS0gTBD2wsYOWOasIDTyPaFuuhnK6MGpRb83B/6gbu
+        TuTD8L4DPfMNuKA7xwppglCNFO64P41h4EMHB9dGwT8ld+ZANVMGs38QqU0ndoRlgqi1Fe6MBoZB+yg0
+        eu8daEC5b8Pif4Qk9dGYgcIqYfVeGsyqFrVvpJDPFKLYciVqxIN8VLvyMOBtRae7Dmeaj8dakA0XqEot
+        JOwBM5QzRahyS3Z7FtK7BpWObCjG82HfMCGt6zQSGsWxIZYZc+NKnpJBylWOEfZFdGA8KHPwwcN5GF03
+        4o45FwlN4uAx9eHYNfK6NXSZLGAuRWrsRXBwJnqvBtRUCeoniqD3tMHOwVJzNhLUoshJ6sj+rzHHkE6S
+        vamhTEMKumYpmN4xMPkYaN01SO08xcHi0F/h38rsThGl65KoNPosm6xNDCdq4sOJ3MDiG8RUfN2hgz/T
+        v4sgfgH6aH+ALv0z6wAAAABJRU5ErkJggg==
 </value>
+  </data>
+  <data name="NewObjectToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>60, 24</value>
+  </data>
+  <data name="NewObjectToolStripButton.Text" xml:space="preserve">
+    <value>Νέο</value>
   </data>
   <data name="DeleteObjectToolStripButton.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJnSURBVDhPrZP9S1NRGMfv3+KSYIUI5Q9FCBVFe9HNXd1c
-        bt7k1sXNjEUsTdkdphmUGGr0Q6g17VUrKdRqQWSaQim9uFS6K9S1W5Na093NbSnfrnZjiEsI+sIXDg/P
-        5znnPOc5xH/XTHm5bNpqdXxkGM5LUeEPoqcoMzdBFznGiw0yKS21fGVlJGe18t9bGhEbfIr4+Cjir4Yg
-        9HZh1sbgbTHJj5k0pJS+Viuwt7RUWLjbhWXvFBLue0h0NiHRdh4/b7diacSNQLUNwwVq4aVx/9oiMxZL
-        mpdh/OGbnVjmPEhcPotQkxPzjVWIXXQi3swi1nASsf5b8B2jMULu8w/q9qZJOEFMWyzsXK0DS56x1R0X
-        W1gEz9kRrTu6xuFTNGI91/BGk43n+dmshBPEJ7FhkZ7rSHS3IdRQgW9UfkovVNAQGmsQcFbiWd5OTsIJ
-        4j1NR+OPe5BocSJ0xgYpvE4BYw6C1mLMt13CI0VmVAoThIemoovdLsTqbYieLt2wwBxjwnyrWEC5NVlg
-        kirkgg01WGxiET5hxkpiShdpEKqtxmy1HW5lRvIKHsrAcnoVot0dCB3WI8jo1sF8oRr8QR0inVcwpN0u
-        nkCebOK7El3aazPp95WVIHLHtdqwOZP2N2jMBa8XYb0WQkc7Jg7lo08h9/eq0pPPuKIxo5p8QSqE6SMm
-        RG648KOeRYAuwhezEcE6B4Sr7Zg05+G+Ml3oU2xOPY0j4oQNF+zhR3W78LXKjmDzhVV/rjyOgZxteKDc
-        wv8V/qMhw27ZgGaH40leFvdQlRXuV2aGe3MzxLXc0X9g08af6d9FEL8Aee2i3cVQs7MAAAAASUVORK5C
-        YII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAJkSURBVDhPrZPtS1NhGMbP37IVwYIRlB+KECoqnS97OWtz
+        uXmSUwc3MxZhmrIzTDMoMdToQ6g17VWrQUwzg8icCeXoRVHprPClnZrU2tzZ3JZyta0TJi4h6ILry839
+        ux6e+7kf4r9rtqJCOmOx2D4wDOelqPD7pKcpEzdJF9vGS/RSsS2z5svLSc5i4b+1NSM2/BTx8THEX7kh
+        uHowZ2XwtoTkPUYlKbavVQr2lpUJi/d7sOKdRmLwARLdLUh0XMSPu+1YHh2Ev9aKETJfeGk4sDZk1myW
+        eBnGF77djRVuAomr5xFssSPUXIPYZTvirSxiTacR67+D+RM0Rsn9vmHNPomIE8SM2cwu1NuwPOFJn7jU
+        xiJwoRLRhuNrHD5DI+a8gTfKbDzXZrMiThAfkwOLOG8i0duBYFMVvlLajF6soiE018Fvr8Yz9S5OxAli
+        gqaj8cdOJNrsCJ6zQiyvk99QgIClBKGOKxg4KI+K5VQAFV3qdSDWaEX0bNmGAQuMEaH2ZECObDVgiiri
+        Ak11WGphET5lQqoxo4uVCNbXYq62EoMK+R9XoPQsp8tDtLcLwaM6BBjNOpgvygd/WINI9zW4VTswoJCt
+        DvFdqUby2kT65stLEbnnSA9swaj6BRoKweuSsE4FoasTk0e06MuV+Vx5m1efMSWPIZ8cUecKM8eMiNxy
+        4HsjCz9djM8mAwINNgjXOzFlUsOpkAp9uVsyb+NocsNeHNrLj2l240tNJQKtl9L+VH0SQwXb8VCxlf8r
+        /Ftu/R7pkHKn7Yk6i+tTZIVdim1hV6Gce5Qns/XnbNr4M/27COInV8Oixgnn5poAAAAASUVORK5CYII=
 </value>
+  </data>
+  <data name="DeleteObjectToolStripButton.Size" type="System.Drawing.Size, System.Drawing">
+    <value>101, 24</value>
+  </data>
+  <data name="DeleteObjectToolStripButton.Text" xml:space="preserve">
+    <value>Διαγραφή</value>
   </data>
 </root>

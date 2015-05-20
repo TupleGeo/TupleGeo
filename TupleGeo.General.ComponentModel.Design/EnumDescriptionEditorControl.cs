@@ -6,7 +6,9 @@
 // Created by       : 12/03/2009, 15:02, Vasilis Vlastaras.
 // Updated by       : 23/02/2011, 00:58, Vasilis Vlastaras.
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
-// Version          : 1.0.1
+//                  : 20/05/2015, 01:20, Vasilis Vlastaras.
+//                    1.0.2 - Changed property from List<T> to Collection<T>.
+// Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -17,9 +19,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+
+#if !NET20
+using System.Linq;
+#endif
+
 using System.Text;
 using System.Windows.Forms;
 
@@ -35,7 +43,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the EnumDescriptionControl.
+    /// Initializes the <see cref="EnumDescriptionEditorControl"/>.
     /// </summary>
     public EnumDescriptionEditorControl() {
       InitializeComponent();
@@ -45,19 +53,19 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #region Public Properties
 
-    private List<EnumNameDescriptionPair> _enumDescriptionsList = new List<EnumNameDescriptionPair>();
+    private Collection<EnumNameDescriptionPair> _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>();
 
     /// <summary>
-    /// The list of <see cref="EnumNameDescriptionPair">EnumNameDescriptionPairs</see>
+    /// The <see cref="Collection{EnumNameDescriptionPair}"/>
     /// used to provide the descriptions displayed in the control.
     /// </summary>
-    public List<EnumNameDescriptionPair> EnumDescriptionsList {
+    public Collection<EnumNameDescriptionPair> EnumDescriptionsCollection {
       get {
-        return _enumDescriptionsList;
+        return _enumDescriptionsCollection;
       }
-      set {
-        _enumDescriptionsList = value;
-      }
+      //set {
+      //  _enumDescriptionsCollection = value;
+      //}
     }
 
     private object _selectedEnumValueName;
@@ -69,17 +77,38 @@ namespace TupleGeo.General.ComponentModel.Design {
       get {
         return _selectedEnumValueName;
       }
-      set {
-        //_selectedEnumValueName = value;
+      //set {
+      //  //_selectedEnumValueName = value;
         
-        ////EnumNameDescriptionPair p = _enumDescriptionsList.Where(e => e.Name == _selectedEnumValueName.ToString()).First();
+      //  ////EnumNameDescriptionPair p = _enumDescriptionsList.Where(e => e.Name == _selectedEnumValueName.ToString()).First();
 
-        ////this.EnumDescriptionsListBox.SelectionMode = SelectionMode.One;
-        ////this.EnumDescriptionsListBox.
+      //  ////this.EnumDescriptionsListBox.SelectionMode = SelectionMode.One;
+      //  ////this.EnumDescriptionsListBox.
 
-        //this.EnumDescriptionsListBox.SelectedValue = value;
-          
-      }
+      //  //this.EnumDescriptionsListBox.SelectedValue = value;
+      //}
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    /// <summary>
+    /// Sorts the <see cref="Collection{EnumNameDescriptionPair}"/> of descriptions.
+    /// </summary>
+    public void SortEnumDescriptionsCollection() {
+      _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(
+        _enumDescriptionsCollection.OrderBy(e => e.Description).ToList()
+      );
+    }
+
+    /// <summary>
+    /// Binds the <see cref="EnumDescriptionsCollection"/> to the <see cref="EnumDescriptionsListBox"/>.
+    /// </summary>
+    public void DataBind() {
+      this.EnumDescriptionsListBox.DisplayMember = "Description";
+      this.EnumDescriptionsListBox.ValueMember = "Name";
+      this.EnumDescriptionsListBox.DataSource = _enumDescriptionsCollection.ToList();
     }
 
     #endregion
@@ -94,7 +123,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     private void EnumDescriptionControl_Load(object sender, EventArgs e) {
       this.EnumDescriptionsListBox.DisplayMember = "Description";
       this.EnumDescriptionsListBox.ValueMember = "Name";
-      this.EnumDescriptionsListBox.DataSource = _enumDescriptionsList;
+      this.EnumDescriptionsListBox.DataSource = _enumDescriptionsCollection;
     }
 
     /// <summary>

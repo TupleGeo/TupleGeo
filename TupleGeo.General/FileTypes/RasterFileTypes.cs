@@ -329,7 +329,7 @@ namespace TupleGeo.General.FileTypes {
  //file extension pnt	Apple MacPaint format graphic file
  //file extension pntg	Apple Macintosh MacPaint bitmap graphics
  //file extension pp4	Micrografix Picture Publisher bitmap graphics
- //file extension pp5	Micrografx Picture Publisher bitmap file
+ //file extension pp5	Micrografix Picture Publisher bitmap file
  //file extension ppm	Portable pixelmap graphic
  //file extension pps	Paint Shop Pro image
  //file extension pr	Sun icon file

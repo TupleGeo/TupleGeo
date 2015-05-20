@@ -32,11 +32,12 @@
       // 
       // GeneralObjectEditorToolStrip
       // 
-      resources.ApplyResources(this.GeneralObjectEditorToolStrip, "GeneralObjectEditorToolStrip");
       this.GeneralObjectEditorToolStrip.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+      this.GeneralObjectEditorToolStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
       this.GeneralObjectEditorToolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.NewObjectToolStripButton,
             this.DeleteObjectToolStripButton});
+      resources.ApplyResources(this.GeneralObjectEditorToolStrip, "GeneralObjectEditorToolStrip");
       this.GeneralObjectEditorToolStrip.Name = "GeneralObjectEditorToolStrip";
       // 
       // NewObjectToolStripButton

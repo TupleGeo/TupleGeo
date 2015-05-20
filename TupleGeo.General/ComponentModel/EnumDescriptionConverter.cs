@@ -6,10 +6,12 @@
 // Created by       : 03/03/2010, 15:54, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 22:50, Vasilis Vlastaras.
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
-// Version          : 1.0.1
+//                  : 20/05/2015, 07:39, Vasilis Vlastaras.
+//                    1.0.2 - Changed Overloaded Methods GetEnumDescription, GetEnumDescriptions.
+// Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2009 - 2015.
+// Copyright        : TupleGeo, 2010 - 2015.
 // Comments         : 
 #endregion
 
@@ -19,6 +21,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+
+#if !NET20
+using System.Linq;
+#endif
+
 using System.Reflection;
 using System.Text;
 
@@ -53,7 +60,9 @@ namespace TupleGeo.General.ComponentModel {
     #region Public Properties
 
     /// <summary>
-    /// Gets the description attribute value of an enum value.
+    /// Gets the neutral culture
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description value
+    /// of an enum value.
     /// </summary>
     /// <param name="enumValue">An enumerated value.</param>
     /// <returns>
@@ -64,13 +73,44 @@ namespace TupleGeo.General.ComponentModel {
     /// a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Enum enumValue) {
-      FieldInfo fi = enumValue.GetType().GetField(enumValue.ToString());
-      TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
-      return (attributes.Length > 0) ? attributes[0].Description : enumValue.ToString();
+      return GetEnumDescription(enumValue, null);
     }
 
     /// <summary>
-    /// Gets the description attribute value of a specified enum value.
+    /// Gets the 
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description value
+    /// of an enum value in the specified culture.
+    /// </summary>
+    /// <param name="enumValue">An enumerated value.</param>
+    /// <param name="culture">The culture of the description.</param>
+    /// <returns>
+    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// </returns>
+    /// <remarks>
+    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
+    /// a string representation of the name of the enumerated value is returned instead.
+    /// </remarks>
+    public static string GetEnumDescription(Enum enumValue, string culture) {
+      string enumValueString = enumValue.ToString();
+
+      FieldInfo fi = enumValue.GetType().GetField(enumValueString);
+
+      TupleGeo.General.Attributes.DescriptionAttribute[] attributes =
+        (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
+
+#if NET20
+      // TODO: Add an implementation for .NET 20 here.
+#else
+      TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
+#endif
+
+      return (attribute != null) ? attribute.Description : enumValue.ToString();
+    }
+
+    /// <summary>
+    /// Gets the neutral culture 
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description value
+    /// of a specified enum value.
     /// </summary>
     /// <param name="type">The type of the enumeration.</param>
     /// <param name="name">The name of an enumerated value.</param>
@@ -82,13 +122,41 @@ namespace TupleGeo.General.ComponentModel {
     /// a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Type type, string name) {
-      FieldInfo fi = type.GetField(name);
-      TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
-      return (attributes.Length > 0) ? attributes[0].Description : name;
+      return GetEnumDescription(type, name, null);
     }
 
     /// <summary>
-    /// Gets the descriptions of all enumerated values found in an anumeration.
+    /// Gets the 
+    /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description value
+    /// of a specified enum value in the specified culture.
+    /// </summary>
+    /// <param name="type">The type of the enumeration.</param>
+    /// <param name="name">The name of an enumerated value.</param>
+    /// <param name="culture">The culture of the description.</param>
+    /// <returns>
+    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// </returns>
+    /// <remarks>
+    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
+    /// a string representation of the name of the enumerated value is returned instead.
+    /// </remarks>
+    public static string GetEnumDescription(Type type, string name, string culture) {
+      FieldInfo fi = type.GetField(name);
+
+      TupleGeo.General.Attributes.DescriptionAttribute[] attributes =
+        (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
+
+#if NET20
+      // TODO: Add an implementation for .NET 20 here.
+#else
+      TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
+#endif
+      
+      return (attribute != null) ? attribute.Description : name;
+    }
+
+    /// <summary>
+    /// Gets the neutral culture descriptions of all enumerated values found in an enumeration.
     /// </summary>
     /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
     /// <returns>
@@ -104,29 +172,38 @@ namespace TupleGeo.General.ComponentModel {
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Enum enumValue) {
-      Type type = enumValue.GetType();
-
-      string[] enumNames = Enum.GetNames(type);
-      string[] descriptions = null;
-
-      if (enumNames.Length > 0) {
-        descriptions = new string[enumNames.Length];
-
-        for (int i = 0; i < enumNames.Length; i++) {
-          descriptions[i] = GetEnumDescription(type, enumNames[i]);
-        }
-      }
-            
-      return descriptions;
+      return GetEnumDescriptions(enumValue.GetType());
     }
 
     /// <summary>
-    /// Gets the descriptions of all enumerated values found in an enumeration.
+    /// Gets the descriptions in a specified culture of all enumerated values found in an enumeration.
+    /// </summary>
+    /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
+    /// <param name="culture">The culture of the descriptions.</param>
+    /// <returns>
+    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// </returns>
+    /// <remarks>
+    /// <para>
+    /// If no enumerated values found in the enumeration a null is returned instead.
+    /// </para>
+    /// <para>
+    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
+    /// a string representation of the name of the enumerated values is returned instead.
+    /// </para>
+    /// </remarks>
+    public static string[] GetEnumDescriptions(Enum enumValue, string culture) {
+      return GetEnumDescriptions(enumValue.GetType(), culture);
+    }
+
+    /// <summary>
+    /// Gets the neutral culture descriptions of all enumerated values found in an enumeration.
     /// </summary>
     /// <param name="type">The type of the enumeration.</param>
     /// <returns>
     /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
     /// </returns>
+    /// <exception cref="lala">Throws a</exception>
     /// <remarks>
     /// <para>
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
@@ -137,16 +214,47 @@ namespace TupleGeo.General.ComponentModel {
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Type type) {
-      FieldInfo[] fis = type.GetFields();
+      string[] enumNames = Enum.GetNames(type);
       string[] descriptions = null;
-      
-      if (fis.Length > 0) {
-        for (int i = 0; i < fis.Length; i++) {
-          
-          object[] atts = fis[i].GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), true);
-          
-          TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fis[i].GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
-          descriptions[i] = (attributes.Length > 0) ? attributes[0].Description : fis[i].Name;
+
+      if (enumNames.Length > 0) {
+        descriptions = new string[enumNames.Length];
+
+        for (int i = 0; i < enumNames.Length; i++) {
+          descriptions[i] = GetEnumDescription(type, enumNames[i]);
+        }
+      }
+
+      return descriptions;
+    }
+
+    /// <summary>
+    /// Gets the descriptions of all enumerated values found in an enumeration for a specified culture.
+    /// </summary>
+    /// <param name="type">The type of the enumeration.</param>
+    /// <param name="culture">The culture of the descriptions.</param>
+    /// <returns>
+    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// </returns>
+    /// <exception cref="lala">Throws a</exception>
+    /// <remarks>
+    /// <para>
+    /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
+    /// </para>
+    /// <para>
+    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
+    /// a string representation of the name of the enumerated values is returned instead.
+    /// </para>
+    /// </remarks>
+    public static string[] GetEnumDescriptions(Type type, string culture) {
+      string[] enumNames = Enum.GetNames(type);
+      string[] descriptions = null;
+
+      if (enumNames.Length > 0) {
+        descriptions = new string[enumNames.Length];
+
+        for (int i = 0; i < enumNames.Length; i++) {
+          descriptions[i] = GetEnumDescription(type, enumNames[i], culture);
         }
       }
 
@@ -186,7 +294,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="context">An <see cref="ITypeDescriptorContext"/>.</param>
     /// <param name="culture">A <see cref="CultureInfo"/>.</param>
-    /// <param name="value">The description of an emumerated value. (should be a <see cref="string"/>).</param>
+    /// <param name="value">The description of an enumerated value. (should be a <see cref="string"/>).</param>
     /// <returns>
     /// An <see cref="object"/> containing the enumerated value.
     /// </returns>

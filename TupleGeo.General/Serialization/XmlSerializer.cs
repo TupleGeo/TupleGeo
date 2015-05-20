@@ -131,7 +131,7 @@ namespace TupleGeo.General.Serialization {
     }
 
     /// <summary>
-    /// Serializes the specified obect in to a <see cref="MemoryStream"/>.
+    /// Serializes the specified object in to a <see cref="MemoryStream"/>.
     /// </summary>
     /// <param name="object">The object to serialize in to the <see cref="MemoryStream"/>.</param>
     /// <returns>A <see cref="MemoryStream"/> containing the serialized object.</returns>

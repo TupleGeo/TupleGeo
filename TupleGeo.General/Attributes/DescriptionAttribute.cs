@@ -104,7 +104,7 @@ namespace TupleGeo.General.Attributes {
     /// The neutral culture description is not associated with a specific culture.
     /// Thus the <see cref="TupleGeo.General.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
     /// property must be null. In such a case a neutral culture description is specified. If no neutral culture
-    /// description has been specified, a zero length string will be returned instead.
+    /// description has been found, a zero length string will be returned instead.
     /// </remarks>
     public static string GetEnumeratedValueDescriptionAttribute(object enumValue) {
 
@@ -133,25 +133,27 @@ namespace TupleGeo.General.Attributes {
     }
 
     /// <summary>
-    /// Gets the neutral culture
+    /// Gets the
     /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
+    /// associated with the specified culture.
     /// </summary>
     /// <param name="enumValue">
     /// The Enumerated value used to retrieve its
     /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </param>
-    /// <param name="useCurrentCulture">
-    /// If set to true use the current culture setting to find out the relevant description,
-    /// otherwise return the neutral culture description.
+    /// <param name="culture">
+    /// The culture of the description.
     /// </param>
     /// <returns>A string with the description.</returns>
     /// <remarks>
-    /// The neutral culture description is not associated with a specific culture.
-    /// Thus the <see cref="TupleGeo.General.Attributes.DescriptionAttribute.Culture">DescriptionAttribute.Culture</see>
-    /// property must be null. In such a case a neutral culture description is specified. If no neutral culture
-    /// description has been specified, a zero length string will be returned instead.
+    /// If no description will be found for the specified culture, the neutral culture description will be returned. 
+    /// If no neutral culture description has been found, a zero length string will be returned instead.
     /// </remarks>
-    public static string GetEnumeratedValueDescriptionAttribute(object enumValue, bool useCurrentCulture) {
+    public static string GetEnumeratedValueDescriptionAttribute(object enumValue, string culture) {
+
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
 
       string description = "";
 
@@ -161,27 +163,19 @@ namespace TupleGeo.General.Attributes {
         Enum.GetName(type, enumValue)).GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false
       );
 
-      string currentCulture = CultureInfo.CurrentCulture.ToString();
-
       if (descriptionAttributes != null) {
         for (int i = 0; i < descriptionAttributes.Length; i++) {
           TupleGeo.General.Attributes.DescriptionAttribute descAttr = (TupleGeo.General.Attributes.DescriptionAttribute)descriptionAttributes[i];
           if (descAttr != null) {
-            if (useCurrentCulture) {
-              if (descAttr.Culture != null) {
-                if (descAttr.Culture == currentCulture) {
+            if (descAttr.Culture == null) {
+              description = descAttr.Description;
+            }
+            else {
+              if (!string.IsNullOrEmpty(culture)) {
+                if (descAttr.Culture == culture) {
                   description = descAttr.Description;
                   break;
                 }
-              }
-              else {
-                description = descAttr.Description;
-              }
-            }
-            else {
-              if (descAttr.Culture == null) {
-                description = descAttr.Description;
-                break;
               }
             }
           }

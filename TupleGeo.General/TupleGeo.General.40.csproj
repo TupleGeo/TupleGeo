@@ -62,6 +62,7 @@
     <Compile Include="ComponentModel\EnumNameDescriptionPair.cs" />
     <Compile Include="ComponentModel\ObservableObjectOfT.cs" />
     <Compile Include="Data\FilterType.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

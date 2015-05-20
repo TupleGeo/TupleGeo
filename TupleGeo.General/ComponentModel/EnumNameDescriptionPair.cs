@@ -36,39 +36,39 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="name">The name of the enumeration value.</param>
     /// <param name="description">The description of the enumeration value.</param>
     public EnumNameDescriptionPair(string name, string description) {
-      _sName = name;
-      _sDescription = description;
+      _name = name;
+      _description = description;
     }
 
     #endregion
 
     #region Public Properties
 
-    string _sName;
+    string _name;
 
     /// <summary>
     /// The name of the enumerated value.
     /// </summary>
     public string Name {
       get {
-        return _sName;
+        return _name;
       }
       set {
-        _sName = value;
+        _name = value;
       }
     }
 
-    string _sDescription;
+    string _description;
 
     /// <summary>
     /// The description of the enumerated value.
     /// </summary>
     public string Description {
       get {
-        return _sDescription;
+        return _description;
       }
       set {
-        _sDescription = value;
+        _description = value;
       }
     }
 

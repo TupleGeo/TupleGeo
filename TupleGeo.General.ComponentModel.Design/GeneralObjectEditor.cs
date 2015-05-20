@@ -30,7 +30,7 @@ namespace TupleGeo.General.ComponentModel.Design {
   /// <summary>
   /// A general editor used to edit an object using a property grid.
   /// </summary>
-  public class GeneralObjectEditor : UITypeEditor {
+  public sealed class GeneralObjectEditor : UITypeEditor, IDisposable {
 
     #region Member Variables
 
@@ -44,7 +44,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the GeneralObjectEditor.
+    /// Initializes the <see cref="GeneralObjectEditor"/>.
     /// </summary>
     public GeneralObjectEditor() {
       if (_generalObjectEditorControl == null) {
@@ -55,7 +55,32 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #endregion
 
-    #region Public Properties
+    #region Event Procedures
+
+    /// <summary>
+    /// Occurs when a button has been clicked on the <see cref="GeneralObjectEditor"/> control.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    private void _generalObjectEditorControl_ButtonClick(object sender, EventArgs e) {
+      if (sender != null) {
+        if (sender.GetType() == typeof(ToolStripButton)) {
+          _button = (ToolStripButton)sender;
+        }
+        else {
+          throw new ArgumentException("Sender object was not of the expected type.", "sender");
+        }
+      }
+      else {
+        throw new ArgumentNullException("sender", "Sender button was null. Expected ToolStripButton.");
+      }
+
+      _windowsFormsEditorService.CloseDropDown();
+    }
+
+    #endregion
+
+    #region UITypeEditor
 
     /// <summary>
     /// Edits any object.
@@ -69,6 +94,22 @@ namespace TupleGeo.General.ComponentModel.Design {
       IServiceProvider provider,
       object value
     ) {
+
+      if (context == null) {
+        throw new ArgumentNullException("context");
+      }
+
+      if (provider == null) {
+        throw new ArgumentNullException("provider");
+      }
+
+      if (value == null) {
+        throw new ArgumentNullException("value");
+      }
+
+      if (!value.GetType().IsEnum) {
+        throw new ArgumentException("Invalid value type.", "value");
+      }
 
       try {
 
@@ -105,6 +146,7 @@ namespace TupleGeo.General.ComponentModel.Design {
   
       }
       catch {
+        // Swallow the exception.
         _windowsFormsEditorService.CloseDropDown();
         return value;
       }
@@ -125,7 +167,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// </summary>
     /// <param name="context">The <see cref="ITypeDescriptorContext"/>.</param>
     /// <returns>
-    /// A <see cref="bool"/> indicating wheter the paint value is supported or not.
+    /// A <see cref="bool"/> indicating whether the paint value is supported or not.
     /// </returns>
     public override bool GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext context) {
       return false;
@@ -142,27 +184,14 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #endregion
 
-    #region Event Procedures
+    #region IDisposable Members
 
     /// <summary>
-    /// Occurs when a button has been clicked on the <see cref="GeneralObjectEditor"/> control.
+    /// Disposes the <see cref="EnumDescriptionEditor"/> which subsequently
+    /// disposes its associated <see cref="GeneralObjectEditorControl"/>. 
     /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
-    private void _generalObjectEditorControl_ButtonClick(object sender, EventArgs e) {
-      if (sender != null) {
-        if (sender.GetType() == typeof(ToolStripButton)) {
-          _button = (ToolStripButton)sender;
-        }
-        else {
-          throw new Exception("Sender object was not of the expected type.");
-        }
-      }
-      else {
-        throw new ArgumentNullException("Sender button was null. Expected ToolStripButton.");
-      }
-
-      _windowsFormsEditorService.CloseDropDown();
+    public void Dispose() {
+      _generalObjectEditorControl.Dispose();
     }
 
     #endregion

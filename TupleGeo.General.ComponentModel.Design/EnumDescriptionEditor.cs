@@ -6,7 +6,9 @@
 // Created by       : 03/03/2010, 17:23, Vasilis Vlastaras.
 // Updated by       : 23/02/2010, 16:57, Vasilis Vlastaras.
 //                    1.0.1 - Added preprocessor directives to make the source file compatible with .NET Framework 2.0.
-// Version          : 1.0.1
+//                  : 20/05/2015, 01:26, Vasilis Vlastaras.
+//                    1.0.2 - Changed code to reflect changes in EnumDescriptionControl.
+// Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2010 - 2015.
@@ -35,7 +37,7 @@ namespace TupleGeo.General.ComponentModel.Design {
   /// <summary>
   /// Provides an editor for enumerations that is displaying value descriptions.
   /// </summary>
-  public class EnumDescriptionEditor : UITypeEditor {
+  public sealed class EnumDescriptionEditor : UITypeEditor, IDisposable {
 
     #region Member Variables
 
@@ -57,6 +59,28 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #endregion
 
+    #region Event Procedures
+
+    /// <summary>
+    /// Occurs when the user clicks the enumeration description control.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The <see cref="MouseEventArgs"/>.</param>
+    private void _enumDescriptionControl_MouseClick(object sender, MouseEventArgs e) {
+      _windowsFormsEditorService.CloseDropDown();
+    }
+
+    /// <summary>
+    /// Occurs when the user presses a key on the enumeration description control.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The <see cref="KeyEventArgs"/>.</param>
+    private void _enumDescriptionControl_KeyDown(object sender, KeyEventArgs e) {
+      _windowsFormsEditorService.CloseDropDown();
+    }
+
+    #endregion
+
     #region UITypeEditor
 
     /// <summary>
@@ -72,6 +96,18 @@ namespace TupleGeo.General.ComponentModel.Design {
       object value
     ) {
 
+      if (value == null) {
+        throw new ArgumentNullException("value");
+      }
+      
+      if (!value.GetType().IsEnum) {
+        throw new ArgumentException("Invalid value type.", "value");
+      }
+
+      if (provider == null) {
+        throw new ArgumentNullException("provider");
+      }
+      
       // Set the windows service.
       this._windowsFormsEditorService =
         (IWindowsFormsEditorService)provider.GetService(typeof(IWindowsFormsEditorService));
@@ -83,26 +119,35 @@ namespace TupleGeo.General.ComponentModel.Design {
       _enumDescriptionControl.KeyDown -= new System.Windows.Forms.KeyEventHandler(_enumDescriptionControl_KeyDown);
       _enumDescriptionControl.KeyDown += new System.Windows.Forms.KeyEventHandler(_enumDescriptionControl_KeyDown);
 
-      if (_enumDescriptionControl.EnumDescriptionsList != null) {
+      if (_enumDescriptionControl.EnumDescriptionsCollection != null) {
         // Load descriptions in the control.
-        if (_enumDescriptionControl.EnumDescriptionsList.Count <= 0) {
-          string[] sNames = Enum.GetNames(value.GetType());
-          string[] sDescriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value);
+        if (_enumDescriptionControl.EnumDescriptionsCollection.Count <= 0) {
+          string[] names = Enum.GetNames(value.GetType());
+          string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value);
 
-          for (int i = 0; i < sDescriptions.Length; i++) {
-            _enumDescriptionControl.EnumDescriptionsList.Add(new EnumNameDescriptionPair(sNames[i], sDescriptions[i]));
+          for (int i = 0; i < descriptions.Length; i++) {
+            _enumDescriptionControl.EnumDescriptionsCollection.Add(new EnumNameDescriptionPair(names[i], descriptions[i]));
           }
 
-#if NET20
-          // Use a Comparison<T> delegate for the Sort method on EnumDescriptionList in order to provide a
-          // custom sorting according to enumeration descriptions.
-          _enumDescriptionControl.EnumDescriptionsList.Sort(delegate(EnumNameDescriptionPair pair1, EnumNameDescriptionPair pair2) {
-            return string.Compare(pair1.Description, pair2.Description);
-          });
-#else
-          // Sort the descriptions and display them on the control.
-          _enumDescriptionControl.EnumDescriptionsList = _enumDescriptionControl.EnumDescriptionsList.OrderBy(e => e.Description).ToList();
-#endif
+//#if NET20
+//          // Use a Comparison<T> delegate for the Sort method on EnumDescriptionList in order to provide a
+//          // custom sorting according to enumeration descriptions.
+//          _enumDescriptionControl.EnumDescriptionsList.Sort(delegate(EnumNameDescriptionPair pair1, EnumNameDescriptionPair pair2) {
+//            return string.Compare(pair1.Description, pair2.Description);
+//          });
+//#else
+//          // Sort the descriptions and display them on the control.
+//          _enumDescriptionControl.SortEnumDescriptionsCollection();
+//          //_enumDescriptionControl.EnumDescriptionsCollection.ord
+//          //_enumDescriptionControl.EnumDescriptionsCollection =
+//          //  new System.Collections.ObjectModel.Collection<EnumNameDescriptionPair>(
+//          //    _enumDescriptionControl.EnumDescriptionsCollection.OrderBy(e => e.Description).ToList()
+//          //  );
+//#endif
+
+
+          //_enumDescriptionControl.SortEnumDescriptionsCollection();
+
 
           // Set the selected value. -- // TODO: For some reason it is not possible to set the value !!!
           //_enumDescriptionControl.SelectedEnumValueName = value;
@@ -157,26 +202,16 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     #endregion
 
-    #region Event Procedures
+    #region IDisposable Members
 
     /// <summary>
-    /// Occurs when the user clicks the enumeration description control.
+    /// Disposes the <see cref="EnumDescriptionEditor"/> which subsequently
+    /// disposes its associated <see cref="EnumDescriptionEditorControl"/>. 
     /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="MouseEventArgs"/>.</param>
-    private void _enumDescriptionControl_MouseClick(object sender, MouseEventArgs e) {
-      _windowsFormsEditorService.CloseDropDown();
+    public void Dispose() {
+      _enumDescriptionControl.Dispose();
     }
 
-    /// <summary>
-    /// Occurs when the user presses a key on the enumeration description control.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="KeyEventArgs"/>.</param>
-    private void _enumDescriptionControl_KeyDown(object sender, KeyEventArgs e) {
-      _windowsFormsEditorService.CloseDropDown();
-    }
-    
     #endregion
 
   }

@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="TestEnumDescription\TestEnum.cs" />
+    <Compile Include="TestEnumDescription\TestModel.cs" />
     <Compile Include="TestsForm.cs">
       <SubType>Form</SubType>
     </Compile>

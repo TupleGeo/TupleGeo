@@ -34,8 +34,11 @@
       this.testTranscribeButton = new System.Windows.Forms.Button();
       this.fromGreekTextBox = new System.Windows.Forms.TextBox();
       this.toLatinTextBox = new System.Windows.Forms.TextBox();
+      this.propertyGrid = new System.Windows.Forms.PropertyGrid();
+      this.testEnumDescriptionEditorButton = new System.Windows.Forms.Button();
       this.testsTabControl.SuspendLayout();
       this.enumDescriptionEditorControlTabPage.SuspendLayout();
+      this.enumDescriptionEditorTabPage.SuspendLayout();
       this.greekToLatinTabPage.SuspendLayout();
       this.tableLayoutPanel.SuspendLayout();
       this.SuspendLayout();
@@ -102,6 +105,8 @@
       // 
       // enumDescriptionEditorTabPage
       // 
+      this.enumDescriptionEditorTabPage.Controls.Add(this.testEnumDescriptionEditorButton);
+      this.enumDescriptionEditorTabPage.Controls.Add(this.propertyGrid);
       this.enumDescriptionEditorTabPage.Location = new System.Drawing.Point(4, 22);
       this.enumDescriptionEditorTabPage.Margin = new System.Windows.Forms.Padding(2);
       this.enumDescriptionEditorTabPage.Name = "enumDescriptionEditorTabPage";
@@ -173,6 +178,25 @@
       this.toLatinTextBox.Size = new System.Drawing.Size(696, 271);
       this.toLatinTextBox.TabIndex = 2;
       // 
+      // propertyGrid
+      // 
+      this.propertyGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+      this.propertyGrid.Location = new System.Drawing.Point(5, 5);
+      this.propertyGrid.Name = "propertyGrid";
+      this.propertyGrid.Size = new System.Drawing.Size(354, 579);
+      this.propertyGrid.TabIndex = 0;
+      // 
+      // testEnumDescriptionEditorButton
+      // 
+      this.testEnumDescriptionEditorButton.Location = new System.Drawing.Point(669, 5);
+      this.testEnumDescriptionEditorButton.Name = "testEnumDescriptionEditorButton";
+      this.testEnumDescriptionEditorButton.Size = new System.Drawing.Size(254, 23);
+      this.testEnumDescriptionEditorButton.TabIndex = 1;
+      this.testEnumDescriptionEditorButton.Text = "Test EnumDescriptionEditor";
+      this.testEnumDescriptionEditorButton.UseVisualStyleBackColor = true;
+      this.testEnumDescriptionEditorButton.Click += new System.EventHandler(this.testEnumDescriptionEditorButton_Click);
+      // 
       // TestsForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -184,6 +208,7 @@
       this.Text = "Tests Form";
       this.testsTabControl.ResumeLayout(false);
       this.enumDescriptionEditorControlTabPage.ResumeLayout(false);
+      this.enumDescriptionEditorTabPage.ResumeLayout(false);
       this.greekToLatinTabPage.ResumeLayout(false);
       this.tableLayoutPanel.ResumeLayout(false);
       this.tableLayoutPanel.PerformLayout();
@@ -204,6 +229,8 @@
     private System.Windows.Forms.Button testTranscribeButton;
     private System.Windows.Forms.TextBox fromGreekTextBox;
     private System.Windows.Forms.TextBox toLatinTextBox;
+    private System.Windows.Forms.Button testEnumDescriptionEditorButton;
+    private System.Windows.Forms.PropertyGrid propertyGrid;
   }
 }
 

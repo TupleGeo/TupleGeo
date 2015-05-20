@@ -104,6 +104,26 @@ namespace TupleGeo.General.ComponentModel.Design.Tests {
       
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void testEnumDescriptionEditorButton_Click(object sender, EventArgs e) {
+
+      TestModel testModel = new TestModel();
+
+      testModel.ADouble = 24.8645d;
+      testModel.AFloat = 1.23f;
+      testModel.AnInteger = 8;
+      testModel.ASecondString = "A second string goes here";
+      testModel.AString = "The first string";
+      testModel.TestEnumValue = TestEnum.SmallCar;
+
+      this.propertyGrid.SelectedObject = testModel;
+
+    }
+
   }
 
 }

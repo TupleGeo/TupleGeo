@@ -63,9 +63,6 @@ namespace TupleGeo.General.ComponentModel.Design {
       get {
         return _enumDescriptionsCollection;
       }
-      //set {
-      //  _enumDescriptionsCollection = value;
-      //}
     }
 
     private object _selectedEnumValueName;
@@ -77,16 +74,6 @@ namespace TupleGeo.General.ComponentModel.Design {
       get {
         return _selectedEnumValueName;
       }
-      //set {
-      //  //_selectedEnumValueName = value;
-        
-      //  ////EnumNameDescriptionPair p = _enumDescriptionsList.Where(e => e.Name == _selectedEnumValueName.ToString()).First();
-
-      //  ////this.EnumDescriptionsListBox.SelectionMode = SelectionMode.One;
-      //  ////this.EnumDescriptionsListBox.
-
-      //  //this.EnumDescriptionsListBox.SelectedValue = value;
-      //}
     }
 
     #endregion
@@ -97,9 +84,21 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// Sorts the <see cref="Collection{EnumNameDescriptionPair}"/> of descriptions.
     /// </summary>
     public void SortEnumDescriptionsCollection() {
+
+#if NET20
+      List<EnumNameDescriptionPair> list = _enumDescriptionsCollection.ToList();
+      
+      list.Sort(delegate(EnumNameDescriptionPair pair1, EnumNameDescriptionPair pair2) {
+        return string.Compare(pair1.Description, pair2.Description);
+      });
+
+      _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(list);
+#else
       _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(
         _enumDescriptionsCollection.OrderBy(e => e.Description).ToList()
       );
+#endif
+
     }
 
     /// <summary>

@@ -129,28 +129,7 @@ namespace TupleGeo.General.ComponentModel.Design {
             _enumDescriptionControl.EnumDescriptionsCollection.Add(new EnumNameDescriptionPair(names[i], descriptions[i]));
           }
 
-//#if NET20
-//          // Use a Comparison<T> delegate for the Sort method on EnumDescriptionList in order to provide a
-//          // custom sorting according to enumeration descriptions.
-//          _enumDescriptionControl.EnumDescriptionsList.Sort(delegate(EnumNameDescriptionPair pair1, EnumNameDescriptionPair pair2) {
-//            return string.Compare(pair1.Description, pair2.Description);
-//          });
-//#else
-//          // Sort the descriptions and display them on the control.
-//          _enumDescriptionControl.SortEnumDescriptionsCollection();
-//          //_enumDescriptionControl.EnumDescriptionsCollection.ord
-//          //_enumDescriptionControl.EnumDescriptionsCollection =
-//          //  new System.Collections.ObjectModel.Collection<EnumNameDescriptionPair>(
-//          //    _enumDescriptionControl.EnumDescriptionsCollection.OrderBy(e => e.Description).ToList()
-//          //  );
-//#endif
-
-
-          //_enumDescriptionControl.SortEnumDescriptionsCollection();
-
-
-          // Set the selected value. -- // TODO: For some reason it is not possible to set the value !!!
-          //_enumDescriptionControl.SelectedEnumValueName = value;
+          _enumDescriptionControl.SortEnumDescriptionsCollection();
         }
 
         // Show the enumeration editing control.

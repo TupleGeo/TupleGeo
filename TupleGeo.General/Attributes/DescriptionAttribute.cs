@@ -39,7 +39,7 @@ namespace TupleGeo.General.Attributes {
     /// Initializes a <see cref="DescriptionAttribute"/> by setting its description
     /// irrelevant to a culture.
     /// </summary>
-    /// <param name="description">The description that this <see cref="Attribute"/> sets.</param>
+    /// <param name="description">The description that the <see cref="DescriptionAttribute"/> sets.</param>
     public DescriptionAttribute(string description) {
       _description = description;
     }

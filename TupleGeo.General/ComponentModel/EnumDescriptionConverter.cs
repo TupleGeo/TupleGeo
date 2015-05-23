@@ -8,7 +8,9 @@
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
 //                  : 20/05/2015, 07:39, Vasilis Vlastaras.
 //                    1.0.2 - Changed Overloaded Methods GetEnumDescription, GetEnumDescriptions.
-// Version          : 1.0.2
+//                  : 23/05/2015, 06:50, Vasilis Vlastaras.
+//                    1.0.3 - Changes in logic so as to make the converter behave better.
+// Version          : 1.0.3
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2010 - 2015.
@@ -101,9 +103,16 @@ namespace TupleGeo.General.ComponentModel {
 #if NET20
       // TODO: Add an implementation for .NET 20 here.
 #else
+      // Try to get the description for the specified culture.
       TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
+      
+      // If the retrieved attribute is null try to get the neutral culture description.
+      if (attribute == null) {
+        attribute = attributes.FirstOrDefault(a => a.Culture == null);
+      }
 #endif
 
+      // Return description or the enum named value if no description was found.
       return (attribute != null) ? attribute.Description : enumValue.ToString();
     }
 
@@ -149,9 +158,16 @@ namespace TupleGeo.General.ComponentModel {
 #if NET20
       // TODO: Add an implementation for .NET 20 here.
 #else
+      // Try to get the description for the specified culture.
       TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
+
+      // If the retrieved attribute is null try to get the neutral culture description.
+      if (attribute == null) {
+        attribute = attributes.FirstOrDefault(a => a.Culture == null);
+      }
 #endif
-      
+
+      // Return description or the enum named value if no description was found.
       return (attribute != null) ? attribute.Description : name;
     }
 
@@ -203,7 +219,6 @@ namespace TupleGeo.General.ComponentModel {
     /// <returns>
     /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
     /// </returns>
-    /// <exception cref="lala">Throws a</exception>
     /// <remarks>
     /// <para>
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
@@ -236,7 +251,6 @@ namespace TupleGeo.General.ComponentModel {
     /// <returns>
     /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
     /// </returns>
-    /// <exception cref="lala">Throws a</exception>
     /// <remarks>
     /// <para>
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
@@ -306,9 +320,6 @@ namespace TupleGeo.General.ComponentModel {
       if (value is string) {
         return GetEnumValue(_type, (string)value);
       }
-      if (value is Enum) {
-        return GetEnumDescription((Enum)value);
-      }
       return base.ConvertFrom(context, culture, value);
     }
     
@@ -328,13 +339,23 @@ namespace TupleGeo.General.ComponentModel {
       object value,
       Type destinationType
     ) {
+      
       if (value is Enum && destinationType == typeof(string)) {
+        if (culture != null) {
+          return GetEnumDescription((Enum)value, culture.ToString());
+        }
         return GetEnumDescription((Enum)value);
       }
+      
       if (value is string && destinationType == typeof(string)) {
+        if (culture != null) {
+          return GetEnumDescription(_type, culture.ToString());
+        }
         return GetEnumDescription(_type, (string)value);
       }
+      
       return base.ConvertTo(context, culture, value, destinationType);
+
     }
 
     #endregion

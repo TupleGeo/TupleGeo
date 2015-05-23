@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,7 +60,6 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -69,10 +68,9 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -87,10 +85,9 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -112,81 +109,9 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Data_SqlServer_ConnectionDetails_DataSource" xml:space="preserve">
-    <value>Data Source=</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionDataSourceNotSpecified" xml:space="preserve">
-    <value>Data Source not specified.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource" xml:space="preserve">
-    <value>Error getting DataSource.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue" xml:space="preserve">
-    <value>Error getting Initial Catalogue.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingPassword" xml:space="preserve">
-    <value>Error getting Password.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingPersistSecurityInfo" xml:space="preserve">
-    <value>Error getting Persist Security Info.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingUserID" xml:space="preserve">
-    <value>Error getting UserID.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified" xml:space="preserve">
-    <value>Initial Calogue not specified.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified" xml:space="preserve">
-    <value>Error decrypting password. Initialization vector not sepcified.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified" xml:space="preserve">
-    <value>Error decrypting password. Security key not specified.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionUniqueUserIDNotFound" xml:space="preserve">
-    <value>Unique UserID not found.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionUserIDNotFound" xml:space="preserve">
-    <value>UserID not found.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionUserIDNotSpecified" xml:space="preserve">
-    <value>UserID not specified.</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_InitialCatalogue" xml:space="preserve">
-    <value>Initial Catalog=</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_Password" xml:space="preserve">
-    <value>Password=</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetails_PersistSecurityInfo" xml:space="preserve">
-    <value>Persist Security Info=</value>
-  </data>
-  <data name="Data_SqlServer_ConnectionDetials_UserID" xml:space="preserve">
-    <value>User ID=</value>
-  </data>
-  <data name="General_PropertyCouldNotConvertValueToString" xml:space="preserve">
-    <value>Could not convert property value to string.</value>
-  </data>
-  <data name="General_PropertyHasMoreThanOneGenericArguments" xml:space="preserve">
-    <value>Property has more than one generic arguments.</value>
-  </data>
-  <data name="General_PropertyIsNotOfAPrimitiveTypeException" xml:space="preserve">
-    <value>Property is not of a primitive type.</value>
-  </data>
-  <data name="General_PropertyNullableTypeIsNotOfAPrimitiveType" xml:space="preserve">
-    <value>Property nullable type is not of a primitive type.</value>
-  </data>
-  <data name="Reflection_AssemblyExtensions_ExceptionTypeNotFoundInAssembly" xml:space="preserve">
-    <value>Type {0} not found in assembly.</value>
-  </data>
-  <data name="Reflection_AssemblyExtensions_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssembly" xml:space="preserve">
-    <value>Type {0} not found or more than one found in assembly.</value>
-  </data>
-  <data name="Security_CryptographicString_ExceptionNullKeyOrInitializationVector" xml:space="preserve">
-    <value>Secret key and Initialization vector must not be null.</value>
-  </data>
 </root>

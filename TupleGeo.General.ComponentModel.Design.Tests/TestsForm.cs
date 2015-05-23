@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace TupleGeo.General.ComponentModel.Design.Tests {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void testEnumDescriptionsbutton_Click(object sender, EventArgs e) {
-
+      
       Console.WriteLine("{0}: {1}", "el-GR", TupleGeo.General.Attributes.DescriptionAttribute.GetEnumeratedValueDescriptionAttribute(TestEnum.NormalCar, "el-GR"));
       Console.WriteLine("{0}: {1}", "fr", TupleGeo.General.Attributes.DescriptionAttribute.GetEnumeratedValueDescriptionAttribute(TestEnum.NormalCar, "fr"));
       Console.WriteLine("{0}: {1}", "Null", TupleGeo.General.Attributes.DescriptionAttribute.GetEnumeratedValueDescriptionAttribute(TestEnum.NormalCar, null));
@@ -71,9 +72,11 @@ namespace TupleGeo.General.ComponentModel.Design.Tests {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void testEnumDescriptionEditorControlButton_Click(object sender, EventArgs e) {
+      
+      string currentCulture = Application.CurrentCulture == CultureInfo.InvariantCulture ? null : CultureInfo.CurrentCulture.ToString();
 
       string[] names = Enum.GetNames(typeof(TestEnum));
-      string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions(typeof(TestEnum), "el-GR");
+      string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions(typeof(TestEnum), currentCulture);
 
       this.enumDescriptionEditorControl.EnumDescriptionsCollection.Clear();
 
@@ -121,6 +124,39 @@ namespace TupleGeo.General.ComponentModel.Design.Tests {
       testModel.TestEnumValue = TestEnum.SmallCar;
 
       this.propertyGrid.SelectedObject = testModel;
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void appCultureComboBox_SelectedValueChanged(object sender, EventArgs e) {
+
+      bool hasCultureChanged = false;
+
+      if (string.IsNullOrEmpty(this.appCultureComboBox.SelectedItem.ToString())) {
+        if (Application.CurrentCulture != CultureInfo.InvariantCulture) {
+          Application.CurrentCulture = CultureInfo.InvariantCulture;
+          hasCultureChanged = true;
+        }
+      }
+      else {
+        CultureInfo culture = CultureInfo.GetCultureInfo(this.appCultureComboBox.SelectedItem.ToString());
+        if (Application.CurrentCulture != culture) {
+          Application.CurrentCulture = culture;
+          hasCultureChanged = true;
+        }
+      }
+
+      if (hasCultureChanged) {
+        if (propertyGrid.SelectedObject != null) {
+          TestModel testModel = (TestModel)propertyGrid.SelectedObject;
+          propertyGrid.SelectedObject = null;
+          propertyGrid.SelectedObject = testModel;
+        }
+      }
 
     }
 

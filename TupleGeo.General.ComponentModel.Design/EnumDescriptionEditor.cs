@@ -6,8 +6,8 @@
 // Created by       : 03/03/2010, 17:23, Vasilis Vlastaras.
 // Updated by       : 23/02/2010, 16:57, Vasilis Vlastaras.
 //                    1.0.1 - Added preprocessor directives to make the source file compatible with .NET Framework 2.0.
-//                  : 20/05/2015, 01:26, Vasilis Vlastaras.
-//                    1.0.2 - Changed code to reflect changes in EnumDescriptionControl.
+//                  : 23/05/2015, 07:44, Vasilis Vlastaras.
+//                    1.0.2 - Changed the code to make the editor behaving better.
 // Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
@@ -43,6 +43,7 @@ namespace TupleGeo.General.ComponentModel.Design {
 
     private IWindowsFormsEditorService _windowsFormsEditorService;
     private EnumDescriptionEditorControl _enumDescriptionControl = null;
+    private string _lastCultureUsed;
 
     #endregion
 
@@ -121,15 +122,45 @@ namespace TupleGeo.General.ComponentModel.Design {
 
       if (_enumDescriptionControl.EnumDescriptionsCollection != null) {
         // Load descriptions in the control.
-        if (_enumDescriptionControl.EnumDescriptionsCollection.Count <= 0) {
-          string[] names = Enum.GetNames(value.GetType());
-          string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value);
+        if (Application.CurrentCulture.ToString() != _lastCultureUsed) {
+          _enumDescriptionControl.EnumDescriptionsCollection.Clear();
 
+          _lastCultureUsed = Application.CurrentCulture.ToString();
+
+          // Get the enumeration names.
+          string[] names = Enum.GetNames(value.GetType());
+          
+          // Try to get the enumeration descriptions for the current application culture.
+          string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value, _lastCultureUsed);
+
+          // Test if names and descriptions are the same.
+          // If this is the case then descriptions in current culture where not found.
+          bool areTheSame = true;
+          for (int i = 0; i < names.Length; i++) {
+            if (names[i] != descriptions[i]) {
+              areTheSame = false;
+              break;
+            }
+          }
+          
+          if (areTheSame) {
+            // Since no descriptions found for the current culture, try to get the neutral culture descriptions.
+            descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value);
+          }
+          
+          // Ending up here either the current culture descriptions,
+          // neutral culture descriptions or enumeration named value have been retrieved.
           for (int i = 0; i < descriptions.Length; i++) {
             _enumDescriptionControl.EnumDescriptionsCollection.Add(new EnumNameDescriptionPair(names[i], descriptions[i]));
           }
 
+          // Sort the collection and bind the data to the control.
           _enumDescriptionControl.SortEnumDescriptionsCollection();
+          _enumDescriptionControl.DataBind();
+          
+          // Set the selected item on the control.
+          _enumDescriptionControl.SetSelectedEnumValueName(((Enum)value).ToString());
+          
         }
 
         // Show the enumeration editing control.

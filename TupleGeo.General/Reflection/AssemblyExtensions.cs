@@ -19,6 +19,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using TupleGeo.General.Properties;
 
 #endregion
 
@@ -68,6 +69,10 @@ namespace TupleGeo.General.Reflection {
     public static object CreateInstance(this Assembly assembly, Type interfaceType) {
       object instance = null;
 
+      if (interfaceType == null) {
+        throw new ArgumentNullException("interfaceType");
+      }
+
       // Get the public types of the assembly implementing the interfaceType.
       IEnumerable<Type> types =
         from exportedT in assembly.GetExportedTypes()
@@ -82,13 +87,23 @@ namespace TupleGeo.General.Reflection {
           }
         }
         else {
-          // TODO Throw exception here.
-          //throw new Exception(SecurityResources.SecurityProvider_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssembly);
+          throw new ArgumentException(
+            string.Format(
+              Resources.Reflection_AssemblyExtensions_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssembly,
+              interfaceType.Name
+            ),
+            "interfaceType"
+          );
         }
       }
       else {
-        // TODO Throw exception here.
-        //throw new Exception(SecurityResources.SecurityProvider_ExceptionTypeNotFoundInAssembly);
+        throw new ArgumentException(
+          string.Format(
+            Resources.Reflection_AssemblyExtensions_ExceptionTypeNotFoundInAssembly,
+            interfaceType.Name
+          ),
+          "interfaceType"
+        );
       }
 
       return instance;

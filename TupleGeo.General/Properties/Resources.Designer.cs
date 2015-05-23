@@ -250,6 +250,25 @@ namespace TupleGeo.General.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Type {0} not found in assembly..
+        /// </summary>
+        internal static string Reflection_AssemblyExtensions_ExceptionTypeNotFoundInAssembly {
+            get {
+                return ResourceManager.GetString("Reflection_AssemblyExtensions_ExceptionTypeNotFoundInAssembly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type {0} not found or more than one found in assembly..
+        /// </summary>
+        internal static string Reflection_AssemblyExtensions_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssembly {
+            get {
+                return ResourceManager.GetString("Reflection_AssemblyExtensions_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssem" +
+                        "bly", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Secret key and Initialization vector must not be null..
         /// </summary>
         internal static string Security_CryptographicString_ExceptionNullKeyOrInitializationVector {

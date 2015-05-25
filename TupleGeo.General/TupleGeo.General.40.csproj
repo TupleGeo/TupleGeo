@@ -58,7 +58,7 @@
   <ItemGroup>
     <Compile Include="Attributes\AttributeHelper.cs" />
     <Compile Include="Attributes\DescriptionAttribute.cs" />
-    <Compile Include="Attributes\LocalizableDescriptionAttribute.cs" />
+    <Compile Include="Attributes\ResourceDescriptionAttribute.cs" />
     <Compile Include="ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="ComponentModel\EnumNameDescriptionPair.cs" />
     <Compile Include="ComponentModel\ObservableObjectOfT.cs" />

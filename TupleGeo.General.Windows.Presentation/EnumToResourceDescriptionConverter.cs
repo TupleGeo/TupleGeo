@@ -1,6 +1,6 @@
 ﻿
 #region Header
-// Title Name       : EnumToDescriptionConverter
+// Title Name       : EnumToResourceDescriptionConverter
 // Member of        : TupleGeo.General.Windows.Presentation.dll
 // Description      : Converts an Enum Value to its Description and vice versa.
 // Created by       : 23/05/2015, 02:51, Vasilis Vlastaras.
@@ -30,12 +30,12 @@ namespace TupleGeo.General.Windows.Data {
   /// </summary>
   /// <remarks>
   /// The description is retrieved by using the attached
-  /// <see cref="LocalizableDescriptionAttribute"/> for each enumerated value.
+  /// <see cref="ResourceDescriptionAttribute"/> for each enumerated value.
   /// The description then is used to retrieve a localized version of it from
   /// an associated localized resource.
   /// </remarks>
   [ValueConversion(typeof(object), typeof(string))]
-  public class EnumToDescriptionConverter : IValueConverter {
+  public class EnumToResourceDescriptionConverter : IValueConverter {
 
     #region IValueConverter Members
 

@@ -1,8 +1,8 @@
 ﻿
 #region Header
-// Title Name       : LocalizableDescriptionAttribute
+// Title Name       : ResourceDescriptionAttribute
 // Member of        : TupleGeo.General.dll
-// Description      : Defines a custom attribute used to add a localizable descriptive information.
+// Description      : Defines a custom attribute used to add a localizable descriptive information loaded from a Resource file.
 // Created by       : 22/05/2015, 21:48, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
@@ -29,7 +29,7 @@ namespace TupleGeo.General.Attributes {
   /// A custom attribute used to add a localizable descriptive information.
   /// </summary>
   [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
-  public sealed class LocalizableDescriptionAttribute : System.ComponentModel.DescriptionAttribute {
+  public sealed class ResourceDescriptionAttribute : System.ComponentModel.DescriptionAttribute {
 
     #region Member Variables
 
@@ -41,11 +41,11 @@ namespace TupleGeo.General.Attributes {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes a <see cref="LocalizableDescriptionAttribute"/>.
+    /// Initializes a <see cref="ResourceDescriptionAttribute"/>.
     /// </summary>
-    /// <param name="description">The description that the <see cref="LocalizableDescriptionAttribute"/> sets.</param>
+    /// <param name="description">The description that the <see cref="ResourceDescriptionAttribute"/> sets.</param>
     /// <param name="resourcesType">Type of the resources.</param>
-    public LocalizableDescriptionAttribute(string description, Type resourcesType)
+    public ResourceDescriptionAttribute(string description, Type resourcesType)
       : base(description) {
       _resourcesType = resourcesType;
     }

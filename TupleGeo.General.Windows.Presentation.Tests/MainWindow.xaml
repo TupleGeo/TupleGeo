@@ -1,8 +1,28 @@
 ﻿<Window x:Class="TupleGeo.General.Windows.Presentation.Tests.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow"
+        Height="550"
+        Width="800">
+
+  <Grid>
+    <TabControl x:Name="MainTabControl"
+                HorizontalAlignment="Stretch"
+                Margin="10"
+                VerticalAlignment="Stretch">
+      
+      <TabItem Header="TabItem">
+        <Grid Background="#FFE5E5E5" />
+
+
+      </TabItem>
+      
+      <TabItem Header="TabItem">
+        <Grid Background="#FFE5E5E5" />
+      </TabItem>
+      
+    </TabControl>
+
+  </Grid>
+  
 </Window>

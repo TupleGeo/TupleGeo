@@ -2,8 +2,8 @@
 #region Header
 // Title Name       : ResourceDescriptionAttribute
 // Member of        : TupleGeo.General.dll
-// Description      : Defines a custom attribute used to add a localizable descriptive information loaded from a Resource file.
-// Created by       : 22/05/2015, 21:48, Vasilis Vlastaras.
+// Description      : Defines a custom attribute used to add a localizable description loaded from a Resource file.
+// Created by       : 27/05/2015, 18:02, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -26,7 +26,7 @@ using System.Text;
 namespace TupleGeo.General.Attributes {
 
   /// <summary>
-  /// A custom attribute used to add a localizable descriptive information.
+  /// A custom attribute used to add a localizable description.
   /// </summary>
   [AttributeUsage(AttributeTargets.All, Inherited = false, AllowMultiple = true)]
   public sealed class ResourceDescriptionAttribute : System.ComponentModel.DescriptionAttribute {
@@ -44,7 +44,7 @@ namespace TupleGeo.General.Attributes {
     /// Initializes a <see cref="ResourceDescriptionAttribute"/>.
     /// </summary>
     /// <param name="description">The description that the <see cref="ResourceDescriptionAttribute"/> sets.</param>
-    /// <param name="resourcesType">Type of the resources.</param>
+    /// <param name="resourcesType">The <see cref="Type"/> of the resources.</param>
     public ResourceDescriptionAttribute(string description, Type resourcesType)
       : base(description) {
       _resourcesType = resourcesType;
@@ -57,7 +57,7 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the string value from the resources.
     /// </summary>
-    /// <returns>The description stored in this attribute.</returns>
+    /// <returns>A <see cref="string"/>containing the description stored in this attribute.</returns>
     public override string Description {
       get {
         if (!_isLocalized) {

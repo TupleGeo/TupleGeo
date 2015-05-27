@@ -48,6 +48,12 @@
     <Compile Include="EnumToResourceDescriptionConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TupleGeo.General\TupleGeo.General.40.csproj">
+      <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
+      <Name>TupleGeo.General.40</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

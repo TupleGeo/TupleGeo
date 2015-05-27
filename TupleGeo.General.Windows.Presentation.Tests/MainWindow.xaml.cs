@@ -22,4 +22,5 @@ namespace TupleGeo.General.Windows.Presentation.Tests {
       InitializeComponent();
     }
   }
+
 }

@@ -47,7 +47,7 @@ namespace TupleGeo.General.Windows.Data {
     /// <param name="value">The enumeration value that needs to be converted.</param>
     /// <param name="targetType">The target <see cref="Type"/>.</param>
     /// <param name="parameter">
-    /// A parameter used by the converter. Accepted values for this converter is either <see cref="null"/> or
+    /// A parameter used by the converter. Accepted values for this converter is either null or
     /// an instance of a Resource file.
     /// </param>
     /// <param name="culture">

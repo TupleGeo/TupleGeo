@@ -34,7 +34,7 @@ namespace TupleGeo.General.FileTypes {
   /// </summary>
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  public enum RasterFileTypes  {
+  public enum RasterFileType  {
 
     /// <summary>
     /// Bitmap image file format.
@@ -339,6 +339,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Photoshop Document.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Psd")]
     [XmlEnumAttribute("psd")]
     [DescriptionAttribute("Photoshop Document file format.")]
     Psd,
@@ -348,6 +349,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Paintshop Pro image file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Psp")]
     [XmlEnumAttribute("psp")]
     [DescriptionAttribute("Paintshop Pro image file format.")]
     Psp,
@@ -430,6 +432,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Tagged image file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Tif")]
     [XmlEnumAttribute("tif")]
     [DescriptionAttribute("Tagged image file format")]
     Tif,

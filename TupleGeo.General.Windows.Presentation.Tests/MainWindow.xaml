@@ -31,60 +31,116 @@
 
       <TabItem x:Name="EnumConverterTabItem"
                Header="EnumToResourceDescriptionConverter">
-        <Grid x:Name="Test1Grid"
-              Background="#FFE5E5E5">
+
+        <Grid Background="#FF90AACD">
           <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50*" />
             <ColumnDefinition Width="50*" />
           </Grid.ColumnDefinitions>
-          <Grid.RowDefinitions>
-            <RowDefinition Height="28" />
-            <RowDefinition Height="36" />
-            <RowDefinition Height="36" />
-            <RowDefinition />
-          </Grid.RowDefinitions>
+          
+          <Grid x:Name="Test1Grid"
+                Grid.Column="0">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="28" />
+              <RowDefinition Height="36" />
+              <RowDefinition Height="40" />
+              <RowDefinition />
+            </Grid.RowDefinitions>
 
-          <Label Content="Test 1 (Static Resource)"
-                 Grid.Column="0"
-                 Grid.Row="0"
-                 Margin="8,0,8,0"
-                 HorizontalAlignment="Stretch"
-                 VerticalAlignment="Top" />
+            <Label Content="Test 1 (Static Resource)"
+                   Grid.Row="0"
+                   Margin="8,0,8,0"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Top" />
 
-          <!--ItemsSource="{Binding Source={StaticResource foodData}}"-->
-          <!--SelectedItem="{Binding Path=TestableClass.FoodType, Mode=TwoWay}"-->
+            <!--ItemsSource="{Binding Source={StaticResource foodData}}"-->
+            <!--SelectedItem="{Binding Path=TestableClass.FoodType, Mode=TwoWay}"-->
 
-          <ComboBox x:Name="EnumStaticComboBox"
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Height="Auto"
-                    HorizontalAlignment="Stretch"
-                    ItemsSource="{Binding Source={StaticResource coffeeData}}"
-                    Margin="8,0,8,0"
-                    SelectedItem="{Binding Path=Test1Model.CoffeeType, Mode=TwoWay}"
-                    VerticalAlignment="Top">
+            <ComboBox x:Name="Test1EnumStaticComboBox"
+                      Grid.Row="1"
+                      Height="Auto"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Source={StaticResource coffeeData}}"
+                      Margin="8,0,8,0"
+                      SelectedItem="{Binding Path=Test1Model.CoffeeType, Mode=TwoWay}"
+                      VerticalAlignment="Top">
 
-            <!--, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture}-->
+              <!--, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture}-->
 
-            <ComboBox.ItemTemplate>
-              <DataTemplate>
-                <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture} }"
-                       Height="Auto"
-                       Margin="0"
-                       VerticalAlignment="Center" />
-              </DataTemplate>
-            </ComboBox.ItemTemplate>
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture} }"
+                         Height="Auto"
+                         Margin="0"
+                         VerticalAlignment="Center" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
 
-          </ComboBox>
+            </ComboBox>
 
-          <Button x:Name="Test1GetCurrentValueButton"
-                  Content="Test1 - Get Current Value"
-                  Grid.Row="2"
-                  HorizontalAlignment="Right"
-                  Margin="8,4,8,4"
-                  Width="Auto"
-                  Click="Test1GetCurrentValueButton_Click" />
+            <Button x:Name="Test1GetCurrentValueButton"
+                    Content="Test1 - Get Current Value"
+                    Padding="8,0,8,0"
+                    Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Margin="8,4,8,4"
+                    Width="Auto"
+                    Click="Test1GetCurrentValueButton_Click" />
+            
+          </Grid>
+
+          <Grid x:Name="Test2Grid"
+                Grid.Column="1">
+            <Grid.RowDefinitions>
+              <RowDefinition Height="28" />
+              <RowDefinition Height="36" />
+              <RowDefinition Height="40" />
+              <RowDefinition />
+            </Grid.RowDefinitions>
+
+            <Label Content="Test 2 (ViewModel)"
+                   Grid.Row="0"
+                   Margin="8,0,8,0"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Top" />
+
+            <!--ItemsSource="{Binding Source={StaticResource foodData}}"-->
+            <!--SelectedItem="{Binding Path=TestableClass.FoodType, Mode=TwoWay}"-->
+
+            <ComboBox x:Name="Test2EnumViewModelComboBox"
+                      Grid.Row="1"
+                      Height="Auto"
+                      HorizontalAlignment="Stretch"
+                      ItemsSource="{Binding Path=Test2Model.CoffeeTypeList, Mode=OneWay}"
+                      Margin="8,0,8,0"
+                      SelectedItem="{Binding Path=Test2Model.CurrentCoffeeType, Mode=TwoWay}"
+                      VerticalAlignment="Top">
+
+              <!--, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture}-->
+
+              <ComboBox.ItemTemplate>
+                <DataTemplate>
+                  <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture} }"
+                         Height="Auto"
+                         Margin="0"
+                         VerticalAlignment="Center" />
+                </DataTemplate>
+              </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <Button x:Name="Test2GetCurrentValueButton"
+                    Content="Test2 - Get Current Value"
+                    Padding="8,0,8,0"
+                    Grid.Row="2"
+                    HorizontalAlignment="Right"
+                    Margin="8,4,8,4"
+                    Width="Auto"
+                    Click="Test2GetCurrentValueButton_Click" />
+            
+          </Grid>
         </Grid>
+        
       </TabItem>
 
       <TabItem Header="TabItem">

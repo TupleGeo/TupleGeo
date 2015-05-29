@@ -81,6 +81,7 @@ namespace TupleGeo.General.Security {
     /// </summary>
     /// <param name="original">The <see cref="System.String"/> to be encrypted.</param>
     /// <returns>An encrypted <see cref="System.String"/>.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
     public static string Encrypt(string original) {
 
       // Encode data string to be stored in memory.
@@ -96,7 +97,7 @@ namespace TupleGeo.General.Security {
           GenerateRijndaelSecretInitilizationVector(rijndael);
 
           if (_key == null || _initializationVector == null) {
-            throw new NullReferenceException(
+            throw new CryptographicStringException(
               Resources.Security_CryptographicString_ExceptionNullKeyOrInitializationVector
             );
           }
@@ -137,6 +138,7 @@ namespace TupleGeo.General.Security {
     /// </summary>
     /// <param name="encrypted">The <see cref="System.String"/> to be decrypted.</param>
     /// <returns>A decrypted <see cref="System.String"/>.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
     public static string Decrypt(string encrypted) {
 
       // Convert encrypted string.
@@ -147,7 +149,7 @@ namespace TupleGeo.General.Security {
         using (MemoryStream memStream = new MemoryStream(encryptedStringAsBytes)) {
 
           if (_key == null || _initializationVector == null) {
-            throw new NullReferenceException(
+            throw new CryptographicStringException(
               Resources.Security_CryptographicString_ExceptionNullKeyOrInitializationVector
             );
           }

@@ -1,11 +1,13 @@
 ﻿
 #region Header
 // Title Name       : ConnectionDetails
-// Member of        : ErNet.Global.dll
+// Member of        : TupleGeo.General.dll
 // Description      : The details used to define an SQL Server connection
 //                    as they appear in a connection string.
 // Created by       : 18/03/2009, 20:40, Vasilis Vlastaras.
-// Version          : 1.0.0
+// Updated by       : 29/05/2015, 14:57, Vasilis Vlastaras.
+//                    1.0.1 - Re-engineered ConnectionDetails to meet Microsoft All Rules code analysis standards.
+// Version          : 1.0.1
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -16,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Xml.Serialization;
@@ -81,10 +84,10 @@ namespace TupleGeo.General.Data.SqlServer {
     private string _initialCatalogue;
 
     /// <summary>
-    /// The name of the initial catalogue. It should be the name of the database.
+    /// The name of the initial catalog. It should be the name of the database.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "initialCatalogue")]
-    public string InitialCatalogue {
+    public string InitialCatalog {
       get {
         return _initialCatalogue;
       }
@@ -178,14 +181,14 @@ namespace TupleGeo.General.Data.SqlServer {
       StringBuilder sb = new StringBuilder();
 
       // Append Data Source.
-      if (this._dataSource != "") {
+      if (!string.IsNullOrEmpty(this._dataSource)) {
         sb.Append(Resources.Data_SqlServer_ConnectionDetails_DataSource);
         sb.Append(this._dataSource);
         sb.Append(";");
 
-        // Append Initial Catalogue.
-        if (this._initialCatalogue != "") {
-          sb.Append(Resources.Data_SqlServer_ConnectionDetails_InitialCatalogue);
+        // Append Initial Catalog.
+        if (!string.IsNullOrEmpty(this._initialCatalogue)) {
+          sb.Append(Resources.Data_SqlServer_ConnectionDetails_InitialCatalog);
           sb.Append(this._initialCatalogue);
           sb.Append(";");
 
@@ -195,7 +198,7 @@ namespace TupleGeo.General.Data.SqlServer {
           sb.Append(";");
 
           // Append User ID.
-          if (user != "") {
+          if (string.IsNullOrEmpty(user)) {
             var users =
             from usr in this._sqlServerUserList
             where usr.Username == user
@@ -216,44 +219,44 @@ namespace TupleGeo.General.Data.SqlServer {
                   }
                   else {
                     // Use the base64 key to decrypt the password.
-                    if (_base64Key != null || _base64Key != "") {
+                    if (!string.IsNullOrEmpty(_base64Key)) {
                       CryptographicString.Key = Convert.FromBase64String(_base64Key);
                       // Use the base64 initialization vector to decrypt the password.
-                      if (_base64InitializationVector != null || _base64InitializationVector != "") {
+                      if (!string.IsNullOrEmpty(_base64InitializationVector)) {
                         CryptographicString.InitializationVector = Convert.FromBase64String(_base64InitializationVector);
                         // Decrypt the password.
                         sb.Append(CryptographicString.Decrypt(u.Password));
                       }
                       else {
-                        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified);
+                        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified);
                       }
                     }
                     else {
-                      throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified);
+                      throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified);
                     }
                   }
                 }
               }
               else {
-                throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionUniqueUserIDNotFound);
+                throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionUniqueUserIDNotFound);
               }
             }
             else {
-              throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionUserIDNotFound);
+              throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionUserIDNotFound);
             }
           }
           else {
-            throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionUserIDNotSpecified);
+            throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionUserIDNotSpecified);
           }
 
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified);
         }
 
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionDataSourceNotSpecified);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionDataSourceNotSpecified);
       }
       
       return sb.ToString();
@@ -272,148 +275,205 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <remarks>
     /// In case the bEncryptPassword argument is set to true the
     /// <see cref="Base64Key"/> and the <see cref="Base64InitializationVector"/>
-    /// properties must be set first in order for this method to succeed seting the
+    /// properties must be set first in order for this method to succeed setting the
     /// ConnectionDetails object using a connection string.
     /// </remarks>
     public void FromConnectionString(string connectionString, bool encryptPassword) {
 
-      string dataSource = "";
-      string initialCatalogue = "";
-      bool persistSecurityInfo = true;
-      string userID = "";
-      string password = "";
-      SqlServerUser sqlServerUser = null;
+      if (string.IsNullOrEmpty(connectionString)) {
+        throw new ArgumentNullException("connectionString");
+      }
 
       // Split the connection string to its tokens.
       char[] sep = new char[1] { ';' };
       string[] tokens = connectionString.Split(sep);
 
-      // Get the Data Source.
-      #region Data Source
-
-      var selectedTokens =
+      // Get the tokens for the data source part of the connection string.
+      var dataSourceTokens =
         from token in tokens
-        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_DataSource)
+        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_DataSource, StringComparison.Ordinal)
         select token;
 
-      if (selectedTokens != null) {
-        if (selectedTokens.Count() == 1) {
-          foreach (var token in selectedTokens) {
+      // Get the Data Source.
+      string dataSource = "";
+      SetDataSource(ref dataSource, ref dataSourceTokens);
+
+      // Get the Initial Catalog.
+      string initialCatalog = "";
+      SetInitialCatalog(ref initialCatalog, tokens, ref dataSourceTokens);
+
+      // Get the Persist Security Info.
+      bool persistSecurityInfo = true;
+      SetPersistSecurityInfo(ref persistSecurityInfo, tokens, ref dataSourceTokens);
+
+      // Get the User ID.
+      string userID = "";
+      SetUserID(ref userID, tokens, ref dataSourceTokens);
+
+      // Get the Password.
+      string password = "";
+      SetPassword(encryptPassword, ref password, tokens, ref dataSourceTokens);
+
+      // Set the user list.
+      this._dataSource = dataSource;
+      this._initialCatalogue = initialCatalog;
+      this._isPersistSecurityInfo = persistSecurityInfo;
+
+      // Update the user list.
+      UpdateUserList(encryptPassword, userID, password);
+
+    }
+
+    #endregion
+
+    #region Private properties
+
+    /// <summary>
+    /// Sets the datasource.
+    /// </summary>
+    /// <param name="dataSource">The data source.</param>
+    /// <param name="dataSourceTokens">The data source tokens.</param>
+    private static void SetDataSource(ref string dataSource, ref IEnumerable<string> dataSourceTokens) {
+
+      if (dataSourceTokens != null) {
+        if (dataSourceTokens.Count() == 1) {
+          foreach (var token in dataSourceTokens) {
             dataSource = token.Replace(Resources.Data_SqlServer_ConnectionDetails_DataSource, "");
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource);
         }
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource);
       }
 
-      #endregion
+    }
 
-      // Get the Initial Catalogue.
-      #region Initial Catalogue
+    /// <summary>
+    /// Sets the initial catalog.
+    /// </summary>
+    /// <param name="initialCatalog">The initial catalog.</param>
+    /// <param name="tokens">The connection string tokens.</param>
+    /// <param name="dataSourceTokens">The data source tokens.</param>
+    private static void SetInitialCatalog(ref string initialCatalog, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
-      selectedTokens = null;
-      selectedTokens =
+      dataSourceTokens = null;
+      dataSourceTokens =
         from token in tokens
-        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_InitialCatalogue)
+        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_InitialCatalog, StringComparison.Ordinal)
         select token;
 
-      if (selectedTokens != null) {
-        if (selectedTokens.Count() == 1) {
-          foreach (var token in selectedTokens) {
-            initialCatalogue = token.Replace(Resources.Data_SqlServer_ConnectionDetails_InitialCatalogue, "");
+      if (dataSourceTokens != null) {
+        if (dataSourceTokens.Count() == 1) {
+          foreach (var token in dataSourceTokens) {
+            initialCatalog = token.Replace(Resources.Data_SqlServer_ConnectionDetails_InitialCatalog, "");
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
         }
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
       }
 
-      #endregion
+    }
 
-      // Get the Persist Security Info.
-      #region Persist Security Info
+    /// <summary>
+    /// Sets the PersistSecurityInfo.
+    /// </summary>
+    /// <param name="persistSecurityInfo">The PersistSecurityInfo.</param>
+    /// <param name="tokens">The connection string tokens.</param>
+    /// <param name="dataSourceTokens">The data source tokens.</param>
+    private static void SetPersistSecurityInfo(ref bool persistSecurityInfo, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
-      selectedTokens = null;
-      selectedTokens =
+      dataSourceTokens = null;
+      dataSourceTokens =
         from token in tokens
-        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_PersistSecurityInfo)
+        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_PersistSecurityInfo, StringComparison.Ordinal)
         select token;
 
-      if (selectedTokens != null) {
-        if (selectedTokens.Count() == 1) {
-          foreach (var token in selectedTokens) {
+      if (dataSourceTokens != null) {
+        if (dataSourceTokens.Count() == 1) {
+          foreach (var token in dataSourceTokens) {
             persistSecurityInfo = bool.Parse(
-              token.Replace(Resources.Data_SqlServer_ConnectionDetails_PersistSecurityInfo, "").ToLower()
+              token.Replace(Resources.Data_SqlServer_ConnectionDetails_PersistSecurityInfo, "").ToLowerInvariant()
             );
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPersistSecurityInfo);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPersistSecurityInfo);
         }
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPersistSecurityInfo);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPersistSecurityInfo);
       }
 
-      #endregion
+    }
 
-      // Get the User ID.
-      #region User ID
+    /// <summary>
+    /// Sets the userID.
+    /// </summary>
+    /// <param name="userID">The UserID.</param>
+    /// <param name="tokens">The connection string tokens.</param>
+    /// <param name="dataSourceTokens">The data source tokens.</param>
+    private static void SetUserID(ref string userID, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
-      selectedTokens = null;
-      selectedTokens =
+      dataSourceTokens = null;
+      dataSourceTokens =
         from token in tokens
-        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetials_UserID)
+        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetials_UserID, StringComparison.Ordinal)
         select token;
 
-      if (selectedTokens != null) {
-        if (selectedTokens.Count() == 1) {
-          foreach (var token in selectedTokens) {
+      if (dataSourceTokens != null) {
+        if (dataSourceTokens.Count() == 1) {
+          foreach (var token in dataSourceTokens) {
             userID = token.Replace(Resources.Data_SqlServer_ConnectionDetials_UserID, "");
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingUserID);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingUserID);
         }
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingUserID);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingUserID);
       }
 
-      #endregion
+    }
 
-      // Get the Password.
-      #region Password
+    /// <summary>
+    /// Sets the password.
+    /// </summary>
+    /// <param name="encryptPassword">Indicates whether to encrypt the password or not.</param>
+    /// <param name="password">The password.</param>
+    /// <param name="tokens">The connection string tokens.</param>
+    /// <param name="dataSourceTokens">The data source tokens.</param>
+    private void SetPassword(bool encryptPassword, ref string password, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
-      selectedTokens = null;
-      selectedTokens =
+      dataSourceTokens = null;
+      dataSourceTokens =
         from token in tokens
-        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_Password)
+        where token.StartsWith(Resources.Data_SqlServer_ConnectionDetails_Password, StringComparison.Ordinal)
         select token;
 
-      if (selectedTokens != null) {
-        if (selectedTokens.Count() == 1) {
-          foreach (var token in selectedTokens) {
+      if (dataSourceTokens != null) {
+        if (dataSourceTokens.Count() == 1) {
+          foreach (var token in dataSourceTokens) {
             if (!encryptPassword) {
               password = token.Replace(Resources.Data_SqlServer_ConnectionDetails_Password, "");
             }
             else {
               // Use the base64 key to encrypt the password.
-              if (_base64Key == null || _base64Key == "") {
-                throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified);
+              if (string.IsNullOrEmpty(_base64Key)) {
+                throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified);
               }
               else {
                 CryptographicString.Key = Convert.FromBase64String(_base64Key);
                 // Use the base64 initialization vector to encrypt the password.
-                if (_base64InitializationVector == null || _base64InitializationVector == "") {
-                  throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified);
+                if (string.IsNullOrEmpty(_base64InitializationVector)) {
+                  throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified);
                 }
                 else {
                   CryptographicString.InitializationVector = Convert.FromBase64String(_base64InitializationVector);
@@ -425,28 +485,30 @@ namespace TupleGeo.General.Data.SqlServer {
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPassword);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPassword);
         }
       }
       else {
-        throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPassword);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingPassword);
       }
 
-      #endregion
+    }
 
-      // Set the user list.
-      #region User list
-
-      this._dataSource = dataSource;
-      this._initialCatalogue = initialCatalogue;
-      this._isPersistSecurityInfo = persistSecurityInfo;
+    /// <summary>
+    /// Get the <see cref="SqlServerUser"/>.
+    /// </summary>
+    /// <param name="encryptPassword">Indicates whether to encrypt the password or not.</param>
+    /// <param name="userID">The UserID.</param>
+    /// <param name="password">The password.</param>
+    private void UpdateUserList(bool encryptPassword, string userID, string password) {
 
       // Check if the user already exists in the users list.
-
       var users =
         from user in this._sqlServerUserList
         where user.Username == userID
         select user;
+
+      SqlServerUser sqlServerUser;
 
       if (users != null) {
         if (users.Count() == 0) {
@@ -466,7 +528,7 @@ namespace TupleGeo.General.Data.SqlServer {
           }
         }
         else {
-          throw new Exception(Resources.Data_SqlServer_ConnectionDetails_ExceptionUniqueUserIDNotFound);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionUniqueUserIDNotFound);
         }
       }
       else {
@@ -479,12 +541,10 @@ namespace TupleGeo.General.Data.SqlServer {
         this._sqlServerUserList.Add(sqlServerUser);
       }
 
-      #endregion
-      
     }
 
     #endregion
-    
+
   }
 
 }

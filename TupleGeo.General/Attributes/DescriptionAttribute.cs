@@ -108,6 +108,10 @@ namespace TupleGeo.General.Attributes {
     /// </remarks>
     public static string GetEnumeratedValueDescriptionAttribute(object enumValue) {
 
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
+
       string description = "";
 
       Type type = enumValue.GetType();

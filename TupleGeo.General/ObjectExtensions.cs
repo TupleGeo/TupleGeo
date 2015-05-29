@@ -20,6 +20,7 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using TupleGeo.General.Properties;
+using System.Globalization;
 
 #endregion
 
@@ -36,37 +37,42 @@ namespace TupleGeo.General {
     /// Gets a <see cref="string"/> representation of the value of a
     /// specified property of an object.
     /// </summary>
-    /// <param name="object">The object whose property value will be got.</param>
+    /// <param name="value">The object whose property value will be got.</param>
     /// <param name="propertyName">The name pf the property of the object.</param>
     /// <returns>A <see cref="string"/> with the converted value.</returns>
-    public static string GetPropertyValueString(this object @object, string propertyName) {
-      PropertyInfo propertyInfo = @object.GetType().GetProperty(propertyName);
+    public static string GetPropertyValueString(this object value, string propertyName) {
+
+      if (propertyName == null) {
+        throw new ArgumentNullException(propertyName);
+      }
+
+      PropertyInfo propertyInfo = value.GetType().GetProperty(propertyName);
 
       if (propertyInfo.PropertyType == typeof(string)) {
         // String.
-        return Convert.ToString(propertyInfo.GetValue(@object, null));
+        return Convert.ToString(propertyInfo.GetValue(value, null), CultureInfo.InvariantCulture);
       }
       else if (propertyInfo.PropertyType.IsPrimitive) {
         // Primitive type.
-        return Convert.ToString(propertyInfo.GetValue(@object, null));
+        return Convert.ToString(propertyInfo.GetValue(value, null), CultureInfo.InvariantCulture);
       }
       else if (propertyInfo.PropertyType.IsGenericType) {
         // Generic type.
         Type[] genericArgs = propertyInfo.PropertyType.GetGenericArguments();
         if (genericArgs.Length == 1) {
           if (genericArgs[0].IsPrimitive) {
-            return Convert.ToString(propertyInfo.GetValue(@object, null));
+            return Convert.ToString(propertyInfo.GetValue(value, null), CultureInfo.InvariantCulture);
           }
           else {
-            throw new Exception(Resources.General_PropertyNullableTypeIsNotOfAPrimitiveType);
+            throw new GeneralException(Resources.General_PropertyNullableTypeIsNotOfAPrimitiveType);
           }
         }
         else {
-          throw new Exception(Resources.General_PropertyHasMoreThanOneGenericArguments);
+          throw new GeneralException(Resources.General_PropertyHasMoreThanOneGenericArguments);
         }
       }
       else {
-        throw new Exception(Resources.General_PropertyCouldNotConvertValueToString);
+        throw new GeneralException(Resources.General_PropertyCouldNotConvertValueToString);
       }
     }
 

@@ -131,7 +131,7 @@ namespace TupleGeo.General.Text {
     /// <param name="current">The current <see cref="char"/>.</param>
     /// <returns>Returns a <see cref="bool"/>.</returns>
     private static bool ReadAhead(char current) {
-      return CharReadAhead.IndexOf(char.ToLower(current)) >= 0;
+      return CharReadAhead.IndexOf(char.ToLower(current, CultureInfo.InvariantCulture)) >= 0;
     }
 
     /// <summary>
@@ -146,9 +146,9 @@ namespace TupleGeo.General.Text {
       string result = null;
       if (mode == GreekToLatinConversionMode.MixedCase) {
         bool upperCase = char.IsUpper(current);
-        MapSingleDictionary.TryGetValue(char.ToLower(current), out result);
+        MapSingleDictionary.TryGetValue(char.ToLower(current, CultureInfo.InvariantCulture), out result);
         if (result != null && upperCase) {
-          result = char.ToUpper(result[0]) + result.Substring(1);
+          result = char.ToUpper(result[0], CultureInfo.InvariantCulture) + result.Substring(1);
         }
       }
       else {
@@ -190,7 +190,7 @@ namespace TupleGeo.General.Text {
         }
 
         if (result != null && upperCase) {
-          result = char.ToUpper(result[0]) + result.Substring(1);
+          result = char.ToUpper(result[0], CultureInfo.InvariantCulture) + result.Substring(1);
         }
       }
       else {

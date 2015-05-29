@@ -120,19 +120,19 @@ namespace TupleGeo.General {
     /// <summary>
     /// Normalizes the punctuated Greek characters of a string to non punctuated Greek characters.
     /// </summary>
-    /// <param name="s">
+    /// <param name="greek">
     /// The string which chars will be normalized.
     /// </param>
     /// <returns>A string containing non punctuated Greek characters.</returns>
-    public static string NormalizeGreekChars(this string s) {
-      char[] chars = new char[s.Length];
+    public static string NormalizeGreekChars(this string greek) {
+      char[] chars = new char[greek.Length];
 
-      for (int i = 0; i < s.Length; i++) {
+      for (int i = 0; i < greek.Length; i++) {
         try {
-          chars[i] = greekNormalizedChars[s[i]];
+          chars[i] = greekNormalizedChars[greek[i]];
         }
         catch (KeyNotFoundException) {
-          chars[i] = s[i];
+          chars[i] = greek[i];
         }
       }
 

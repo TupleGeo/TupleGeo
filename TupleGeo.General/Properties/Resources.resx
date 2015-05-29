@@ -156,7 +156,7 @@
   <data name="Data_SqlServer_ConnectionDetails_ExceptionUserIDNotSpecified" xml:space="preserve">
     <value>UserID not specified.</value>
   </data>
-  <data name="Data_SqlServer_ConnectionDetails_InitialCatalogue" xml:space="preserve">
+  <data name="Data_SqlServer_ConnectionDetails_InitialCatalog" xml:space="preserve">
     <value>Initial Catalog=</value>
   </data>
   <data name="Data_SqlServer_ConnectionDetails_Password" xml:space="preserve">

@@ -39,8 +39,12 @@ namespace TupleGeo.General.FileSystem {
     /// <param name="path">The string representing the path.</param>
     /// <returns>A string representing the path with the added backslash.</returns>
     /// <remarks>If the path ends with a backslash the method returns the path as it is.</remarks>
-    public static string AddBackSlashToPath(string path) {
-      if (path.LastIndexOf("\\") == path.Length - 1) {
+    public static string AddBackslashToPath(string path) {
+      if (string.IsNullOrEmpty(path)) {
+        throw new ArgumentException("string could not be NULL or Empty.", "path");
+      }
+      
+      if (path.LastIndexOf("\\", StringComparison.OrdinalIgnoreCase) == path.Length - 1) {
         return path;
       }
       else {
@@ -55,7 +59,11 @@ namespace TupleGeo.General.FileSystem {
     /// <returns>A string representing the path with the added slash.</returns>
     /// <remarks>If the path ends with a slash the method returns the path as it is.</remarks>
     public static string AddSlashToPath(string path) {
-      if (path.LastIndexOf("/") == path.Length - 1) {
+      if (string.IsNullOrEmpty(path)) {
+        throw new ArgumentException("string could not be NULL or Empty.", "path");
+      }
+
+      if (path.LastIndexOf("/", StringComparison.OrdinalIgnoreCase) == path.Length - 1) {
         return path;
       }
       else {
@@ -72,11 +80,15 @@ namespace TupleGeo.General.FileSystem {
     /// In case the path is the full path to a file, the path returned is that storing the file.
     /// </remarks>
     public static string GetParentPath(string path) {
+      if (string.IsNullOrEmpty(path)) {
+        throw new ArgumentException("string could not be NULL or Empty.", "path");
+      }
+
       char[] pathDelimiters = new char[2] { '\\', '/' };
       string parentPath = "";
 
       // Check if last character is slash or backslash.
-      if (path.EndsWith("\\") || path.EndsWith("//")) {
+      if (path.EndsWith("\\", StringComparison.OrdinalIgnoreCase) || path.EndsWith("//", StringComparison.OrdinalIgnoreCase)) {
         int index = path.Substring(0, path.Length - 2).LastIndexOfAny(pathDelimiters);
         if (index > -1) {
           parentPath = path.Substring(0, index);

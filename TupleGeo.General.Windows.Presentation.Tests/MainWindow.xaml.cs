@@ -26,7 +26,8 @@ namespace TupleGeo.General.Windows.Presentation.Tests {
     /// </summary>
     public MainWindow() {
       InitializeComponent();
-      this.DataContext = new Test1ViewModel();
+      this.Test1Grid.DataContext = new Test1ViewModel();
+      this.Test2Grid.DataContext = new Test2ViewModel();
     }
 
     /// <summary>
@@ -37,6 +38,16 @@ namespace TupleGeo.General.Windows.Presentation.Tests {
     private void Test1GetCurrentValueButton_Click(object sender, RoutedEventArgs e) {
       Test1ViewModel viewModel = (Test1ViewModel)this.Test1Grid.DataContext;
       MessageBox.Show(viewModel.Test1Model.CoffeeType.ToString());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void Test2GetCurrentValueButton_Click(object sender, RoutedEventArgs e) {
+      Test2ViewModel viewModel = (Test2ViewModel)this.Test2Grid.DataContext;
+      MessageBox.Show(viewModel.Test2Model.CurrentCoffeeType.ToString());
     }
 
   }

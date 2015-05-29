@@ -63,6 +63,8 @@
     <Compile Include="ResourceDescription\CoffeeType.cs" />
     <Compile Include="ResourceDescription\Test1Model.cs" />
     <Compile Include="ResourceDescription\Test1ViewModel.cs" />
+    <Compile Include="ResourceDescription\Test2Model.cs" />
+    <Compile Include="ResourceDescription\Test2ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

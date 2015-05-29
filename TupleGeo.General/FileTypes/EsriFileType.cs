@@ -28,13 +28,14 @@ namespace TupleGeo.General.FileTypes {
   /// <summary>
   /// Types of vector files.
   /// </summary>
-  [SerializableAttribute()]
+  [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Esri"), SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  public enum EsriFileTypes {
+  public enum EsriFileType {
 
     /// <summary>
     /// ESRI ArcMap map document file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mxd")]
     [XmlEnumAttribute("mxd")]
     [DescriptionAttribute("ESRI ArcMap map document file format")]
     [DescriptionAttribute("Μορφότυπος αρχείου χάρτη ArcMap.", "el-GR")]
@@ -43,6 +44,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Adobe Illustrator graphics file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Mxt")]
     [XmlEnumAttribute("mxt")]
     [DescriptionAttribute("ESRI ArcMap map document template file format")]
     [DescriptionAttribute("Μορφότυπος φόρμας χάρτη ArcMap.", "el-GR")]
@@ -51,6 +53,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Polygon Attribute Table file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
     [XmlEnumAttribute("pat_ArcInfo")]
     [DescriptionAttribute("Polygon Attribute Table file format")]
     Pat_ArcInfo,
@@ -58,6 +61,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// ESRI Shapefile format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Shp")]
     [XmlEnumAttribute("shp")]
     [DescriptionAttribute("ESRI Shapefile format")]
     Shp,

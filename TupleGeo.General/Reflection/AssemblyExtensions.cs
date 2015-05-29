@@ -16,6 +16,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -43,6 +44,10 @@ namespace TupleGeo.General.Reflection {
     /// An IEmumerable of <see cref="Type"/> with <see cref="Type">types</see> implementing the specified interface.
     /// </returns>
     public static IEnumerable<Type> GetExportedTypes(this Assembly assembly, Type interfaceType) {
+      if (interfaceType == null) {
+        throw new ArgumentNullException("interfaceType");
+      }
+
       // Get the public types of the assembly implementing the interfaceType.
       IEnumerable<Type> types =
         from exportedT in assembly.GetExportedTypes()
@@ -67,11 +72,11 @@ namespace TupleGeo.General.Reflection {
     /// will return null and raise an error.
     /// </remarks>
     public static object CreateInstance(this Assembly assembly, Type interfaceType) {
-      object instance = null;
-
       if (interfaceType == null) {
         throw new ArgumentNullException("interfaceType");
       }
+
+      object instance = null;
 
       // Get the public types of the assembly implementing the interfaceType.
       IEnumerable<Type> types =
@@ -89,6 +94,7 @@ namespace TupleGeo.General.Reflection {
         else {
           throw new ArgumentException(
             string.Format(
+              CultureInfo.InvariantCulture,
               Resources.Reflection_AssemblyExtensions_ExceptionTypeNotFoundOrMoreThanOneTypesFoundInAssembly,
               interfaceType.Name
             ),
@@ -99,6 +105,7 @@ namespace TupleGeo.General.Reflection {
       else {
         throw new ArgumentException(
           string.Format(
+            CultureInfo.InvariantCulture,
             Resources.Reflection_AssemblyExtensions_ExceptionTypeNotFoundInAssembly,
             interfaceType.Name
           ),

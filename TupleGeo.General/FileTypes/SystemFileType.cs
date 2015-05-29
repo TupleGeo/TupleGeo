@@ -34,7 +34,7 @@ namespace TupleGeo.General.FileTypes {
   /// </summary>
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  public enum SystemFileTypes {
+  public enum SystemFileType {
     
 
 //.adm	Administrative Template File	 	No
@@ -42,6 +42,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Windows Animated Cursor file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ani")]
     [XmlEnumAttribute("ani")]
     [DescriptionAttribute("Windows Animated Cursor file format")]
     Ani,
@@ -92,6 +93,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Icon file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ico")]
     [XmlEnumAttribute("ico")]
     [DescriptionAttribute("Icon file format")]
     Ico,

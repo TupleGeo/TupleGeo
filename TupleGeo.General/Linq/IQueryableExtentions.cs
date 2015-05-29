@@ -1,6 +1,6 @@
 ﻿
 #region Header
-// Title Name       : IQueyrableExtentions
+// Title Name       : IQueryableExtentions
 // Member of        : TupleGeo.General.dll
 // Description      : Provides extension methods for IQueryable<T>.
 // Created by       : 13/05/2009, 00:59, Vasilis Vlastaras.
@@ -28,7 +28,7 @@ namespace TupleGeo.General.Linq {
   /// <summary>
   /// Provides extension methods for <see cref="IQueryable{TEntity}"/>.
   /// </summary>
-  public static class IQueyrableExtentions {
+  public static class IQueryableExtentions {
 
     #region Public Methods
 
@@ -43,6 +43,10 @@ namespace TupleGeo.General.Linq {
       this IQueryable<TEntity> source,
       string orderByProperty
     ) where TEntity : class {
+
+      if (string.IsNullOrEmpty(orderByProperty)) {
+        throw new ArgumentException("The string could not be NULL or Empty.", "orderByProperty");
+      }
 
       var type = typeof(TEntity);
 
@@ -76,6 +80,10 @@ namespace TupleGeo.General.Linq {
       this IQueryable<TEntity> source,
       string orderByProperty
     ) where TEntity : class {
+
+      if (string.IsNullOrEmpty(orderByProperty)) {
+        throw new ArgumentException("The string could not be NULL or Empty.", "orderByProperty");
+      }
 
       var type = typeof(TEntity);
 

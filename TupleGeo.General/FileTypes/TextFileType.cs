@@ -33,7 +33,7 @@ namespace TupleGeo.General.FileTypes {
   /// <summary>
   /// Types of text files.
   /// </summary>
-  public enum TextFileTypes {
+  public enum TextFileType {
     
 //.1st	Readme File	 	No
 //.abw	AbiWord Document	 	No
@@ -120,6 +120,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Hypertext markup language file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Htm")]
     [XmlEnumAttribute("htm")]
     [DescriptionAttribute("Hypertext markup language file format")]
     [DescriptionAttribute("Αρχείο υπερκειμένου", "el-GR")]

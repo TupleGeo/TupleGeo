@@ -53,7 +53,12 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="type">The <see cref="Type"/> to be used.</param>
     public EnumDescriptionConverter(Type type)
-      : base(type.GetType()) {
+      : base(type) {
+
+      if (type == null) {
+        throw new ArgumentNullException("type", "An EnumDescriptionConverter could not be initialized for a NULL type.");
+      }
+
       _type = type;
     }
 
@@ -93,6 +98,14 @@ namespace TupleGeo.General.ComponentModel {
     /// a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Enum enumValue, string culture) {
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
+
+      if (string.IsNullOrEmpty(culture)) {
+        throw new ArgumentException("Culture could not be NULL or Empty.", "culture");
+      }
+
       string enumValueString = enumValue.ToString();
 
       FieldInfo fi = enumValue.GetType().GetField(enumValueString);
@@ -150,6 +163,18 @@ namespace TupleGeo.General.ComponentModel {
     /// a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Type type, string name, string culture) {
+      if (type == null) {
+        throw new ArgumentNullException("type");
+      }
+
+      if (string.IsNullOrEmpty(name)) {
+        throw new ArgumentException("Name could not be NULL or Empty", "name");
+      }
+
+      if (string.IsNullOrEmpty(culture)) {
+        throw new ArgumentException("Culture could not be NULL or Empty", "culture");
+      }
+
       FieldInfo fi = type.GetField(name);
 
       TupleGeo.General.Attributes.DescriptionAttribute[] attributes =
@@ -188,6 +213,9 @@ namespace TupleGeo.General.ComponentModel {
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Enum enumValue) {
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
       return GetEnumDescriptions(enumValue.GetType());
     }
 
@@ -209,6 +237,10 @@ namespace TupleGeo.General.ComponentModel {
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Enum enumValue, string culture) {
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
+
       return GetEnumDescriptions(enumValue.GetType(), culture);
     }
 
@@ -284,6 +316,14 @@ namespace TupleGeo.General.ComponentModel {
     /// An <see cref="object"/> containing the value or the description if it was not found.
     /// </returns>
     public static object GetEnumValue(Type type, string description) {
+      if (type == null) {
+        throw new ArgumentNullException("type");
+      }
+
+      if (string.IsNullOrEmpty(description)) {
+        throw new ArgumentException("Description could not be NULL or Empty.", "description");
+      }
+
       FieldInfo[] fis = type.GetFields();
       foreach (FieldInfo fi in fis) {
         TupleGeo.General.Attributes.DescriptionAttribute[] attributes = (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
@@ -317,6 +357,9 @@ namespace TupleGeo.General.ComponentModel {
       CultureInfo culture,
       object value
     ) {
+      if (value == null) {
+        throw new ArgumentNullException("value");
+      }
       if (value is string) {
         return GetEnumValue(_type, (string)value);
       }
@@ -341,10 +384,11 @@ namespace TupleGeo.General.ComponentModel {
     ) {
       
       if (value is Enum && destinationType == typeof(string)) {
+        Enum enumValue = (Enum)value;
         if (culture != null) {
-          return GetEnumDescription((Enum)value, culture.ToString());
+          return GetEnumDescription(enumValue, culture.ToString());
         }
-        return GetEnumDescription((Enum)value);
+        return GetEnumDescription(enumValue);
       }
       
       if (value is string && destinationType == typeof(string)) {

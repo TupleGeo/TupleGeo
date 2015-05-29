@@ -30,7 +30,7 @@ namespace TupleGeo.General.FileTypes {
   /// </summary>
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  public enum ExecutableFileTypes {
+  public enum ExecutableFileType {
 
     /// <summary>
     /// Dynamic link library file type.

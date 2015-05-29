@@ -62,28 +62,31 @@
     <Compile Include="ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="ComponentModel\EnumNameDescriptionPair.cs" />
     <Compile Include="ComponentModel\ObservableObjectOfT.cs" />
+    <Compile Include="GeneralException.cs" />
     <Compile Include="Data\FilterType.cs" />
+    <Compile Include="Data\SqlServer\ConnectionDetailsException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\CryptographicStringException.cs" />
     <Compile Include="Utilities\MimeTypesHelper.cs" />
     <Compile Include="Utilities\UniqueCheckedItemsGroup.cs" />
     <None Include="Data\Linq\TableExtensions.cs" />
     <Compile Include="Data\SqlServer\ConnectionDetails.cs" />
     <Compile Include="Data\SqlServer\SqlServerUser.cs" />
     <Compile Include="FileSystem\PathsUtility.cs" />
-    <Compile Include="FileTypes\EsriFileTypes.cs" />
-    <Compile Include="FileTypes\ExecutableFileTypes.cs" />
-    <Compile Include="FileTypes\RasterFileTypes.cs" />
-    <Compile Include="FileTypes\SystemFileTypes.cs" />
-    <Compile Include="FileTypes\TextFileTypes.cs" />
-    <Compile Include="FileTypes\VectorFileTypes.cs" />
+    <Compile Include="FileTypes\EsriFileType.cs" />
+    <Compile Include="FileTypes\ExecutableFileType.cs" />
+    <Compile Include="FileTypes\RasterFileType.cs" />
+    <Compile Include="FileTypes\SystemFileType.cs" />
+    <Compile Include="FileTypes\TextFileType.cs" />
+    <Compile Include="FileTypes\VectorFileType.cs" />
     <Compile Include="IValidation.cs" />
     <None Include="Linq\IEnumerableExtensions.cs" />
-    <Compile Include="Linq\IQueyrableExtentions.cs" />
+    <Compile Include="Linq\IQueryableExtentions.cs" />
     <Compile Include="ObjectExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -105,7 +108,7 @@
     <Compile Include="StringExtensions.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Text\CodePages.cs" />
+    <Compile Include="Text\CodePage.cs" />
     <Compile Include="Text\GreekToLatinConversionMode.cs" />
     <Compile Include="Text\GreekToLatinTranscribe.cs" />
     <None Include="Utilities\Utilities.cd" />

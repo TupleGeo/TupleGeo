@@ -39,25 +39,25 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets all matching custom attributes for a specified object based on specified attribute type.
     /// </summary>
-    /// <param name="object">The object that is used to find attached attributes.</param>
+    /// <param name="value">The object that is used to find attached attributes.</param>
     /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
     /// <returns>
     /// An <see cref="object"/> array containing the attributes found.
     /// </returns>
-    public static object[] GetMatchingCustomAttributes(object @object, Type attributeType) {
-      return TypeDescriptor.GetReflectionType(@object).GetCustomAttributes(attributeType, false);
+    public static object[] GetMatchingCustomAttributes(object value, Type attributeType) {
+      return TypeDescriptor.GetReflectionType(value).GetCustomAttributes(attributeType, false);
     }
 
     /// <summary>
     /// Gets all matching attributes for a specified object based on specified attribute type.
     /// </summary>
-    /// <param name="object">The object that is used to find attached attributes.</param>
+    /// <param name="value">The object that is used to find attached attributes.</param>
     /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
     /// <returns>
     /// An <see cref="object"/> array containing the attributes found.
     /// </returns>
-    public static object[] GetMatchingAttributes(object @object, Type attributeType) {
-      AttributeCollection attributeCollection = TypeDescriptor.GetAttributes(@object);
+    public static object[] GetMatchingAttributes(object value, Type attributeType) {
+      AttributeCollection attributeCollection = TypeDescriptor.GetAttributes(value);
       List<object> attributesList = new List<object>();
       for (int i = 0; i < attributeCollection.Count; i++) {
         if (attributeCollection[i].GetType() == attributeType) {
@@ -97,7 +97,14 @@ namespace TupleGeo.General.Attributes {
     /// An <see cref="object"/> array containing the matching attributes.
     /// </returns>
     public static object[] GetMatchingEnumeratedValueAttributes(object enumValue, Type attributeType) {
-      AttributeCollection attributes = TypeDescriptor.GetAttributes(enumValue);
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
+
+      if (attributeType == null) {
+        throw new ArgumentNullException("attributeType");
+      }
+
       Type type = enumValue.GetType();
 
       object[] enumeratedFieldAttributes = TypeDescriptor.GetReflectionType(type).GetField(
@@ -110,12 +117,12 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the first matching custom attribute for a specified object based on a specified attribute type.
     /// </summary>
-    /// <param name="object">The object that is used to find the attached attribute.</param>
+    /// <param name="value">The object that is used to find the attached attribute.</param>
     /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
     /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
-    public static object GetFirstMatchingCustomAttribute(object @object, Type attributeType) {
+    public static object GetFirstMatchingCustomAttribute(object value, Type attributeType) {
       object attribute = null;
-      object[] attributes = TypeDescriptor.GetReflectionType(@object).GetCustomAttributes(attributeType, false);
+      object[] attributes = TypeDescriptor.GetReflectionType(value).GetCustomAttributes(attributeType, false);
       if (attributes != null) {
         if (attributes.Length > 0) {
           attribute = attributes[0];
@@ -144,12 +151,12 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the first matching attribute for a specified object based on a specified attribute type.
     /// </summary>
-    /// <param name="object">The object that is used to find the attached attribute.</param>
+    /// <param name="value">The object that is used to find the attached attribute.</param>
     /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
     /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
-    public static object GetFirstMatchingAttribute(object @object, Type attributeType) {
+    public static object GetFirstMatchingAttribute(object value, Type attributeType) {
       object attribute = null;
-      AttributeCollection attributes = TypeDescriptor.GetAttributes(@object);
+      AttributeCollection attributes = TypeDescriptor.GetAttributes(value);
       for (int i = 0; i < attributes.Count; i++) {
         if (attributes[i].GetType() == attributeType) {
           attribute = attributes[i];
@@ -186,7 +193,14 @@ namespace TupleGeo.General.Attributes {
     /// <param name="attributeType">The <see cref="Type"/> of the attribute.</param>
     /// <returns>An <see cref="object"/> containing the matching attribute.</returns>
     public static object GetFirstMatchingEnumeratedValueAttribute(object enumValue, Type attributeType) {
-      AttributeCollection attributes = TypeDescriptor.GetAttributes(enumValue);
+      if (enumValue == null) {
+        throw new ArgumentNullException("enumValue");
+      }
+
+      if (attributeType == null) {
+        throw new ArgumentNullException("attributeType");
+      }
+
       Type type = enumValue.GetType();
 
       object[] enumeratedFieldAttributes = TypeDescriptor.GetReflectionType(type).GetField(

@@ -43,16 +43,14 @@ namespace TupleGeo.General.Utilities {
     public static string GetMimeType(string fileExtension) {
       string mimeType = "application/unknown";
 
-      if (fileExtension != null) {
-        if (fileExtension != string.Empty) {
-          RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(fileExtension);
+      if (!string.IsNullOrEmpty(fileExtension)) {
+        RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(fileExtension);
 
-          if (regKey != null && regKey.GetValue("Content Type") != null) {
-            mimeType = regKey.GetValue("Content Type").ToString();
-          }
+        if (regKey != null && regKey.GetValue("Content Type") != null) {
+          mimeType = regKey.GetValue("Content Type").ToString();
         }
       }
-
+      
       return mimeType;
     }
 

@@ -180,9 +180,9 @@ namespace TupleGeo.General.Properties {
         /// <summary>
         ///   Looks up a localized string similar to Initial Catalog=.
         /// </summary>
-        internal static string Data_SqlServer_ConnectionDetails_InitialCatalogue {
+        internal static string Data_SqlServer_ConnectionDetails_InitialCatalog {
             get {
-                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_InitialCatalogue", resourceCulture);
+                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_InitialCatalog", resourceCulture);
             }
         }
         

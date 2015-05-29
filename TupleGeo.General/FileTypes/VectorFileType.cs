@@ -47,11 +47,10 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Adobe Illustrator graphics file format.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Ai")]
     [XmlEnumAttribute("ai")]
     [DescriptionAttribute("Adobe Illustrator graphics file format")]
     [DescriptionAttribute("Μορφότυπος αρχείου γραφικών Adobe Illustrator", "el-GR")]
-    Ai,
+    AI,
     
     /// <summary>
     /// Adobe Illustrator template file format.
@@ -201,7 +200,7 @@ namespace TupleGeo.General.FileTypes {
     /// </summary>
     [XmlEnumAttribute("do")]
     [DescriptionAttribute("Digital Line Graph optional vector data file format")]
-    Do,
+    DO,
 
     /// <summary>
     /// Vector file format.
@@ -277,11 +276,9 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Image file format.
     /// </summary>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1709:IdentifiersShouldBeCasedCorrectly", MessageId = "Fh")]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Fh")]
     [XmlEnumAttribute("fh")]
     [DescriptionAttribute("Image file format")]
-    Fh,
+    FH,
 
     /// <summary>
     /// Adobe FreeHand 10 drawing file format.
@@ -427,72 +424,75 @@ namespace TupleGeo.General.FileTypes {
     /// Corel vector pattern file format.
     /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1707:IdentifiersShouldNotContainUnderscores")]
-    [XmlEnumAttribute("pat_Corel")]
+    [XmlEnumAttribute("patCorel")]
     [DescriptionAttribute("Corel vector pattern file format")]
-    Pat_Corel,
+    PatCorel,
     
     /// <summary>
     /// Pattern Maker Cross-Stitch Pattern file format.
     /// </summary>
-    [XmlEnumAttribute("pat_PatternMaker")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1702:CompoundWordsShouldBeCasedCorrectly", MessageId = "PatternMaker")]
+    [XmlEnumAttribute("patPatternMaker")]
     [DescriptionAttribute("Pattern Maker Cross-Stitch Pattern file format")]
-    Pat_PatternMaker,
+    PatPatternMaker,
     
     /// <summary>
     /// PatternSmith Cutting Pattern file format.
     /// </summary>
-    [XmlEnumAttribute("pat_PatternSmith")]
+    [XmlEnumAttribute("patPatternSmith")]
     [DescriptionAttribute("PatternSmith Cutting Pattern file format")]
-    Pat_PatternSmith,
+    PatPatternSmith,
     
     /// <summary>
     /// Polygon Attribute Table file format.
     /// </summary>
-    [XmlEnumAttribute("pat_ArcInfo")]
+    [XmlEnumAttribute("patArcInfo")]
     [DescriptionAttribute("Polygon Attribute Table file format")]
-    Pat_ArcInfo,
+    PatArcInfo,
     
     /// <summary>
     /// Vector Pattern file format.
     /// </summary>
-    [XmlEnumAttribute("pat_VectorPattern")]
+    [XmlEnumAttribute("patVectorPattern")]
     [DescriptionAttribute("Vector Pattern file format")]
-    Pat_VectorPattern,
+    PatVectorPattern,
     
     /// <summary>
     /// Corel Paint Shop Pro Pattern Image File.
     /// </summary>
-    [XmlEnumAttribute("pat_PaintShop")]
+    [XmlEnumAttribute("patPaintShop")]
     [DescriptionAttribute("Corel Paint Shop Pro Pattern Image File")]
-    Pat_PaintShop,
+    PatPaintShop,
     
     /// <summary>
     /// PCStitch Pattern file format.
     /// </summary>
-    [XmlEnumAttribute("pat_PCStitch")]
+    [XmlEnumAttribute("patPCStitch")]
     [DescriptionAttribute("PCStitch Pattern file format")]
-    Pat_PCStitch,
+    PatPCStitch,
     
     /// <summary>
     /// Smash Simulator Test Pattern file format.
     /// </summary>
-    [XmlEnumAttribute("pat_SmashSimulator")]
+    [XmlEnumAttribute("patSmashSimulator")]
     [DescriptionAttribute("Smash Simulator Test Pattern file format")]
-    Pat_SmashSimulator,
+    PatSmashSimulator,
     
     /// <summary>
     /// Cadterns Sloper file format.
     /// </summary>
-    [XmlEnumAttribute("pat_Cadterns")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Cadterns")]
+    [XmlEnumAttribute("patCadterns")]
     [DescriptionAttribute("Cadterns Sloper file format")]
-    Pat_Cadterns,
+    PatCadterns,
     
     /// <summary>
     /// Orchida Embroidery System file format.
     /// </summary>
-    [XmlEnumAttribute("pat_Orchida")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Orchida")]
+    [XmlEnumAttribute("patOrchida")]
     [DescriptionAttribute("Orchida Embroidery System file format")]
-    Pat_Orchida,
+    PatOrchida,
     
     /// <summary>
     /// Apple Macintosh QuickDraw/PICT bitmap graphics file format.
@@ -513,16 +513,16 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Image Systems vector file format.
     /// </summary>
-    [XmlEnumAttribute("pix_ImageSystems")]
+    [XmlEnumAttribute("pixImageSystems")]
     [DescriptionAttribute("Image Systems vector file format")]
-    Pix_ImageSystems,
+    PixImageSystems,
     
     /// <summary>
     /// Inset Systems raster and vector file format.
     /// </summary>
-    [XmlEnumAttribute("pix_InsetSystems")]
+    [XmlEnumAttribute("pixInsetSystems")]
     [DescriptionAttribute("Inset Systems raster & vector file format")]
-    Pix_InsetSystems,
+    PixInsetSystems,
     
     /// <summary>
     /// Hewlett Packard Graphics Language plotter file format.
@@ -553,21 +553,24 @@ namespace TupleGeo.General.FileTypes {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Ps")]
     [XmlEnumAttribute("ps")]
     [DescriptionAttribute("PostScript file format")]
-    Ps,
+    PS,
 
     /// <summary>
     /// Amidraw vector image file format.
     /// </summary>
-    [XmlEnumAttribute("sdw_Amidraw")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Sdw")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Amidraw")]
+    [XmlEnumAttribute("sdwAmidraw")]
     [DescriptionAttribute("Amidraw vector image file format")]
-    Sdw_Amidraw,
+    SdwAmidraw,
     
     /// <summary>
     /// WordPro drawing file format.
     /// </summary>
-    [XmlEnumAttribute("sdw_WordPro")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Sdw")]
+    [XmlEnumAttribute("sdwWordPro")]
     [DescriptionAttribute("WordPro drawing file format")]
-    Sdw_WordPro,
+    SdwWordPro,
     
     /// <summary>
     /// ESRI Shapefile format.
@@ -591,7 +594,7 @@ namespace TupleGeo.General.FileTypes {
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Sp")]
     [XmlEnumAttribute("sp")]
     [DescriptionAttribute("SignPlot output file format")]
-    Sp,
+    SP,
     
     /// <summary>
     /// FutureSplash Movie file format.
@@ -603,6 +606,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Stereo Lithographic data file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Stl")]
     [XmlEnumAttribute("stl")]
     [DescriptionAttribute("Stereo Lithographic data file format")]
     Stl,

@@ -68,22 +68,16 @@ namespace TupleGeo.General.Attributes {
       get {
         return _description;
       }
-      set {
-        _description = value;
-      }
     }
 
     private string _culture;
 
     /// <summary>
-    /// Gets / Sets the Culture.
+    /// Gets the Culture.
     /// </summary>
     public string Culture {
       get {
         return _culture;
-      }
-      set {
-        _culture = value;
       }
     }
 

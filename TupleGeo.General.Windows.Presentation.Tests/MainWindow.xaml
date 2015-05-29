@@ -19,7 +19,7 @@
       </ObjectDataProvider.MethodParameters>
     </ObjectDataProvider>
     
-    <rc:CoffeeResources x:Key="resource" />
+    <!--<rc:CoffeeResources x:Key="resource" />-->
     <conv:EnumToResourceDescriptionConverter x:Key="enumItemsConverter" />
   </Window.Resources>
 
@@ -69,7 +69,7 @@
 
               <ComboBox.ItemTemplate>
                 <DataTemplate>
-                  <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture} }"
+                  <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter} }"
                          Height="Auto"
                          Margin="0"
                          VerticalAlignment="Center" />
@@ -116,11 +116,11 @@
                       SelectedItem="{Binding Path=Test2Model.CurrentCoffeeType, Mode=TwoWay}"
                       VerticalAlignment="Top">
 
-              <!--, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture}-->
+              <!--, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture}-->
 
               <ComboBox.ItemTemplate>
                 <DataTemplate>
-                  <Label Content="{Binding Path=., Mode=OneWay, Converter={StaticResource enumItemsConverter}, ConverterParameter={StaticResource resource}, ConverterCulture={x:Static glob:CultureInfo.CurrentUICulture} }"
+                  <Label Content="{Binding Path=., Mode=OneWay }"
                          Height="Auto"
                          Margin="0"
                          VerticalAlignment="Center" />

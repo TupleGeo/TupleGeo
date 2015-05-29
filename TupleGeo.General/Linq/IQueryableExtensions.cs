@@ -1,6 +1,6 @@
 ﻿
 #region Header
-// Title Name       : IQueryableExtentions
+// Title Name       : IQueryableExtensions
 // Member of        : TupleGeo.General.dll
 // Description      : Provides extension methods for IQueryable<T>.
 // Created by       : 13/05/2009, 00:59, Vasilis Vlastaras.
@@ -28,7 +28,7 @@ namespace TupleGeo.General.Linq {
   /// <summary>
   /// Provides extension methods for <see cref="IQueryable{TEntity}"/>.
   /// </summary>
-  public static class IQueryableExtentions {
+  public static class IQueryableExtensions {
 
     #region Public Methods
 

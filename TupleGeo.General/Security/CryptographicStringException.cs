@@ -58,7 +58,7 @@ namespace TupleGeo.General.Security {
     }
 
     /// <summary>
-    /// Initializes the <see cref="ConnectionDetailsEsception"/>.
+    /// Initializes the <see cref="ConnectionDetailsException"/>.
     /// </summary>
     /// <param name="info">The <see cref="SerializationInfo"/>.</param>
     /// <param name="context">The <see cref="StreamingContext"/>.</param>

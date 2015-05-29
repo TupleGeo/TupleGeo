@@ -31,17 +31,17 @@ namespace TupleGeo.General.Text {
     /// <summary>
     /// Upper case mode.
     /// </summary>
-    UpperCase = 0,
+    Uppercase = 0,
 
     /// <summary>
     /// Lower case mode.
     /// </summary>
-    LowerCase = 1,
+    Lowercase = 1,
 
     /// <summary>
     /// Mixed case conversion mode.
     /// </summary>
-    MixedCase = 2,
+    Mixedcase = 2,
 
   }
 

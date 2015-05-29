@@ -68,11 +68,11 @@ namespace TupleGeo.General.Utilities {
     /// <param name="item">
     /// The item that its Checked property will be set to true.
     /// </param>
-    /// <param name="denyUnCheck">
+    /// <param name="denyUncheck">
     /// Specifies whether the checked item can be unchecked.
     /// </param>
-    public void UpdateCheck(object item, bool denyUnCheck) {
-      if ((item == _checkedItem) && (denyUnCheck)) {
+    public void UpdateCheck(object item, bool denyUncheck) {
+      if ((item == _checkedItem) && (denyUncheck)) {
         return;
       }
 

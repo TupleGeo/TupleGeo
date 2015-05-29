@@ -16,6 +16,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 
 #endregion
@@ -53,6 +54,16 @@ namespace TupleGeo.General {
     /// <param name="innerException">The inner exception.</param>
     public GeneralException(string message, Exception innerException)
       : base(message, innerException) {
+
+    }
+
+    /// <summary>
+    /// Initializes the <see cref="GeneralException"/>.
+    /// </summary>
+    /// <param name="info">The <see cref="SerializationInfo"/>.</param>
+    /// <param name="context">The <see cref="StreamingContext"/>.</param>
+    private GeneralException(SerializationInfo info, StreamingContext context)
+      : base(info, context) {
 
     }
 

@@ -34,7 +34,7 @@ namespace TupleGeo.General.Data.SqlServer {
   /// </summary>
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  [XmlRootAttribute(Namespace = "urn:TupleGeo:Global:Data:SqlServer", IsNullable = false)]
+  [XmlRootAttribute(Namespace = "urn:TupleGeo:General:Data:SqlServer", IsNullable = false)]
   public sealed class ConnectionDetails {
 
     #region Constructors - Destructors
@@ -201,7 +201,7 @@ namespace TupleGeo.General.Data.SqlServer {
           if (string.IsNullOrEmpty(user)) {
             var users =
             from usr in this._sqlServerUserList
-            where usr.Username == user
+            where usr.UserName == user
             select usr;
 
             if (users != null) {
@@ -209,7 +209,7 @@ namespace TupleGeo.General.Data.SqlServer {
                 // Only one user must be present in the returned list !!!
                 foreach (var u in users) {
                   sb.Append(Resources.Data_SqlServer_ConnectionDetials_UserID);
-                  sb.Append(u.Username);
+                  sb.Append(u.UserName);
                   sb.Append(";");
 
                   // Append Password.
@@ -329,7 +329,7 @@ namespace TupleGeo.General.Data.SqlServer {
     #region Private properties
 
     /// <summary>
-    /// Sets the datasource.
+    /// Sets the data source.
     /// </summary>
     /// <param name="dataSource">The data source.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
@@ -505,7 +505,7 @@ namespace TupleGeo.General.Data.SqlServer {
       // Check if the user already exists in the users list.
       var users =
         from user in this._sqlServerUserList
-        where user.Username == userID
+        where user.UserName == userID
         select user;
 
       SqlServerUser sqlServerUser;
@@ -514,7 +514,7 @@ namespace TupleGeo.General.Data.SqlServer {
         if (users.Count() == 0) {
           // No user with this id found in the list. Add the user in to the list.
           sqlServerUser = new SqlServerUser();
-          sqlServerUser.Username = userID;
+          sqlServerUser.UserName = userID;
           sqlServerUser.IsPasswordEncrypted = encryptPassword;
 
           sqlServerUser.Password = password;
@@ -534,7 +534,7 @@ namespace TupleGeo.General.Data.SqlServer {
       else {
         // No user with this id found in the list. Add the user in to the list.
         sqlServerUser = new SqlServerUser();
-        sqlServerUser.Username = userID;
+        sqlServerUser.UserName = userID;
         sqlServerUser.IsPasswordEncrypted = encryptPassword;
 
         sqlServerUser.Password = password;

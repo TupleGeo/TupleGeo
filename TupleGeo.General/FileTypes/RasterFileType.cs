@@ -320,6 +320,7 @@ namespace TupleGeo.General.FileTypes {
     /// <summary>
     /// Portable network graphic file format.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA1704:IdentifiersShouldBeSpelledCorrectly", MessageId = "Png")]
     [XmlEnumAttribute("png")]
     [DescriptionAttribute("Portable network graphic file format")]
     Png,

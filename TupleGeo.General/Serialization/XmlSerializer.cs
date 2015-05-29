@@ -36,13 +36,13 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to the specified file.
     /// </summary>
     /// <param name="value">The object to serialize in the file.</param>
-    /// <param name="filepath">The path and file used to serialize the object.</param>
-    public static void Serialize(object value, string filepath) {
+    /// <param name="filePath">The path and file used to serialize the object.</param>
+    public static void Serialize(object value, string filePath) {
       
       StreamWriter writer = null;
       
       try {
-        writer = new StreamWriter(filepath);
+        writer = new StreamWriter(filePath);
         System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
         serializer.Serialize(writer, value);
         writer.Close();

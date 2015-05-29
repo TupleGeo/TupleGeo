@@ -86,7 +86,7 @@
     <Compile Include="FileTypes\VectorFileType.cs" />
     <Compile Include="IValidation.cs" />
     <None Include="Linq\IEnumerableExtensions.cs" />
-    <Compile Include="Linq\IQueryableExtentions.cs" />
+    <Compile Include="Linq\IQueryableExtensions.cs" />
     <Compile Include="ObjectExtensions.cs">
       <SubType>Code</SubType>
     </Compile>

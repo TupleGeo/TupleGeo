@@ -101,7 +101,7 @@ namespace TupleGeo.General.ComponentModel.Design.Tests {
 
       this.fromGreekTextBox.Text = greek;
 
-      string latin = GreekToLatinTranscribe.Convert(greek, GreekToLatinConversionMode.MixedCase);
+      string latin = GreekToLatinTranscribe.Convert(greek, GreekToLatinConversionMode.Mixedcase);
 
       this.toLatinTextBox.Text = latin;
       

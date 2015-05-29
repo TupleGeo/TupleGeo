@@ -31,23 +31,23 @@ namespace TupleGeo.General.Data.SqlServer {
   /// </summary>
   [SerializableAttribute()]
   [XmlTypeAttribute(AnonymousType = false)]
-  [XmlRootAttribute(Namespace = "urn:TupleGeo:Global:Data:SqlServer", IsNullable = false)]
+  [XmlRootAttribute(Namespace = "urn:TupleGeo:General:Data:SqlServer", IsNullable = false)]
   public sealed class SqlServerUser {
 
     #region Public Properties
 
-    private string _username;
+    private string _userName;
 
     /// <summary>
     /// Gets / Sets the username.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "username")]
-    public string Username {
+    public string UserName {
       get {
-        return _username;
+        return _userName;
       }
       set {
-        _username = value;
+        _userName = value;
       }
     }
 

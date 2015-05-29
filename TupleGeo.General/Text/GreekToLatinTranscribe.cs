@@ -57,7 +57,7 @@ namespace TupleGeo.General.Text {
     /// <param name="input">The input string.</param>
     /// <returns>A <see cref="string"/> with the Latin interpretation of the string in Greek.</returns>
     public static string Convert(string input) {
-      return Convert(input, GreekToLatinConversionMode.UpperCase);
+      return Convert(input, GreekToLatinConversionMode.Uppercase);
     }
     
     /// <summary>
@@ -71,7 +71,7 @@ namespace TupleGeo.General.Text {
         return null;
       }
 
-      if (mode != GreekToLatinConversionMode.MixedCase) {
+      if (mode != GreekToLatinConversionMode.Mixedcase) {
         input = input.ToLower(_locale);
       }
 
@@ -111,10 +111,10 @@ namespace TupleGeo.General.Text {
 
       }
 
-      if (mode == GreekToLatinConversionMode.UpperCase) {
+      if (mode == GreekToLatinConversionMode.Uppercase) {
         return result.ToString().ToUpper(_locale);
       }
-      else if (mode == GreekToLatinConversionMode.LowerCase) {
+      else if (mode == GreekToLatinConversionMode.Lowercase) {
         return result.ToString().ToLower(_locale);
       }
 
@@ -144,7 +144,7 @@ namespace TupleGeo.General.Text {
     /// <returns>A <see cref="string"/> containing the replaced <see cref="char"/>.</returns>
     private static string Replace(char current, GreekToLatinConversionMode mode) {
       string result = null;
-      if (mode == GreekToLatinConversionMode.MixedCase) {
+      if (mode == GreekToLatinConversionMode.Mixedcase) {
         bool upperCase = char.IsUpper(current);
         MapSingleDictionary.TryGetValue(char.ToLower(current, CultureInfo.InvariantCulture), out result);
         if (result != null && upperCase) {
@@ -175,7 +175,7 @@ namespace TupleGeo.General.Text {
     /// <returns>A <see cref="string"/> containing the replaced <see cref="string"/>.</returns>
     private static string Replace(string current, bool wordStart, GreekToLatinConversionMode mode) {
       string result = null;
-      if (mode == GreekToLatinConversionMode.MixedCase) {
+      if (mode == GreekToLatinConversionMode.Mixedcase) {
         bool upperCase = char.IsUpper(current[0]);
         string currentLow = current.ToLower(_locale);
         MapDoubleDictionary.TryGetValue(currentLow, out result);

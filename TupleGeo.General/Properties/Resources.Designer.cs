@@ -124,11 +124,11 @@ namespace TupleGeo.General.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Initial Calogue not specified..
+        ///   Looks up a localized string similar to Initial Catalog not specified..
         /// </summary>
-        internal static string Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified {
+        internal static string Data_SqlServer_ConnectionDetails_ExceptionInitialCatalogNotSpecified {
             get {
-                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified", resourceCulture);
+                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_ExceptionInitialCatalogNotSpecified", resourceCulture);
             }
         }
         

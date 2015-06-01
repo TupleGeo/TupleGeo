@@ -138,8 +138,8 @@
   <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingUserID" xml:space="preserve">
     <value>Error getting UserID.</value>
   </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified" xml:space="preserve">
-    <value>Initial Calogue not specified.</value>
+  <data name="Data_SqlServer_ConnectionDetails_ExceptionInitialCatalogNotSpecified" xml:space="preserve">
+    <value>Initial Catalog not specified.</value>
   </data>
   <data name="Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified" xml:space="preserve">
     <value>Error decrypting password. Initialization vector not specified.</value>

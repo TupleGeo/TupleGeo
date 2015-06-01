@@ -53,7 +53,8 @@ namespace TupleGeo.General.Data.SqlServer {
       this._dataSource = "";
       this._initialCatalogue = "";
       this._isPersistSecurityInfo = true;
-      this._sqlServerUserList = new List<SqlServerUser>();
+      //this._sqlServerUserList = new List<SqlServerUser>();
+      this._sqlServerUserCollection = new System.Collections.ObjectModel.Collection<SqlServerUser>();
     }
 
     /// <summary>
@@ -142,9 +143,9 @@ namespace TupleGeo.General.Data.SqlServer {
       get {
         return _sqlServerUserCollection;
       }
-      set {
-        _sqlServerUserCollection = value;
-      }
+      //set {
+      //  _sqlServerUserCollection = value;
+      //}
     }
 
     #endregion
@@ -211,9 +212,10 @@ namespace TupleGeo.General.Data.SqlServer {
           // Append User ID.
           if (string.IsNullOrEmpty(user)) {
             var users =
-            from usr in this._sqlServerUserList
-            where usr.UserName == user
-            select usr;
+              //from usr in this._sqlServerUserList
+              from usr in this._sqlServerUserCollection
+              where usr.UserName == user
+              select usr;
 
             if (users != null) {
               if (users.Count() == 1) {
@@ -262,7 +264,7 @@ namespace TupleGeo.General.Data.SqlServer {
 
         }
         else {
-          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitialCalogueNotSpecified);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitialCatalogNotSpecified);
         }
 
       }
@@ -515,7 +517,8 @@ namespace TupleGeo.General.Data.SqlServer {
 
       // Check if the user already exists in the users list.
       var users =
-        from user in this._sqlServerUserList
+        //from user in this._sqlServerUserList
+        from user in this._sqlServerUserCollection
         where user.UserName == userID
         select user;
 
@@ -529,7 +532,8 @@ namespace TupleGeo.General.Data.SqlServer {
           sqlServerUser.IsPasswordEncrypted = encryptPassword;
 
           sqlServerUser.Password = password;
-          this._sqlServerUserList.Add(sqlServerUser);
+          //this._sqlServerUserList.Add(sqlServerUser);
+          this._sqlServerUserCollection.Add(sqlServerUser);
         }
         else if (users.Count() == 1) {
           // A user has been found with this name in the list. Update the user.
@@ -549,7 +553,8 @@ namespace TupleGeo.General.Data.SqlServer {
         sqlServerUser.IsPasswordEncrypted = encryptPassword;
 
         sqlServerUser.Password = password;
-        this._sqlServerUserList.Add(sqlServerUser);
+        //this._sqlServerUserList.Add(sqlServerUser);
+        this._sqlServerUserCollection.Add(sqlServerUser);
       }
 
     }

@@ -101,6 +101,10 @@
       <Project>{ac25e10c-9f4d-4470-aab1-5c6042221cce}</Project>
       <Name>TupleGeo.General.ComponentModel.Design.40</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TupleGeo.General.Text.Greek\TupleGeo.General.Text.Greek.40.csproj">
+      <Project>{8d47c525-b2ee-4a03-8bc6-e3b172bbb623}</Project>
+      <Name>TupleGeo.General.Text.Greek.40</Name>
+    </ProjectReference>
     <ProjectReference Include="..\TupleGeo.General\TupleGeo.General.40.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
       <Name>TupleGeo.General.40</Name>

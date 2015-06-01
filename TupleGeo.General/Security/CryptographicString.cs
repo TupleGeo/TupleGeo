@@ -6,7 +6,9 @@
 // Created by       : 18/03/2009, 18:34, Source code in public domain.
 // Updated by       : 22/02/2011, 21:51, Source code in public domain.
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
-// Version          : 1.0.1
+//                  : 01/06/2015, 21:43, Changed class to adhere to Microsoft All Rules code analysis standards.
+//                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
+// Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -31,6 +33,13 @@ namespace TupleGeo.General.Security {
   /// </summary>
   public sealed class CryptographicString {
 
+    #region Member Variables
+
+    private static byte[] _key = null;
+    private static byte[] _initializationVector = null;
+
+    #endregion
+
     #region Constructors - Destructors
 
     /// <summary>
@@ -42,40 +51,52 @@ namespace TupleGeo.General.Security {
     
     #endregion
 
-    #region Public Properties
-
-    private static byte[] _key = null;
-
-    /// <summary>
-    /// Gets / Sets the key used for encrypting / decrypting the <see cref="System.String"/>.
-    /// </summary>
-    public static byte[] Key {
-      get {
-        return _key;
-      }
-      set {
-        _key = value;
-      }
-    }
-
-    private static byte[] _initializationVector = null;
-
-    /// <summary>
-    /// Gets / Sets the initialization vector.
-    /// </summary>
-    public static byte[] InitializationVector {
-      get {
-        return _initializationVector;
-      }
-      set {
-        _initializationVector = value;
-      }
-    }
-        
-    #endregion
-
     #region Public Methods
 
+    /// <summary>
+    /// Gets the key used for encrypting / decrypting the <see cref="System.String"/>.
+    /// </summary>
+    /// <returns>A <see cref="byte"/> array.</returns>
+    public static byte[] GetKey() {
+      return _key;
+    }
+
+    /// <summary>
+    /// Sets the key used for encrypting / decrypting the <see cref="System.String"/>.
+    /// </summary>
+    /// <param name="key">The <see cref="byte"/> array holding the key.</param>
+    public static void SetKey(byte[] key) {
+      if (key == null) {
+        throw new ArgumentNullException("key", "Key could not be NULL.");
+      }
+      if (key.Length == 0) {
+        throw new ArgumentException("Invalid key size.");
+      }
+      _key = key;
+    }
+
+    /// <summary>
+    /// Gets the initialization vector.
+    /// </summary>
+    /// <returns>A <see cref="byte"/> array.</returns>
+    public static byte[] GetInitializationVector() {
+      return _initializationVector;
+    }
+
+    /// <summary>
+    /// Sets the initialization vector.
+    /// </summary>
+    /// <param name="initializationVector">The <see cref="byte"/> array holding the initialization vector.</param>
+    public static void SetInitializationVector(byte[] initializationVector) {
+      if (initializationVector == null) {
+        throw new ArgumentNullException("initializationVector", "Initialization vector could not be NULL.");
+      }
+      if (initializationVector.Length == 0) {
+        throw new ArgumentException("Invalid initialization vector size.");
+      }
+      _initializationVector = initializationVector;
+    }
+    
     /// <summary>
     /// Encrypts a <see cref="System.String"/>.
     /// </summary>

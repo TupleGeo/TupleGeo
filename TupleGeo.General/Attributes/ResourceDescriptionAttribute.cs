@@ -33,7 +33,6 @@ namespace TupleGeo.General.Attributes {
 
     #region Member Variables
 
-    private readonly Type _resourcesType;
     private bool _isLocalized;
     
     #endregion
@@ -87,7 +86,18 @@ namespace TupleGeo.General.Attributes {
         return DescriptionValue;
       }
     }
+
+    private readonly Type _resourcesType;
     
+    /// <summary>
+    /// Gets the ResourcesType.
+    /// </summary>
+    public Type ResourcesType {
+      get {
+        return _resourcesType;
+      }
+    }
+
     #endregion
 
   }

@@ -74,31 +74,33 @@ namespace TupleGeo.General.Windows.Data {
     /// <returns>A <see cref="string"/> containing the description.</returns>
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
 
-      if (value != null) {
-        if (parameter != null) {
-          // The parameter is not null. The converter expects a Resource file instance.
-          // Try to get the 'Culture' static property of this Resource file object.
-          PropertyInfo propertyInfo = parameter.GetType().GetProperty(
-            "Culture",
-            BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic
-          );
-          if (propertyInfo != null && propertyInfo.CanWrite) {
-            // A property info has been retrieved and it is writable.
-            // Use the culture argument to set the resource culture property.
-            propertyInfo.SetValue(parameter, culture, null);
-          }
+      if (value == null) {
+        throw new ArgumentNullException("value", "Value could not be NULL.");
+      }
+
+      if (parameter != null) {
+        // The parameter is not null. The converter expects a Resource file instance.
+        // Try to get the 'Culture' static property of this Resource file object.
+        PropertyInfo propertyInfo = parameter.GetType().GetProperty(
+          "Culture",
+          BindingFlags.Instance | BindingFlags.Static | BindingFlags.Public | BindingFlags.NonPublic
+        );
+        if (propertyInfo != null && propertyInfo.CanWrite) {
+          // A property info has been retrieved and it is writable.
+          // Use the culture argument to set the resource culture property.
+          propertyInfo.SetValue(parameter, culture, null);
         }
+      }
 
-        FieldInfo fi = value.GetType().GetField(value.ToString());
+      FieldInfo fi = value.GetType().GetField(value.ToString());
 
-        if (fi != null) {
-          var attributes = (ResourceDescriptionAttribute[])fi.GetCustomAttributes(
-            typeof(ResourceDescriptionAttribute), false
-          );
-          if (attributes != null) {
-            return ((attributes.Length > 0) && (!string.IsNullOrEmpty(attributes[0].Description))) ?
-              attributes[0].Description : Enum.GetName(value.GetType(), value);
-          }
+      if (fi != null) {
+        var attributes = (ResourceDescriptionAttribute[])fi.GetCustomAttributes(
+          typeof(ResourceDescriptionAttribute), false
+        );
+        if (attributes != null) {
+          return ((attributes.Length > 0) && (!string.IsNullOrEmpty(attributes[0].Description))) ?
+            attributes[0].Description : Enum.GetName(value.GetType(), value);
         }
       }
 
@@ -115,7 +117,7 @@ namespace TupleGeo.General.Windows.Data {
     /// <param name="culture"></param>
     /// <returns></returns>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-      throw new NotImplementedException();
+      throw new NotImplementedException(); // TODO: Implement this !!!
     }
 
     #endregion
@@ -123,4 +125,3 @@ namespace TupleGeo.General.Windows.Data {
   }
 
 }
-

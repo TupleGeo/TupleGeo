@@ -16,9 +16,17 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAgAAAAAAAAAAQAAEAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAAAAgAAAEAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ComponentModel\EnumNameDescriptionPair.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="TupleGeo.General.ComponentModel.ObservableObject&lt;T&gt;">
+    <Position X="8.5" Y="3.25" Width="4.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ComponentModel\ObservableObjectOfT.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

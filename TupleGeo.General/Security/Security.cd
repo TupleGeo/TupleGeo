@@ -3,8 +3,15 @@
   <Class Name="TupleGeo.General.Security.CryptographicString">
     <Position X="1.25" Y="1" Width="5.25" />
     <TypeIdentifier>
-      <HashCode>AQABAAAAAAAAQAQQAAAAAAAAAAAAAAAAgAAAAAAAQAg=</HashCode>
+      <HashCode>ASABAAAAAAAAQAQQAACAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>Security\CryptographicString.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TupleGeo.General.Security.CryptographicStringException">
+    <Position X="7.25" Y="1" Width="5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\CryptographicStringException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

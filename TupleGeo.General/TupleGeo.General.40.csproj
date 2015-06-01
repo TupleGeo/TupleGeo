@@ -105,12 +105,7 @@
     <Compile Include="Reflection\AssemblyExtensions.cs" />
     <Compile Include="Security\CryptographicString.cs" />
     <Compile Include="Serialization\XmlSerializer.cs" />
-    <Compile Include="StringExtensions.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Text\CodePage.cs" />
-    <Compile Include="Text\GreekToLatinConversionMode.cs" />
-    <Compile Include="Text\GreekToLatinTranscribe.cs" />
     <None Include="Utilities\Utilities.cd" />
   </ItemGroup>
   <ItemGroup>

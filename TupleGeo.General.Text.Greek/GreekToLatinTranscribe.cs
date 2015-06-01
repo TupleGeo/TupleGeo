@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GreekToLatinTranscribe
-// Member of        : TupleGeo.General.dll
+// Member of        : TupleGeo.General.Text.Greek.dll
 // Description      : Transcribes from Greek to Latin according to ELOT specification.
 // Created by       : 06/04/2010, 14:12, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 22:08, Vasilis Vlastaras.
@@ -22,7 +22,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.General.Text {
+namespace TupleGeo.General.Text.Greek {
 
   /// <summary>
   /// Transcribes from Greek to Latin according to ELOT specification.
@@ -344,7 +344,6 @@ namespace TupleGeo.General.Text {
       return result;
     }
 
-    
     /// <summary>
     /// Creates a <see cref="Dictionary{String, String}"/> storing the mapping of Greek
     /// double character strings to Latin strings for those cases that are voiceless.

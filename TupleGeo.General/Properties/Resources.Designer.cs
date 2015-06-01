@@ -88,11 +88,11 @@ namespace TupleGeo.General.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error getting Initial Catalogue..
+        ///   Looks up a localized string similar to Error getting Initial Catalog..
         /// </summary>
-        internal static string Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue {
+        internal static string Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalog {
             get {
-                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue", resourceCulture);
+                return ResourceManager.GetString("Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalog", resourceCulture);
             }
         }
         
@@ -133,7 +133,7 @@ namespace TupleGeo.General.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error decrypting password. Initialization vector not sepcified..
+        ///   Looks up a localized string similar to Error decrypting password. Initialization vector not specified..
         /// </summary>
         internal static string Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified {
             get {

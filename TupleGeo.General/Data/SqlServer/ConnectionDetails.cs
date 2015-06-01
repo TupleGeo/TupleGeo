@@ -5,7 +5,7 @@
 // Description      : The details used to define an SQL Server connection
 //                    as they appear in a connection string.
 // Created by       : 18/03/2009, 20:40, Vasilis Vlastaras.
-// Updated by       : 29/05/2015, 14:57, Vasilis Vlastaras.
+// Updated by       : 01/06/2015, 21:50, Vasilis Vlastaras.
 //                    1.0.1 - Re-engineered ConnectionDetails to meet Microsoft All Rules code analysis standards.
 // Version          : 1.0.1
 // Contact Details  : TupleGeo.
@@ -36,6 +36,13 @@ namespace TupleGeo.General.Data.SqlServer {
   [XmlTypeAttribute(AnonymousType = false)]
   [XmlRootAttribute(Namespace = "urn:TupleGeo:General:Data:SqlServer", IsNullable = false)]
   public sealed class ConnectionDetails {
+
+    #region Member Variables
+
+    private string _base64Key;
+    private string _base64InitializationVector;
+
+    #endregion
 
     #region Constructors - Destructors
 
@@ -111,57 +118,61 @@ namespace TupleGeo.General.Data.SqlServer {
       }
     }
 
-    private List<SqlServerUser> _sqlServerUserList;
+    //private List<SqlServerUser> _sqlServerUserList;
 
-    /// <summary>
-    /// Gets / Sets the <see cref="List{SqlServerUser}"/>.
-    /// </summary>
+    ///// <summary>
+    ///// Gets / Sets the <see cref="List{SqlServerUser}"/>.
+    ///// </summary>
+    //[XmlArrayAttribute(ElementName = "SqlServerUsers")]
+    //[XmlArrayItem(ElementName = "SqlServerUser", Type = typeof(SqlServerUser))]
+    //public List<SqlServerUser> SqlServerUserList {
+    //  get {
+    //    return _sqlServerUserList;
+    //  }
+    //  set {
+    //    _sqlServerUserList = value;
+    //  }
+    //}
+
+    private System.Collections.ObjectModel.Collection<SqlServerUser> _sqlServerUserCollection;
+
     [XmlArrayAttribute(ElementName = "SqlServerUsers")]
     [XmlArrayItem(ElementName = "SqlServerUser", Type = typeof(SqlServerUser))]
-    public List<SqlServerUser> SqlServerUserList {
+    public System.Collections.ObjectModel.Collection<SqlServerUser> SqlServerUserCollection {
       get {
-        return _sqlServerUserList;
+        return _sqlServerUserCollection;
       }
       set {
-        _sqlServerUserList = value;
+        _sqlServerUserCollection = value;
       }
     }
 
-    private string _base64Key;
+    #endregion
+
+    #region Public Methods
 
     /// <summary>
     /// Sets the base64 key used to decrypt the password.
     /// </summary>
+    /// <param name="base64Key">The base64 key string.</param>
     /// <remarks>
-    /// The key must be a base64 string used as a key feed for the
-    /// <see cref="CryptographicString"/> object.
+    /// The key must be a base64 string used as a key feed for the <see cref="CryptographicString"/> object.
     /// </remarks>
-    [XmlIgnoreAttribute()]
-    public string Base64Key {
-      set {
-        _base64Key = value;
-      }
+    public void SetBase64Key(string base64Key) {
+      _base64Key = base64Key;
     }
-
-    private string _base64InitializationVector;
 
     /// <summary>
     /// Sets the base64 initialization vector used to decrypt the password.
     /// </summary>
+    /// <param name="base64InitializationVector">The base64 initialization vector.</param>
     /// <remarks>
     /// The initialization vector must be a base64 string used as an initialization vector
     /// feed for the <see cref="CryptographicString"/> object.
     /// </remarks>
-    [XmlIgnoreAttribute()]
-    public string Base64InitializationVector {
-      set {
-        _base64InitializationVector = value;
-      }
+    public void SetBase64InitializationVector(string base64InitializationVector) {
+      _base64InitializationVector = base64InitializationVector;
     }
-    
-    #endregion
-
-    #region Public Methods
 
     /// <summary>
     /// Converts the connection Details in to an SQL Server connection string.
@@ -220,10 +231,10 @@ namespace TupleGeo.General.Data.SqlServer {
                   else {
                     // Use the base64 key to decrypt the password.
                     if (!string.IsNullOrEmpty(_base64Key)) {
-                      CryptographicString.Key = Convert.FromBase64String(_base64Key);
+                      CryptographicString.SetKey(Convert.FromBase64String(_base64Key));
                       // Use the base64 initialization vector to decrypt the password.
                       if (!string.IsNullOrEmpty(_base64InitializationVector)) {
-                        CryptographicString.InitializationVector = Convert.FromBase64String(_base64InitializationVector);
+                        CryptographicString.SetInitializationVector(Convert.FromBase64String(_base64InitializationVector));
                         // Decrypt the password.
                         sb.Append(CryptographicString.Decrypt(u.Password));
                       }
@@ -372,11 +383,11 @@ namespace TupleGeo.General.Data.SqlServer {
           }
         }
         else {
-          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
+          throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalog);
         }
       }
       else {
-        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue);
+        throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalog);
       }
 
     }
@@ -470,13 +481,13 @@ namespace TupleGeo.General.Data.SqlServer {
                 throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified);
               }
               else {
-                CryptographicString.Key = Convert.FromBase64String(_base64Key);
+                CryptographicString.SetKey(Convert.FromBase64String(_base64Key));
                 // Use the base64 initialization vector to encrypt the password.
                 if (string.IsNullOrEmpty(_base64InitializationVector)) {
                   throw new ConnectionDetailsException(Resources.Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified);
                 }
                 else {
-                  CryptographicString.InitializationVector = Convert.FromBase64String(_base64InitializationVector);
+                  CryptographicString.SetInitializationVector(Convert.FromBase64String(_base64InitializationVector));
                   // Encrypt the password.
                   password = CryptographicString.Encrypt(token.Replace(Resources.Data_SqlServer_ConnectionDetails_Password, ""));
                 }

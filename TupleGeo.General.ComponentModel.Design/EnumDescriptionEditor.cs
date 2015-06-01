@@ -127,11 +127,14 @@ namespace TupleGeo.General.ComponentModel.Design {
 
           _lastCultureUsed = Application.CurrentCulture.ToString();
 
+          // Get the enumeration value.
+          Enum enumValue = (Enum)value;
+
           // Get the enumeration names.
           string[] names = Enum.GetNames(value.GetType());
-          
+
           // Try to get the enumeration descriptions for the current application culture.
-          string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value, _lastCultureUsed);
+          string[] descriptions = EnumDescriptionConverter.GetEnumDescriptions(enumValue, _lastCultureUsed);
 
           // Test if names and descriptions are the same.
           // If this is the case then descriptions in current culture where not found.
@@ -145,7 +148,7 @@ namespace TupleGeo.General.ComponentModel.Design {
           
           if (areTheSame) {
             // Since no descriptions found for the current culture, try to get the neutral culture descriptions.
-            descriptions = EnumDescriptionConverter.GetEnumDescriptions((Enum)value);
+            descriptions = EnumDescriptionConverter.GetEnumDescriptions(enumValue);
           }
           
           // Ending up here either the current culture descriptions,
@@ -159,7 +162,7 @@ namespace TupleGeo.General.ComponentModel.Design {
           _enumDescriptionControl.DataBind();
           
           // Set the selected item on the control.
-          _enumDescriptionControl.SetSelectedEnumValueName(((Enum)value).ToString());
+          _enumDescriptionControl.SetSelectedEnumValueName(enumValue.ToString());
           
         }
 

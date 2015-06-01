@@ -126,8 +126,8 @@
   <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingDataSource" xml:space="preserve">
     <value>Error getting DataSource.</value>
   </data>
-  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalogue" xml:space="preserve">
-    <value>Error getting Initial Catalogue.</value>
+  <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingInitialCatalog" xml:space="preserve">
+    <value>Error getting Initial Catalog.</value>
   </data>
   <data name="Data_SqlServer_ConnectionDetails_ExceptionGettingPassword" xml:space="preserve">
     <value>Error getting Password.</value>
@@ -142,7 +142,7 @@
     <value>Initial Calogue not specified.</value>
   </data>
   <data name="Data_SqlServer_ConnectionDetails_ExceptionInitializationVectorNotSpecified" xml:space="preserve">
-    <value>Error decrypting password. Initialization vector not sepcified.</value>
+    <value>Error decrypting password. Initialization vector not specified.</value>
   </data>
   <data name="Data_SqlServer_ConnectionDetails_ExceptionSecurityKeyNotSpecified" xml:space="preserve">
     <value>Error decrypting password. Security key not specified.</value>

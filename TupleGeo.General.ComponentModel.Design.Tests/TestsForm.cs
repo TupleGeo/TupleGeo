@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using TupleGeo.General.ComponentModel.Design.Tests.TestEnumDescription;
 using TupleGeo.General.Text;
+using TupleGeo.General.Text.Greek;
 
 namespace TupleGeo.General.ComponentModel.Design.Tests {
   

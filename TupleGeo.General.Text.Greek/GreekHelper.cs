@@ -1,8 +1,8 @@
 ﻿
 #region Header
-// Title Name       : StringExtensions
-// Member of        : TupleGeo.General.dll
-// Description      : Contains a set of extension methods for the System.String type.
+// Title Name       : GreekHelper
+// Member of        : TupleGeo.General.Text.Greek.dll
+// Description      : Provides helper methods for manipulating Greek strings.
 // Created by       : 15/05/2009, 02:39, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
@@ -21,46 +21,47 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.General {
+namespace TupleGeo.General.Text.Greek {
 
   /// <summary>
-  /// Contains a set of extension methods for the <see cref="System.String"/> type.
+  /// Provides helper methods for manipulating Greek strings.
   /// </summary>
-  public static class StringExtensions {
-
+  public static class GreekHelper {
+    
     #region Member Variables
 
-    private static Dictionary<char, char> greekNormalizedChars;
-    //private static int iCounter = 0;
-
+    private static Dictionary<char, char> greekPunctuatedDictionary;
+    
     #endregion
 
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the <see cref="StringExtensions"/>.
+    /// Initializes the <see cref="GreekHelper"/>.
     /// </summary>
-    static StringExtensions() {
-      greekNormalizedChars = new Dictionary<char, char>();
+    static GreekHelper() {
+      greekPunctuatedDictionary = new Dictionary<char, char>();
 
-      greekNormalizedChars.Add('Ά', 'Α');
-      greekNormalizedChars.Add('Έ', 'Ε');
-      greekNormalizedChars.Add('Ή', 'Η');
-      greekNormalizedChars.Add('Ί', 'Ι');
-      greekNormalizedChars.Add('Ό', 'Ο');
-      greekNormalizedChars.Add('Ύ', 'Υ');
-      greekNormalizedChars.Add('Ϊ', 'Ι');
-      greekNormalizedChars.Add('Ϋ', 'Υ');
+      // Uppercase characters.
+      greekPunctuatedDictionary.Add('Ά', 'Α');
+      greekPunctuatedDictionary.Add('Έ', 'Ε');
+      greekPunctuatedDictionary.Add('Ή', 'Η');
+      greekPunctuatedDictionary.Add('Ί', 'Ι');
+      greekPunctuatedDictionary.Add('Ό', 'Ο');
+      greekPunctuatedDictionary.Add('Ύ', 'Υ');
+      greekPunctuatedDictionary.Add('Ϊ', 'Ι');
+      greekPunctuatedDictionary.Add('Ϋ', 'Υ');
 
-      greekNormalizedChars.Add('ά', 'α');
-      greekNormalizedChars.Add('έ', 'ε');
-      greekNormalizedChars.Add('ή', 'η');
-      greekNormalizedChars.Add('ί', 'ι');
-      greekNormalizedChars.Add('ό', 'ο');
-      greekNormalizedChars.Add('ύ', 'υ');
-      greekNormalizedChars.Add('ώ', 'ω');
-      greekNormalizedChars.Add('ϊ', 'ι');
-      greekNormalizedChars.Add('ϋ', 'υ');
+      // Lowercase characters.
+      greekPunctuatedDictionary.Add('ά', 'α');
+      greekPunctuatedDictionary.Add('έ', 'ε');
+      greekPunctuatedDictionary.Add('ή', 'η');
+      greekPunctuatedDictionary.Add('ί', 'ι');
+      greekPunctuatedDictionary.Add('ό', 'ο');
+      greekPunctuatedDictionary.Add('ύ', 'υ');
+      greekPunctuatedDictionary.Add('ώ', 'ω');
+      greekPunctuatedDictionary.Add('ϊ', 'ι');
+      greekPunctuatedDictionary.Add('ϋ', 'υ');
 
       //greekNormalizedChars.Add('Α', 'Α');
       //greekNormalizedChars.Add('Β', 'Β');
@@ -118,18 +119,23 @@ namespace TupleGeo.General {
     #region Public Methods
 
     /// <summary>
-    /// Normalizes the punctuated Greek characters of a string to non punctuated Greek characters.
+    /// Converts the punctuated Greek characters of a string to non punctuated Greek characters.
     /// </summary>
     /// <param name="greek">
-    /// The string which chars will be normalized.
+    /// The string that its chars will be converted.
     /// </param>
-    /// <returns>A string containing non punctuated Greek characters.</returns>
-    public static string NormalizeGreekChars(this string greek) {
+    /// <returns>A <see cref="string"/> containing non punctuated Greek characters.</returns>
+    public static string ToNonPunctuatedChars(string greek) {
+
+      if (string.IsNullOrEmpty(greek)) {
+        throw new ArgumentException("String could not be NULL or Empty.", "greek");
+      }
+
       char[] chars = new char[greek.Length];
 
       for (int i = 0; i < greek.Length; i++) {
         try {
-          chars[i] = greekNormalizedChars[greek[i]];
+          chars[i] = greekPunctuatedDictionary[greek[i]];
         }
         catch (KeyNotFoundException) {
           chars[i] = greek[i];
@@ -137,6 +143,7 @@ namespace TupleGeo.General {
       }
 
       return Encoding.UTF8.GetString(Encoding.UTF8.GetBytes(chars));
+
     }
 
     #endregion

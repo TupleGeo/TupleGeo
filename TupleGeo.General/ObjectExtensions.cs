@@ -46,9 +46,9 @@ namespace TupleGeo.General {
         throw new ArgumentNullException(propertyName);
       }
 
-      PropertyInfo propertyInfo = value.GetType().GetProperty(propertyName);
+      PropertyInfo propertyInfo = value.GetType().GetProperty(propertyName); // TODO: This throws an error !!!
 
-      if (propertyInfo.PropertyType == typeof(string)) {
+      if (propertyInfo.PropertyType == typeof(string)) { // TODO: This throws an error !!!
         // String.
         return Convert.ToString(propertyInfo.GetValue(value, null), CultureInfo.InvariantCulture);
       }

@@ -59,7 +59,7 @@ namespace TupleGeo.General.ComponentModel {
         memberExpression = lambda.Body as MemberExpression;
       }
 
-      var constantExpression = memberExpression.Expression as ConstantExpression;
+      //var constantExpression = memberExpression.Expression as ConstantExpression;
       var propertyInfo = memberExpression.Member as PropertyInfo;
 
       PropertyChangedEventHandler handler = PropertyChanged;

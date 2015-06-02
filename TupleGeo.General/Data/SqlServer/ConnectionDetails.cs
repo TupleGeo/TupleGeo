@@ -18,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -53,8 +54,7 @@ namespace TupleGeo.General.Data.SqlServer {
       this._dataSource = "";
       this._initialCatalogue = "";
       this._isPersistSecurityInfo = true;
-      //this._sqlServerUserList = new List<SqlServerUser>();
-      this._sqlServerUserCollection = new System.Collections.ObjectModel.Collection<SqlServerUser>();
+      this._sqlServerUserCollection = new Collection<SqlServerUser>();
     }
 
     /// <summary>
@@ -119,33 +119,17 @@ namespace TupleGeo.General.Data.SqlServer {
       }
     }
 
-    //private List<SqlServerUser> _sqlServerUserList;
-
-    ///// <summary>
-    ///// Gets / Sets the <see cref="List{SqlServerUser}"/>.
-    ///// </summary>
-    //[XmlArrayAttribute(ElementName = "SqlServerUsers")]
-    //[XmlArrayItem(ElementName = "SqlServerUser", Type = typeof(SqlServerUser))]
-    //public List<SqlServerUser> SqlServerUserList {
-    //  get {
-    //    return _sqlServerUserList;
-    //  }
-    //  set {
-    //    _sqlServerUserList = value;
-    //  }
-    //}
-
     private System.Collections.ObjectModel.Collection<SqlServerUser> _sqlServerUserCollection;
 
+    /// <summary>
+    /// Gets / Sets the <see cref="List{SqlServerUser}"/>.
+    /// </summary>
     [XmlArrayAttribute(ElementName = "SqlServerUsers")]
     [XmlArrayItem(ElementName = "SqlServerUser", Type = typeof(SqlServerUser))]
     public System.Collections.ObjectModel.Collection<SqlServerUser> SqlServerUserCollection {
       get {
         return _sqlServerUserCollection;
       }
-      //set {
-      //  _sqlServerUserCollection = value;
-      //}
     }
 
     #endregion
@@ -182,12 +166,13 @@ namespace TupleGeo.General.Data.SqlServer {
     /// The username that will be used to form the connection string.
     /// </param>
     /// <remarks>
-    /// In case the <see cref="SqlServerUserList"/> property is populated with users having
-    /// encrypted passwords the <see cref="Base64Key"/> and the
-    /// <see cref="Base64InitializationVector"/> properties must be set first in order
+    /// In case the <see cref="SqlServerUserCollection"/> property is populated with users having
+    /// encrypted passwords a call to methods <see cref="SetBase64Key"/> and 
+    /// <see cref="SetBase64InitializationVector"/> must be made first in order
     /// for this method to succeed returning a connection string.
     /// </remarks>
     /// <returns>A <see cref="string"/>containing the SQL Server connection string.</returns>
+    // TODO: Change exception logic here according to base64key and base64 initialization vector.
     public string ToConnectionString(string user) {
 
       StringBuilder sb = new StringBuilder();
@@ -212,7 +197,6 @@ namespace TupleGeo.General.Data.SqlServer {
           // Append User ID.
           if (string.IsNullOrEmpty(user)) {
             var users =
-              //from usr in this._sqlServerUserList
               from usr in this._sqlServerUserCollection
               where usr.UserName == user
               select usr;
@@ -286,11 +270,12 @@ namespace TupleGeo.General.Data.SqlServer {
     /// Specifies whether the password should be encrypted or not.
     /// </param>
     /// <remarks>
-    /// In case the bEncryptPassword argument is set to true the
-    /// <see cref="Base64Key"/> and the <see cref="Base64InitializationVector"/>
-    /// properties must be set first in order for this method to succeed setting the
+    /// In case the bEncryptPassword argument is set to true a call to methods
+    /// <see cref="SetBase64Key"/> and <see cref="SetBase64InitializationVector"/>
+    /// must be made first in order for this method to succeed setting the
     /// ConnectionDetails object using a connection string.
     /// </remarks>
+    // TODO: Change exception logic here according to base64key and base64 initialization vector.
     public void FromConnectionString(string connectionString, bool encryptPassword) {
 
       if (string.IsNullOrEmpty(connectionString)) {

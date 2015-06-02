@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TupleGeo.General.ComponentModel.Design")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("ComponentModel related editors and controls")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TupleGeo")]
 [assembly: AssemblyProduct("TupleGeo.General.ComponentModel.Design")]
@@ -34,8 +34,8 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.4.*")]
-[assembly: AssemblyFileVersion("1.1.4")]
+[assembly: AssemblyVersion("1.2.0.*")]
+[assembly: AssemblyFileVersion("1.2.0")]
 
 [assembly: CLSCompliant(true)]
 [assembly: NeutralResourcesLanguage("en-US")]

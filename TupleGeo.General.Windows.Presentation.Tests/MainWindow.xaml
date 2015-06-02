@@ -140,15 +140,6 @@
                     Width="Auto"
                     Click="Test2GetCurrentValueButton_Click" />
 
-            <Button x:Name="TestResourceManagerButton"
-                    Content="Test Resource Manager"
-                    Padding="8,0,8,0"
-                    Grid.Row="3"
-                    HorizontalAlignment="Right"
-                    Margin="8,4,8,4"
-                    Width="Auto"
-                    Click="TestResourceManagerButton_Click" />
-
           </Grid>
         </Grid>
         

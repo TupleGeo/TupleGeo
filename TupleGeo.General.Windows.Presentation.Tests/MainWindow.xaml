@@ -44,6 +44,7 @@
               <RowDefinition Height="28" />
               <RowDefinition Height="36" />
               <RowDefinition Height="40" />
+              <RowDefinition Height="40" />
               <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -95,6 +96,7 @@
               <RowDefinition Height="28" />
               <RowDefinition Height="36" />
               <RowDefinition Height="40" />
+              <RowDefinition Height="40" />
               <RowDefinition />
             </Grid.RowDefinitions>
 
@@ -137,7 +139,16 @@
                     Margin="8,4,8,4"
                     Width="Auto"
                     Click="Test2GetCurrentValueButton_Click" />
-            
+
+            <Button x:Name="TestResourceManagerButton"
+                    Content="Test Resource Manager"
+                    Padding="8,0,8,0"
+                    Grid.Row="3"
+                    HorizontalAlignment="Right"
+                    Margin="8,4,8,4"
+                    Width="Auto"
+                    Click="TestResourceManagerButton_Click" />
+
           </Grid>
         </Grid>
         

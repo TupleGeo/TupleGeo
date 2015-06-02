@@ -49,9 +49,7 @@ namespace TupleGeo.General.Tests {
         UserName = "username2"
       });
 
-      string serialized;
-
-      XmlSerializer.Serialize(connectionDetails, out serialized);
+      string serialized = XmlSerializer.SerializeToString(connectionDetails);
 
       this.ConnectionDetailsOutputTextBox.Text = serialized;
 
@@ -64,9 +62,11 @@ namespace TupleGeo.General.Tests {
     /// <param name="e"></param>
     private void TestConnectionDetailsDeserializeButton_Click(object sender, EventArgs e) {
 
-      ConnectionDetails connectionDetails = (ConnectionDetails)XmlSerializer.Deserialize(typeof(ConnectionDetails), this.ConnectionDetailsInputTextBox.Text, Encoding.UTF8);
-
-      string s = "lala";
+      ConnectionDetails connectionDetails = (ConnectionDetails)XmlSerializer.Deserialize(
+        typeof(ConnectionDetails),
+        this.ConnectionDetailsInputTextBox.Text,
+        Encoding.UTF8
+      );
 
     }
 
@@ -95,17 +95,8 @@ namespace TupleGeo.General.Tests {
     /// <param name="sender"></param>
     /// <param name="e"></param>
     private void obs1_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-      //MessageBox.Show(string.Format("Name: {0}, Value: {1}", e.PropertyName, e.GetPropertyValueString(e.PropertyName)), "Property Changed");
-      MessageBox.Show(string.Format("Name: {0}", e.PropertyName), "Property Changed");
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
-    private void button1_Click(object sender, EventArgs e) {
-      _obs1.Int1 = 8;
+      MessageBox.Show(string.Format("Name: {0}, Value: {1}", e.PropertyName, sender.GetPropertyValueString(e.PropertyName)), "Property Changed");
+      //MessageBox.Show(string.Format("Name: {0}", e.PropertyName), "Property Changed");
     }
 
   }

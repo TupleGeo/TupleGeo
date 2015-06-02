@@ -241,6 +241,15 @@ namespace TupleGeo.General.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Property &apos;{0}&apos; was not found..
+        /// </summary>
+        internal static string General_PropertyNotFound {
+            get {
+                return ResourceManager.GetString("General_PropertyNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Property nullable type is not of a primitive type..
         /// </summary>
         internal static string General_PropertyNullableTypeIsNotOfAPrimitiveType {

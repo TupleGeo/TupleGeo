@@ -15,10 +15,12 @@
 #region Imported Namespaces
 
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
 using System.Text;
 using System.Windows.Data;
 using TupleGeo.General.Attributes;
@@ -109,15 +111,17 @@ namespace TupleGeo.General.Windows.Data {
     }
 
     /// <summary>
-    /// 
+    /// Converts back from the enumeration description to the enumeration value.
     /// </summary>
-    /// <param name="value"></param>
-    /// <param name="targetType"></param>
-    /// <param name="parameter"></param>
-    /// <param name="culture"></param>
-    /// <returns></returns>
+    /// <param name="value">The <see cref="string"/> description.</param>
+    /// <param name="targetType">The target <see cref="Type"/>.</param>
+    /// <param name="parameter">The parameter.</param>
+    /// <param name="culture">The <see cref="CultureInfo">culture</see>.</param>
+    /// <exception cref="NotImplementedException"></exception>
+    /// <remarks>This method has not been implemented.</remarks>
+    /// <returns>An enumeration value.</returns>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-      throw new NotImplementedException(); // TODO: Implement this !!!
+      throw new NotImplementedException(); // TODO: Implement this if it is possible !!!
     }
 
     #endregion

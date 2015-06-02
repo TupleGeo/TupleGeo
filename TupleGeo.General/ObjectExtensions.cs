@@ -3,13 +3,13 @@
 // Title Name       : ObjectExtensions
 // Member of        : TupleGeo.General.dll
 // Description      : Contains a set of extension methods for the System.Object type.
-// Created by       : 12/06/2009, 15:53, Vasilis Vlastaras.
+// Created by       : 12/06/2009, 15:53
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2009 - 2015.
-// Comments         : 
+// Comments         : Code found in article 'BUILDING REFACTORING-FRIENDLY OBSERVABLE OBJECTS IN C#'
+//                    https://denisvuyka.wordpress.com/2009/12/09/building-refactoring-friendly-observable-objects-in-c/
 #endregion
 
 #region Imported Namespaces
@@ -46,9 +46,13 @@ namespace TupleGeo.General {
         throw new ArgumentNullException(propertyName);
       }
 
-      PropertyInfo propertyInfo = value.GetType().GetProperty(propertyName); // TODO: This throws an error !!!
+      PropertyInfo propertyInfo = value.GetType().GetProperty(propertyName);
 
-      if (propertyInfo.PropertyType == typeof(string)) { // TODO: This throws an error !!!
+      if (propertyInfo == null) {
+        throw new GeneralException(string.Format(CultureInfo.InvariantCulture, Resources.General_PropertyNotFound, propertyName));
+      }
+
+      if (propertyInfo.PropertyType == typeof(string)) {
         // String.
         return Convert.ToString(propertyInfo.GetValue(value, null), CultureInfo.InvariantCulture);
       }

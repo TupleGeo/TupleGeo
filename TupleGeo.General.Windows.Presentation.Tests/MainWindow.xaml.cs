@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,6 +49,23 @@ namespace TupleGeo.General.Windows.Presentation.Tests {
     private void Test2GetCurrentValueButton_Click(object sender, RoutedEventArgs e) {
       Test2ViewModel viewModel = (Test2ViewModel)this.Test2Grid.DataContext;
       MessageBox.Show(viewModel.Test2Model.CurrentCoffeeType.ToString());
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TestResourceManagerButton_Click(object sender, RoutedEventArgs e) {
+
+      System.Resources.ResourceSet resourceSet = CoffeeResources.ResourceManager.GetResourceSet(System.Globalization.CultureInfo.CurrentUICulture, false, false);
+      
+      IDictionaryEnumerator enumerator = resourceSet.GetEnumerator();
+
+      while (enumerator.MoveNext()) {
+        Console.WriteLine("Key: {0},\tValue: {1}", enumerator.Key, enumerator.Value);
+      }
+      
     }
 
   }

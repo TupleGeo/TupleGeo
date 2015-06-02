@@ -5,7 +5,7 @@
 // Description      : The details used to define an SQL Server connection
 //                    as they appear in a connection string.
 // Created by       : 18/03/2009, 20:40, Vasilis Vlastaras.
-// Updated by       : 01/06/2015, 21:50, Vasilis Vlastaras.
+// Updated by       : 02/06/2015, 16:03, Vasilis Vlastaras.
 //                    1.0.1 - Re-engineered ConnectionDetails to meet Microsoft All Rules code analysis standards.
 // Version          : 1.0.1
 // Contact Details  : TupleGeo.
@@ -172,7 +172,6 @@ namespace TupleGeo.General.Data.SqlServer {
     /// for this method to succeed returning a connection string.
     /// </remarks>
     /// <returns>A <see cref="string"/>containing the SQL Server connection string.</returns>
-    // TODO: Change exception logic here according to base64key and base64 initialization vector.
     public string ToConnectionString(string user) {
 
       StringBuilder sb = new StringBuilder();
@@ -195,7 +194,7 @@ namespace TupleGeo.General.Data.SqlServer {
           sb.Append(";");
 
           // Append User ID.
-          if (string.IsNullOrEmpty(user)) {
+          if (!string.IsNullOrEmpty(user)) {
             var users =
               from usr in this._sqlServerUserCollection
               where usr.UserName == user
@@ -259,7 +258,43 @@ namespace TupleGeo.General.Data.SqlServer {
       return sb.ToString();
 
     }
-    
+
+    /// <summary>
+    /// Converts the connection Details in to an SQL Server connection string.
+    /// </summary>
+    /// <param name="user">
+    /// The username that will be used to form the connection string.
+    /// </param>
+    /// <param name="base64Key">
+    /// The base64 key used for encrypting passwords.
+    /// </param>
+    /// <param name="base64InitializationVector">
+    /// The base64 initialization vector used for encrypting passwords.
+    /// </param>
+    /// <remarks>
+    /// In case the <see cref="SqlServerUserCollection"/> property is populated with users having
+    /// encrypted passwords a call to methods <see cref="SetBase64Key"/> and 
+    /// <see cref="SetBase64InitializationVector"/> must be made first in order
+    /// for this method to succeed returning a connection string.
+    /// </remarks>
+    /// <returns>A <see cref="string"/>containing the SQL Server connection string.</returns>
+    public string ToConnectionString(string user, string base64Key, string base64InitializationVector) {
+
+      if (string.IsNullOrEmpty(base64Key)) {
+        throw new ArgumentNullException("base64Key", "Base64 Key could not be NULL or Empty.");
+      }
+
+      if (string.IsNullOrEmpty(base64InitializationVector)) {
+        throw new ArgumentNullException("base64InitializationVector", "Base64 Initialization Vector could not be NULL or Empty");
+      }
+
+      SetBase64Key(base64Key);
+      SetBase64InitializationVector(base64InitializationVector);
+
+      return ToConnectionString(user);
+
+    }
+
     /// <summary>
     /// Updates the connection details using a connection string.
     /// </summary>
@@ -275,7 +310,6 @@ namespace TupleGeo.General.Data.SqlServer {
     /// must be made first in order for this method to succeed setting the
     /// ConnectionDetails object using a connection string.
     /// </remarks>
-    // TODO: Change exception logic here according to base64key and base64 initialization vector.
     public void FromConnectionString(string connectionString, bool encryptPassword) {
 
       if (string.IsNullOrEmpty(connectionString)) {
@@ -319,6 +353,38 @@ namespace TupleGeo.General.Data.SqlServer {
 
       // Update the user list.
       UpdateUserList(encryptPassword, userID, password);
+
+    }
+
+    /// <summary>
+    /// Updates the connection details using a connection string.
+    /// </summary>
+    /// <param name="connectionString">
+    /// The connection string used to updated the ConnectionDetails object.
+    /// </param>
+    /// <param name="base64Key">
+    /// The base64 key used for encrypting passwords.
+    /// </param>
+    /// <param name="base64InitializationVector">
+    /// The base64 initialization vector used for encrypting passwords.
+    /// </param>
+    /// <remarks>
+    /// The method assumes that the password will be encrypted.
+    /// </remarks>
+    public void FromConnectionString(string connectionString, string base64Key, string base64InitializationVector) {
+
+      if (string.IsNullOrEmpty(base64Key)) {
+        throw new ArgumentNullException("base64Key", "Base64 Key could not be NULL or Empty.");
+      }
+
+      if (string.IsNullOrEmpty(base64InitializationVector)) {
+        throw new ArgumentNullException("base64InitializationVector", "Base64 Initialization Vector could not be NULL or Empty");
+      }
+
+      SetBase64Key(base64Key);
+      SetBase64InitializationVector(base64InitializationVector);
+
+      FromConnectionString(connectionString, true);
 
     }
 

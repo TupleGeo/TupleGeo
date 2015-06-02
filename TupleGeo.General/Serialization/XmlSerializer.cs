@@ -6,7 +6,10 @@
 // Created by       : 16/02/2009, 20:08, Vasilis Vlastaras.
 // Updated by       : 22/02/2011, 21:45, Vasilis Vlastaras.
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0
-// Version          : 1.0.1
+//                  : 02/06/2015, 22:04, Vasilis Vlastaras.
+//                    1.0.2 - Changed two of the overloaded Serialize methods to SerializeToString
+//                    in order to ensure CLS assembly compliance.
+// Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -196,88 +199,7 @@ namespace TupleGeo.General.Serialization {
       return memStream;
 
     }
-
-    /// <summary>
-    /// Serializes the specified object in to a <see cref="string"/>.
-    /// </summary>
-    /// <param name="value">The object to serialize.</param>
-    /// <param name="serialized">The string that will contain the serialized object.</param>
-    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
-    /// <remarks>
-    /// <para>
-    /// The method uses <see cref="UTF8Encoding"/> to serialize the object.
-    /// </para>
-    /// <para>
-    /// The method might not return the entire object graph in to a serialized string.
-    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
-    /// in the serialization process of this method.
-    /// </para>
-    /// </remarks>
-    public static void Serialize(object value, out string serialized) {
-
-      if (value == null) {
-        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
-      }
-      
-      MemoryStream memStream = null;
-
-      try {
-        memStream = new MemoryStream();
-        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
-        serializer.Serialize(memStream, value);
-        byte[] bytes = memStream.GetBuffer();
-        UTF8Encoding encoding = new UTF8Encoding();
-        serialized = encoding.GetString(bytes);
-      }
-      finally {
-        if (memStream != null) {
-          memStream.Close();
-        }
-      }
-
-    }
-
-    /// <summary>
-    /// Serializes the specified object in to a <see cref="string"/>.
-    /// </summary>
-    /// <param name="value">The object to serialize.</param>
-    /// <param name="serialized">The string that will contain the serialized object.</param>
-    /// <param name="encoding">The <see cref="Encoding"/> used to serialize the object.</param>
-    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
-    /// <remarks>
-    /// <para>
-    /// The method might not return the entire object graph in to a serialized string.
-    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
-    /// in the serialization process of this method.
-    /// </para>
-    /// </remarks>
-    public static void Serialize(object value, out string serialized, Encoding encoding) {
-
-      if (value == null) {
-        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
-      }
-
-      if (encoding == null) {
-        throw new ArgumentNullException("encoding", "Encoding could not be NULL.");
-      }
-      
-      MemoryStream memStream = null;
-
-      try {
-        memStream = new MemoryStream();
-        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
-        serializer.Serialize(memStream, value);
-        byte[] bytes = memStream.GetBuffer();
-        serialized = encoding.GetString(bytes);
-      }
-      finally {
-        if (memStream != null) {
-          memStream.Close();
-        }
-      }
-
-    }
-
+    
     /// <summary>
     /// Serializes the specified object in to a <see cref="string"/>.
     /// </summary>
@@ -307,6 +229,91 @@ namespace TupleGeo.General.Serialization {
         }
         throw;
       }
+
+    }
+
+    /// <summary>
+    /// Serializes the specified object in to a <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The object to serialize.</param>
+    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
+    /// <remarks>
+    /// <para>
+    /// The method uses <see cref="UTF8Encoding"/> to serialize the object.
+    /// </para>
+    /// <para>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </para>
+    /// </remarks>
+    public static string SerializeToString(object value) {
+
+      if (value == null) {
+        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
+      }
+
+      MemoryStream memStream = null;
+      string serialized;
+
+      try {
+        memStream = new MemoryStream();
+        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
+        serializer.Serialize(memStream, value);
+        byte[] bytes = memStream.GetBuffer();
+        UTF8Encoding encoding = new UTF8Encoding();
+        serialized = encoding.GetString(bytes);
+      }
+      finally {
+        if (memStream != null) {
+          memStream.Close();
+        }
+      }
+
+      return serialized;
+
+    }
+
+    /// <summary>
+    /// Serializes the specified object in to a <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The object to serialize.</param>
+    /// <param name="encoding">The <see cref="Encoding"/> used to serialize the object.</param>
+    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
+    /// <remarks>
+    /// <para>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </para>
+    /// </remarks>
+    public static string SerializeToString(object value, Encoding encoding) {
+
+      if (value == null) {
+        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
+      }
+
+      if (encoding == null) {
+        throw new ArgumentNullException("encoding", "Encoding could not be NULL.");
+      }
+
+      MemoryStream memStream = null;
+      string serialized;
+
+      try {
+        memStream = new MemoryStream();
+        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
+        serializer.Serialize(memStream, value);
+        byte[] bytes = memStream.GetBuffer();
+        serialized = encoding.GetString(bytes);
+      }
+      finally {
+        if (memStream != null) {
+          memStream.Close();
+        }
+      }
+
+      return serialized;
 
     }
 

@@ -61,7 +61,7 @@
     <Compile Include="Attributes\ResourceDescriptionAttribute.cs" />
     <Compile Include="ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="ComponentModel\EnumNameDescriptionPair.cs" />
-    <Compile Include="ComponentModel\ObservableObjectOfT.cs" />
+    <Compile Include="ComponentModel\ObservableObject`1.cs" />
     <Compile Include="GeneralException.cs" />
     <Compile Include="Data\FilterType.cs" />
     <Compile Include="Data\SqlServer\ConnectionDetailsException.cs" />

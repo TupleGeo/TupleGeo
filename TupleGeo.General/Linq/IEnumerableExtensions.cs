@@ -26,7 +26,7 @@ using System.Linq.Expressions;
 namespace TupleGeo.General.Linq {
 
   /// <summary>
-  /// Provides extension methods for <see cref="IEnumerable of T"/>.
+  /// Provides extension methods for <see cref="IEnumerable{T}"/>.
   /// </summary>
   public static class IEnumerableExtentions {
 

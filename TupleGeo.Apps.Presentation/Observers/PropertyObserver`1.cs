@@ -24,6 +24,7 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using TupleGeo.General.Linq.Expressions;
 
 #endregion
 
@@ -77,7 +78,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
         throw new ArgumentNullException("expression");
       }
 
-      string propertyName = GetPropertyName(expression);
+      string propertyName = Prop.GetPropertyName<TPropertySource>(expression); // GetPropertyName(expression);
       if (String.IsNullOrEmpty(propertyName)) {
         throw new ArgumentException("'expression' did not provide a property name.", "expression");
       }
@@ -109,7 +110,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
         throw new ArgumentNullException("expression");
       }
 
-      string propertyName = GetPropertyName(expression);
+      string propertyName = Prop.GetPropertyName<TPropertySource>(expression); // GetPropertyName(expression);
       if (String.IsNullOrEmpty(propertyName)) {
         throw new ArgumentException("'expression' did not provide a property name.");
       }
@@ -174,34 +175,35 @@ namespace TupleGeo.Apps.Presentation.Observers {
 
     #region Private Procedures
 
-    /// <summary>
-    /// Gets the property name.
-    /// </summary>
-    /// <param name="expression">An expression.</param>
-    /// <returns>
-    /// Returns a <see cref="string"/> with the property name.
-    /// </returns>
-    private static string GetPropertyName(Expression<Func<TPropertySource, object>> expression) {
-      var lambda = expression as LambdaExpression;
-      MemberExpression memberExpression;
-      if (lambda.Body is UnaryExpression) {
-        var unaryExpression = lambda.Body as UnaryExpression;
-        memberExpression = unaryExpression.Operand as MemberExpression;
-      }
-      else {
-        memberExpression = lambda.Body as MemberExpression;
-      }
+    ///// <summary>
+    ///// Gets the property name.
+    ///// </summary>
+    ///// <param name="expression">An expression.</param>
+    ///// <returns>
+    ///// Returns a <see cref="string"/> with the property name.
+    ///// </returns>
+    //private static string GetPropertyName(Expression<Func<TPropertySource, object>> expression) {
+    //  var lambda = expression as LambdaExpression;
+    //  MemberExpression memberExpression;
+      
+    //  if (lambda.Body is UnaryExpression) {
+    //    var unaryExpression = lambda.Body as UnaryExpression;
+    //    memberExpression = unaryExpression.Operand as MemberExpression;
+    //  }
+    //  else {
+    //    memberExpression = lambda.Body as MemberExpression;
+    //  }
 
-      Debug.Assert(memberExpression != null, "Please provide a lambda expression like 'n => n.PropertyName'");
+    //  Debug.Assert(memberExpression != null, "Please provide a lambda expression like 'n => n.PropertyName'");
 
-      if (memberExpression != null) {
-        var propertyInfo = memberExpression.Member as PropertyInfo;
+    //  if (memberExpression != null) {
+    //    var propertyInfo = memberExpression.Member as PropertyInfo;
 
-        return propertyInfo.Name;
-      }
+    //    return propertyInfo.Name;
+    //  }
 
-      return null;
-    }
+    //  return null;
+    //}
 
     /// <summary>
     /// Gets the target of the property source.

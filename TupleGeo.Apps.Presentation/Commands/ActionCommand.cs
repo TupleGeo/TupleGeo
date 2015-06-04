@@ -25,6 +25,7 @@ using System.Reflection;
 using System.Text;
 using System.Windows.Input;
 using TupleGeo.Apps.Presentation.Observers;
+using TupleGeo.General.Linq.Expressions;
 
 #endregion
 
@@ -69,7 +70,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="property">The property of the TEntity.</param>
     /// <returns>An <see cref="ActionCommand"/>.</returns>
     public ActionCommand AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
-      string propertyName = GetPropertyName<TEntity>(property);
+      string propertyName = Prop.GetPropertyName<TEntity>(property); // GetPropertyName<TEntity>(property);
       PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
 
       return this;
@@ -113,34 +114,34 @@ namespace TupleGeo.Apps.Presentation.Commands {
 
     #region Private Procedures
 
-    /// <summary>
-    /// Gets a property name.
-    /// </summary>
-    /// <typeparam name="TEntity">The entity.</typeparam>
-    /// <param name="expression">The expression.</param>
-    /// <returns>A <see cref="string"/> holding the property name.</returns>
-    private static string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression) {
-      var lambda = expression as LambdaExpression;
-      MemberExpression memberExpression;
+    ///// <summary>
+    ///// Gets a property name.
+    ///// </summary>
+    ///// <typeparam name="TEntity">The entity.</typeparam>
+    ///// <param name="expression">The expression.</param>
+    ///// <returns>A <see cref="string"/> holding the property name.</returns>
+    //private static string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression) {
+    //  var lambda = expression as LambdaExpression;
+    //  MemberExpression memberExpression;
 
-      if (lambda.Body is UnaryExpression) {
-        var unaryExpression = lambda.Body as UnaryExpression;
-        memberExpression = unaryExpression.Operand as MemberExpression;
-      }
-      else {
-        memberExpression = lambda.Body as MemberExpression;
-      }
+    //  if (lambda.Body is UnaryExpression) {
+    //    var unaryExpression = lambda.Body as UnaryExpression;
+    //    memberExpression = unaryExpression.Operand as MemberExpression;
+    //  }
+    //  else {
+    //    memberExpression = lambda.Body as MemberExpression;
+    //  }
 
-      //var constantExpression = memberExpression.Expression as ConstantExpression;
+    //  //var constantExpression = memberExpression.Expression as ConstantExpression;
 
-      if (memberExpression != null) {
-        var propertyInfo = memberExpression.Member as PropertyInfo;
+    //  if (memberExpression != null) {
+    //    var propertyInfo = memberExpression.Member as PropertyInfo;
 
-        return propertyInfo.Name;
-      }
+    //    return propertyInfo.Name;
+    //  }
 
-      return null;
-    }
+    //  return null;
+    //}
 
     /// <summary>
     /// Re-queries the can execute.

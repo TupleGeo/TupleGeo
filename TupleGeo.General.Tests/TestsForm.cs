@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using TupleGeo.General.Data.SqlServer;
+using TupleGeo.General.Linq.Expressions;
 using TupleGeo.General.Serialization;
 using TupleGeo.General.Tests.ObservableObjectTest;
 
@@ -97,6 +98,23 @@ namespace TupleGeo.General.Tests {
     private void obs1_PropertyChanged(object sender, PropertyChangedEventArgs e) {
       MessageBox.Show(string.Format("Name: {0}, Value: {1}", e.PropertyName, sender.GetPropertyValueString(e.PropertyName)), "Property Changed");
       //MessageBox.Show(string.Format("Name: {0}", e.PropertyName), "Property Changed");
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void GetPropertyNameButton_Click(object sender, EventArgs e) {
+
+      string propertyName = Prop.GetPropertyName<Obs1>(p => p.Int1);
+
+      MessageBox.Show(propertyName);
+
+      propertyName = Prop.GetPropertyName<Obs1>(p => p.Double1);
+
+      MessageBox.Show(propertyName);
+      
     }
 
   }

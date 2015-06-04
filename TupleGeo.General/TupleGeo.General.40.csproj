@@ -66,6 +66,7 @@
     <Compile Include="Data\FilterType.cs" />
     <Compile Include="Data\SqlServer\ConnectionDetailsException.cs" />
     <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="Linq\Expressions\Prop.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

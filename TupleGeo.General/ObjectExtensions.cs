@@ -16,11 +16,11 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Reflection;
-using TupleGeo.General.Properties;
 using System.Globalization;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using TupleGeo.General.Properties;
 
 #endregion
 
@@ -79,7 +79,7 @@ namespace TupleGeo.General {
         throw new GeneralException(Resources.General_PropertyCouldNotConvertValueToString);
       }
     }
-
+    
     #endregion
 
   }

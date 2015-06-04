@@ -1,0 +1,94 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Presentation.Forms.45", "TupleGeo.Presentation.Forms\TupleGeo.Presentation.Forms.45.csproj", "{2CEE1E6E-1410-4825-925E-C58EADD59D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Resources.45", "TupleGeo.Resources\TupleGeo.Resources.45.csproj", "{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.45", "TupleGeo.General\TupleGeo.General.45.csproj", "{E303F1F2-2643-4100-B4F9-0D6109669837}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentModel.Design.45", "TupleGeo.General.ComponentModel.Design\TupleGeo.General.ComponentModel.Design.45.csproj", "{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Forms.45", "TupleGeo.General.Windows.Forms\TupleGeo.General.Windows.Forms.45.csproj", "{11B17B5E-E13D-409E-AAF4-EACBAC27838E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.45", "TupleGeo.General.Windows.Presentation\TupleGeo.General.Windows.Presentation.45.csproj", "{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentModel.Design.Tests.45", "TupleGeo.General.ComponentModel.Design.Tests\TupleGeo.General.ComponentModel.Design.Tests.45.csproj", "{1884EF87-3EAA-4E9F-9954-200FBA5314F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.Tests.45", "TupleGeo.General.Windows.Presentation.Tests\TupleGeo.General.Windows.Presentation.Tests.45.csproj", "{D276C9BF-179A-47DF-917A-85E68F940D86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Text.Greek.45", "TupleGeo.General.Text.Greek\TupleGeo.General.Text.Greek.45.csproj", "{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Tests.45", "TupleGeo.General.Tests\TupleGeo.General.Tests.45.csproj", "{2E52C53E-5D5F-4449-B914-E31A88447170}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.45", "TupleGeo.Apps\TupleGeo.Apps.45.csproj", "{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.45", "TupleGeo.Apps.Presentation\TupleGeo.Apps.Presentation.45.csproj", "{DD20A19F-E078-4D99-9E48-234802D66219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.TemplateApplication.45", "TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.45.csproj", "{21C99ABD-41BF-4365-8A3D-399D76A6311B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug45|Any CPU = Debug45|Any CPU
+		Release45|Any CPU = Release45|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{1884EF87-3EAA-4E9F-9954-200FBA5314F7}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{1884EF87-3EAA-4E9F-9954-200FBA5314F7}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{1884EF87-3EAA-4E9F-9954-200FBA5314F7}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{1884EF87-3EAA-4E9F-9954-200FBA5314F7}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release45|Any CPU.Build.0 = Release45|Any CPU
+		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Debug45|Any CPU.ActiveCfg = Debug45|Any CPU
+		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Debug45|Any CPU.Build.0 = Debug45|Any CPU
+		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Release45|Any CPU.ActiveCfg = Release45|Any CPU
+		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Release45|Any CPU.Build.0 = Release45|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

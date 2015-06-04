@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TupleGeo.General.ComponentModel.Design.Properties {
+namespace TupleGeo.Global.ComponentModel.Design.Properties {
     using System;
     
     

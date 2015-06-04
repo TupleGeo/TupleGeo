@@ -30,8 +30,13 @@ namespace TupleGeo.TemplateApplication.Models.Application {
     /// <summary>
     /// Initializes the <see cref="ApplicationModel"/>.
     /// </summary>
+    [
+      System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "TupleGeo.TemplateApplication.Models.Application.ApplicationModel.set_Caption(System.String)"),
+      System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "TemplateApplication"),
+      System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "TupleGeo")
+    ]
     public ApplicationModel() {
-      this.Caption = "TupleGeo.TemplateApplication";
+      this.Caption = "TupleGeo.TemplateApplication"; // TODO: Change the caption accordingly.
     }
 
     #endregion
@@ -56,18 +61,18 @@ namespace TupleGeo.TemplateApplication.Models.Application {
       }
     }
 
-    private string _logSubFolder;
+    private string _logSubfolder;
 
     /// <summary>
     /// Gets / Sets the log folder.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "logSubFolder")]
-    public string LogSubFolder {
+    public string LogSubfolder {
       get {
-        return _logSubFolder;
+        return _logSubfolder;
       }
       set {
-        _logSubFolder = value;
+        _logSubfolder = value;
       }
     }
 

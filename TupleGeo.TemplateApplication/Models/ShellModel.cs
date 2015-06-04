@@ -40,6 +40,7 @@ namespace TupleGeo.TemplateApplication.Models {
     /// <summary>
     /// Gets the caption of the shell.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1822:MarkMembersAsStatic")]
     public string Caption {
       get {
         if (AppEngine.Instance.ApplicationModel != null) {

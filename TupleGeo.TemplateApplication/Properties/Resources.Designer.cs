@@ -59,5 +59,32 @@ namespace TupleGeo.TemplateApplication.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error.
+        /// </summary>
+        internal static string Application_Error {
+            get {
+                return ResourceManager.GetString("Application_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to View Data Binding Error.
+        /// </summary>
+        internal static string Application_ViewDataBindingError {
+            get {
+                return ResourceManager.GetString("Application_ViewDataBindingError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning.
+        /// </summary>
+        internal static string Application_Warning {
+            get {
+                return ResourceManager.GetString("Application_Warning", resourceCulture);
+            }
+        }
     }
 }

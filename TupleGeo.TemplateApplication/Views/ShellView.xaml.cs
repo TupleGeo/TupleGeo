@@ -8,6 +8,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,6 +49,7 @@ namespace TupleGeo.TemplateApplication.Views {
     /// <summary>
     /// Initializes the view.
     /// </summary>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
     private void InitializeView() {
 
       try {
@@ -86,9 +88,9 @@ namespace TupleGeo.TemplateApplication.Views {
         string error = "An Error has occurred during data binding in 'ShellView'\r\n\r\n" +
                        "Error Message: " + ex.Message + "\r\n\r\n";
         if (ex.InnerException != null) {
-          error += string.Format("Inner Exception: {0}", ex.InnerException.Message);
+          error += string.Format(CultureInfo.InvariantCulture, "Inner Exception: {0}", ex.InnerException.Message);
         }
-        MessageBox.Show(error, "View data binding Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(error, TupleGeo.TemplateApplication.Properties.Resources.Application_ViewDataBindingError, MessageBoxButton.OK, MessageBoxImage.Error);
       }
 
     }

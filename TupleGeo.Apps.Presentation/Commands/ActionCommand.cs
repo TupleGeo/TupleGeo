@@ -72,7 +72,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     public ActionCommand AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
       string propertyName = Prop.GetPropertyName<TEntity>(property); // GetPropertyName<TEntity>(property);
       PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
-
+      
       return this;
     }
 
@@ -113,6 +113,8 @@ namespace TupleGeo.Apps.Presentation.Commands {
     #endregion
 
     #region Private Procedures
+
+    // TODO: Remove comments
 
     ///// <summary>
     ///// Gets a property name.
@@ -156,10 +158,11 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Re-queries the can execute.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
     private void RequeryCanExecute(object sender) {
       OnCanExecuteChanged();
     }
-    
+
     #endregion
 
     #region ICommand Members

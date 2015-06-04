@@ -53,7 +53,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// Sets the cursor of the shell.
     /// </summary>
     /// <param name="cursor">The <see cref="Cursor"/> that will be set.</param>
-    public void SetCursor(Cursor cursor) {
+    public static void SetCursor(Cursor cursor) {
       Application.Current.MainWindow.Cursor = cursor;
     }
 
@@ -116,14 +116,13 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// <summary>
     /// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
     /// </summary>
-    /// <param name="collectionViewSources">
-    /// The dictionary of <see cref="CollectionViewSource">CollectionViewSources</see>
-    /// that will be used to display data.
+    /// <param name="collectionViewSourcesDictionary">
+    /// The Dictionary of collection view sources that will be used to display data.
     /// </param>
-    public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSources) {
+    public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
 
     }
-
+    
     #endregion
 
   }

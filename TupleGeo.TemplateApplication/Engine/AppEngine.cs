@@ -7,6 +7,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -79,9 +80,10 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// <summary>
     /// Reads the configuration of the application from the configuration file.
     /// </summary>
-    public void ReadConfiguration() {
+    public static void ReadConfiguration() {
       string configFile = string.Format(
-        "{0}{1}", // TODO: RES
+        CultureInfo.InvariantCulture,
+        "{0}{1}",
         PathsUtility.AddBackslashToPath(AppDomain.CurrentDomain.BaseDirectory), Settings.Default.ApplicationConfigFile
       );
 
@@ -97,6 +99,7 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// </summary>
     public void SaveConfiguration() {
       string configFile = string.Format(
+        CultureInfo.InvariantCulture,
         "{0}{1}",
         PathsUtility.AddBackslashToPath(AppDomain.CurrentDomain.BaseDirectory), Settings.Default.ApplicationConfigFile
       );
@@ -108,17 +111,22 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// Logs an error in to the application error log file.
     /// </summary>
     /// <param name="exception">The <see cref="Exception"/> that has been occurred.</param>
-    public void LogError(Exception exception) {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+    public static void LogError(Exception exception) {
+
+      if (exception == null) {
+        return;
+      }
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       string logPath = directory + "\\" +
-                       AppEngine.Instance.ApplicationModel.LogSubFolder + "\\" +
+                       AppEngine.Instance.ApplicationModel.LogSubfolder + "\\" +
                        "Log_" +
-                       DateTime.Now.Year.ToString() +
+                       DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Month.ToString() +
+                       DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Day.ToString() +
+                       DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) +
                        ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
@@ -134,7 +142,7 @@ namespace TupleGeo.TemplateApplication.Engine {
         streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
         streamWriter.WriteLine("--------");
 
-        MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(exception.Message, Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
       }
       catch {
         // Swallow the error.
@@ -150,17 +158,26 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// </summary>
     /// <param name="exception">The <see cref="Exception"/> that has been occurred.</param>
     /// <param name="friendlySource">A friendly source name.</param>
-    public void LogError(Exception exception, string friendlySource) {
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
+    public static void LogError(Exception exception, string friendlySource) {
+
+      if (exception == null) {
+        return;
+      }
+
+      if (friendlySource == null) {
+        friendlySource = string.Empty;
+      }
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       string logPath = directory + "\\" +
-                       AppEngine.Instance.ApplicationModel.LogSubFolder + "\\" +
+                       AppEngine.Instance.ApplicationModel.LogSubfolder + "\\" +
                        "Log_" +
-                       DateTime.Now.Year.ToString() +
+                       DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Month.ToString() +
+                       DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Day.ToString() +
+                       DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) +
                        ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
@@ -178,7 +195,7 @@ namespace TupleGeo.TemplateApplication.Engine {
         streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
         streamWriter.WriteLine("--------");
 
-        MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(exception.Message, Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
       }
       catch {
         // Swallow the error.

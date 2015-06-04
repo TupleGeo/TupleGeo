@@ -175,6 +175,8 @@ namespace TupleGeo.Apps.Presentation.Observers {
 
     #region Private Procedures
 
+    // TODO: Remove comments
+
     ///// <summary>
     ///// Gets the property name.
     ///// </summary>

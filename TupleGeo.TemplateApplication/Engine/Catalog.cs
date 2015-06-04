@@ -27,10 +27,10 @@ namespace TupleGeo.TemplateApplication.Engine {
 
     #region Member Variables
 
-    private static Dictionary<Type, Type> _mappedViewModels; // view type, view model type.
-    private static Dictionary<Type, IViewModel> _viewModelInstances; // view type, IViewModel instance.
-    private static Dictionary<Type, Type> _mappedModels; // view model type, model type.
-    private static Dictionary<Type, IView> _singletonViewInstances; // view type, IView instance.
+    private static Dictionary<Type, Type> _mappedViewModels = new Dictionary<Type,Type>(); // view type, view model type.
+    private static Dictionary<Type, IViewModel> _viewModelInstances = new Dictionary<Type,IViewModel>(); // view type, IViewModel instance.
+    private static Dictionary<Type, Type> _mappedModels = new Dictionary<Type,Type>(); // view model type, model type.
+    private static Dictionary<Type, IView> _singletonViewInstances = new Dictionary<Type,IView>(); // view type, IView instance.
 
     #endregion
 
@@ -42,9 +42,6 @@ namespace TupleGeo.TemplateApplication.Engine {
     static Catalog() {
       RegisterViewModels();
       RegisterModels();
-
-      _singletonViewInstances = new Dictionary<Type, IView>();
-      _viewModelInstances = new Dictionary<Type, IViewModel>();
     }
 
     #endregion
@@ -112,8 +109,6 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// ViewModels are registered using a dictionary having the types of views as keys.
     /// </remarks>
     private static void RegisterViewModels() {
-      _mappedViewModels = new Dictionary<Type, Type>();
-
       // Key: Views                                          Value: ViewModels
       // ----------------------------------------------------------------------------------------------------
       // SampleView                                          SampleViewModel.
@@ -135,8 +130,6 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// Models are registered using a dictionary having the types of view models as keys.
     /// </remarks>
     private static void RegisterModels() {
-      _mappedModels = new Dictionary<Type, Type>();
-
       // Key: ViewModels                                             Value: Models
       // ----------------------------------------------------------------------------------------------------
       // SampleViewModel                                             SampleModel.

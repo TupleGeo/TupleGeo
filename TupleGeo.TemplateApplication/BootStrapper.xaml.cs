@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
@@ -23,7 +24,7 @@ namespace TupleGeo.TemplateApplication {
   /// <summary>
   /// Performs application bootstrapping.
   /// </summary>
-  public partial class BootStrapper : Application {
+  public partial class Bootstrapper : Application {
 
     #region Event Procedures
 
@@ -55,10 +56,14 @@ namespace TupleGeo.TemplateApplication {
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
     private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      string logPath = directory + "\\Log_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Day.ToString() + ".txt";
+      string logPath = directory + "\\Log_" +
+                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) + "_" +
+                        DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) + "_" +
+                        DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) + ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
 
@@ -75,7 +80,7 @@ namespace TupleGeo.TemplateApplication {
         streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
         streamWriter.WriteLine("--------");
 
-        MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(exception.Message, TupleGeo.TemplateApplication.Properties.Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
       }
       catch {
         // Swallow the error.
@@ -91,10 +96,14 @@ namespace TupleGeo.TemplateApplication {
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
     private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) {
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      string logPath = directory + "\\Log_" + DateTime.Now.Year.ToString() + "_" + DateTime.Now.Month.ToString() + "_" + DateTime.Now.Day.ToString() + ".txt";
+      string logPath = directory + "\\Log_" +
+                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) + "_" +
+                        DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) + "_" +
+                        DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) + ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
 
@@ -111,7 +120,7 @@ namespace TupleGeo.TemplateApplication {
         streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
         streamWriter.WriteLine("--------");
 
-        MessageBox.Show(exception.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+        MessageBox.Show(exception.Message, TupleGeo.TemplateApplication.Properties.Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
       }
       catch {
         // Swallow the error.
@@ -136,7 +145,7 @@ namespace TupleGeo.TemplateApplication {
       AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException); // Let's hope Dichpatcher unhandled exception is sufficient enough.
 
       // Read the configuration file.
-      AppEngine.Instance.ReadConfiguration();
+      AppEngine.ReadConfiguration();
 
     }
 

@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.450", "src\TupleGeo.Apps\src\TupleGeo.Apps.450.csproj", "{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.450", "src\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.450.csproj", "{DD20A19F-E078-4D99-9E48-234802D66219}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.450", "src\TupleGeo.General\src\TupleGeo.General.450.csproj", "{E303F1F2-2643-4100-B4F9-0D6109669837}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Tests.450", "src\TupleGeo.General\tests\TupleGeo.General.Tests.450.csproj", "{2E52C53E-5D5F-4449-B914-E31A88447170}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug400|Any CPU = Debug400|Any CPU
+		Debug450|Any CPU = Debug450|Any CPU
+		Release400|Any CPU = Release400|Any CPU
+		Release450|Any CPU = Release450|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug400|Any CPU.ActiveCfg = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug400|Any CPU.Build.0 = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug450|Any CPU.ActiveCfg = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug450|Any CPU.Build.0 = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release400|Any CPU.ActiveCfg = Release450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release400|Any CPU.Build.0 = Release450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release450|Any CPU.ActiveCfg = Release450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release450|Any CPU.Build.0 = Release450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug400|Any CPU.ActiveCfg = Debug450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug400|Any CPU.Build.0 = Debug450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug450|Any CPU.ActiveCfg = Debug450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Debug450|Any CPU.Build.0 = Debug450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release400|Any CPU.ActiveCfg = Release450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release400|Any CPU.Build.0 = Release450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release450|Any CPU.ActiveCfg = Release450|Any CPU
+		{DD20A19F-E078-4D99-9E48-234802D66219}.Release450|Any CPU.Build.0 = Release450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug400|Any CPU.ActiveCfg = Debug450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug400|Any CPU.Build.0 = Debug450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug450|Any CPU.ActiveCfg = Debug450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Debug450|Any CPU.Build.0 = Debug450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release400|Any CPU.ActiveCfg = Release450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release400|Any CPU.Build.0 = Release450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release450|Any CPU.ActiveCfg = Release450|Any CPU
+		{E303F1F2-2643-4100-B4F9-0D6109669837}.Release450|Any CPU.Build.0 = Release450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug400|Any CPU.ActiveCfg = Debug450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug400|Any CPU.Build.0 = Debug450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug450|Any CPU.ActiveCfg = Debug450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug450|Any CPU.Build.0 = Debug450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release400|Any CPU.ActiveCfg = Release450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release400|Any CPU.Build.0 = Release450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release450|Any CPU.ActiveCfg = Release450|Any CPU
+		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release450|Any CPU.Build.0 = Release450|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

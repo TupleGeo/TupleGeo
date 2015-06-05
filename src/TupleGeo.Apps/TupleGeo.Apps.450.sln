@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.450", "src\TupleGeo.Apps.450.csproj", "{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug450|Any CPU = Debug450|Any CPU
+		Release450|Any CPU = Release450|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug450|Any CPU.ActiveCfg = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Debug450|Any CPU.Build.0 = Debug450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release450|Any CPU.ActiveCfg = Release450|Any CPU
+		{8113A9A5-5588-459F-B6B2-2BADDB2FCE80}.Release450|Any CPU.Build.0 = Release450|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

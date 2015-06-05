@@ -8,8 +8,8 @@
     <ProjectGuid>{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TupleGeo.Global.ComponentModel.Design</RootNamespace>
-    <AssemblyName>TupleGeo.Global.ComponentModel.Design</AssemblyName>
+    <RootNamespace>TupleGeo.General.ComponentModel.Design</RootNamespace>
+    <AssemblyName>TupleGeo.General.ComponentModel.Design</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -22,7 +22,7 @@
     <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS;NET45</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug45\TupleGeo.Global.ComponentModel.Design.XML</DocumentationFile>
+    <DocumentationFile>bin\Debug45\TupleGeo.General.ComponentModel.Design.xml</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
@@ -34,7 +34,7 @@
     <DefineConstants>TRACE;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release45\TupleGeo.Global.ComponentModel.Design.XML</DocumentationFile>
+    <DocumentationFile>bin\Release45\TupleGeo.General.ComponentModel.Design.xml</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TupleGeo.Global.ComponentModel.Design.Properties {
+namespace TupleGeo.General.ComponentModel.Design.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TupleGeo.Global.ComponentModel.Design.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.Global.ComponentModel.Design.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.General.ComponentModel.Design.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

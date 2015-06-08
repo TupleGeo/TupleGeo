@@ -17,9 +17,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Text.Greek.400", "src\TupleGeo.General.Text.Greek\src\TupleGeo.General.Text.Greek.400.csproj", "{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Resources.400", "src\TupleGeo.Resources\TupleGeo.Resources.400.csproj", "{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Presentation.Forms.400", "src\TupleGeo.Presentation.Forms\src\TupleGeo.Presentation.Forms.400.csproj", "{2CEE1E6E-1410-4825-925E-C58EADD59D4E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Resources.400", "src\TupleGeo.Resources\src\TupleGeo.Resources.400.csproj", "{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Forms.400", "src\TupleGeo.General.Windows.Forms\src\TupleGeo.General.Windows.Forms.400.csproj", "{11B17B5E-E13D-409E-AAF4-EACBAC27838E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,14 +57,18 @@ Global
 		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
 		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
 		{8D47C525-B2EE-4A03-8BC6-E3B172BBB623}.Release400|Any CPU.Build.0 = Release400|Any CPU
-		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
-		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
-		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
-		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release400|Any CPU.Build.0 = Release400|Any CPU
 		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
 		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
 		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
 		{2CEE1E6E-1410-4825-925E-C58EADD59D4E}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{46C5DBD5-1025-42BC-AFF9-DCAE7E898068}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release400|Any CPU.Build.0 = Release400|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

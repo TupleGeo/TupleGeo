@@ -83,12 +83,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TupleGeo.Resources\TupleGeo.Resources.400.csproj">
-      <Project>{46c5dbd5-1025-42bc-aff9-dcae7e898068}</Project>
-      <Name>TupleGeo.Resources.400</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="TupleGeo\Presentation\Controls\CollapsibleGroupBox.bmp" />
   </ItemGroup>
   <ItemGroup>

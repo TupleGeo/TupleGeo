@@ -83,7 +83,7 @@
     <Compile Include="TupleGeo\General\FileTypes\TextFileType.cs" />
     <Compile Include="TupleGeo\General\FileTypes\VectorFileType.cs" />
     <Compile Include="TupleGeo\General\GeneralException.cs" />
-    <Compile Include="TupleGeo\General\GlobalSuppressions.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="TupleGeo\General\IValidation.cs" />
     <Compile Include="TupleGeo\General\Linq\Expressions\Prop.cs" />
     <Compile Include="TupleGeo\General\Linq\IEnumerableExtensions.cs" />

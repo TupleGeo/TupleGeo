@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.400", "src
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Tests.400", "src\TupleGeo.General\tests\TupleGeo.General.Tests.400.csproj", "{2E52C53E-5D5F-4449-B914-E31A88447170}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentModel.Design.400", "src\TupleGeo.General.ComponentModel.Design\src\TupleGeo.General.ComponentModel.Design.400.csproj", "{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug400|Any CPU = Debug400|Any CPU
@@ -33,6 +35,10 @@ Global
 		{2E52C53E-5D5F-4449-B914-E31A88447170}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
 		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
 		{2E52C53E-5D5F-4449-B914-E31A88447170}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{AC25E10C-9F4D-4470-AAB1-5C6042221CCE}.Release400|Any CPU.Build.0 = Release400|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

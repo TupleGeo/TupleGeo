@@ -1,2 +1,7 @@
+
+# User-specific files
+*.suo
+
+# Build Results
 [Bb]in/
 [Oo]bj/

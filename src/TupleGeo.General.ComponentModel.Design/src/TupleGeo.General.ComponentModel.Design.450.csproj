@@ -30,11 +30,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release450|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Any_CPU.Debug450\TupleGeo.General.ComponentModel.Design\</OutputPath>
+    <OutputPath>..\..\..\bin\Any_CPU.Release450\TupleGeo.General.ComponentModel.Design\</OutputPath>
     <DefineConstants>TRACE;NET40</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\bin\Any_CPU.Debug450\TupleGeo.General.ComponentModel.Design\TupleGeo.General.ComponentModel.Design.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release450\TupleGeo.General.ComponentModel.Design\TupleGeo.General.ComponentModel.Design.XML</DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>

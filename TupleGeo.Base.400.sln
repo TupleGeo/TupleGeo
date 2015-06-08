@@ -23,6 +23,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Resources.400", "s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Forms.400", "src\TupleGeo.General.Windows.Forms\src\TupleGeo.General.Windows.Forms.400.csproj", "{11B17B5E-E13D-409E-AAF4-EACBAC27838E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.400", "src\TupleGeo.General.Windows.Presentation\src\TupleGeo.General.Windows.Presentation.400.csproj", "{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.Tests.400", "src\TupleGeo.General.Windows.Presentation\tests\TupleGeo.General.Windows.Presentation.Tests.400.csproj", "{D276C9BF-179A-47DF-917A-85E68F940D86}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug400|Any CPU = Debug400|Any CPU
@@ -69,6 +73,14 @@ Global
 		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
 		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
 		{11B17B5E-E13D-409E-AAF4-EACBAC27838E}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{8529BEC9-340D-44F5-81CF-5E2AD7FB321A}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{D276C9BF-179A-47DF-917A-85E68F940D86}.Release400|Any CPU.Build.0 = Release400|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

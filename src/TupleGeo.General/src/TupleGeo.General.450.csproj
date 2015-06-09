@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,10 +72,8 @@
     <Compile Include="TupleGeo\General\ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\EnumNameDescriptionPair.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\ObservableObject`1.cs" />
-    <Compile Include="TupleGeo\General\Data\Filter.cs" />
     <Compile Include="TupleGeo\General\Data\FilterType.cs" />
-    <Compile Include="TupleGeo\General\Data\IFiltering.cs" />
-    <None Include="TupleGeo\General\Data\Linq\TableExtensions.cs" />
+    <None Include="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />
     <Compile Include="TupleGeo\General\Data\SqlServer\ConnectionDetails.cs" />
     <Compile Include="TupleGeo\General\Data\SqlServer\ConnectionDetailsException.cs" />
     <Compile Include="TupleGeo\General\Data\SqlServer\SqlServerUser.cs" />
@@ -86,18 +85,17 @@
     <Compile Include="TupleGeo\General\FileTypes\TextFileType.cs" />
     <Compile Include="TupleGeo\General\FileTypes\VectorFileType.cs" />
     <Compile Include="TupleGeo\General\GeneralException.cs" />
-    <Compile Include="TupleGeo\General\GlobalSuppressions.cs" />
     <Compile Include="TupleGeo\General\IValidation.cs" />
     <Compile Include="TupleGeo\General\Linq\Expressions\Prop.cs" />
-    <Compile Include="TupleGeo\General\Linq\IEnumerableExtensions.cs" />
+    <None Include="TupleGeo\General\Linq\IEnumerableExtensions_NoCompile.cs" />
     <Compile Include="TupleGeo\General\Linq\IQueryableExtensions.cs" />
     <Compile Include="TupleGeo\General\ObjectExtensions.cs" />
     <Compile Include="TupleGeo\General\Reflection\AssemblyExtensions.cs" />
     <Compile Include="TupleGeo\General\Security\CryptographicString.cs" />
     <Compile Include="TupleGeo\General\Security\CryptographicStringException.cs" />
-    <None Include="TupleGeo\General\Serialization\ClassFactory.cs" />
-    <None Include="TupleGeo\General\Serialization\LinqXmlSerializer.cs" />
-    <None Include="TupleGeo\General\Serialization\PropertyCaller.cs" />
+    <None Include="TupleGeo\General\Serialization\ClassFactory_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\LinqXmlSerializer_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\PropertyCaller_NoCompile.cs" />
     <Compile Include="TupleGeo\General\Serialization\XmlSerializer.cs" />
     <Compile Include="TupleGeo\General\Text\CodePage.cs" />
     <Compile Include="TupleGeo\General\Utilities\MimeTypesHelper.cs" />

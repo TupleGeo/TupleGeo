@@ -85,20 +85,20 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TupleGeo\TemplateApplication\BootStrapper.xaml.cs">
+    <Compile Include="BootStrapper.xaml.cs">
       <DependentUpon>BootStrapper.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TupleGeo\TemplateApplication\Engine\AppEngine.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\Engine\Catalog.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\Models\Application\ApplicationModel.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\Models\SampleModel.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\Models\ShellModel.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\ViewModels\SampleViewModel.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\ViewModels\ShellViewModel.cs" />
-    <Compile Include="TupleGeo\TemplateApplication\Views\SampleView.xaml.cs">
+    <Compile Include="Engine\AppEngine.cs" />
+    <Compile Include="Engine\Catalog.cs" />
+    <Compile Include="Models\Application\ApplicationModel.cs" />
+    <Compile Include="Models\SampleModel.cs" />
+    <Compile Include="Models\ShellModel.cs" />
+    <Compile Include="ViewModels\SampleViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
+    <Compile Include="Views\SampleView.xaml.cs">
       <DependentUpon>SampleView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TupleGeo\TemplateApplication\Views\ShellView.xaml.cs">
+    <Compile Include="Views\ShellView.xaml.cs">
       <DependentUpon>ShellView.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -110,7 +110,7 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="TupleGeo\TemplateApplication\Configuration\ApplicationConfiguration.config" />
+    <None Include="Configuration\ApplicationConfiguration.config" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -151,21 +151,21 @@
     <None Include="Readme.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="TupleGeo\TemplateApplication\BootStrapper.xaml">
+    <ApplicationDefinition Include="BootStrapper.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\SampleView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="TupleGeo\TemplateApplication\Views\SampleView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TupleGeo\TemplateApplication\Views\ShellView.xaml">
+    <Page Include="Views\ShellView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="TupleGeo\TemplateApplication\Resources\SplashScreen1.png" />
+    <SplashScreen Include="Resources\SplashScreen1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

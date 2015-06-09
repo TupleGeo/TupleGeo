@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : Filter.
-// Member of        : TupleGeo.Global.dll
+// Member of        : TupleGeo.General.Windows.Presentation.dll
 // Description      : The object used to define a filter capable to be used in a CollectionViewsource for filtering rows.
 // Created by       : 05/06/2012, 19:29, Vasilis Vlastaras.
 // Updated by       : 
@@ -22,7 +22,7 @@ using TupleGeo.General.ComponentModel;
 
 #endregion
 
-namespace TupleGeo.Global.Data {
+namespace TupleGeo.General.Windows.Data {
 
   /// <summary>
   /// The object used to define a filter capable to be used in a CollectionViewsource for filtering rows.
@@ -82,19 +82,19 @@ namespace TupleGeo.Global.Data {
       }
     }
 
-    private Predicate<object> _callBack;
+    private Predicate<object> _callback;
 
     /// <summary>
     /// Gets / Sets the callback function used to perform the filtering action.
     /// </summary>
-    public Predicate<object> CallBack {
+    public Predicate<object> Callback {
       get {
-        return _callBack;
+        return _callback;
       }
       set {
-        if (_callBack != value) {
-          _callBack = value;
-          this.OnPropertyChanged(m => m.CallBack);
+        if (_callback != value) {
+          _callback = value;
+          this.OnPropertyChanged(m => m.Callback);
         }
       }
     }

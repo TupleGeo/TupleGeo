@@ -51,6 +51,12 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,24 +70,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
+    <Compile Include="ResourceDescription\CoffeeResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CoffeeResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\CoffeeResources.Designer.cs" />
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\CoffeeType.cs" />
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\Test1Model.cs" />
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\Test1ViewModel.cs" />
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\Test2Model.cs" />
-    <Compile Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\Test2ViewModel.cs" />
+    <Compile Include="ResourceDescription\CoffeeType.cs" />
+    <Compile Include="ResourceDescription\Test1Model.cs" />
+    <Compile Include="ResourceDescription\Test1ViewModel.cs" />
+    <Compile Include="ResourceDescription\Test2Model.cs" />
+    <Compile Include="ResourceDescription\Test2ViewModel.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\CoffeeResources.el-GR.resx" />
-    <EmbeddedResource Include="TupleGeo\General\Windows\Presentation\Tests\ResourceDescription\CoffeeResources.resx" />
+    <EmbeddedResource Include="ResourceDescription\CoffeeResources.el-GR.resx" />
+    <EmbeddedResource Include="ResourceDescription\CoffeeResources.resx">
+      <LastGenOutput>CoffeeResources.Designer.cs</LastGenOutput>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,11 +106,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="TupleGeo\General\Windows\Presentation\Tests\App.xaml">
+    <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="TupleGeo\General\Windows\Presentation\Tests\MainWindow.xaml">
+    </ApplicationDefinition>
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -145,8 +145,48 @@
         
       </TabItem>
 
-      <TabItem Header="TabItem">
-        <Grid Background="#FFE5E5E5" />
+      <TabItem x:Name="CollectionViewSourceFiltersTabItem"
+               Header="CollectionViewSource Filters">
+
+        <Grid Background="#FFE5E5E5">
+          <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="50*" />
+            <ColumnDefinition Width="50*" />
+          </Grid.ColumnDefinitions>
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+          </Grid.RowDefinitions>
+          
+          <ListView x:Name="DataListView"
+                    Grid.Column="0"
+                    Grid.Row="0"
+                    Grid.RowSpan="4"
+                    HorizontalAlignment="Stretch"
+                    Margin="10"
+                    VerticalAlignment="Stretch" >
+            <ListView.View>
+              <GridView>
+                <GridViewColumn />
+              </GridView>
+            </ListView.View>
+          </ListView>
+          
+          <Button x:Name="ShowListButton"
+                  Content="Button"
+                  Grid.Column="1"
+                  HorizontalAlignment="Left"
+                  Margin="182.4,21,0,0"
+                  VerticalAlignment="Top"
+                  Width="75"
+                  Click="ShowListButton_Click" />
+
+        </Grid>
+        
       </TabItem>
 
     </TabControl>

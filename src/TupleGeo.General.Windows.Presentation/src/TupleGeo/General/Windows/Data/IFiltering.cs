@@ -1,8 +1,8 @@
 ﻿
 #region Header
 // Title Name       : IFiltering.
-// Member of        : TupleGeo.Global.dll
-// Description      : The contract for those objects need to provide collection view source filtering capabilities.
+// Member of        : TupleGeo.General.Windows.Presentation.dll
+// Description      : The contract for those objects need to provide CollectionViewSource filtering capabilities.
 // Created by       : 05/06/2012, 19:24, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
@@ -22,10 +22,10 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Global.Data {
+namespace TupleGeo.General.Windows.Data {
 
   /// <summary>
-  /// The contract for those objects need to provide collection view source filtering capabilities.
+  /// The contract for those objects need to provide <see cref="CollectionViewSource"/> filtering capabilities.
   /// </summary>
   public interface IFiltering {
 
@@ -36,7 +36,6 @@ namespace TupleGeo.Global.Data {
     /// </summary>
     ObservableCollection<Filter> Filters {
       get;
-      set;
     }
 
     /// <summary>

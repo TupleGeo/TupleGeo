@@ -1,6 +1,7 @@
 
 # User-specific files
 *.suo
+*.user
 
 # Build Results
 [Bb]in/

@@ -25,14 +25,15 @@ using System.Text;
 namespace TupleGeo.General.Windows.Data {
 
   /// <summary>
-  /// The contract for those objects need to provide <see cref="CollectionViewSource"/> filtering capabilities.
+  /// The contract for those objects need to provide
+  /// <see cref="System.Windows.Data.CollectionViewSource">CollectionViewSource</see> filtering capabilities.
   /// </summary>
   public interface IFiltering {
 
     #region Public Properties
 
     /// <summary>
-    /// The filters used for <see cref="CollectionViewSource"/> filtering.
+    /// The filters used for <see cref="System.Windows.Data.CollectionViewSource">CollectionViewSource</see> filtering.
     /// </summary>
     ObservableCollection<Filter> Filters {
       get;

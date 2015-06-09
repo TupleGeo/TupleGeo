@@ -175,38 +175,6 @@ namespace TupleGeo.Apps.Presentation.Observers {
 
     #region Private Procedures
 
-    // TODO: Remove comments
-
-    ///// <summary>
-    ///// Gets the property name.
-    ///// </summary>
-    ///// <param name="expression">An expression.</param>
-    ///// <returns>
-    ///// Returns a <see cref="string"/> with the property name.
-    ///// </returns>
-    //private static string GetPropertyName(Expression<Func<TPropertySource, object>> expression) {
-    //  var lambda = expression as LambdaExpression;
-    //  MemberExpression memberExpression;
-      
-    //  if (lambda.Body is UnaryExpression) {
-    //    var unaryExpression = lambda.Body as UnaryExpression;
-    //    memberExpression = unaryExpression.Operand as MemberExpression;
-    //  }
-    //  else {
-    //    memberExpression = lambda.Body as MemberExpression;
-    //  }
-
-    //  Debug.Assert(memberExpression != null, "Please provide a lambda expression like 'n => n.PropertyName'");
-
-    //  if (memberExpression != null) {
-    //    var propertyInfo = memberExpression.Member as PropertyInfo;
-
-    //    return propertyInfo.Name;
-    //  }
-
-    //  return null;
-    //}
-
     /// <summary>
     /// Gets the target of the property source.
     /// </summary>

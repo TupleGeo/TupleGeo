@@ -114,37 +114,6 @@ namespace TupleGeo.Apps.Presentation.Commands {
 
     #region Private Procedures
 
-    // TODO: Remove comments
-
-    ///// <summary>
-    ///// Gets a property name.
-    ///// </summary>
-    ///// <typeparam name="TEntity">The entity.</typeparam>
-    ///// <param name="expression">The expression.</param>
-    ///// <returns>A <see cref="string"/> holding the property name.</returns>
-    //private static string GetPropertyName<TEntity>(Expression<Func<TEntity, object>> expression) {
-    //  var lambda = expression as LambdaExpression;
-    //  MemberExpression memberExpression;
-
-    //  if (lambda.Body is UnaryExpression) {
-    //    var unaryExpression = lambda.Body as UnaryExpression;
-    //    memberExpression = unaryExpression.Operand as MemberExpression;
-    //  }
-    //  else {
-    //    memberExpression = lambda.Body as MemberExpression;
-    //  }
-
-    //  //var constantExpression = memberExpression.Expression as ConstantExpression;
-
-    //  if (memberExpression != null) {
-    //    var propertyInfo = memberExpression.Member as PropertyInfo;
-
-    //    return propertyInfo.Name;
-    //  }
-
-    //  return null;
-    //}
-
     /// <summary>
     /// Re-queries the can execute.
     /// </summary>

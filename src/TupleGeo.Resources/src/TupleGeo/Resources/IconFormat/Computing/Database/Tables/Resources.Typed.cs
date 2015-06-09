@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TupleGeo.General.Tests.Properties {
+namespace TupleGeo.Resources.TupleGeo.Resources.IconFormat.Computing.Database.Tables {
     using System;
     
     
@@ -39,7 +39,8 @@ namespace TupleGeo.General.Tests.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.General.Tests.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TupleGeo.Resources.TupleGeo.Resources.IconFormat.Computing.Database.Tables.Resour" +
+                            "ces", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +58,16 @@ namespace TupleGeo.General.Tests.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TableExportSelected {
+            get {
+                object obj = ResourceManager.GetObject("TableExportSelected", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

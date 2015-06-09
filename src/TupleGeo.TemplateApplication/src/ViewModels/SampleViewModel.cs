@@ -260,7 +260,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       //foreach (string key in triggeringObjectsDictionary.Keys) {
       //  _uiElementsDicionary.Add(key, (UIElement)triggeringObjectsDictionary[key]);
       //}
-
     }
 
     /// <summary>

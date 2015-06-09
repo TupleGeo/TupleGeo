@@ -61,9 +61,9 @@ namespace TupleGeo.TemplateApplication {
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       string logPath = directory + "\\Log_" +
-                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) + ".txt";
+                        DateTime.Now.Year.ToString("D2") + "_" +
+                        DateTime.Now.Month.ToString("D2") + "_" +
+                        DateTime.Now.Day.ToString("D2") + ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
 
@@ -101,9 +101,9 @@ namespace TupleGeo.TemplateApplication {
 
       string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
       string logPath = directory + "\\Log_" +
-                        DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) + ".txt";
+                        DateTime.Now.Year.ToString("D2") + "_" +
+                        DateTime.Now.Month.ToString("D2") + "_" +
+                        DateTime.Now.Day.ToString("D2") + ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
 

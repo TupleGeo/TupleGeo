@@ -54,21 +54,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Filtering\Person.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ResourceDescription\CoffeeResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -80,19 +71,12 @@
     <Compile Include="ResourceDescription\Test1ViewModel.cs" />
     <Compile Include="ResourceDescription\Test2Model.cs" />
     <Compile Include="ResourceDescription\Test2ViewModel.cs" />
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="ResourceDescription\CoffeeResources.el-GR.resx" />
     <EmbeddedResource Include="ResourceDescription\CoffeeResources.resx">
       <LastGenOutput>CoffeeResources.Designer.cs</LastGenOutput>
       <Generator>PublicResXFileCodeGenerator</Generator>
     </EmbeddedResource>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
+    <None Include="Properties\DataSources\TupleGeo.General.Windows.Presentation.Tests.Filtering.Person.datasource" />
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

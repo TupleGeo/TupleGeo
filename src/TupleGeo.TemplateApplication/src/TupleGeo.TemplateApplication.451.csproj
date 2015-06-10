@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}</ProjectGuid>
+    <ProjectGuid>{21C99ABD-41BF-4365-8A3D-399D76A6311B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TupleGeo.TemplateApplication</RootNamespace>
     <AssemblyName>TupleGeo.TemplateApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -29,28 +29,28 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug400|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug451|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Any_CPU.Debug400\TupleGeo.TemplateApplication\</OutputPath>
+    <OutputPath>..\..\..\bin\Any_CPU.Debug451\TupleGeo.TemplateApplication\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\bin\Any_CPU.Debug400\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
-    <RunCodeAnalysis>false</RunCodeAnalysis>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Debug451\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release400|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release451|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Any_CPU.Release400\TupleGeo.TemplateApplication\</OutputPath>
+    <OutputPath>..\..\..\bin\Any_CPU.Release451\TupleGeo.TemplateApplication\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\bin\Any_CPU.Release400\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release451\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -131,17 +131,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.451.csproj">
       <Project>{dd20a19f-e078-4d99-9e48-234802d66219}</Project>
-      <Name>TupleGeo.Apps.Presentation.400</Name>
+      <Name>TupleGeo.Apps.Presentation.451</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.451.csproj">
       <Project>{8113a9a5-5588-459f-b6b2-2baddb2fce80}</Project>
-      <Name>TupleGeo.Apps.400</Name>
+      <Name>TupleGeo.Apps.451</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.451.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
-      <Name>TupleGeo.General.400</Name>
+      <Name>TupleGeo.General.451</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -46,25 +46,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\Design\EnumDescriptionEditor.cs" />
-    <Compile Include="TupleGeo\General\ComponentModel\Design\EnumDescriptionEditorControl.cs" />
+    <Compile Include="TupleGeo\General\ComponentModel\Design\EnumDescriptionEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="TupleGeo\General\ComponentModel\Design\EnumDescriptionEditorControl.Designer.cs">
       <DependentUpon>EnumDescriptionEditorControl.cs</DependentUpon>
     </Compile>
     <Compile Include="TupleGeo\General\ComponentModel\Design\GeneralObjectEditor.cs" />
-    <Compile Include="TupleGeo\General\ComponentModel\Design\GeneralObjectEditorControl.cs" />
+    <Compile Include="TupleGeo\General\ComponentModel\Design\GeneralObjectEditorControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="TupleGeo\General\ComponentModel\Design\GeneralObjectEditorControl.Designer.cs">
       <DependentUpon>GeneralObjectEditorControl.cs</DependentUpon>
     </Compile>

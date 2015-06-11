@@ -35,15 +35,6 @@
     <DocumentationFile>..\..\..\bin\Any_CPU.Release400\TupleGeo.General.Text.Greek\TupleGeo.General.Text.Greek.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TupleGeo\General\Text\Greek\GreekHelper.cs" />

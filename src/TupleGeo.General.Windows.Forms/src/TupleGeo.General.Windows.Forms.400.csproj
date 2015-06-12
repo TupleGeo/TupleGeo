@@ -18,7 +18,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>..\..\..\bin\Any_CPU.Debug400\TupleGeo.General.Windows.Forms\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;CODE_ANALYSIS</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\..\bin\Any_CPU.Debug400\TupleGeo.General.Windows.Forms\TupleGeo.General.Windows.Forms.XML</DocumentationFile>

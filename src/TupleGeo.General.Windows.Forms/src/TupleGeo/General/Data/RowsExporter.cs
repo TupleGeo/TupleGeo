@@ -31,11 +31,8 @@ using System.ComponentModel;
 using System.IO;
 using System.Text;
 using System.Windows.Forms;
-
-#if !NET20
 using System.Xml.Linq;
 using TupleGeo.General.Windows.Forms.Properties;
-#endif
 
 #endregion
 
@@ -104,8 +101,6 @@ namespace TupleGeo.General.Data {
         streamWriter.Close();
       }
     }
-
-#if !NET20
 
     /// <summary>
     /// Exports the rows of a DataGridView as XML.
@@ -245,8 +240,6 @@ namespace TupleGeo.General.Data {
 
     }
 
-#endif
-
     #endregion
 
     #region Private Procedures
@@ -288,8 +281,6 @@ namespace TupleGeo.General.Data {
         }
       }
     }
-
-#if !NET20
 
     /// <summary>
     /// Gets an <see cref="XElement"/> representing the object.
@@ -348,8 +339,6 @@ namespace TupleGeo.General.Data {
 
       return xTHead;
     }
-
-#endif
 
     #endregion
 

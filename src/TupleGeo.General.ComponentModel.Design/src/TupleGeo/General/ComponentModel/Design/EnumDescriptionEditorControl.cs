@@ -22,11 +22,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Drawing;
-
-#if !NET20
 using System.Linq;
-#endif
-
 using System.Text;
 using System.Windows.Forms;
 
@@ -84,21 +80,9 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// Sorts the <see cref="Collection{EnumNameDescriptionPair}"/> of descriptions.
     /// </summary>
     public void SortEnumDescriptionsCollection() {
-
-#if NET20
-      List<EnumNameDescriptionPair> list = _enumDescriptionsCollection.ToList();
-      
-      list.Sort(delegate(EnumNameDescriptionPair pair1, EnumNameDescriptionPair pair2) {
-        return string.Compare(pair1.Description, pair2.Description);
-      });
-
-      _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(list);
-#else
       _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(
         _enumDescriptionsCollection.OrderBy(e => e.Description).ToList()
       );
-#endif
-
     }
 
     /// <summary>

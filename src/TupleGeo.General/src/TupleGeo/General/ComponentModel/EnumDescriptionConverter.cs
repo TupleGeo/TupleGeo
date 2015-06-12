@@ -23,11 +23,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
-
-#if !NET20
 using System.Linq;
-#endif
-
 using System.Reflection;
 using System.Text;
 
@@ -113,17 +109,13 @@ namespace TupleGeo.General.ComponentModel {
       TupleGeo.General.Attributes.DescriptionAttribute[] attributes =
         (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
 
-#if NET20
-      // TODO: Add an implementation for .NET 20 here.
-#else
       // Try to get the description for the specified culture.
       TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
-      
+
       // If the retrieved attribute is null try to get the neutral culture description.
       if (attribute == null) {
         attribute = attributes.FirstOrDefault(a => a.Culture == null);
       }
-#endif
 
       // Return description or the enum named value if no description was found.
       return (attribute != null) ? attribute.Description : enumValue.ToString();
@@ -180,9 +172,6 @@ namespace TupleGeo.General.ComponentModel {
       TupleGeo.General.Attributes.DescriptionAttribute[] attributes =
         (TupleGeo.General.Attributes.DescriptionAttribute[])fi.GetCustomAttributes(typeof(TupleGeo.General.Attributes.DescriptionAttribute), false);
 
-#if NET20
-      // TODO: Add an implementation for .NET 20 here.
-#else
       // Try to get the description for the specified culture.
       TupleGeo.General.Attributes.DescriptionAttribute attribute = attributes.FirstOrDefault(a => a.Culture == culture);
 
@@ -190,7 +179,6 @@ namespace TupleGeo.General.ComponentModel {
       if (attribute == null) {
         attribute = attributes.FirstOrDefault(a => a.Culture == null);
       }
-#endif
 
       // Return description or the enum named value if no description was found.
       return (attribute != null) ? attribute.Description : name;

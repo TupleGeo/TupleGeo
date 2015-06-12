@@ -19,6 +19,11 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
+
+#if NET35
+using System.Security.Permissions;
+#endif
+
 using System.Text;
 using System.Windows.Forms;
 using System.Windows.Forms.Design;
@@ -30,6 +35,9 @@ namespace TupleGeo.General.ComponentModel.Design {
   /// <summary>
   /// A general editor used to edit an object using a property grid.
   /// </summary>
+#if NET35
+    [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+#endif
   public sealed class GeneralObjectEditor : UITypeEditor, IDisposable {
 
     #region Member Variables
@@ -89,6 +97,9 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <param name="provider">The <see cref="IServiceProvider"/>.</param>
     /// <param name="value">The value to be edited.</param>
     /// <returns>An <see cref="object"/> storing the edited object.</returns>
+#if NET35
+    [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+#endif
     public override object EditValue(
       ITypeDescriptorContext context,
       IServiceProvider provider,
@@ -158,6 +169,9 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// </summary>
     /// <param name="context">The <see cref="ITypeDescriptorContext"/>.</param>
     /// <returns>The <see cref="UITypeEditorEditStyle"/>.</returns>
+#if NET35
+    [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+#endif
     public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) {
       return UITypeEditorEditStyle.DropDown;
     }
@@ -169,6 +183,9 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <returns>
     /// A <see cref="bool"/> indicating whether the paint value is supported or not.
     /// </returns>
+#if NET35
+    [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
+#endif
     public override bool GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext context) {
       return false;
     }

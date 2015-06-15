@@ -77,7 +77,7 @@ namespace TupleGeo.General.Data.SqlServer {
     private string _dataSource;
 
     /// <summary>
-    /// The name of the data source. It should be the name of the SQL Server hosting machine.
+    /// Gets / Sets the name of the data source. It should be the name of the SQL Server hosting machine.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "datasource")]
     public string DataSource {
@@ -92,7 +92,7 @@ namespace TupleGeo.General.Data.SqlServer {
     private string _initialCatalogue;
 
     /// <summary>
-    /// The name of the initial catalog. It should be the name of the database.
+    /// Gets / Sets the name of the initial catalog. It should be the name of the database.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "initialCatalogue")]
     public string InitialCatalog {
@@ -107,7 +107,7 @@ namespace TupleGeo.General.Data.SqlServer {
     private bool _isPersistSecurityInfo;
 
     /// <summary>
-    /// Indicates if the security info is persisted.
+    /// Gets / Sets whether the security info is persisted or not.
     /// </summary>
     [XmlAttributeAttribute(AttributeName = "isPersistSecurityInfo")]
     public bool IsPersistSecurityInfo {
@@ -122,7 +122,7 @@ namespace TupleGeo.General.Data.SqlServer {
     private System.Collections.ObjectModel.Collection<SqlServerUser> _sqlServerUserCollection;
 
     /// <summary>
-    /// Gets / Sets the <see cref="List{SqlServerUser}"/>.
+    /// Gets the collection of <see cref="SqlServerUser">SqlServerUsers</see>.
     /// </summary>
     [XmlArrayAttribute(ElementName = "SqlServerUsers")]
     [XmlArrayItem(ElementName = "SqlServerUser", Type = typeof(SqlServerUser))]
@@ -165,13 +165,14 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="user">
     /// The username that will be used to form the connection string.
     /// </param>
+    /// <exception cref="ConnectionDetailsException">The exception is thrown under various conditions.</exception>
     /// <remarks>
     /// In case the <see cref="SqlServerUserCollection"/> property is populated with users having
-    /// encrypted passwords a call to methods <see cref="SetBase64Key"/> and 
-    /// <see cref="SetBase64InitializationVector"/> must be made first in order
-    /// for this method to succeed returning a connection string.
+    /// encrypted passwords a call to methods <see cref="ConnectionDetails.SetBase64Key">SetBase64Key</see> and 
+    /// <see cref="ConnectionDetails.SetBase64InitializationVector">SetBase64InitializationVector</see> must be made
+    /// first in order for this method to succeed returning a connection string.
     /// </remarks>
-    /// <returns>A <see cref="string"/>containing the SQL Server connection string.</returns>
+    /// <returns>A string containing the SQL Server connection string.</returns>
     public string ToConnectionString(string user) {
 
       StringBuilder sb = new StringBuilder();
@@ -271,13 +272,16 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="base64InitializationVector">
     /// The base64 initialization vector used for encrypting passwords.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// When <paramref name="base64Key"/> or <paramref name="base64InitializationVector"/> is <c>null</c>.
+    /// </exception>
     /// <remarks>
     /// In case the <see cref="SqlServerUserCollection"/> property is populated with users having
-    /// encrypted passwords a call to methods <see cref="SetBase64Key"/> and 
-    /// <see cref="SetBase64InitializationVector"/> must be made first in order
-    /// for this method to succeed returning a connection string.
+    /// encrypted passwords a call to methods <see cref="ConnectionDetails.SetBase64Key">SetBase64Key</see> and 
+    /// <see cref="ConnectionDetails.SetBase64InitializationVector">SetBase64InitializationVector</see> must be made
+    /// first in order for this method to succeed returning a connection string.
     /// </remarks>
-    /// <returns>A <see cref="string"/>containing the SQL Server connection string.</returns>
+    /// <returns>A string containing the SQL Server connection string.</returns>
     public string ToConnectionString(string user, string base64Key, string base64InitializationVector) {
 
       if (string.IsNullOrEmpty(base64Key)) {

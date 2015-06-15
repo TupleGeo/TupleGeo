@@ -42,8 +42,8 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Initializes a <see cref="ResourceDescriptionAttribute"/>.
     /// </summary>
-    /// <param name="description">The description that the <see cref="ResourceDescriptionAttribute"/> sets.</param>
-    /// <param name="resourcesType">The <see cref="Type"/> of the resources.</param>
+    /// <param name="description">The description that the attribute sets.</param>
+    /// <param name="resourcesType">The Type of the resources.</param>
     public ResourceDescriptionAttribute(string description, Type resourcesType)
       : base(description) {
       _resourcesType = resourcesType;
@@ -56,7 +56,7 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the string value from the resources.
     /// </summary>
-    /// <returns>A <see cref="string"/>containing the description stored in this attribute.</returns>
+    /// <returns>A string containing the description stored in this attribute.</returns>
     public override string Description {
       get {
         if (!_isLocalized) {
@@ -90,7 +90,7 @@ namespace TupleGeo.General.Attributes {
     private readonly Type _resourcesType;
     
     /// <summary>
-    /// Gets the ResourcesType.
+    /// Gets the Resources Type.
     /// </summary>
     public Type ResourcesType {
       get {

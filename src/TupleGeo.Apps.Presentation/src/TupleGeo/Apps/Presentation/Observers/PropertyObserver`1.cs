@@ -31,8 +31,9 @@ using TupleGeo.General.Linq.Expressions;
 namespace TupleGeo.Apps.Presentation.Observers {
 
   /// <summary>
-  /// Monitors the PropertyChanged event of an object that implements <see cref="INotifyPropertyChanged"/>,
-  /// and executes callback methods (i.e. handlers) registered for properties of that object.
+  /// Monitors the <see cref="INotifyPropertyChanged.PropertyChanged">PropertyChanged</see> event of an object that
+  /// implements <see cref="INotifyPropertyChanged"/>, and executes callback methods (i.e. handlers) registered for
+  /// properties of that object.
   /// </summary>
   /// <typeparam name="TPropertySource">The type of object to monitor for property changes.</typeparam>
   public sealed class PropertyObserver<TPropertySource> : IWeakEventListener where TPropertySource : INotifyPropertyChanged {
@@ -43,7 +44,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     //readonly Dictionary<string, Action> _propertyNameToHandlerMap2;
     private readonly WeakReference _propertySourceRef;
 
-    #endregion // Fields
+    #endregion
 
     #region Constructors - Destructors
 
@@ -66,9 +67,10 @@ namespace TupleGeo.Apps.Presentation.Observers {
     #region Public Methods
 
     /// <summary>
-    /// Registers a callback to be invoked when the PropertyChanged event has been raised for the specified property.
+    /// Registers a callback to be invoked when the <see cref="INotifyPropertyChanged.PropertyChanged">PropertyChanged</see>
+    /// event has been raised for the specified property.
     /// </summary>
-    /// <param name="expression">A lambda expression like 'n => n.PropertyName'.</param>
+    /// <param name="expression">A lambda expression like <code>n => n.PropertyName</code></param>
     /// <param name="handler">The callback to invoke when the property has changed.</param>
     /// <returns>
     /// The object on which this method was invoked, to allow for multiple invocations chained together.
@@ -101,7 +103,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <summary>
     /// Removes the callback associated with the specified property.
     /// </summary>
-    /// <param name="expression">A lambda expression like 'n => n.PropertyName'.</param>
+    /// <param name="expression">A lambda expression like <code>n => n.PropertyName</code></param>
     /// <returns>
     /// The object on which this method was invoked, to allow for multiple invocations chained together.
     /// </returns>
@@ -133,11 +135,11 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <summary>
     /// Receives a weak event.
     /// </summary>
-    /// <param name="managerType">The <see cref="Type"/> of the manager.</param>
+    /// <param name="managerType">The Type of the manager.</param>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The event arguments.</param>
     /// <returns>
-    /// A <see cref="bool">boolean</see> value determining whether the event was handled or not.
+    /// A value determining whether the event was handled or not.
     /// </returns>
     bool IWeakEventListener.ReceiveWeakEvent(Type managerType, object sender, EventArgs e) {
       bool handled = false;
@@ -179,7 +181,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Gets the target of the property source.
     /// </summary>
     /// <returns>
-    /// A <typeparamref name="TPropertySource"/>.
+    /// A <typeparamref name="TPropertySource"/> object.
     /// </returns>
     private TPropertySource GetPropertySource() {
       try {

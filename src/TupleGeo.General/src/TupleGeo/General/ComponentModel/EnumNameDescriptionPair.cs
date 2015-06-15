@@ -47,7 +47,7 @@ namespace TupleGeo.General.ComponentModel {
     string _name;
 
     /// <summary>
-    /// The name of the enumerated value.
+    /// Gets / Sets the name of the enumerated value.
     /// </summary>
     public string Name {
       get {
@@ -61,7 +61,7 @@ namespace TupleGeo.General.ComponentModel {
     string _description;
 
     /// <summary>
-    /// The description of the enumerated value.
+    /// Gets / Sets the description of the enumerated value.
     /// </summary>
     public string Description {
       get {

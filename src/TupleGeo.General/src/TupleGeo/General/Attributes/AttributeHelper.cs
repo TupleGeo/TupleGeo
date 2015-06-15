@@ -40,9 +40,9 @@ namespace TupleGeo.General.Attributes {
     /// Gets all matching custom attributes for a specified object based on specified attribute type.
     /// </summary>
     /// <param name="value">The object that is used to find attached attributes.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
     /// <returns>
-    /// An <see cref="object"/> array containing the attributes found.
+    /// An object array containing the <see cref="Attribute">attributes</see> found.
     /// </returns>
     public static object[] GetMatchingCustomAttributes(object value, Type attributeType) {
       return TypeDescriptor.GetReflectionType(value).GetCustomAttributes(attributeType, false);
@@ -52,9 +52,9 @@ namespace TupleGeo.General.Attributes {
     /// Gets all matching attributes for a specified object based on specified attribute type.
     /// </summary>
     /// <param name="value">The object that is used to find attached attributes.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
     /// <returns>
-    /// An <see cref="object"/> array containing the attributes found.
+    /// An object array containing the <see cref="Attribute">attributes</see> found.
     /// </returns>
     public static object[] GetMatchingAttributes(object value, Type attributeType) {
       AttributeCollection attributeCollection = TypeDescriptor.GetAttributes(value);
@@ -70,10 +70,10 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets all matching attributes for a specified type based on specified attribute type.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> that is used to find attached attributes.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
+    /// <param name="type">The Type that is used to find attached attributes.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
     /// <returns>
-    /// An <see cref="object"/> array containing the attributes found.
+    /// An object array containing the <see cref="Attribute">attributes</see> found.
     /// </returns>
     public static object[] GetMatchingAttributes(Type type, Type attributeType) {
       AttributeCollection attributeCollection = TypeDescriptor.GetAttributes(type);
@@ -92,14 +92,13 @@ namespace TupleGeo.General.Attributes {
     /// <param name="enumValue">
     /// The Enumerated value used to retrieve its attributes.
     /// </param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
     /// <exception cref="ArgumentNullException">
-    /// The exception is thrown when <paramref name="enumValue"/> is <value>null.</value>
+    /// The exception is thrown when <paramref name="enumValue"/> is <c>null</c>.
     /// </exception>
     /// <returns>
-    /// An <see cref="object"/> array containing the matching attributes.
+    /// An object array containing the matching <see cref="Attribute">attributes</see>.
     /// </returns>
-    // TODO: Check the rendering of this xmldoc.
     public static object[] GetMatchingEnumeratedValueAttributes(object enumValue, Type attributeType) {
       if (enumValue == null) {
         throw new ArgumentNullException("enumValue");
@@ -122,8 +121,10 @@ namespace TupleGeo.General.Attributes {
     /// Gets the first matching custom attribute for a specified object based on a specified attribute type.
     /// </summary>
     /// <param name="value">The object that is used to find the attached attribute.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
-    /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
+    /// <returns>
+    /// An object containing the <see cref="Attribute">attribute</see>.
+    /// </returns>
     public static object GetFirstMatchingCustomAttribute(object value, Type attributeType) {
       object attribute = null;
       object[] attributes = TypeDescriptor.GetReflectionType(value).GetCustomAttributes(attributeType, false);
@@ -138,9 +139,9 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the first matching custom attribute for a specified object based on a specified attribute type.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> that is used to find the attached attribute.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
-    /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
+    /// <param name="type">The Type that is used to find the attached attribute.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
+    /// <returns>An object containing the <see cref="Attribute">attribute</see>.</returns>
     public static object GetFirstMatchingCustomAttribute(Type type, Type attributeType) {
       object attribute = null;
       object[] attributes = TypeDescriptor.GetReflectionType(type).GetCustomAttributes(attributeType, false);
@@ -156,8 +157,8 @@ namespace TupleGeo.General.Attributes {
     /// Gets the first matching attribute for a specified object based on a specified attribute type.
     /// </summary>
     /// <param name="value">The object that is used to find the attached attribute.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
-    /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
+    /// <returns>An object containing the <see cref="Attribute">attribute</see>.</returns>
     public static object GetFirstMatchingAttribute(object value, Type attributeType) {
       object attribute = null;
       AttributeCollection attributes = TypeDescriptor.GetAttributes(value);
@@ -173,9 +174,9 @@ namespace TupleGeo.General.Attributes {
     /// <summary>
     /// Gets the first matching attribute for a specified type based on a specified attribute type.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> that is used to find the attached attribute.</param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute to seek for.</param>
-    /// <returns>An <see cref="object"/> containing the <see cref="Attribute">attribute</see>.</returns>
+    /// <param name="type">The Type that is used to find the attached attribute.</param>
+    /// <param name="attributeType">The Type of the attribute to seek for.</param>
+    /// <returns>An object containing the <see cref="Attribute">attribute</see>.</returns>
     public static object GetFirstMatchingAttribute(Type type, Type attributeType) {
       object attribute = null;
       AttributeCollection attributes = TypeDescriptor.GetAttributes(type);
@@ -194,8 +195,8 @@ namespace TupleGeo.General.Attributes {
     /// <param name="enumValue">
     /// The Enumerated value used to retrieve its attribute.
     /// </param>
-    /// <param name="attributeType">The <see cref="Type"/> of the attribute.</param>
-    /// <returns>An <see cref="object"/> containing the matching attribute.</returns>
+    /// <param name="attributeType">The Type of the attribute.</param>
+    /// <returns>An object containing the matching attribute.</returns>
     public static object GetFirstMatchingEnumeratedValueAttribute(object enumValue, Type attributeType) {
       if (enumValue == null) {
         throw new ArgumentNullException("enumValue");

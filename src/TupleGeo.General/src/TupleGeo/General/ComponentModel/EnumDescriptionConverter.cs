@@ -32,7 +32,8 @@ using System.Text;
 namespace TupleGeo.General.ComponentModel {
 
   /// <summary>
-  /// Converts an enumerated value to its attribute description and vice versa.
+  /// Converts an enumerated value to its
+  /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">attribute description</see> and vice versa.
   /// </summary>
   public class EnumDescriptionConverter : EnumConverter {
 
@@ -47,7 +48,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <summary>
     /// Initializes the <see cref="EnumDescriptionConverter"/>.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> to be used.</param>
+    /// <param name="type">The Type> to be used.</param>
     public EnumDescriptionConverter(Type type)
       : base(type) {
 
@@ -69,7 +70,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="enumValue">An enumerated value.</param>
     /// <returns>
-    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
     /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
@@ -87,7 +88,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="enumValue">An enumerated value.</param>
     /// <param name="culture">The culture of the description.</param>
     /// <returns>
-    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
     /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
@@ -129,7 +130,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="type">The type of the enumeration.</param>
     /// <param name="name">The name of an enumerated value.</param>
     /// <returns>
-    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
     /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
@@ -148,7 +149,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="name">The name of an enumerated value.</param>
     /// <param name="culture">The culture of the description.</param>
     /// <returns>
-    /// A <see cref="string"/> containing the description (if any) of the enumerated value.
+    /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
     /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
@@ -189,11 +190,11 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
     /// <returns>
-    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
     /// <remarks>
     /// <para>
-    /// If no enumerated values found in the enumeration a null is returned instead.
+    /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
     /// </para>
     /// <para>
     /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
@@ -213,7 +214,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
     /// <param name="culture">The culture of the descriptions.</param>
     /// <returns>
-    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
     /// <remarks>
     /// <para>
@@ -237,7 +238,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="type">The type of the enumeration.</param>
     /// <returns>
-    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
     /// <remarks>
     /// <para>
@@ -269,7 +270,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="type">The type of the enumeration.</param>
     /// <param name="culture">The culture of the descriptions.</param>
     /// <returns>
-    /// An array of <see cref="string">strings</see> containing the descriptions of the enumerated values.
+    /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
     /// <remarks>
     /// <para>
@@ -298,10 +299,10 @@ namespace TupleGeo.General.ComponentModel {
     /// <summary>
     /// Gets the value of an enumeration, based on it's description attribute or named value.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the enumeration.</param>
+    /// <param name="type">The Type of the enumeration.</param>
     /// <param name="description">The description or name of the element.</param>
     /// <returns>
-    /// An <see cref="object"/> containing the value or the description if it was not found.
+    /// An object containing the value or the description if it was not found.
     /// </returns>
     public static object GetEnumValue(Type type, string description) {
       if (type == null) {
@@ -334,11 +335,11 @@ namespace TupleGeo.General.ComponentModel {
     /// <summary>
     /// Converts a string containing the description of an enumerated value in to the enumerated value.
     /// </summary>
-    /// <param name="context">An <see cref="ITypeDescriptorContext"/>.</param>
-    /// <param name="culture">A <see cref="CultureInfo"/>.</param>
+    /// <param name="context">The context used in the conversion.</param>
+    /// <param name="culture">the culture used in the conversion.</param>
     /// <param name="value">The description of an enumerated value. (should be a <see cref="string"/>).</param>
     /// <returns>
-    /// An <see cref="object"/> containing the enumerated value.
+    /// An object containing the enumerated value.
     /// </returns>
     public override object ConvertFrom(
       ITypeDescriptorContext context,
@@ -357,9 +358,9 @@ namespace TupleGeo.General.ComponentModel {
     /// <summary>
     /// Converts an enumerated value to a <see cref="string"/>.
     /// </summary>
-    /// <param name="context">An <see cref="ITypeDescriptorContext"/>.</param>
-    /// <param name="culture">A <see cref="CultureInfo"/>.</param>
-    /// <param name="value">The enumerated value need to be converted.</param>
+    /// <param name="context">The context used in the conversion.</param>
+    /// <param name="culture">The culture used in the conversion.</param>
+    /// <param name="value">The enumerated value which is converted.</param>
     /// <param name="destinationType">The destination type. (Should be <see cref="string"/>).</param>
     /// <returns>
     /// An object containing a <see cref="string"/> with the converted enumerated value.

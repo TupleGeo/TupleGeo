@@ -29,7 +29,7 @@ namespace TupleGeo.General.ComponentModel {
   /// <summary>
   /// An object that is observed by other objects for value changes in its properties.
   /// </summary>
-  /// <typeparam name="T">Any object need to be observed.</typeparam>
+  /// <typeparam name="T">Any object that needs to be observed.</typeparam>
   public abstract class ObservableObject<T> : INotifyPropertyChanged {
 
     #region INotifyPropertyChanged Members
@@ -40,7 +40,7 @@ namespace TupleGeo.General.ComponentModel {
     public event PropertyChangedEventHandler PropertyChanged;
 
     /// <summary>
-    /// Executed when a property changes.
+    /// Executed when a property value changes.
     /// </summary>
     /// <param name="prop">The property.</param>
     protected virtual void OnPropertyChanged(Expression<Func<T, object>> prop) {
@@ -69,7 +69,7 @@ namespace TupleGeo.General.ComponentModel {
     }
 
     /// <summary>
-    /// Called when [property changed].
+    /// Called when a property value changes.
     /// </summary>
     /// <param name="propertyName">The property name.</param>
     protected virtual void OnPropertyChanged(string propertyName) {

@@ -29,6 +29,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.TemplateApplication.451", "src\TupleGeo.TemplateApplication\src\TupleGeo.TemplateApplication.451.csproj", "{21C99ABD-41BF-4365-8A3D-399D76A6311B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{22B48DD6-9972-44FF-B642-E7AE1A96D5C9}"
+	ProjectSection(SolutionItems) = preProject
+		TupleGeo.Base.451.Html.shfbproj = TupleGeo.Base.451.Html.shfbproj
+		TupleGeo.Base.451.Markdown.shfbproj = TupleGeo.Base.451.Markdown.shfbproj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug451|Any CPU = Debug451|Any CPU

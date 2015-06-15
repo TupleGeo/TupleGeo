@@ -45,14 +45,14 @@ namespace TupleGeo.Apps.Presentation {
     #region Public Properties
 
     /// <summary>
-    /// Gets / Sets the title of the view model.
+    /// Gets the title of the view model.
     /// </summary>
     public virtual string Title {
       get {
         return string.Empty;
       }
     }
-
+    
     private T _model;
 
     /// <summary>

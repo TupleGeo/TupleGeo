@@ -29,14 +29,12 @@ namespace TupleGeo.General {
   public interface IValidation {
 
     /// <summary>
-    /// <para>
     /// Call to perform a custom validation.
-    /// </para>
-    /// <para>
+    /// </summary>
+    /// <remarks>
     /// In case problems found during the validation the method
     /// must fail returning a relevant exception to the caller.
-    /// </para>
-    /// </summary>
+    /// </remarks>
     void Validate();
 
   }

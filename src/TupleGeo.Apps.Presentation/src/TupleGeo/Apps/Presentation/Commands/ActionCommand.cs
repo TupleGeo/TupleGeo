@@ -67,17 +67,17 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// </summary>
     /// <typeparam name="TEntity">The entity used.</typeparam>
     /// <param name="source">The source of the command.</param>
-    /// <param name="property">The property of the TEntity.</param>
-    /// <returns>An <see cref="ActionCommand"/>.</returns>
+    /// <param name="property">The property of the <typeparamref name="TEntity"/>.</param>
+    /// <returns>An ActionCommand.</returns>
     public ActionCommand AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
-      string propertyName = Prop.GetPropertyName<TEntity>(property); // GetPropertyName<TEntity>(property);
+      string propertyName = Prop.GetPropertyName<TEntity>(property);
       PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
       
       return this;
     }
 
     /// <summary>
-    /// Adds an observable collection listener.
+    /// Adds an <see cref="ObservableCollection{TEntity}"/> listener.
     /// </summary>
     /// <typeparam name="TEntity">The entity used.</typeparam>
     /// <param name="observableCollection">The observable collection used.</param>
@@ -89,7 +89,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     }
 
     /// <summary>
-    /// Fires when can execute has been changed.
+    /// Fires when <see cref="ActionCommand.CanExecute">CanExecute</see> has been changed.
     /// </summary>
     public void OnCanExecuteChanged() {
       if (CanExecuteChanged != null) {
@@ -102,7 +102,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     #region Event Procedures
 
     /// <summary>
-    /// Occurs when the observable collection has been changed.
+    /// Occurs when the ObservableCollection has been changed.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The <see cref="NotifyCollectionChangedEventArgs"/>.</param>
@@ -115,7 +115,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     #region Private Procedures
 
     /// <summary>
-    /// Re-queries the can execute.
+    /// Re-queries whether the command can execute or not.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="propertyChangedEventArgs">The <see cref="PropertyChangedEventArgs"/>.</param>
@@ -124,7 +124,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     }
 
     /// <summary>
-    /// Re-queries the can execute.
+    /// Re-queries whether the command can execute or not.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
@@ -140,7 +140,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Indicates whether the command can execute or not.
     /// </summary>
     /// <param name="parameter">The parameter of the command.</param>
-    /// <returns>A <see cref="bool"/> indicating whether the command can execute or not.</returns>
+    /// <returns>A value indicating whether the command can execute or not.</returns>
     public bool CanExecute(object parameter) {
       if (_canExecuteFunction == null) {
         return false;
@@ -149,7 +149,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     }
 
     /// <summary>
-    /// Fires when the can execute has been changed.
+    /// Fires when the <see cref="ActionCommand.CanExecute">CanExecute</see> has been changed.
     /// </summary>
     public event EventHandler CanExecuteChanged;
 

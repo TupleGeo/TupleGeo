@@ -59,16 +59,18 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// </summary>
     /// <param name="managerType">The type of the WeakEventManager calling this method.</param>
     /// <param name="sender">Object that originated the event.</param>
-    /// <param name="e">Event data.</param>
+    /// <param name="e">The event data.</param>
     /// <returns>
-    /// <value>true</value> if the listener handled the event.
-    /// It is considered an error by the WeakEventManager handling in WPF to register a listener
-    /// for an event that the listener does not handle. Regardless, the method should return <value>false</value>
-    /// if it receives an event that it does not recognize or handle.
+    /// A <c>true</c> value if the listener handled the event.
     /// </returns>
+    /// <remarks>
+    /// It is considered an error by the WeakEventManager handling in WPF to register a listener for an event that
+    /// the listener does not handle. Regardless, the method should return a <c>false</c> value
+    /// if it receives an event that it does not recognize or handle.
+    /// </remarks>
     bool IWeakEventListener.ReceiveWeakEvent(Type managerType, object sender, EventArgs e) {
       TEventArgs realArgs = (TEventArgs)e;
-
+      
       realHandler(sender, realArgs);
 
       return true;

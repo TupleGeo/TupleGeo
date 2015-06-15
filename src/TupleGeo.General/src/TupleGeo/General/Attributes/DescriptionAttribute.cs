@@ -48,7 +48,7 @@ namespace TupleGeo.General.Attributes {
     /// Initializes a <see cref="DescriptionAttribute"/> by setting its description
     /// for a specified culture.
     /// </summary>
-    /// <param name="description">The description that this <see cref="Attribute"/> sets.</param>
+    /// <param name="description">The description that this attribute sets.</param>
     /// <param name="culture">The culture string representation associated with this description.</param>
     public DescriptionAttribute(string description, string culture) {
       _description = description;
@@ -62,7 +62,7 @@ namespace TupleGeo.General.Attributes {
     private string _description;
 
     /// <summary>
-    /// Gets / Sets the Description.
+    /// Gets the Description.
     /// </summary>
     public string Description {
       get {

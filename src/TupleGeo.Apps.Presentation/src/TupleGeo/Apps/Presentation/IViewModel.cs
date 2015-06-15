@@ -46,7 +46,7 @@ namespace TupleGeo.Apps.Presentation {
     /// <summary>
     /// Binds this view model to events raised by its corresponding view.
     /// </summary>
-    /// <param name="triggeringObjectsDictionary">The object whose events will be observed.</param>
+    /// <param name="triggeringObjectsDictionary">The objects whose events will be observed.</param>
     void SubscribeToEvents(Dictionary<string, object> triggeringObjectsDictionary);
     
     /// <summary>

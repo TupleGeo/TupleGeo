@@ -38,8 +38,8 @@ namespace TupleGeo.General {
     /// specified property of an object.
     /// </summary>
     /// <param name="value">The object whose property value will be got.</param>
-    /// <param name="propertyName">The name pf the property of the object.</param>
-    /// <returns>A <see cref="string"/> with the converted value.</returns>
+    /// <param name="propertyName">The name of the property of the object.</param>
+    /// <returns>The converted property value to a string.</returns>
     public static string GetPropertyValueString(this object value, string propertyName) {
 
       if (propertyName == null) {

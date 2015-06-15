@@ -42,8 +42,8 @@ namespace TupleGeo.General.Text.Greek {
     private static Dictionary<string, string> MapWordStartDictionary = MapWordStart();
     private static Dictionary<string, string> MapWordMiddleDictionary = MapWordMiddle();
 
-    private static Dictionary<string, string> MapNextVoicedDictionary = ΜapNextVoiced();
-    private static Dictionary<string, string> MapNextVoicelessDictionary = ΜapNextVoiceless();
+    private static Dictionary<string, string> MapNextVoicedDictionary = MapNextVoiced();
+    private static Dictionary<string, string> MapNextVoicelessDictionary = MapNextVoiceless();
 
     private static CultureInfo _locale = new CultureInfo("el-GR");
 
@@ -331,7 +331,7 @@ namespace TupleGeo.General.Text.Greek {
     /// <returns>
     /// The <see cref="Dictionary{String, String}"/> storing the specified mapping.
     /// </returns>
-    private static Dictionary<string, string> ΜapNextVoiced() {
+    private static Dictionary<string, string> MapNextVoiced() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
       result.Add("αυ", "av");
@@ -352,7 +352,7 @@ namespace TupleGeo.General.Text.Greek {
     /// The <see cref="Dictionary{String, String}"/>
     /// storing the specified mapping.
     /// </returns>
-    private static Dictionary<string, string> ΜapNextVoiceless() {
+    private static Dictionary<string, string> MapNextVoiceless() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
       result.Add("αυ", "af");

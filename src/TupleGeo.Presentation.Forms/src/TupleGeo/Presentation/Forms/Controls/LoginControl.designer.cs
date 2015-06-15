@@ -1,4 +1,4 @@
-﻿namespace TupleGeo.Presentation.Controls {
+﻿namespace TupleGeo.Presentation.Forms.Controls {
   partial class LoginControl {
     /// <summary>
     /// Required designer variable.

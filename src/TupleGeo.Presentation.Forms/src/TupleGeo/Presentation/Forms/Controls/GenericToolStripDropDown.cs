@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : GenericToolStripDropDown
-// Member of        : TupleGeo.Presentation.dll
+// Member of        : TupleGeo.Presentation.Forms.dll
 // Description      : The GenericToolStripDropDown is a generic control to provide hosting for toolstrip items.
 // Created by       : 29/04/2009, 22:37, Vasilis Vlastaras.
 // Updated by       : 
@@ -25,7 +25,7 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace TupleGeo.Presentation.Controls {
+namespace TupleGeo.Presentation.Forms.Controls {
 
   /// <summary>
   /// The GenericToolStripDropDown is a generic control to provide
@@ -33,7 +33,7 @@ namespace TupleGeo.Presentation.Controls {
   /// </summary>
   [GuidAttribute("6A65E0CF-18E9-4d8f-A026-ECDB5E3EE0B8")]
   [ClassInterfaceAttribute(ClassInterfaceType.None)]
-  [ProgIdAttribute("TupleGeo.Presentation.Controls.GenericToolStripDropDown")]
+  [ProgIdAttribute("TupleGeo.Presentation.Forms.Controls.GenericToolStripDropDown")]
   public partial class GenericToolStripDropDown : ToolStripDropDown {
 
     #region Constructors - Destructors

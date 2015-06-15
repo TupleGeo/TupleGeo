@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : CollapsibleGroupBox
-// Member of        : TupleGeo.Presentation.dll
+// Member of        : TupleGeo.Presentation.Forms.dll
 // Description      : A GroupBox control that provides functionality to allow it to be collapsed.
 // Created by       : 14/07/2009, 19:57, Vasilis Vlastaras.
 // Updated by       : 
@@ -26,7 +26,7 @@ using System.Windows.Forms.VisualStyles;
 
 #endregion
 
-namespace TupleGeo.Presentation.Controls {
+namespace TupleGeo.Presentation.Forms.Controls {
 
   /// <summary>
   /// A GroupBox control that provides functionality to allow it to be collapsed.

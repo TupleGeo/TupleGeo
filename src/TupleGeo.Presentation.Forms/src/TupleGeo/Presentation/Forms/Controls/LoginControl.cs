@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : LoginControl
-// Member of        : TupleGeo.Presentation.dll
+// Member of        : TupleGeo.Presentation.Forms.dll
 // Description      : Provides forms and controls.
 // Created by       : 11/02/2009, 09:52, Vasilis Vlastaras.
 // Updated by       : 29/04/2009, 22:21, Vasilis Vlastaras. - Changed class for COM interop.
@@ -25,14 +25,14 @@ using System.Windows.Forms;
 
 #endregion
 
-namespace TupleGeo.Presentation.Controls {
+namespace TupleGeo.Presentation.Forms.Controls {
 
   /// <summary>
   /// The Login Control provides login functionality in an abstract way.
   /// </summary>
   [GuidAttribute("EA028556-3230-453f-A2CC-A22CDCA86615")]
   [ClassInterfaceAttribute(ClassInterfaceType.None)]
-  [ProgIdAttribute("TupleGeo.Presentation.Controls.LoginControl")]
+  [ProgIdAttribute("TupleGeo.Presentation.Forms.Controls.LoginControl")]
   public partial class LoginControl : UserControl {
 
     #region Member Variables

@@ -58,42 +58,42 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TupleGeo\Presentation\Controls\CollapsibleGroupBox.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\CollapsibleGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TupleGeo\Presentation\Controls\CollapsibleGroupBox.designer.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\CollapsibleGroupBox.designer.cs">
       <DependentUpon>CollapsibleGroupBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="TupleGeo\Presentation\Controls\CollapsibleGroupBoxEventHandlers.cs" />
-    <Compile Include="TupleGeo\Presentation\Controls\GenericToolStripDropDown.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\CollapsibleGroupBoxEventHandlers.cs" />
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\GenericToolStripDropDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="TupleGeo\Presentation\Controls\GenericToolStripDropDown.designer.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\GenericToolStripDropDown.designer.cs">
       <DependentUpon>GenericToolStripDropDown.cs</DependentUpon>
     </Compile>
-    <Compile Include="TupleGeo\Presentation\Controls\LoginControl.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\LoginControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="TupleGeo\Presentation\Controls\LoginControl.designer.cs">
+    <Compile Include="TupleGeo\Presentation\Forms\Controls\LoginControl.designer.cs">
       <DependentUpon>LoginControl.cs</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TupleGeo\Presentation\Controls\CollapsibleGroupBox.bmp" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="TupleGeo\Presentation\Controls\LoginControl.el-GR.resx">
-      <DependentUpon>LoginControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="TupleGeo\Presentation\Controls\LoginControl.resx">
-      <DependentUpon>LoginControl.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TupleGeo.Resources\src\TupleGeo.Resources.450.csproj">
       <Project>{46c5dbd5-1025-42bc-aff9-dcae7e898068}</Project>
       <Name>TupleGeo.Resources.450</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TupleGeo\Presentation\Forms\Controls\CollapsibleGroupBox.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="TupleGeo\Presentation\Forms\Controls\LoginControl.el-GR.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TupleGeo\Presentation\Forms\Controls\LoginControl.resx">
+      <DependentUpon>LoginControl.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

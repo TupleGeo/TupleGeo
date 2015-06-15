@@ -2,7 +2,7 @@
 #region Header
 // Title Name       : BaseViewModel<T>.
 // Member of        : TupleGeo.Apps.Presentation.dll
-// Description      : The base view model.
+// Description      : All Views inherit from this class..
 // Created by       : 17/01/2012, 18:17, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
@@ -25,8 +25,9 @@ using TupleGeo.General.ComponentModel;
 namespace TupleGeo.Apps.Presentation {
 
   /// <summary>
-  /// The base view model.
+  /// All Views inherit from this class.
   /// </summary>
+  /// <typeparam name="T">The model which is associated with this view.</typeparam>
   public class BaseViewModel<T> : ObservableObject<BaseViewModel<T>> where T : class {
 
     #region Constructors - Destructors

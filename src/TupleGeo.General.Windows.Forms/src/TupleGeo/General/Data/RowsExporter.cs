@@ -103,7 +103,7 @@ namespace TupleGeo.General.Data {
     }
 
     /// <summary>
-    /// Exports the rows of a DataGridView as XML.
+    /// Exports the rows of a <see cref="DataGridView"/> as XML.
     /// </summary>
     /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
     /// <param name="textWriter">
@@ -155,7 +155,7 @@ namespace TupleGeo.General.Data {
     }
 
     /// <summary>
-    /// Exports the rows of a DataGridView as HTML.
+    /// Exports the rows of a <see cref="DataGridView"/> as HTML.
     /// </summary>
     /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
     /// <param name="textWriter">

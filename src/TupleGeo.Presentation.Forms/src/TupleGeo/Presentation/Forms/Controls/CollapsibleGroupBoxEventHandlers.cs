@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : CollapsibleGroupBoxEventHandlers
-// Member of        : TupleGeo.Presentation.dll
+// Member of        : TupleGeo.Presentation.Forms.dll
 // Description      : A file containing the delegates used as EventHandlers related to CollapsibleGroupBox.
 // Created by       : 17/07/2009, 19:49, Vasilis Vlastaras.
 // Updated by       : 
@@ -21,7 +21,7 @@ using System.Text;
 
 #endregion
 
-namespace TupleGeo.Presentation.Controls {
+namespace TupleGeo.Presentation.Forms.Controls {
 
   /// <summary>
   /// The delegate with the event handler signature used by

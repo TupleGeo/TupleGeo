@@ -58,7 +58,7 @@ namespace TupleGeo.General.Data.SqlServer {
     }
 
     /// <summary>
-    /// Initializes the <see cref="ConnectionDetails"/>.
+    /// Initializes the <see cref="ConnectionDetails"/> setting the connection string and whether to encrypt password or not.
     /// </summary>
     /// <param name="connectionString">
     /// The connection string used to updated the ConnectionDetails object.
@@ -165,7 +165,24 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="user">
     /// The username that will be used to form the connection string.
     /// </param>
-    /// <exception cref="ConnectionDetailsException">The exception is thrown under various conditions.</exception>
+    /// <exception cref="ConnectionDetailsException">
+    /// <para>
+    /// Thrown when no initialization vector has been specified. A way to resolve this is to call
+    /// <see cref="ConnectionDetails.SetBase64InitializationVector">SetBase64InitializationVector</see>.
+    /// </para>
+    /// <para>
+    /// Thrown when no security key has been specified.
+    /// A way to resolve this is to call <see cref="ConnectionDetails.SetBase64Key">SetBase64Key</see>.
+    /// </para>
+    /// <para>Thrown when no unique user id could be retrieved.</para>
+    /// <para>Thrown when <paramref name="user"/> is <c>null</c> or <see cref="string.Empty"/>.</para>
+    /// <para>
+    /// Thrown when <see cref="ConnectionDetails.InitialCatalog">InitialCatalog</see> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </para>
+    /// <para>
+    /// Thrown when <see cref="ConnectionDetails.DataSource">DataSource</see> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </para>
+    /// </exception>
     /// <remarks>
     /// In case the <see cref="SqlServerUserCollection"/> property is populated with users having
     /// encrypted passwords a call to methods <see cref="ConnectionDetails.SetBase64Key">SetBase64Key</see> and 
@@ -372,6 +389,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="base64InitializationVector">
     /// The base64 initialization vector used for encrypting passwords.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="base64Key"/> or <paramref name="base64InitializationVector"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <remarks>
     /// The method assumes that the password will be encrypted.
     /// </remarks>
@@ -401,6 +421,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// </summary>
     /// <param name="dataSource">The data source.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when <paramref name="dataSourceTokens"/> is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private static void SetDataSource(ref string dataSource, ref IEnumerable<string> dataSourceTokens) {
 
       if (dataSourceTokens != null) {
@@ -425,6 +448,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="initialCatalog">The initial catalog.</param>
     /// <param name="tokens">The connection string tokens.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when <paramref name="dataSourceTokens"/> is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private static void SetInitialCatalog(ref string initialCatalog, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
       dataSourceTokens = null;
@@ -455,6 +481,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="persistSecurityInfo">The PersistSecurityInfo.</param>
     /// <param name="tokens">The connection string tokens.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when <paramref name="dataSourceTokens"/> is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private static void SetPersistSecurityInfo(ref bool persistSecurityInfo, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
       dataSourceTokens = null;
@@ -487,6 +516,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="userID">The UserID.</param>
     /// <param name="tokens">The connection string tokens.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when <paramref name="dataSourceTokens"/> is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private static void SetUserID(ref string userID, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
       dataSourceTokens = null;
@@ -518,6 +550,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="password">The password.</param>
     /// <param name="tokens">The connection string tokens.</param>
     /// <param name="dataSourceTokens">The data source tokens.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when <paramref name="dataSourceTokens"/> is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private void SetPassword(bool encryptPassword, ref string password, string[] tokens, ref IEnumerable<string> dataSourceTokens) {
 
       dataSourceTokens = null;
@@ -568,6 +603,9 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <param name="encryptPassword">Indicates whether to encrypt the password or not.</param>
     /// <param name="userID">The UserID.</param>
     /// <param name="password">The password.</param>
+    /// <exception cref="ConnectionDetailsException">
+    /// Thrown when users is <c>null</c> or when their count is not <c>1</c>.
+    /// </exception>
     private void UpdateUserList(bool encryptPassword, string userID, string password) {
 
       // Check if the user already exists in the users list.

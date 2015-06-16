@@ -94,7 +94,7 @@ namespace TupleGeo.General.Attributes {
     /// </param>
     /// <param name="attributeType">The Type of the attribute to seek for.</param>
     /// <exception cref="ArgumentNullException">
-    /// The exception is thrown when <paramref name="enumValue"/> is <c>null</c>.
+    /// Thrown when <paramref name="enumValue"/> or <paramref name="attributeType"/> is <c>null</c>.
     /// </exception>
     /// <returns>
     /// An object array containing the matching <see cref="Attribute">attributes</see>.
@@ -196,6 +196,9 @@ namespace TupleGeo.General.Attributes {
     /// The Enumerated value used to retrieve its attribute.
     /// </param>
     /// <param name="attributeType">The Type of the attribute.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="enumValue"/> or <paramref name="attributeType"/> is <c>null</c>.
+    /// </exception>
     /// <returns>An object containing the matching attribute.</returns>
     public static object GetFirstMatchingEnumeratedValueAttribute(object enumValue, Type attributeType) {
       if (enumValue == null) {

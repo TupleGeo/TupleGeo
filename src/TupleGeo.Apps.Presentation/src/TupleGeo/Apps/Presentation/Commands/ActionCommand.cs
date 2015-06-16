@@ -77,10 +77,13 @@ namespace TupleGeo.Apps.Presentation.Commands {
     }
 
     /// <summary>
-    /// Adds an <see cref="ObservableCollection{TEntity}"/> listener.
+    /// Adds a listener to an ObservableCollection of <typeparamref name="TEntity"/>.
     /// </summary>
     /// <typeparam name="TEntity">The entity used.</typeparam>
     /// <param name="observableCollection">The observable collection used.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="observableCollection"/> is <c>null</c>.
+    /// </exception>
     public void AddObservableCollectionListener<TEntity>(ObservableCollection<TEntity> observableCollection) {
       if (observableCollection == null) {
         throw new ArgumentNullException("observableCollection", "ObservableCollection could not be NULL.");
@@ -105,7 +108,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Occurs when the ObservableCollection has been changed.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="NotifyCollectionChangedEventArgs"/>.</param>
+    /// <param name="e">The NotifyCollectionChangedEventArgs.</param>
     private void ObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
       RequeryCanExecute(sender);
     }
@@ -118,7 +121,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Re-queries whether the command can execute or not.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="propertyChangedEventArgs">The <see cref="PropertyChangedEventArgs"/>.</param>
+    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
     private void RequeryCanExecute(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
       OnCanExecuteChanged();
     }

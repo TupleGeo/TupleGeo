@@ -48,7 +48,8 @@ namespace TupleGeo.General.ComponentModel {
     /// <summary>
     /// Initializes the <see cref="EnumDescriptionConverter"/>.
     /// </summary>
-    /// <param name="type">The Type> to be used.</param>
+    /// <param name="type">The Type to be used.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="type"/> is <c>null</c>.</exception>
     public EnumDescriptionConverter(Type type)
       : base(type) {
 
@@ -73,8 +74,8 @@ namespace TupleGeo.General.ComponentModel {
     /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
-    /// a string representation of the name of the enumerated value is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated value, a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Enum enumValue) {
       return GetEnumDescription(enumValue, null);
@@ -87,12 +88,18 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="enumValue">An enumerated value.</param>
     /// <param name="culture">The culture of the description.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="enumValue"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="culture"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>
     /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
-    /// a string representation of the name of the enumerated value is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated value, a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Enum enumValue, string culture) {
       if (enumValue == null) {
@@ -133,8 +140,8 @@ namespace TupleGeo.General.ComponentModel {
     /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
-    /// a string representation of the name of the enumerated value is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated value, a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Type type, string name) {
       return GetEnumDescription(type, name, null);
@@ -148,11 +155,17 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="type">The type of the enumeration.</param>
     /// <param name="name">The name of an enumerated value.</param>
     /// <param name="culture">The culture of the description.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="type"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="name"/> or <paramref name="culture"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>
     /// A string containing the description (if any) of the enumerated value.
     /// </returns>
     /// <remarks>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated value,
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute"/> has been set for the enumerated value,
     /// a string representation of the name of the enumerated value is returned instead.
     /// </remarks>
     public static string GetEnumDescription(Type type, string name, string culture) {
@@ -189,6 +202,7 @@ namespace TupleGeo.General.ComponentModel {
     /// Gets the neutral culture descriptions of all enumerated values found in an enumeration.
     /// </summary>
     /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="enumValue"/> is <c>null</c>.</exception>
     /// <returns>
     /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
@@ -197,7 +211,7 @@ namespace TupleGeo.General.ComponentModel {
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
     /// </para>
     /// <para>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute"/> has been set for the enumerated values,
     /// a string representation of the name of the enumerated values is returned instead.
     /// </para>
     /// </remarks>
@@ -213,6 +227,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="enumValue">An enumerated value used to find out the enumeration it belongs.</param>
     /// <param name="culture">The culture of the descriptions.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="enumValue"/> is <c>null</c>.</exception>
     /// <returns>
     /// An array of strings containing the descriptions of the enumerated values.
     /// </returns>
@@ -221,8 +236,8 @@ namespace TupleGeo.General.ComponentModel {
     /// If no enumerated values found in the enumeration a null is returned instead.
     /// </para>
     /// <para>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
-    /// a string representation of the name of the enumerated values is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated values, a string representation of the name of the enumerated values is returned instead.
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Enum enumValue, string culture) {
@@ -245,8 +260,8 @@ namespace TupleGeo.General.ComponentModel {
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
     /// </para>
     /// <para>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
-    /// a string representation of the name of the enumerated values is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated values, a string representation of the name of the enumerated values is returned instead.
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Type type) {
@@ -277,8 +292,8 @@ namespace TupleGeo.General.ComponentModel {
     /// If no enumerated values found in the enumeration a <c>null</c> is returned instead.
     /// </para>
     /// <para>
-    /// If no <see cref="DescriptionAttribute"/> has been set for the enumerated values,
-    /// a string representation of the name of the enumerated values is returned instead.
+    /// If no <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see>
+    /// has been set for the enumerated values, a string representation of the name of the enumerated values is returned instead.
     /// </para>
     /// </remarks>
     public static string[] GetEnumDescriptions(Type type, string culture) {
@@ -301,6 +316,10 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="type">The Type of the enumeration.</param>
     /// <param name="description">The description or name of the element.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="type"/> is <c>null</c>.</exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="description"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>
     /// An object containing the value or the description if it was not found.
     /// </returns>
@@ -338,6 +357,7 @@ namespace TupleGeo.General.ComponentModel {
     /// <param name="context">The context used in the conversion.</param>
     /// <param name="culture">the culture used in the conversion.</param>
     /// <param name="value">The description of an enumerated value. (should be a <see cref="string"/>).</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="value"/> is <c>null</c>.</exception>
     /// <returns>
     /// An object containing the enumerated value.
     /// </returns>

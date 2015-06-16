@@ -52,6 +52,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Initializes a new instance of <see cref="PropertyObserver{TPropertySource}"/>.
     /// </summary>
     /// <param name="propertySource">The object to monitor for property changes.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="propertySource"/> is <c>null</c>.</exception>
     public PropertyObserver(TPropertySource propertySource) {
       if (propertySource == null) {
         throw new ArgumentNullException("propertySource");
@@ -72,6 +73,12 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// </summary>
     /// <param name="expression">A lambda expression like <code>n => n.PropertyName</code></param>
     /// <param name="handler">The callback to invoke when the property has changed.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="expression"/> or <paramref name="handler"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="expression"/> does not provide a property name.
+    /// </exception>
     /// <returns>
     /// The object on which this method was invoked, to allow for multiple invocations chained together.
     /// </returns>
@@ -80,7 +87,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
         throw new ArgumentNullException("expression");
       }
 
-      string propertyName = Prop.GetPropertyName<TPropertySource>(expression); // GetPropertyName(expression);
+      string propertyName = Prop.GetPropertyName<TPropertySource>(expression);
       if (String.IsNullOrEmpty(propertyName)) {
         throw new ArgumentException("'expression' did not provide a property name.", "expression");
       }
@@ -104,6 +111,12 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Removes the callback associated with the specified property.
     /// </summary>
     /// <param name="expression">A lambda expression like <code>n => n.PropertyName</code></param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="expression"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="expression"/> does not provide a property name.
+    /// </exception>
     /// <returns>
     /// The object on which this method was invoked, to allow for multiple invocations chained together.
     /// </returns>

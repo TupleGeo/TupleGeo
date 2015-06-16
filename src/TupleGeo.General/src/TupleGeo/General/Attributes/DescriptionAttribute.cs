@@ -93,6 +93,7 @@ namespace TupleGeo.General.Attributes {
     /// The Enumerated value used to retrieve its
     /// <see cref="TupleGeo.General.Attributes.DescriptionAttribute">DescriptionAttribute</see> description.
     /// </param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="enumValue"/> is <c>null</c>.</exception>
     /// <returns>A string with the neutral culture description.</returns>
     /// <remarks>
     /// The neutral culture description is not associated with a specific culture.
@@ -142,6 +143,7 @@ namespace TupleGeo.General.Attributes {
     /// <param name="culture">
     /// The culture of the description.
     /// </param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="enumValue"/> is <c>null</c>.</exception>
     /// <returns>A string with the description.</returns>
     /// <remarks>
     /// If no description will be found for the specified culture, the neutral culture description will be returned. 

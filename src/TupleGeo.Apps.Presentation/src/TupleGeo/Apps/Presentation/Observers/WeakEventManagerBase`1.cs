@@ -42,6 +42,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Initializes a new instance of the <see cref="WeakEventManagerBase{TEventArgs}"/>.
     /// </summary>
     /// <param name="handler">The handler for the event.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="handler"/> is <c>null</c>.</exception>
     public WeakEventManagerBase(EventHandler<TEventArgs> handler) {
       if (handler == null) {
         throw new ArgumentNullException("handler");

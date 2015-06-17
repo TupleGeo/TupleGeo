@@ -48,7 +48,8 @@ namespace TupleGeo.General {
     }
 
     /// <summary>
-    /// Initializes the <see cref="GeneralException"/> setting its message and <see cref="Exception">inner exception</see>.
+    /// Initializes the <see cref="GeneralException"/> setting its message
+    /// and <see cref="Exception">inner exception</see>.
     /// </summary>
     /// <param name="message">The message of the exception.</param>
     /// <param name="innerException">The inner exception.</param>
@@ -58,7 +59,8 @@ namespace TupleGeo.General {
     }
 
     /// <summary>
-    /// Initializes the <see cref="GeneralException"/> setting the <see cref="SerializationInfo"/> and the <see cref="StreamingContext"/>.
+    /// Initializes the <see cref="GeneralException"/> setting the <see cref="SerializationInfo"/>
+    /// and the <see cref="StreamingContext"/>.
     /// </summary>
     /// <param name="info">The SerializationInfo.</param>
     /// <param name="context">The StreamingContext.</param>

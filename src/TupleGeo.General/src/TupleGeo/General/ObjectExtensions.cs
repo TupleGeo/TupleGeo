@@ -27,7 +27,7 @@ using TupleGeo.General.Properties;
 namespace TupleGeo.General {
 
   /// <summary>
-  /// Contains a set of extension methods for the <see cref="System.Object"/> type.
+  /// Contains a set of extension methods for the <see cref="object"/> type.
   /// </summary>
   public static class ObjectExtensions {
 
@@ -39,6 +39,18 @@ namespace TupleGeo.General {
     /// </summary>
     /// <param name="value">The object whose property value will be got.</param>
     /// <param name="propertyName">The name of the property of the object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="propertyName"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="GeneralException">
+    /// <para>
+    /// Thrown when <see cref="PropertyInfo"/> returned for the specified
+    /// <paramref name="propertyName"/> is <c>null</c>.
+    /// </para>
+    /// <para>Thrown when property value could not be converted to <see cref="string"/>.</para>
+    /// <para>Thrown when the property type is generic but its arguments are more than one.</para>
+    /// <para>Thrown when the property type is generic but its argument is not primitive.</para>
+    /// </exception>
     /// <returns>The converted property value to a string.</returns>
     public static string GetPropertyValueString(this object value, string propertyName) {
 

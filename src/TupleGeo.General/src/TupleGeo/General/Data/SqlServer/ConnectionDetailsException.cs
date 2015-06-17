@@ -60,8 +60,8 @@ namespace TupleGeo.General.Data.SqlServer {
     /// <summary>
     /// Initializes the <see cref="ConnectionDetailsException"/>.
     /// </summary>
-    /// <param name="info">The <see cref="SerializationInfo"/>.</param>
-    /// <param name="context">The <see cref="StreamingContext"/>.</param>
+    /// <param name="info">The SerializationInfo.</param>
+    /// <param name="context">The StreamingContext.</param>
     private ConnectionDetailsException(SerializationInfo info, StreamingContext context)
       : base(info, context) {
 

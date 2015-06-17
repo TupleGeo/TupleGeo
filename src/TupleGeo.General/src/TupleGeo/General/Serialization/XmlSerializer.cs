@@ -9,7 +9,9 @@
 //                  : 02/06/2015, 22:04, Vasilis Vlastaras.
 //                    1.0.2 - Changed two of the overloaded Serialize methods to SerializeToString
 //                    in order to ensure CLS assembly compliance.
-// Version          : 1.0.2
+//                  : 17/06/2015, 03:49, Vasilis Vlastaras.
+//                  : 1.0.3 - New overloaded methods have been added.
+// Version          : 1.0.3
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2009 - 2015.
@@ -40,6 +42,12 @@ namespace TupleGeo.General.Serialization {
     /// </summary>
     /// <param name="value">The object to serialize in the file.</param>
     /// <param name="filePath">The path and file used to serialize the object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="filePath"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     public static void Serialize(object value, string filePath) {
 
       if (value == null) {
@@ -72,7 +80,13 @@ namespace TupleGeo.General.Serialization {
     /// </summary>
     /// <param name="value">The object to serialize in the file.</param>
     /// <param name="filePath">The path and file used to serialize the object.</param>
-    /// <param name="encoding">The <see cref="Encoding"/> used to write in to the file.</param>
+    /// <param name="encoding">The encoding used to write in to the file.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="encoding"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="filePath"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     public static void Serialize(object value, string filePath, Encoding encoding) {
 
       if (value == null) {
@@ -108,7 +122,10 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to the specified <see cref="Stream"/>.
     /// </summary>
     /// <param name="value">The object to serialize in the <see cref="Stream"/>.</param>
-    /// <param name="stream">The <see cref="Stream"/> used to write the serialized object.</param>
+    /// <param name="stream">The stream used to write the serialized object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="stream"/> is <c>null</c>.
+    /// </exception>
     public static void Serialize(object value, Stream stream) {
 
       if (value == null) {
@@ -116,7 +133,7 @@ namespace TupleGeo.General.Serialization {
       }
 
       if (stream == null) {
-        throw new ArgumentException("Stream could not be NULL.", "stream");
+        throw new ArgumentNullException("stream", "Stream could not be NULL.");
       }
 
       StreamWriter writer = null;
@@ -140,8 +157,12 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to the specified <see cref="Stream"/>.
     /// </summary>
     /// <param name="value">The object to serialize in the <see cref="Stream"/>.</param>
-    /// <param name="stream">The <see cref="Stream"/> used to write the serialized object.</param>
-    /// <param name="encoding">The <see cref="Encoding"/> used to write the serialized object.</param>
+    /// <param name="stream">The stream used to write the serialized object.</param>
+    /// <param name="encoding">The encoding used to write the serialized object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="stream"/> or
+    /// <paramref name="encoding"/> is <c>null</c>.
+    /// </exception>
     public static void Serialize(object value, Stream stream, Encoding encoding) {
 
       if (value == null) {
@@ -177,7 +198,13 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to a <see cref="MemoryStream"/>.
     /// </summary>
     /// <param name="value">The object to serialize in to the <see cref="MemoryStream"/>.</param>
-    /// <returns>A <see cref="MemoryStream"/> containing the serialized object.</returns>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="value"/> is <c>null</c>.</exception>
+    /// <returns>A MemoryStream containing the serialized object.</returns>
+    /// <remarks>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </remarks>
     public static MemoryStream Serialize(object value) {
 
       if (value == null) {
@@ -199,12 +226,48 @@ namespace TupleGeo.General.Serialization {
       return memStream;
 
     }
+
+    /// <summary>
+    /// Serializes the specified object in to a <see cref="MemoryStream"/>.
+    /// </summary>
+    /// <param name="value">The object to serialize in to the <see cref="MemoryStream"/>.</param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="value"/> is <c>null</c>.</exception>
+    /// <returns>A MemoryStream containing the serialized object.</returns>
+    /// <remarks>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </remarks>
+    public static MemoryStream Serialize(object value, int capacity) {
+
+      if (value == null) {
+        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
+      }
+
+      MemoryStream memStream = null;
+
+      try {
+        memStream = new MemoryStream(capacity);
+        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
+        serializer.Serialize(memStream, value);
+      }
+      catch (Exception) {
+        memStream.Dispose();
+        throw;
+      }
+
+      return memStream;
+
+    }
     
     /// <summary>
     /// Serializes the specified object in to a <see cref="string"/>.
     /// </summary>
     /// <param name="value">The object to serialize.</param>
     /// <param name="buffer">The buffer in to which the object will be serialized.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="buffer"/> is <c>null</c>.
+    /// </exception>
     public static void Serialize(object value, ref byte[] buffer) {
 
       if (value == null) {
@@ -236,7 +299,10 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to a <see cref="string"/>.
     /// </summary>
     /// <param name="value">The object to serialize.</param>
-    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>A string containing the serialized object.</returns>
     /// <remarks>
     /// <para>
     /// The method uses <see cref="UTF8Encoding"/> to serialize the object.
@@ -273,13 +339,64 @@ namespace TupleGeo.General.Serialization {
       return serialized;
 
     }
+    
+    /// <summary>
+    /// Serializes the specified object in to a <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The object to serialize.</param>
+    /// <param name="capacity">
+    /// The initial size of the array bytes used by the internal <see cref="MemoryStream"/>.
+    /// </param>`
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>A string containing the serialized object.</returns>
+    /// <remarks>
+    /// <para>
+    /// The method uses <see cref="UTF8Encoding"/> to serialize the object.
+    /// </para>
+    /// <para>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </para>
+    /// </remarks>
+    public static string SerializeToString(object value, int capacity) {
+
+      if (value == null) {
+        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
+      }
+
+      MemoryStream memStream = null;
+      string serialized;
+
+      try {
+        memStream = new MemoryStream(capacity);
+        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
+        serializer.Serialize(memStream, value);
+        byte[] bytes = memStream.GetBuffer();
+        UTF8Encoding encoding = new UTF8Encoding();
+        serialized = encoding.GetString(bytes);
+      }
+      finally {
+        if (memStream != null) {
+          memStream.Close();
+        }
+      }
+
+      return serialized;
+
+    }
 
     /// <summary>
     /// Serializes the specified object in to a <see cref="string"/>.
     /// </summary>
     /// <param name="value">The object to serialize.</param>
-    /// <param name="encoding">The <see cref="Encoding"/> used to serialize the object.</param>
-    /// <returns>A <see cref="string"/> containing the serialized object.</returns>
+    /// <param name="encoding">The encoding used to serialize the object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="encoding"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>A string containing the serialized object.</returns>
     /// <remarks>
     /// <para>
     /// The method might not return the entire object graph in to a serialized string.
@@ -316,12 +433,67 @@ namespace TupleGeo.General.Serialization {
       return serialized;
 
     }
+    
+    /// <summary>
+    /// Serializes the specified object in to a <see cref="string"/>.
+    /// </summary>
+    /// <param name="value">The object to serialize.</param>
+    /// <param name="encoding">The encoding used to serialize the object.</param>
+    /// <param name="capacity">
+    /// The initial size of the array bytes used by the internal <see cref="MemoryStream"/>.
+    /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="value"/> or <paramref name="encoding"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>A string containing the serialized object.</returns>
+    /// <remarks>
+    /// <para>
+    /// The method might not return the entire object graph in to a serialized string.
+    /// This is caused by the internal <see cref="MemoryStream"/> byte buffer length used
+    /// in the serialization process of this method.
+    /// </para>
+    /// </remarks>
+    public static string SerializeToString(object value, Encoding encoding, int capacity) {
+
+      if (value == null) {
+        throw new ArgumentNullException("value", "Could not serialize a NULL object.");
+      }
+
+      if (encoding == null) {
+        throw new ArgumentNullException("encoding", "Encoding could not be NULL.");
+      }
+
+      MemoryStream memStream = null;
+      string serialized;
+
+      try {
+        memStream = new MemoryStream(capacity);
+        System.Xml.Serialization.XmlSerializer serializer = new System.Xml.Serialization.XmlSerializer(value.GetType());
+        serializer.Serialize(memStream, value);
+        byte[] bytes = memStream.GetBuffer();
+        serialized = encoding.GetString(bytes);
+      }
+      finally {
+        if (memStream != null) {
+          memStream.Close();
+        }
+      }
+
+      return serialized;
+
+    }
 
     /// <summary>
     /// Deserializes an object with the specified <see cref="Type"/> from the specified file.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the object to be deserialized.</param>
+    /// <param name="type">The Type of the object to be deserialized.</param>
     /// <param name="filePath">The path and file used to deserialize the object.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="type"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="filePath"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>The deserialized object.</returns>
     public static object Deserialize(Type type, string filePath) {
 
@@ -357,10 +529,13 @@ namespace TupleGeo.General.Serialization {
     /// Deserializes an object of the specified <see cref="Type"/>
     /// from the specified <see cref="Stream"/>.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the object to be deserialized.</param>
+    /// <param name="type">The Type of the object to be deserialized.</param>
     /// <param name="value">
-    /// The <see cref="Stream"/> containing the object to be deserialized.
+    /// The stream containing the object to be deserialized.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="type"/> or <paramref name="value"/> is <c>null</c>.
+    /// </exception>
     /// <returns>The deserialized object.</returns>
     public static object Deserialize(Type type, Stream value) {
 
@@ -381,13 +556,19 @@ namespace TupleGeo.General.Serialization {
     /// Deserializes an object of the specified <see cref="Type"/>
     /// from the specified <see cref="string"/>.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the object to deserialize.</param>
+    /// <param name="type">The Type of the object to deserialize.</param>
     /// <param name="value">
-    /// The <see cref="string"/> containing the object to be deserialized.
+    /// The string containing the object to be deserialized.
     /// </param>
     /// <param name="encoding">
-    /// The <see cref="Encoding"/> that will be used during the deserialization process.
+    /// The encoding that will be used during the deserialization process.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="type"/> or <paramref name="encoding"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="value"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>The deserialized object.</returns>
     public static object Deserialize(Type type, string value, Encoding encoding) {
 
@@ -428,10 +609,13 @@ namespace TupleGeo.General.Serialization {
     /// Deserializes an object of the specified <see cref="Type"/>
     /// from the specified <see cref="byte"/> array.
     /// </summary>
-    /// <param name="type">The <see cref="Type"/> of the object to deserialize.</param>
+    /// <param name="type">The Type of the object to deserialize.</param>
     /// <param name="value">
-    /// The <see cref="byte"/> array containing the object to be deserialized.
+    /// The byte array containing the object to be deserialized.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="type"/> or <paramref name="value"/> is <c>null</c>.
+    /// </exception>
     /// <returns>The deserialized object.</returns>
     public static object Deserialize(Type type, byte[] value) {
 

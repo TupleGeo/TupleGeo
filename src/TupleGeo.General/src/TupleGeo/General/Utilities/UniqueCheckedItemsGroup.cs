@@ -71,6 +71,9 @@ namespace TupleGeo.General.Utilities {
     /// <param name="denyUncheck">
     /// Specifies whether the checked item can be unchecked.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="item"/> is <c>null</c>.
+    /// </exception>
     public void UpdateCheck(object item, bool denyUncheck) {
 
       if (item == null) {

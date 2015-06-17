@@ -1,40 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
   <Class Name="TupleGeo.General.Data.SqlServer.ConnectionDetails">
-    <Position X="0.5" Y="3.5" Width="5.25" />
+    <Position X="0.5" Y="2.25" Width="7.75" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>CAAEAAAAAAAAJoBAGEAAEAAAAAAAgAgEAgAAwAgAgAA=</HashCode>
-      <FileName>Data\SqlServer\ConnectionDetails.cs</FileName>
+      <HashCode>CAAEAAAAEAAAMoBAEEAEAAAAAAAEgAgEAgAAgAgAgAA=</HashCode>
+      <FileName>TupleGeo\General\Data\SqlServer\ConnectionDetails.cs</FileName>
     </TypeIdentifier>
-    <ShowAsCollectionAssociation>
-      <Property Name="SqlServerUserList" />
-    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="TupleGeo.General.Data.SqlServer.SqlServerUser">
-    <Position X="8.5" Y="3.5" Width="3" />
+    <Position X="8.75" Y="2.25" Width="3" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAQQBAAAgAAAAAAAAAAAAAAAAAAAAAACAQIAAAAAQAA=</HashCode>
-      <FileName>Data\SqlServer\SqlServerUser.cs</FileName>
+      <FileName>TupleGeo\General\Data\SqlServer\SqlServerUser.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TupleGeo.General.Data.SqlServer.ConnectionDetailsException">
-    <Position X="8.5" Y="6" Width="5" />
+    <Position X="8.75" Y="4.5" Width="5.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Data\SqlServer\ConnectionDetailsException.cs</FileName>
+      <FileName>TupleGeo\General\Data\SqlServer\ConnectionDetailsException.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="TupleGeo.General.Data.FilterType">
     <Position X="0.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAQA=</HashCode>
-      <FileName>Data\FilterType.cs</FileName>
+      <FileName>TupleGeo\General\Data\FilterType.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Font Name="Segoe UI" Size="9" />

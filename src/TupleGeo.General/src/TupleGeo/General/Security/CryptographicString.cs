@@ -7,7 +7,7 @@
 // Updated by       : 22/02/2011, 21:51, Source code in public domain.
 //                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
 //                  : 01/06/2015, 21:43, Changed class to adhere to Microsoft All Rules code analysis standards.
-//                    1.0.1 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
+//                    1.0.2 - Removed System.Linq to make the source file compatible with .NET Framework 2.0.
 // Version          : 1.0.2
 // Contact Details  : TupleGeo.
 // License          : Apache License.
@@ -54,17 +54,23 @@ namespace TupleGeo.General.Security {
     #region Public Methods
 
     /// <summary>
-    /// Gets the key used for encrypting / decrypting the <see cref="System.String"/>.
+    /// Gets the key used for encrypting / decrypting the <see cref="string"/>.
     /// </summary>
-    /// <returns>A <see cref="byte"/> array.</returns>
+    /// <returns>A byte array having the key.</returns>
     public static byte[] GetKey() {
       return _key;
     }
 
     /// <summary>
-    /// Sets the key used for encrypting / decrypting the <see cref="System.String"/>.
+    /// Sets the key used for encrypting / decrypting the <see cref="string"/>.
     /// </summary>
-    /// <param name="key">The <see cref="byte"/> array holding the key.</param>
+    /// <param name="key">The byte array holding the key.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="key"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when the size of the <paramref name="key"/> is <c>0</c>.
+    /// </exception>
     public static void SetKey(byte[] key) {
       if (key == null) {
         throw new ArgumentNullException("key", "Key could not be NULL.");
@@ -78,7 +84,7 @@ namespace TupleGeo.General.Security {
     /// <summary>
     /// Gets the initialization vector.
     /// </summary>
-    /// <returns>A <see cref="byte"/> array.</returns>
+    /// <returns>A byte array having the initialization vector.</returns>
     public static byte[] GetInitializationVector() {
       return _initializationVector;
     }
@@ -86,7 +92,13 @@ namespace TupleGeo.General.Security {
     /// <summary>
     /// Sets the initialization vector.
     /// </summary>
-    /// <param name="initializationVector">The <see cref="byte"/> array holding the initialization vector.</param>
+    /// <param name="initializationVector">The byte array holding the initialization vector.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="initializationVector"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when the size of the <paramref name="initializationVector"/> is <c>0</c>.
+    /// </exception>
     public static void SetInitializationVector(byte[] initializationVector) {
       if (initializationVector == null) {
         throw new ArgumentNullException("initializationVector", "Initialization vector could not be NULL.");
@@ -98,10 +110,15 @@ namespace TupleGeo.General.Security {
     }
     
     /// <summary>
-    /// Encrypts a <see cref="System.String"/>.
+    /// Encrypts a <see cref="string"/>.
     /// </summary>
-    /// <param name="original">The <see cref="System.String"/> to be encrypted.</param>
-    /// <returns>An encrypted <see cref="System.String"/>.</returns>
+    /// <param name="original">The string to be encrypted.</param>
+    /// <exception cref="CryptographicStringException">
+    /// Thrown when <see cref="CryptographicString.GetKey">GetKey</see> or
+    /// <see cref="CryptographicString.GetInitializationVector">GetInitializationVector</see>
+    /// returns <c>null</c>.
+    /// </exception>
+    /// <returns>An encrypted string.</returns>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
     public static string Encrypt(string original) {
 
@@ -155,10 +172,15 @@ namespace TupleGeo.General.Security {
     }
 
     /// <summary>
-    /// Decrypts a <see cref="System.String"/>.
+    /// Decrypts a <see cref="string"/>.
     /// </summary>
-    /// <param name="encrypted">The <see cref="System.String"/> to be decrypted.</param>
-    /// <returns>A decrypted <see cref="System.String"/>.</returns>
+    /// <param name="encrypted">The string to be decrypted.</param>
+    /// <exception cref="CryptographicStringException">
+    /// Thrown when <see cref="CryptographicString.GetKey">GetKey</see> or
+    /// <see cref="CryptographicString.GetInitializationVector">GetInitializationVector</see>
+    /// returns <c>null</c>.
+    /// </exception>
+    /// <returns>A decrypted string.</returns>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times")]
     public static string Decrypt(string encrypted) {
 
@@ -202,7 +224,7 @@ namespace TupleGeo.General.Security {
     /// <summary>
     /// Generates a Rijndael symmetric secret key.
     /// </summary>
-    /// <param name="rijndaelProvider">The <see cref="RijndaelManaged"/> provider.</param>
+    /// <param name="rijndaelProvider">The RijndaelManaged provider.</param>
     private static void GenerateRijndaelSecretKey(RijndaelManaged rijndaelProvider) {
       if (_key == null) {
         rijndaelProvider.KeySize = 256;
@@ -214,7 +236,7 @@ namespace TupleGeo.General.Security {
     /// <summary>
     /// Generates a Rijndael initialization vector.
     /// </summary>
-    /// <param name="rijndaelProvider">The <see cref="RijndaelManaged"/> provider.</param>
+    /// <param name="rijndaelProvider">The RijndaelManaged provider.</param>
     private static void GenerateRijndaelSecretInitilizationVector(RijndaelManaged rijndaelProvider) {
       if (_initializationVector == null) {
         rijndaelProvider.GenerateIV();

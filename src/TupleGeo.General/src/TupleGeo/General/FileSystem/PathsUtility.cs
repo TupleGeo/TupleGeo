@@ -37,6 +37,9 @@ namespace TupleGeo.General.FileSystem {
     /// Adds a backslash to the specified path.
     /// </summary>
     /// <param name="path">The string representing the path.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="path"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>A string representing the path with the added backslash.</returns>
     /// <remarks>If the path ends with a backslash the method returns the path as it is.</remarks>
     public static string AddBackslashToPath(string path) {
@@ -56,6 +59,9 @@ namespace TupleGeo.General.FileSystem {
     /// Adds a slash to the specified path.
     /// </summary>
     /// <param name="path">The string representing the path.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="path"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>A string representing the path with the added slash.</returns>
     /// <remarks>If the path ends with a slash the method returns the path as it is.</remarks>
     public static string AddSlashToPath(string path) {
@@ -75,6 +81,9 @@ namespace TupleGeo.General.FileSystem {
     /// Gets the parent path from a given path.
     /// </summary>
     /// <param name="path">The path to get its parent.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="path"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>A <see cref="string"/> storing the parent path.</returns>
     /// <remarks>
     /// In case the path is the full path to a file, the path returned is that storing the file.
@@ -108,11 +117,18 @@ namespace TupleGeo.General.FileSystem {
     /// Gets the file extension from a given path.
     /// </summary>
     /// <param name="path">The path from which to extract the file extension.</param>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="path"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
     /// <returns>A <see cref="string"/> storing the file extension.</returns>
     /// <remarks>
     /// In case file extension can not be retrieved, a <see cref="string.Empty"/> is returned instead.
     /// </remarks>
     public static string GetFileExtension(string path) {
+      if (string.IsNullOrEmpty(path)) {
+        throw new ArgumentException("string could not be NULL or Empty.", "path");
+      }
+
       string extension = string.Empty;
 
       if (!string.IsNullOrEmpty(path)) {

@@ -30,14 +30,19 @@ namespace TupleGeo.General.Linq.Expressions {
   /// </summary>
   public static class Prop {
 
+    #region Public Methods
+
     /// <summary>
     /// Gets a property name.
     /// </summary>
     /// <typeparam name="T">The object whose property name will be retrieved.</typeparam>
     /// <param name="expression">
-    /// The expression used to retrieve the property. Should be like: 'p => p.PropertyName'
+    /// The expression used to retrieve the property. Should be like: <code>p => p.PropertyName</code>
     /// </param>
-    /// <returns>A <see cref="string"/> holding the property name.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="expression"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>A string holding the property name.</returns>
     public static string GetPropertyName<T>(Expression<Func<T, object>> expression) {
       
       if (expression == null) {
@@ -66,6 +71,8 @@ namespace TupleGeo.General.Linq.Expressions {
       return null;
 
     }
+
+    #endregion
 
   }
 

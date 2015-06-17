@@ -36,7 +36,7 @@ namespace TupleGeo.General.Utilities {
     /// Gets the mime type using a file extension.
     /// </summary>
     /// <param name="fileExtension">The extension of a file.</param>
-    /// <returns>A <see cref="string"/> indicating the mime type.</returns>
+    /// <returns>A string indicating the mime type.</returns>
     /// <remarks>
     /// The method uses the windows registry to match file extensions to known mime types.
     /// </remarks>

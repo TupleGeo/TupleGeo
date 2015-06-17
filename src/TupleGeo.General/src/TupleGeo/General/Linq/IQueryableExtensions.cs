@@ -38,7 +38,10 @@ namespace TupleGeo.General.Linq {
     /// <typeparam name="TEntity">A class object.</typeparam>
     /// <param name="source">The source that needs to be ordered.</param>
     /// <param name="orderByProperty">The property name used to order the entities.</param>
-    /// <returns>An <see cref="IQueryable{TEntity}"/> of <typeparamref name="TEntity"/>.</returns>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="orderByProperty"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
+    /// <returns>The ordered entities..</returns>
     public static IQueryable<TEntity> OrderBy<TEntity>(
       this IQueryable<TEntity> source,
       string orderByProperty
@@ -75,7 +78,10 @@ namespace TupleGeo.General.Linq {
     /// <typeparam name="TEntity">A class object.</typeparam>
     /// <param name="source">The source that needs to be ordered.</param>
     /// <param name="orderByProperty">The property name used to order the entities.</param>
-    /// <returns>An <see cref="IQueryable{TEntity}"/> of <typeparamref name="TEntity"/>.</returns>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="orderByProperty"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
+    /// <returns>The ordered entities.</returns>
     public static IQueryable<TEntity> OrderByDescending<TEntity>(
       this IQueryable<TEntity> source,
       string orderByProperty

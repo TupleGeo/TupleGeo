@@ -30,7 +30,7 @@ namespace TupleGeo.General.Data {
 
     /// <summary>
     /// The filter specifies that the like operator should be used and
-    /// that the filter string should be matched inside the the target string.
+    /// that the filter string should be matched inside the target string.
     /// </summary>
     Contains = 0,
 

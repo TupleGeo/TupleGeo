@@ -27,7 +27,7 @@ using TupleGeo.General.Properties;
 namespace TupleGeo.General.Reflection {
 
   /// <summary>
-  /// Provides methods for manipulating the Assembly object more efficiently.
+  /// Provides extension methods for the Assembly object.
   /// </summary>
   public static class AssemblyExtensions {
 
@@ -36,12 +36,15 @@ namespace TupleGeo.General.Reflection {
     /// <summary>
     /// Gets all exported types of the assembly implementing the specified interface.
     /// </summary>
-    /// <param name="assembly">The <see cref="Assembly"/>.</param>
+    /// <param name="assembly">The Assembly.</param>
     /// <param name="interfaceType">
-    /// The <see cref="Type"/> of interface whose implementors will be returned.
+    /// The Type of interface whose implementors will be returned.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="interfaceType"/> is <c>null</c>.
+    /// </exception>
     /// <returns>
-    /// An IEmumerable of <see cref="Type"/> with <see cref="Type">types</see> implementing the specified interface.
+    /// The types implementing the specified interface.
     /// </returns>
     public static IEnumerable<Type> GetExportedTypes(this Assembly assembly, Type interfaceType) {
       if (interfaceType == null) {
@@ -61,15 +64,26 @@ namespace TupleGeo.General.Reflection {
     /// <summary>
     /// Creates an instance of an object implementing the specified interface type.
     /// </summary>
-    /// <param name="assembly">The <see cref="Assembly"/>.</param>
+    /// <param name="assembly">The Assembly.</param>
     /// <param name="interfaceType">
-    /// The <see cref="Type"/> of interface implemented by the object to be instantiated.
+    /// The Type of interface implemented by the object to be instantiated.
     /// </param>
-    /// <returns>An <see cref="object"/> instance implementing the specified interface.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="interfaceType"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// <para>
+    /// Thrown when no type will be found implementing the specified <paramref name="interfaceType"/>.
+    /// </para>
+    /// <para>
+    /// Thrown when more than one types found implementing the specified <paramref name="interfaceType"/>.
+    /// </para>
+    /// </exception>
+    /// <returns>An object instance implementing the specified interface.</returns>
     /// <remarks>
     /// The method expects only one of the exported types to implement this interface.
     /// In case there are more exported types implementing this interface the method
-    /// will return null and raise an error.
+    /// will raise an <see cref="ArgumentException"/> as described in exceptions section.
     /// </remarks>
     public static object CreateInstance(this Assembly assembly, Type interfaceType) {
       if (interfaceType == null) {

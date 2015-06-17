@@ -4,7 +4,7 @@
     <Position X="0.75" Y="0.5" Width="6" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIBAAAAAAACAAAAAAAAAAQAAAAAAABE=</HashCode>
-      <FileName>Attributes\AttributeHelper.cs</FileName>
+      <FileName>TupleGeo\General\Attributes\AttributeHelper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TupleGeo.General.Attributes.DescriptionAttribute">
@@ -14,14 +14,14 @@
     </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAEAAAAAAAAARAAAIAAAAAAAAAAAAA=</HashCode>
-      <FileName>Attributes\DescriptionAttribute.cs</FileName>
+      <FileName>TupleGeo\General\Attributes\DescriptionAttribute.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TupleGeo.General.Attributes.ResourceDescriptionAttribute">
-    <Position X="7.25" Y="3.75" Width="4.5" />
+    <Position X="7.25" Y="3.75" Width="4.75" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAgAACAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Attributes\ResourceDescriptionAttribute.cs</FileName>
+      <FileName>TupleGeo\General\Attributes\ResourceDescriptionAttribute.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

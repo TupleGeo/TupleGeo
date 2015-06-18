@@ -51,8 +51,8 @@ namespace TupleGeo.General.ComponentModel.Design {
     private Collection<EnumNameDescriptionPair> _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>();
 
     /// <summary>
-    /// The <see cref="Collection{EnumNameDescriptionPair}"/>
-    /// used to provide the descriptions displayed in the control.
+    /// Gets the <see cref="Collection{EnumNameDescriptionPair}">Collection</see> of
+    /// <see cref="EnumNameDescriptionPair"/> used to provide the descriptions displayed in the control.
     /// </summary>
     [CLSCompliant(false)]
     public Collection<EnumNameDescriptionPair> EnumDescriptionsCollection {
@@ -64,7 +64,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     private object _selectedEnumValueName;
 
     /// <summary>
-    /// The selected name of the enumerated value.
+    /// Gets the selected name of the enumerated value.
     /// </summary>
     public object SelectedEnumValueName {
       get {
@@ -77,7 +77,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     #region Public Methods
 
     /// <summary>
-    /// Sorts the <see cref="Collection{EnumNameDescriptionPair}"/> of descriptions.
+    /// Sorts the <see cref="Collection{EnumNameDescriptionPair}">Collection</see> of <see cref="EnumNameDescriptionPair"/>.
     /// </summary>
     public void SortEnumDescriptionsCollection() {
       _enumDescriptionsCollection = new Collection<EnumNameDescriptionPair>(
@@ -101,7 +101,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     }
 
     /// <summary>
-    /// Binds the <see cref="EnumDescriptionsCollection"/> to the <see cref="EnumDescriptionsListBox"/>.
+    /// Binds the <see cref="EnumDescriptionsCollection"/> to the internal <see cref="ListBox"/>.
     /// </summary>
     public void DataBind() {
       this.EnumDescriptionsListBox.DisplayMember = "Description";
@@ -117,16 +117,16 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// Occurs upon loading the control.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The EventArgs.</param>
     private void EnumDescriptionControl_Load(object sender, EventArgs e) {
       DataBind();
     }
 
     /// <summary>
-    /// Occurs upon clicking the <see cref="EnumDescriptionsListBox"/> with the mouse.
+    /// Occurs upon clicking the internal <see cref="ListBox"/> with the mouse.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="MouseEventArgs"/>.</param>
+    /// <param name="e">The MouseEventArgs.</param>
     private void EnumDescriptionsListBox_MouseClick(object sender, MouseEventArgs e) {
       if (this.EnumDescriptionsListBox != null) {
         _selectedEnumValueName = this.EnumDescriptionsListBox.SelectedValue;
@@ -138,10 +138,10 @@ namespace TupleGeo.General.ComponentModel.Design {
     }
 
     /// <summary>
-    /// Occurs when the selected value of the <see cref="EnumDescriptionsListBox"/> has been changed.
+    /// Occurs when the selected value of the <see cref="ListBox"/> has been changed.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The EventArgs.</param>
     private void EnumDescriptionsListBox_SelectedValueChanged(object sender, EventArgs e) {
       if (this.EnumDescriptionsListBox != null) {
         _selectedEnumValueName = this.EnumDescriptionsListBox.SelectedValue;

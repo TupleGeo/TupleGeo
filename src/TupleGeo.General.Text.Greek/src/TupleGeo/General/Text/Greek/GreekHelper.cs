@@ -124,7 +124,10 @@ namespace TupleGeo.General.Text.Greek {
     /// <param name="greek">
     /// The string that its chars will be converted.
     /// </param>
-    /// <returns>A <see cref="string"/> containing non punctuated Greek characters.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="greek"/> is <c>null</c> or <see cref="string.Empty"/>.
+    /// </exception>
+    /// <returns>A string containing non punctuated Greek characters.</returns>
     public static string ToNonPunctuatedChars(string greek) {
 
       if (string.IsNullOrEmpty(greek)) {

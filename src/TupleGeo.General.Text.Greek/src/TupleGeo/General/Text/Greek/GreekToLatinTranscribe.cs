@@ -55,7 +55,7 @@ namespace TupleGeo.General.Text.Greek {
     /// Converts a string in Greek to a Latin one using upper case characters.
     /// </summary>
     /// <param name="input">The input string.</param>
-    /// <returns>A <see cref="string"/> with the Latin interpretation of the string in Greek.</returns>
+    /// <returns>A string with the Latin transcription of the string in Greek.</returns>
     public static string Convert(string input) {
       return Convert(input, GreekToLatinConversionMode.Uppercase);
     }
@@ -65,7 +65,7 @@ namespace TupleGeo.General.Text.Greek {
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <param name="mode">The <see cref="GreekToLatinConversionMode">mode</see> used to convert the string.</param>
-    /// <returns>A <see cref="string"/> with the Latin interpretation of the string in Greek.</returns>
+    /// <returns>A string with the Latin transcription of the string in Greek.</returns>
     public static string Convert(string input, GreekToLatinConversionMode mode) {
       if (input == null) {
         return null;
@@ -128,8 +128,8 @@ namespace TupleGeo.General.Text.Greek {
     /// <summary>
     /// Reads ahead.
     /// </summary>
-    /// <param name="current">The current <see cref="char"/>.</param>
-    /// <returns>Returns a <see cref="bool"/>.</returns>
+    /// <param name="current">The current char.</param>
+    /// <returns>Returns a value indicating whether to read ahead or not.</returns>
     private static bool ReadAhead(char current) {
       return CharReadAhead.IndexOf(char.ToLower(current, CultureInfo.InvariantCulture)) >= 0;
     }
@@ -137,11 +137,11 @@ namespace TupleGeo.General.Text.Greek {
     /// <summary>
     /// Replaces a Greek <see cref="char"/> with a Latin one.
     /// </summary>
-    /// <param name="current">The <see cref="char"/> to replace.</param>
+    /// <param name="current">The char to replace.</param>
     /// <param name="mode">
     /// The <see cref="GreekToLatinConversionMode">mode</see> used for the replacement.
     /// </param>
-    /// <returns>A <see cref="string"/> containing the replaced <see cref="char"/>.</returns>
+    /// <returns>A string containing the replaced <see cref="char"/>.</returns>
     private static string Replace(char current, GreekToLatinConversionMode mode) {
       string result = null;
       if (mode == GreekToLatinConversionMode.Mixedcase) {
@@ -165,14 +165,14 @@ namespace TupleGeo.General.Text.Greek {
     /// <summary>
     /// Replaces a Greek <see cref="char"/> with a Latin one.
     /// </summary>
-    /// <param name="current">The <see cref="string"/> to replace.</param>
+    /// <param name="current">The string to replace.</param>
     /// <param name="wordStart">
-    /// Indicates whether this <see cref="string"/> is the beginning of the word to be converted or not.
+    /// Indicates whether this string is the beginning of the word to be converted or not.
     /// </param>
     /// <param name="mode">
     /// The <see cref="GreekToLatinConversionMode">mode</see> used for the replacement.
     /// </param>
-    /// <returns>A <see cref="string"/> containing the replaced <see cref="string"/>.</returns>
+    /// <returns>A string containing the replaced <see cref="string"/>.</returns>
     private static string Replace(string current, bool wordStart, GreekToLatinConversionMode mode) {
       string result = null;
       if (mode == GreekToLatinConversionMode.Mixedcase) {
@@ -210,11 +210,10 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{Char, String}"/> storing the mapping of Greek characters to Latin strings.
+    /// Creates a <see cref="Dictionary{Char, String}">Dictionary</see> of (<see cref="char"/>, <see cref="string"/>)
+    /// storing the mapping of Greek characters to Latin strings.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{Char, String}"/> storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<char, string> MapSingle() {
       Dictionary<char, string> result = new Dictionary<char, string>();
       
@@ -259,12 +258,10 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{String, String}"/> storing the
-    /// mapping of Greek double character strings to Latin strings.
+    /// Creates a <see cref="Dictionary{String, String}">Dictionary</see> of (<see cref="string"/>, <see cref="string"/>)
+    /// storing the mapping of Greek double character strings to Latin strings.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{String, String}"/> storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<string, string> MapDouble() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
@@ -291,13 +288,11 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{String, String}"/> storing the mapping of Greek
-    /// double character strings to Latin strings for those cases that a word starts
+    /// Creates a <see cref="Dictionary{String, String}">Dictionary</see> of (<see cref="string"/>, <see cref="string"/>)
+    /// storing the mapping of Greek double character strings to Latin strings for those cases that a word starts
     /// with the specified double characters.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{String, String}"/> storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<string, string> MapWordStart() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
@@ -308,13 +303,11 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{String, String}"/> storing the mapping of Greek
-    /// double character strings to Latin strings for those cases that a word has these
+    /// Creates a <see cref="Dictionary{String, String}">Dictionary</see> of (<see cref="string"/>, <see cref="string"/>)
+    /// storing the mapping of Greek double character strings to Latin strings for those cases that a word has these
     /// double characters somewhere in the middle of its body.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{String, String}"/> storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<string, string> MapWordMiddle() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
@@ -325,12 +318,10 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{String, String}"/> storing the mapping of Greek
-    /// double character strings to Latin strings for those cases that are voiced.
+    /// Creates a <see cref="Dictionary{String, String}">Dictionary</see> of (<see cref="string"/>, <see cref="string"/>)
+    /// storing the mapping of Greek double character strings to Latin strings for those cases that are voiced.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{String, String}"/> storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<string, string> MapNextVoiced() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 
@@ -345,13 +336,10 @@ namespace TupleGeo.General.Text.Greek {
     }
 
     /// <summary>
-    /// Creates a <see cref="Dictionary{String, String}"/> storing the mapping of Greek
-    /// double character strings to Latin strings for those cases that are voiceless.
+    /// Creates a <see cref="Dictionary{String, String}">Dictionary</see> of (<see cref="string"/>, <see cref="string"/>)
+    /// storing the mapping of Greek double character strings to Latin strings for those cases that are voiceless.
     /// </summary>
-    /// <returns>
-    /// The <see cref="Dictionary{String, String}"/>
-    /// storing the specified mapping.
-    /// </returns>
+    /// <returns>The dictionary storing the specified mapping.</returns>
     private static Dictionary<string, string> MapNextVoiceless() {
       Dictionary<string, string> result = new Dictionary<string, string>();
 

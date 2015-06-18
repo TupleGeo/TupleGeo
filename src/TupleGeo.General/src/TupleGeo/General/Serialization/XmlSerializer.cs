@@ -231,6 +231,7 @@ namespace TupleGeo.General.Serialization {
     /// Serializes the specified object in to a <see cref="MemoryStream"/>.
     /// </summary>
     /// <param name="value">The object to serialize in to the <see cref="MemoryStream"/>.</param>
+    /// <param name="capacity">The initial capacity of the <see cref="MemoryStream"/>.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="value"/> is <c>null</c>.</exception>
     /// <returns>A MemoryStream containing the serialized object.</returns>
     /// <remarks>

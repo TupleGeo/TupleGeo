@@ -54,10 +54,10 @@ namespace TupleGeo.General.ComponentModel.Design {
     #region Event Procedures
 
     /// <summary>
-    /// Occurs upon clicking the <see cref="NewObjectToolStripButton"/>.
+    /// Occurs upon clicking the new object button.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The EventArgs.</param>
     private void NewObjectToolStripButton_Click(object sender, EventArgs e) {
       if (ButtonClick != null) {
         ButtonClick(sender, e);
@@ -65,10 +65,10 @@ namespace TupleGeo.General.ComponentModel.Design {
     }
 
     /// <summary>
-    /// Occurs upon clicking the <see cref="DeleteObjectToolStripButton"/>.
+    /// Occurs upon clicking the delete object button.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The EventArgs.</param>
     private void DeleteObjectToolStripButton_Click(object sender, EventArgs e) {
       if (ButtonClick != null) {
         ButtonClick(sender, e);

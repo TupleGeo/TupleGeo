@@ -69,7 +69,13 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// Occurs when a button has been clicked on the <see cref="GeneralObjectEditor"/> control.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The <see cref="EventArgs"/>.</param>
+    /// <param name="e">The EventArgs.</param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="sender"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="sender"/> is not of the expected <see cref="Type"/>.
+    /// </exception>
     private void _generalObjectEditorControl_ButtonClick(object sender, EventArgs e) {
       if (sender != null) {
         if (sender.GetType() == typeof(ToolStripButton)) {
@@ -93,10 +99,16 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <summary>
     /// Edits any object.
     /// </summary>
-    /// <param name="context">The <see cref="ITypeDescriptorContext"/>.</param>
-    /// <param name="provider">The <see cref="IServiceProvider"/>.</param>
+    /// <param name="context">The ITypeDescriptorContext.</param>
+    /// <param name="provider">The IServiceProvider.</param>
     /// <param name="value">The value to be edited.</param>
-    /// <returns>An <see cref="object"/> storing the edited object.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="context"/> or <paramref name="provider"/> or <paramref name="value"/> is <c>null</c>.
+    /// </exception>
+    /// <exception cref="ArgumentException">
+    /// Thrown when <paramref name="value"/> is not of the expected <see cref="Type"/>.
+    /// </exception>
+    /// <returns>The edited object.</returns>
 #if NET35
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
@@ -167,8 +179,8 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <summary>
     /// Gets the <see cref="UITypeEditorEditStyle">edit style</see> of the editor window.
     /// </summary>
-    /// <param name="context">The <see cref="ITypeDescriptorContext"/>.</param>
-    /// <returns>The <see cref="UITypeEditorEditStyle"/>.</returns>
+    /// <param name="context">The ITypeDescriptorContext.</param>
+    /// <returns>The UITypeEditorEditStyle.</returns>
 #if NET35
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
@@ -179,9 +191,9 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <summary>
     /// Gets whether the paint value is supported or not.
     /// </summary>
-    /// <param name="context">The <see cref="ITypeDescriptorContext"/>.</param>
+    /// <param name="context">The ITypeDescriptorContext.</param>
     /// <returns>
-    /// A <see cref="bool"/> indicating whether the paint value is supported or not.
+    /// A value indicating whether the paint value is supported or not.
     /// </returns>
 #if NET35
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]

@@ -48,15 +48,19 @@ namespace TupleGeo.General.Data {
     /// <summary>
     /// Exports the contents of a <see cref="DataGridView"/> in to a text file.
     /// </summary>
-    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The DataGridView containing the rows to be exported.</param>
     /// <param name="streamWriter">
-    /// The <see cref="StreamWriter"/> that will be used to write the rows.</param>
+    /// The StreamWriter that will be used to write the rows.</param>
     /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
     /// <param name="separator">
-    /// The separator <see cref="string"/> used to separate the field values.
+    /// The separator string used to separate the field values.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="dataGridView"/> or <paramref name="streamWriter"/> or
+    /// <paramref name="separator"/> is <c>null</c>.
+    /// </exception>
     public static void ExportText(DataGridView dataGridView, StreamWriter streamWriter, bool exportSelected, string separator) {
 
       if (dataGridView == null) {
@@ -65,6 +69,10 @@ namespace TupleGeo.General.Data {
 
       if (streamWriter == null) {
         throw new ArgumentNullException("streamWriter");
+      }
+
+      if (separator == null) {
+        throw new ArgumentNullException("separator");
       }
 
       try {
@@ -105,12 +113,15 @@ namespace TupleGeo.General.Data {
     /// <summary>
     /// Exports the rows of a <see cref="DataGridView"/> as XML.
     /// </summary>
-    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The DataGridView containing the rows to be exported.</param>
     /// <param name="textWriter">
-    /// The <see cref="TextWriter"/> that will be used to write the rows.</param>
+    /// The TextWriter that will be used to write the rows.</param>
     /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="dataGridView"/> or <paramref name="textWriter"/> is <c>null</c>.
+    /// </exception>
     public static void ExportXml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
 
       if (dataGridView == null) {
@@ -157,12 +168,15 @@ namespace TupleGeo.General.Data {
     /// <summary>
     /// Exports the rows of a <see cref="DataGridView"/> as HTML.
     /// </summary>
-    /// <param name="dataGridView">The <see cref="DataGridView"/> containing the rows to be exported.</param>
+    /// <param name="dataGridView">The DataGridView containing the rows to be exported.</param>
     /// <param name="textWriter">
-    /// The <see cref="TextWriter"/> that will be used to write the rows.</param>
+    /// The TextWriter that will be used to write the rows.</param>
     /// <param name="exportSelected">
     /// Indicates whether all rows or the selected rows will be exported.
     /// </param>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="dataGridView"/> or <paramref name="textWriter"/> is <c>null</c>.
+    /// </exception>
     public static void ExportHtml(DataGridView dataGridView, TextWriter textWriter, bool exportSelected) {
 
       if (dataGridView == null) {
@@ -249,16 +263,16 @@ namespace TupleGeo.General.Data {
     /// row in to the <see cref="StringBuilder"/>.
     /// </summary>
     /// <param name="dataGridView">
-    /// The <see cref="DataGridView"/> containing the row.
+    /// The DataGridView containing the row.
     /// </param>
     /// <param name="separator">
-    /// The separator <see cref="char"/> used to separate values in the string representing the row.
+    /// The separator char used to separate values in the string representing the row.
     /// </param>
     /// <param name="streamWriter">
-    /// The <see cref="StreamWriter"/> used to write the row string.
+    /// The StreamWriter used to write the row string.
     /// </param>
     /// <param name="row">
-    /// The <see cref="DataGridViewRow"/> used to extract the field values from.
+    /// The DataGridViewRow used to extract the field values from.
     /// </param>
     private static void WriteRowString(DataGridView dataGridView, string separator, StreamWriter streamWriter, DataGridViewRow row) {
       foreach (DataGridViewCell cellN in row.Cells) {
@@ -286,8 +300,15 @@ namespace TupleGeo.General.Data {
     /// Gets an <see cref="XElement"/> representing the object.
     /// </summary>
     /// <param name="o">The object to be transformed in to an XML element.</param>
-    /// <returns>An <see cref="XElement"/> representing the object.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="o"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>An XElement representing the object.</returns>
     private static XElement GetXElement(object o) {
+      if (o == null) {
+        throw new ArgumentNullException("o", "object o could not be NULL");
+      }
+
       XElement xElement = new XElement(XName.Get(o.GetType().Name));
 
       PropertyDescriptorCollection properties = TypeDescriptor.GetProperties(o);
@@ -304,8 +325,15 @@ namespace TupleGeo.General.Data {
     /// Gets an <see cref="XElement"/> representing the object's table row.
     /// </summary>
     /// <param name="o">The object to be transformed in to an XML element.</param>
-    /// <returns>An <see cref="XElement"/> representing the object.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="o"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>An XElement representing the object.</returns>
     private static XElement GetRowElement(object o) {
+      if (o == null) {
+        throw new ArgumentNullException("o", "object o could not be NULL");
+      }
+      
       XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
       XElement xRow = new XElement(xnsHtml + "tr");
 
@@ -323,8 +351,15 @@ namespace TupleGeo.General.Data {
     /// Gets an <see cref="XElement"/> representing the table header containing row like the object.
     /// </summary>
     /// <param name="o">The object to be transformed in to an XML element.</param>
-    /// <returns>An <see cref="XElement"/> representing the object.</returns>
+    /// <exception cref="ArgumentNullException">
+    /// Thrown when <paramref name="o"/> is <c>null</c>.
+    /// </exception>
+    /// <returns>An XElement representing the object.</returns>
     private static XElement GetHeaderElement(object o) {
+      if (o == null) {
+        throw new ArgumentNullException("o", "object o could not be NULL");
+      }
+
       XNamespace xnsHtml = XNamespace.Get("http://www.w3.org/1999/xhtml");
       XElement xTHead = new XElement(xnsHtml + "thead");
       XElement xRow = new XElement(xnsHtml + "tr");

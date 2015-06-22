@@ -4,7 +4,11 @@
              StartupUri="Views/ShellView.xaml">
   
   <Application.Resources>
-
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Resources/Styles/ControlStylesResourceDictionary.xaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
   </Application.Resources>
   
 </Application>

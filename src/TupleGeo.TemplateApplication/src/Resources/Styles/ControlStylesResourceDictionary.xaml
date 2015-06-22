@@ -1,0 +1,80 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  
+  <Style x:Key="dataGridStyle"
+         TargetType="{x:Type DataGrid}">
+    <Setter Property="AutoGenerateColumns"
+            Value="False" />
+    <Setter Property="AlternatingRowBackground"
+            Value="LightBlue" />
+    <Setter Property="AlternationCount"
+            Value="2" />
+    <Setter Property="Background"
+            Value="LightSlateGray" />
+    <Setter Property="BorderBrush"
+            Value="Gray" />
+    <Setter Property="BorderThickness"
+            Value="1" />
+    <Setter Property="CanUserAddRows"
+            Value="False" />
+    <Setter Property="CanUserDeleteRows"
+            Value="False" />
+    <Setter Property="CanUserReorderColumns"
+            Value="True" />
+    <Setter Property="CanUserResizeColumns"
+            Value="True" />
+    <Setter Property="CanUserResizeRows"
+            Value="False" />
+    <Setter Property="CanUserSortColumns"
+            Value="True" />
+    <Setter Property="HorizontalGridLinesBrush"
+            Value="Gray" />
+    <Setter Property="IsReadOnly"
+            Value="false" />
+    <Setter Property="RowBackground"
+            Value="LightYellow" />
+    <Setter Property="RowHeaderWidth"
+            Value="25" />
+    <Setter Property="VerticalGridLinesBrush"
+            Value="Gray" />
+  </Style>
+
+  <Style x:Key="selectedRowStyle"
+         TargetType="{x:Type DataGridRow}">
+    <Style.Triggers>
+      <Trigger Property="IsSelected"
+               Value="True">
+        <Setter Property="Background"
+                Value="Orange" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+
+  <Style x:Key="selectedCellStyle"
+         TargetType="{x:Type DataGridCell}">
+    <Style.Triggers>
+      <Trigger Property="DataGridCell.IsSelected"
+               Value="True">
+        <Setter Property="Background"
+                Value="Orange" />
+        <Setter Property="Foreground"
+                Value="Black" />
+        <Setter Property="FontWeight"
+                Value="Bold" />
+      </Trigger>
+    </Style.Triggers>
+  </Style>
+  
+  <Style x:Key="textBlockHeaderFontStyle"
+         TargetType="{x:Type TextBlock}">
+    <Setter Property="Foreground"
+            Value="DarkBlue" />
+    <Setter Property="FontSize"
+            Value="14" />
+    <Setter Property="FontStyle"
+            Value="Italic" />
+    <Setter Property="FontWeight"
+            Value="Bold" />
+  </Style>
+
+</ResourceDictionary>

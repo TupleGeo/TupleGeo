@@ -50,84 +50,23 @@ namespace TupleGeo.TemplateApplication {
     }
 
     /// <summary>
-    /// 
+    /// Logs an application unhandled exception.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The UnhandledExceptionEventArgs.</param>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes")]
     private void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e) {
-
-      string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      string logPath = directory + "\\Log_" +
-                        DateTime.Now.Year.ToString("D2", CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Month.ToString("D2", CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Day.ToString("D2", CultureInfo.InvariantCulture) + ".txt";
-
-      StreamWriter streamWriter = new StreamWriter(logPath, true);
-
-      try {
-        Exception exception = (Exception)e.ExceptionObject;
-
-        streamWriter.WriteLine("--------");
-        streamWriter.WriteLine("Error Time: " + DateTime.Now.ToShortTimeString());
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("Message: " + exception.Message);
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("Source: " + exception.Source);
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
-        streamWriter.WriteLine("--------");
-
-        MessageBox.Show(exception.Message, TupleGeo.TemplateApplication.Properties.Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
-      }
-      catch {
-        // Swallow the error.
-      }
-      finally {
-        streamWriter.Close();
-      }
-
+      AppEngine.LogError((Exception)e.ExceptionObject);
     }
 
     /// <summary>
-    /// 
+    /// Logs a dispatcher unhandled exception.
     /// </summary>
-    /// <param name="sender"></param>
-    /// <param name="e"></param>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="e">The DispatcherUnhandledExceptionEventArgs.</param>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes"), System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
     private void Application_DispatcherUnhandledException(object sender, System.Windows.Threading.DispatcherUnhandledExceptionEventArgs e) {
-
-      string directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-      string logPath = directory + "\\Log_" +
-                        DateTime.Now.Year.ToString("D2", CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Month.ToString("D2", CultureInfo.InvariantCulture) + "_" +
-                        DateTime.Now.Day.ToString("D2", CultureInfo.InvariantCulture) + ".txt";
-
-      StreamWriter streamWriter = new StreamWriter(logPath, true);
-
-      try {
-        Exception exception = e.Exception;
-
-        streamWriter.WriteLine("--------");
-        streamWriter.WriteLine("Error Time: " + DateTime.Now.ToShortTimeString());
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("Message: " + exception.Message);
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("Source: " + exception.Source);
-        streamWriter.WriteLine();
-        streamWriter.WriteLine("StackTrace: " + exception.StackTrace);
-        streamWriter.WriteLine("--------");
-
-        MessageBox.Show(exception.Message, TupleGeo.TemplateApplication.Properties.Resources.Application_Error, MessageBoxButton.OK, MessageBoxImage.Error);
-      }
-      catch {
-        // Swallow the error.
-      }
-      finally {
-        e.Handled = true;
-        streamWriter.Close();
-      }
-
+      AppEngine.LogError(e.Exception);
     }
 
     #endregion

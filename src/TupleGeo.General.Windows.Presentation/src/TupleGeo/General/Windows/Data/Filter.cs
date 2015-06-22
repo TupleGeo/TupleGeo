@@ -25,7 +25,7 @@ using TupleGeo.General.ComponentModel;
 namespace TupleGeo.General.Windows.Data {
 
   /// <summary>
-  /// The object used to define a filter capable to be used in a CollectionViewsource for filtering rows.
+  /// The object used to define a filter capable to be used in a CollectionViewSource for filtering rows.
   /// </summary>
   public sealed class Filter : ObservableObject<Filter> {
 

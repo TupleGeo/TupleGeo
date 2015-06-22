@@ -39,7 +39,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Default Constructor.
+    /// Initializes the <see cref="GenericToolStripDropDown"/>.
     /// </summary>
     public GenericToolStripDropDown() {
       InitializeComponent();
@@ -52,7 +52,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// <summary>
     /// Occurs upon painting the control.
     /// </summary>
-    /// <param name="e">The <see cref="PaintEventArgs"/>.</param>
+    /// <param name="e">The PaintEventArgs.</param>
     protected override void OnPaint(PaintEventArgs e) {
       base.OnPaint(e);
     }

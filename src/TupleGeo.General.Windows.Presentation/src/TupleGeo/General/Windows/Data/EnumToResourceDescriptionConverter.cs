@@ -9,7 +9,7 @@
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2015.
-// Comments         : 
+// Comments         : Code adapted from: http://www.codeproject.com/Articles/29495/Binding-and-Using-Friendly-Enums-in-WPF
 #endregion
 
 #region Imported Namespaces
@@ -47,14 +47,15 @@ namespace TupleGeo.General.Windows.Data {
     /// Converts the enumeration value to a <see cref="string"/> having the description of this value.
     /// </summary>
     /// <param name="value">The enumeration value that needs to be converted.</param>
-    /// <param name="targetType">The target <see cref="Type"/>.</param>
+    /// <param name="targetType">The target Type.</param>
     /// <param name="parameter">
     /// A parameter used by the converter. Accepted values for this converter is either null or
     /// an instance of a Resource file.
     /// </param>
     /// <param name="culture">
-    /// The <see cref="CultureInfo">culture</see> used by this converter during the conversion operation.
+    /// The culture used by this converter during the conversion operation.
     /// </param>
+    /// <exception cref="ArgumentNullException">Thrown when <paramref name="value"/> is <c>null</c>.</exception>
     /// <remarks>
     /// <para>
     /// The Convert method can be used in two ways.
@@ -73,7 +74,7 @@ namespace TupleGeo.General.Windows.Data {
     /// If no resource description will be retrieved then the name of the enumerated value will be returned instead.
     /// </para>
     /// </remarks>
-    /// <returns>A <see cref="string"/> containing the description.</returns>
+    /// <returns>A string containing the description.</returns>
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
 
       if (value == null) {
@@ -111,13 +112,20 @@ namespace TupleGeo.General.Windows.Data {
     }
 
     /// <summary>
+    /// <para>
     /// Converts back from the enumeration description to the enumeration value.
+    /// </para>
+    /// <para>
+    /// [The method is not implemented]
+    /// </para>
     /// </summary>
-    /// <param name="value">The <see cref="string"/> description.</param>
-    /// <param name="targetType">The target <see cref="Type"/>.</param>
+    /// <param name="value">The string with the description.</param>
+    /// <param name="targetType">The target Type.</param>
     /// <param name="parameter">The parameter.</param>
-    /// <param name="culture">The <see cref="CultureInfo">culture</see>.</param>
-    /// <exception cref="NotImplementedException"></exception>
+    /// <param name="culture">The culture used in the conversion.</param>
+    /// <exception cref="NotImplementedException">
+    /// The ConvertBack method has not been implemented, so it is throwing the relevant exception to notify clients.
+    /// </exception>
     /// <remarks>This method has not been implemented.</remarks>
     /// <returns>An enumeration value.</returns>
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {

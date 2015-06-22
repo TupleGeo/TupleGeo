@@ -63,7 +63,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// Initializes the <see cref="CollapsibleGroupBox"/>.
     /// </summary>
     /// <param name="container">
-    /// The <see cref="IContainer"/> used for initialization.
+    /// The container used during initialization.
     /// </param>
     public CollapsibleGroupBox(IContainer container) {
       if (container == null) {
@@ -134,7 +134,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// <summary>
     /// Called on mouse up.
     /// </summary>
-    /// <param name="e">The <see cref="MouseEventArgs"/>.</param>
+    /// <param name="e">The MouseEventArgs.</param>
     protected override void OnMouseUp(MouseEventArgs e) {
       if (e != null) {
         if (e.Location != null) {
@@ -154,7 +154,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// <summary>
     /// Called on paint.
     /// </summary>
-    /// <param name="e">The <see cref="PaintEventArgs"/>.</param>
+    /// <param name="e">The PaintEventArgs.</param>
     protected override void OnPaint(PaintEventArgs e) {
       if (e != null) {
         if (e.Graphics != null) {
@@ -172,7 +172,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// <summary>
     /// Draws the group box.
     /// </summary>
-    /// <param name="g">The <see cref="Graphics"/> used to draw the group box.</param>
+    /// <param name="g">The graphics used to draw the group box.</param>
     private void DrawGroupBox(Graphics g) {
       // Get windows to draw the GroupBox.
       Rectangle bounds = new Rectangle(
@@ -201,7 +201,7 @@ namespace TupleGeo.Presentation.Forms.Controls {
     /// <summary>
     /// Draws the toggle button.
     /// </summary>
-    /// <param name="g">The <see cref="Graphics"/> used to draw the toggle button.</param>
+    /// <param name="g">The graphics used to draw the toggle button.</param>
     private void DrawToggleButton(Graphics g) {
       if (IsCollapsed) {
         g.DrawImage(TupleGeo.Resources.Icons.Signs.Misc.Resources.Plus, _toggleRect);

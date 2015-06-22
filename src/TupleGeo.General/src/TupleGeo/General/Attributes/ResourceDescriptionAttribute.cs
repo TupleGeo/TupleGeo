@@ -8,7 +8,7 @@
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Comments         : 
+// Comments         : Code adapted from: http://www.codeproject.com/Articles/29495/Binding-and-Using-Friendly-Enums-in-WPF
 #endregion
 
 #region Imported Namespaces

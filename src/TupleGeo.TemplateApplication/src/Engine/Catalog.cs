@@ -110,6 +110,8 @@ namespace TupleGeo.TemplateApplication.Engine {
     private static void RegisterViewModels() {
       // Key: Views                                          Value: ViewModels
       // ----------------------------------------------------------------------------------------------------
+      // UsersModel                                          UsersViewModel
+      _mappedViewModels.Add(typeof(UsersView),               typeof(UsersViewModel));
       // SampleView                                          SampleViewModel.
       _mappedViewModels.Add(typeof(SampleView),              typeof(SampleViewModel));
       // Sample1View                                         Sample1ViewModel.
@@ -131,6 +133,8 @@ namespace TupleGeo.TemplateApplication.Engine {
     private static void RegisterModels() {
       // Key: ViewModels                                             Value: Models
       // ----------------------------------------------------------------------------------------------------
+      // UsersViewModel                                              UsersModel
+      _mappedModels.Add(typeof(UsersViewModel),                      typeof(UsersModel));
       // SampleViewModel                                             SampleModel.
       _mappedModels.Add(typeof(SampleViewModel),                     typeof(SampleModel));
       // Sample1ViewModel                                            Sample1Model.

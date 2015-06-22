@@ -35,10 +35,6 @@ namespace TupleGeo.Presentation.Forms.Controls {
   [ProgIdAttribute("TupleGeo.Presentation.Forms.Controls.LoginControl")]
   public partial class LoginControl : UserControl {
 
-    #region Member Variables
-
-    #endregion
-
     #region Constructors - Destructors
 
     /// <summary>
@@ -108,18 +104,6 @@ namespace TupleGeo.Presentation.Forms.Controls {
 
     #endregion
 
-    #region Public Methods
-    
-    #endregion
-
-    #region Events
-
-    #endregion
-
-    #region Private Procedures
-    
-    #endregion
-    
   }
 
 }

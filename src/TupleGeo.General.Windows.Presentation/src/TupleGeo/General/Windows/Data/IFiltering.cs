@@ -33,7 +33,7 @@ namespace TupleGeo.General.Windows.Data {
     #region Public Properties
 
     /// <summary>
-    /// The filters used for <see cref="System.Windows.Data.CollectionViewSource">CollectionViewSource</see> filtering.
+    /// Gets the filters used for <see cref="System.Windows.Data.CollectionViewSource">CollectionViewSource</see> filtering.
     /// </summary>
     ObservableCollection<Filter> Filters {
       get;

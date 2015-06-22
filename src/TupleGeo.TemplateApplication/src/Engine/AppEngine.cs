@@ -121,11 +121,11 @@ namespace TupleGeo.TemplateApplication.Engine {
       string logPath = directory + "\\" +
                        AppEngine.Instance.ApplicationModel.LogSubfolder + "\\" +
                        "Log_" +
-                       DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Year.ToString("D2", CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Month.ToString("D2", CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Day.ToString("D2", CultureInfo.InvariantCulture) +
                        ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);
@@ -172,11 +172,11 @@ namespace TupleGeo.TemplateApplication.Engine {
       string logPath = directory + "\\" +
                        AppEngine.Instance.ApplicationModel.LogSubfolder + "\\" +
                        "Log_" +
-                       DateTime.Now.Year.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Year.ToString("D2", CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Month.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Month.ToString("D2", CultureInfo.InvariantCulture) +
                        "_" +
-                       DateTime.Now.Day.ToString(CultureInfo.InvariantCulture) +
+                       DateTime.Now.Day.ToString("D2", CultureInfo.InvariantCulture) +
                        ".txt";
 
       StreamWriter streamWriter = new StreamWriter(logPath, true);

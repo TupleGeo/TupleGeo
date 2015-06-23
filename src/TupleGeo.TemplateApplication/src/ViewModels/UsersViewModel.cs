@@ -156,9 +156,9 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         }
       );
       // Add listeners here.
-      //((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser);
+      ((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser);
       //((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.Users);
-      //((ActionCommand)this.DeleteUserCommand).AddObservableCollectionListener<UserModel>(this.Model.Users);
+      ((ActionCommand)this.DeleteUserCommand).AddObservableCollectionListener<UserModel>(this.Model.Users);
 
       CurrentUserCommand = new ActionCommand(
         (parameter) => {
@@ -235,7 +235,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// <param name="parameter">The parameter associated with the command.</param>
     /// <returns>A <see cref="bool"/> with the result of the evaluation.</returns>
     private bool AddUserCommandCanExecute(object parameter) {
-      return false; // Replace with a boolean expression here.
+      return (this.Model.Users != null);
     }
 
     /// <summary>

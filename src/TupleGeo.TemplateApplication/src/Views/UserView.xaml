@@ -31,34 +31,18 @@
       <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
     
-    <Label Content="Id:"
+    <Label Content="Name:"
            Grid.Column="0"
            HorizontalAlignment="Left"
            Margin="4"
            Grid.Row="0"
            VerticalAlignment="Center" />
-    <TextBox x:Name="idTextBox"
-             Grid.Column="1"
-             HorizontalAlignment="Left"
-             Height="23"
-             Margin="4"
-             Grid.Row="0"
-             Text="{Binding Id, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
-             VerticalAlignment="Center"
-             Width="80" />
-    
-    <Label Content="Name:"
-           Grid.Column="0"
-           HorizontalAlignment="Left"
-           Margin="4"
-           Grid.Row="1"
-           VerticalAlignment="Center" />
     <TextBox x:Name="nameTextBox"
              Grid.Column="1"
              HorizontalAlignment="Stretch"
              Height="23"
-             Margin="4"
-             Grid.Row="1"
+             Margin="4,4,8,4"
+             Grid.Row="0"
              Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
 
@@ -66,14 +50,14 @@
            Grid.Column="0"
            HorizontalAlignment="Left"
            Margin="4"
-           Grid.Row="2"
+           Grid.Row="1"
            VerticalAlignment="Center" />
     <TextBox x:Name="surnameTextBox"
              Grid.Column="1"
              HorizontalAlignment="Stretch"
              Height="23"
-             Margin="4"
-             Grid.Row="2"
+             Margin="4,4,8,4"
+             Grid.Row="1"
              Text="{Binding Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
 
@@ -81,14 +65,14 @@
            Grid.Column="0"
            HorizontalAlignment="Left"
            Margin="4"
-           Grid.Row="3"
+           Grid.Row="2"
            VerticalAlignment="Center" />
     <TextBox x:Name="ageTextBox"
              Grid.Column="1"
              HorizontalAlignment="Left"
              Height="23"
-             Margin="4"
-             Grid.Row="3"
+             Margin="4,4,8,4"
+             Grid.Row="2"
              Text="{Binding Age, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center"
              Width="40" />
@@ -97,16 +81,37 @@
            Grid.Column="0"
            HorizontalAlignment="Left"
            Margin="4"
-           Grid.Row="4"
+           Grid.Row="3"
            VerticalAlignment="Center" />
     <TextBox x:Name="departmentTextBox"
              Grid.Column="1"
              HorizontalAlignment="Stretch"
              Height="23"
-             Margin="4"
-             Grid.Row="4"
+             Margin="4,4,8,4"
+             Grid.Row="3"
              Text="{Binding Department, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
+    
+    <StackPanel FlowDirection="RightToLeft"
+                Grid.ColumnSpan="2"
+                Grid.Row="5"
+                Orientation="Horizontal">
+
+      <Button x:Name="CancelButton"
+              Command="{Binding Path=CancelCommand}"
+              Content="Delete"
+              Grid.Row="1"
+              Margin="8,8,4,8"
+              Width="75" />
+
+      <Button x:Name="AddButton"
+              Command="{Binding Path=SaveCommand}"
+              Content="Add"
+              Grid.Row="1"
+              Margin="4,8,4,8"
+              Width="75" />
+
+    </StackPanel>
 
   </Grid>
 

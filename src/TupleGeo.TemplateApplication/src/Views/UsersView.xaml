@@ -50,9 +50,9 @@
                             Binding="{Binding Path=Surname, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
       </DataGrid.Columns>
     </DataGrid>
-    
-    <StackPanel Grid.Row="1"
-                FlowDirection="RightToLeft"
+
+    <StackPanel FlowDirection="RightToLeft"
+                Grid.Row="1"
                 Orientation="Horizontal">
       
       <Button x:Name="DeleteButton"

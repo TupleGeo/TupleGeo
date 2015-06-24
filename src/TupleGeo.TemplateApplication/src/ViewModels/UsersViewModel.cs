@@ -7,14 +7,21 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
+using System.Windows;
 using System.Windows.Data;
 using System.Windows.Input;
 using TupleGeo.Apps;
 using TupleGeo.Apps.Presentation;
 using TupleGeo.Apps.Presentation.Commands;
+using TupleGeo.Apps.Presentation.Observers;
+using TupleGeo.General.Linq.Expressions;
+using TupleGeo.TemplateApplication.Engine;
 using TupleGeo.TemplateApplication.Models;
+using TupleGeo.TemplateApplication.Views;
 
 #endregion
 
@@ -28,7 +35,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     #region Member Variables
 
     // TODO: Declare any view models needed here.
-    //private Sample1ViewModel _sample1ViewModel;
+    private UserViewModel _userViewModel;
     //private Sample2ViewModel _sample2ViewModel;
     // ...
     //private SampleNViewModel _sampleNViewModel;
@@ -45,6 +52,8 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     // TODO: 'Sample 2' of SubscribeToEvents method.
     //private Dictionary<string, UIElement> _uiElementsDicionary;
 
+    private readonly WeakEventManagerBase<PropertyChangedEventArgs> _weakEventListener;
+
     #endregion
 
     #region Constructors - Destructors
@@ -59,7 +68,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       AddUsers();
       
       // TODO: Get other necessary view models here.
-      //_sample2ViewModel = (Sample2ViewModel)(Catalog.GetViewModel(typeof(Sample2View)));
+      _userViewModel = (UserViewModel)(Catalog.GetViewModel(typeof(UserView)));
       //_sample3ViewModel = (Sample3ViewModel)(Catalog.GetViewModel(typeof(Sample3View)));
       // ...
       //_sampleNViewModel = (SampleNViewModel)(Catalog.GetViewModel(typeof(SampleNView)));
@@ -67,6 +76,10 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       // TODO: 'Sample 2' of SubscribeToEvents method.
       // Force all property changes of SampleModel to be handled by only one event handler.
       //sampleModel.PropertyChanged += new PropertyChangedEventHandler(SampleModel_PropertyChanged);
+
+      this._weakEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(PropChanged);
+      
+      this.AddListener<UsersModel>(this.Model, m => m.CurrentUser);
 
       InitializeCommands();
 
@@ -123,6 +136,17 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     //  RefreshElement(_uiElementsDicionary[key]);
     //}
 
+    /// <summary>
+    /// Fires when a property changes.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
+    private void PropChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+      if (propertyChangedEventArgs.PropertyName == "CurrentUser") {
+        _userViewModel.Model = this.Model.CurrentUser;
+      }
+    }
+
     #endregion
 
     #region Private Procedures
@@ -143,7 +167,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       );
       // Add listeners here.
       //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property1);
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property2);
+      //                                     .AddListener<SampleModel>(this.Model, m => m.Property2);
       //((SampleCommand)this.Command1Command).AddObservableCollectionListener<SampleModel>(this.Model.ObservableCollection1);
 
       // DeleteUserCommand.
@@ -156,21 +180,26 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         }
       );
       // Add listeners here.
-      ((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser);
-      //((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.Users);
+      ((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser)
+                                             .AddListener<UsersModel>(this.Model, m => m.Users);
       ((ActionCommand)this.DeleteUserCommand).AddObservableCollectionListener<UserModel>(this.Model.Users);
-
-      CurrentUserCommand = new ActionCommand(
-        (parameter) => {
-          CurrentUserCommandAction(parameter);
-        },
-        (parameter) => {
-          return CurrentUserCommandCanExecute(parameter);
-        }
-      );
       
     }
 
+    /// <summary>
+    /// Adds a listener.
+    /// </summary>
+    /// <typeparam name="TEntity">The entity used.</typeparam>
+    /// <param name="source">The source of the command.</param>
+    /// <param name="property">The property of the <typeparamref name="TEntity"/>.</param>
+    /// <returns>A UsersViewModel.</returns>
+    private UsersViewModel AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
+      string propertyName = Prop.GetPropertyName<TEntity>(property);
+      PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
+
+      return this;
+    }
+    
     // TODO: 'Sample 2' of SubscribeToEvents method.
 
     ///// <summary>
@@ -227,6 +256,11 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// <param name="parameter">The parameter associated with the command.</param>
     private void AddUserCommandAction(object parameter) {
 
+      UserModel newUser = new UserModel();
+
+      this.Model.Users.Add(newUser);
+      this.Model.CurrentUser = newUser;
+
     }
 
     /// <summary>
@@ -243,6 +277,17 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// </summary>
     /// <param name="parameter">The parameter associated with the command.</param>
     private void DeleteUserCommandAction(object parameter) {
+      
+      MessageBoxResult result = MessageBox.Show(
+        "Do you want to delete the user?",
+        "Confirmation",
+        MessageBoxButton.YesNo,
+        MessageBoxImage.Question
+      );
+
+      if (result == MessageBoxResult.Yes) {
+        this.Model.Users.Remove(this.Model.CurrentUser);
+      }
 
     }
 
@@ -253,29 +298,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     /// <returns>A <see cref="bool"/> with the result of the evaluation.</returns>
     private bool DeleteUserCommandCanExecute(object parameter) {
       return (this.Model.Users != null && this.Model.Users.Count > 0 && this.Model.CurrentUser != null);
-    }
-
-    /// <summary>
-    /// The command action associated with <see cref="CurrentUserCommand"/>.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    private void CurrentUserCommandAction(object parameter) {
-      string message = "null";
-
-      if (this.Model.CurrentUser != null) {
-        message = this.Model.CurrentUser.Id.ToString();
-      }
-
-      System.Windows.MessageBox.Show(message, "Current User", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Information);
-    }
-
-    /// <summary>
-    /// Determines whether the <see cref="CurrentUserCommand"/> can execute.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    /// <returns>A <see cref="bool"/> with the result of the evaluation.</returns>
-    private bool CurrentUserCommandCanExecute(object parameter) {
-      return true; // Replace with a boolean expression here.
     }
 
     // TODO: 'Sample 2' of SubscribeToEvents method.

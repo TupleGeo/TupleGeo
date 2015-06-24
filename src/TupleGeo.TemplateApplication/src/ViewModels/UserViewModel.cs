@@ -66,29 +66,11 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       // Force all property changes of SampleModel to be handled by only one event handler.
       //sampleModel.PropertyChanged += new PropertyChangedEventHandler(SampleModel_PropertyChanged);
 
-      InitializeCommands();
-
     }
 
     #endregion
 
     #region Public Properties
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public ICommand Command1Command {
-      get;
-      private set;
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public ICommand Command2Command {
-      get;
-      private set;
-    }
 
     #endregion
 
@@ -117,41 +99,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region Private Procedures
 
-    /// <summary>
-    /// Initializes the commands.
-    /// </summary>
-    private void InitializeCommands() {
-
-      // Command1Command.
-      Command1Command = new ActionCommand(
-        (parameter) => {
-          Command1CommandAction(parameter);
-        },
-        (parameter) => {
-          return Command1CommandCanExecute(parameter);
-        }
-      );
-      // Add listeners here.
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property1);
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property2);
-      //((SampleCommand)this.Command1Command).AddObservableCollectionListener<SampleModel>(this.Model.ObservableCollection1);
-
-      // Command2Command.
-      Command2Command = new ActionCommand(
-        (parameter) => {
-          Command2CommandAction(parameter);
-        },
-        (parameter) => {
-          return Command2CommandCanExecute(parameter);
-        }
-      );
-      // Add listeners here.
-      //((SampleCommand)this.Command2Command).AddListener<SampleModel>(this.Model, m => m.Property1);
-      //((SampleCommand)this.Command2Command).AddListener<SampleModel>(this.Model, m => m.Property2);
-      //((SampleCommand)this.Command2Command).AddObservableCollectionListener<SampleModel>(this.Model.ObservableCollection1);
-      
-    }
-
     // TODO: 'Sample 2' of SubscribeToEvents method.
 
     ///// <summary>
@@ -165,40 +112,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     #endregion
 
     #region Private Actions
-
-    /// <summary>
-    /// The command action associated with <see cref="Command1Command"/>.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    private void Command1CommandAction(object parameter) {
-
-    }
-
-    /// <summary>
-    /// Determines whether the <see cref="Command1Command"/> can execute.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    /// <returns>A <see cref="bool"/> with the result of the evaluation.</returns>
-    private bool Command1CommandCanExecute(object parameter) {
-      return false; // Replace with a boolean expression here.
-    }
-
-    /// <summary>
-    /// The command action associated with <see cref="Command2Command"/>.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    private void Command2CommandAction(object parameter) {
-
-    }
-
-    /// <summary>
-    /// Determines whether the <see cref="Command2Command"/> can execute.
-    /// </summary>
-    /// <param name="parameter">The parameter associated with the command.</param>
-    /// <returns>A <see cref="bool"/> with the result of the evaluation.</returns>
-    private bool Command2CommandCanExecute(object parameter) {
-      return false; // Replace with a boolean expression here.
-    }
 
     // TODO: 'Sample 2' of SubscribeToEvents method.
 

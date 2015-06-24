@@ -6,7 +6,7 @@
              x:Class="TupleGeo.TemplateApplication.Views.UserView"
              mc:Ignorable="d"
              d:DesignWidth="300"
-             Height="173">
+             Height="138">
 
   <!--<UserControl.Resources>
     <CollectionViewSource x:Key="userModelViewSource"
@@ -28,7 +28,6 @@
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
       <RowDefinition Height="Auto" />
-      <RowDefinition Height="Auto" />
     </Grid.RowDefinitions>
     
     <Label Content="Name:"
@@ -43,7 +42,7 @@
              Height="23"
              Margin="4,4,8,4"
              Grid.Row="0"
-             Text="{Binding Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+             Text="{Binding Path=Model.Name, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
 
     <Label Content="Surname:"
@@ -58,7 +57,7 @@
              Height="23"
              Margin="4,4,8,4"
              Grid.Row="1"
-             Text="{Binding Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+             Text="{Binding Path=Model.Surname, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
 
     <Label Content="Age:"
@@ -73,7 +72,7 @@
              Height="23"
              Margin="4,4,8,4"
              Grid.Row="2"
-             Text="{Binding Age, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+             Text="{Binding Path=Model.Age, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center"
              Width="40" />
 
@@ -89,29 +88,8 @@
              Height="23"
              Margin="4,4,8,4"
              Grid.Row="3"
-             Text="{Binding Department, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
+             Text="{Binding Path=Model.Department, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"
              VerticalAlignment="Center" />
-    
-    <StackPanel FlowDirection="RightToLeft"
-                Grid.ColumnSpan="2"
-                Grid.Row="5"
-                Orientation="Horizontal">
-
-      <Button x:Name="CancelButton"
-              Command="{Binding Path=CancelCommand}"
-              Content="Delete"
-              Grid.Row="1"
-              Margin="8,8,4,8"
-              Width="75" />
-
-      <Button x:Name="AddButton"
-              Command="{Binding Path=SaveCommand}"
-              Content="Add"
-              Grid.Row="1"
-              Margin="4,8,4,8"
-              Width="75" />
-
-    </StackPanel>
 
   </Grid>
 

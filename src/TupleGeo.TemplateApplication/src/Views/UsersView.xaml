@@ -16,7 +16,7 @@
   <Grid>
     <Grid.RowDefinitions>
       <RowDefinition Height="*" />
-      <RowDefinition Height="40" />
+      <RowDefinition Height="38" />
     </Grid.RowDefinitions>
 
     <DataGrid x:Name="usersDataGrid"
@@ -25,7 +25,7 @@
               EnableRowVirtualization="True"
               Grid.Row="0"
               ItemsSource="{Binding Source={StaticResource usersViewSource}}"
-              Margin="8"
+              Margin="8,8,8,4"
               RowStyle="{StaticResource selectedRowStyle}"
               SelectionMode="Single"
               SelectedItem="{Binding Path=Model.CurrentUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -58,22 +58,13 @@
       <Button x:Name="DeleteButton"
               Command="{Binding Path=DeleteUserCommand}"
               Content="Delete"
-              Grid.Row="1"
-              Margin="8,8,4,8"
+              Margin="8,4,4,8"
               Width="75" />
 
       <Button x:Name="AddButton"
               Command="{Binding Path=AddUserCommand}"
               Content="Add"
-              Grid.Row="1"
-              Margin="4,8,4,8"
-              Width="75" />
-
-      <Button x:Name="CurrentButton"
-              Command="{Binding Path=CurrentUserCommand}"
-              Content="Current"
-              Grid.Row="1"
-              Margin="4,8,4,8"
+              Margin="4,4,4,8"
               Width="75" />
       
     </StackPanel>

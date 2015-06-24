@@ -30,7 +30,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The view model used by the <see cref="Views.UsersView">UsersView</see>.
   /// </summary>
-  public sealed class UsersViewModel : BaseViewModel<UsersModel>, IViewModel {
+  public sealed class UsersViewModel : BaseViewModel<UsersModel> {
 
     #region Member Variables
 
@@ -105,14 +105,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       private set;
     }
 
-    /// <summary>
-    /// Gets the current <see cref="UserModel"/>.
-    /// </summary>
-    public ICommand CurrentUserCommand {
-      get;
-      private set;
-    }
-
     #endregion
 
     #region Public Methods
@@ -165,11 +157,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
           return AddUserCommandCanExecute(parameter);
         }
       );
-      // Add listeners here.
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property1);
-      //                                     .AddListener<SampleModel>(this.Model, m => m.Property2);
-      //((SampleCommand)this.Command1Command).AddObservableCollectionListener<SampleModel>(this.Model.ObservableCollection1);
-
+      
       // DeleteUserCommand.
       DeleteUserCommand = new ActionCommand(
         (parameter) => {
@@ -181,9 +169,9 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       );
       // Add listeners here.
       ((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser)
-                                             .AddListener<UsersModel>(this.Model, m => m.Users);
-      ((ActionCommand)this.DeleteUserCommand).AddObservableCollectionListener<UserModel>(this.Model.Users);
-      
+                                             .AddListener<UsersModel>(this.Model, m => m.Users)
+                                             .AddObservableCollectionListener(this.Model.Users);
+
     }
 
     /// <summary>
@@ -200,16 +188,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       return this;
     }
     
-    // TODO: 'Sample 2' of SubscribeToEvents method.
-
-    ///// <summary>
-    ///// Refreshes the specified element on the GUI.
-    ///// </summary>
-    ///// <param name="uiElement">The <see cref="UIElement"/> that will be refreshed.</param>
-    //private static void RefreshElement(UIElement uiElement) {
-    //  uiElement.Dispatcher.Invoke(DispatcherPriority.Render, RefreshDelegate);
-    //}
-
     /// <summary>
     /// Adds users in the user collection.
     /// </summary>
@@ -300,14 +278,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       return (this.Model.Users != null && this.Model.Users.Count > 0 && this.Model.CurrentUser != null);
     }
 
-    // TODO: 'Sample 2' of SubscribeToEvents method.
-
-    ///// <summary>
-    ///// An action used to refresh the GUI.
-    ///// </summary>
-    //private static Action RefreshDelegate = delegate() {
-    //};
-
     #endregion
 
     #region BaseViewModel Members
@@ -325,72 +295,43 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region IViewModel Members
 
-    private const string _name = "UsersViewModel";
+    //private const string _name = "UsersViewModel";
 
-    /// <summary>
-    /// Gets the name of the view model.
-    /// </summary>
-    public string Name {
-      get {
-        return _name;
-      }
-    }
+    ///// <summary>
+    ///// Gets the name of the view model.
+    ///// </summary>
+    //public string Name {
+    //  get {
+    //    return _name;
+    //  }
+    //}
 
-    /// <summary>
-    /// Binds this view model to events raised by its corresponding view.
-    /// </summary>
-    /// <param name="triggeringObjectsDictionary">The object whose events will be observed.</param>
-    public void SubscribeToEvents(Dictionary<string, object> triggeringObjectsDictionary) {
-      // TODO: Subscribe to events here.
+    ///// <summary>
+    ///// Binds this view model to events raised by its corresponding view.
+    ///// </summary>
+    ///// <param name="triggeringControlsDictionary">The controls whose events will be observed.</param>
+    //public void SubscribeToEvents(Dictionary<string, object> triggeringControlsDictionary) {
       
-      // Sample 1
-      //Control control1 = (Control)(triggeringObjectsDictionary["control1Name"]);
-      //control1.Event1 += new Event1EventHandler(control1_Event1);
-      // etc ...
+    //}
 
-      // Sample 2
-      // In this sample the triggeringObjectsDictionary holds only labels.
-      // During bulk operations the labels need to be refreshed every time the associated model changes
-      // and not only once the bulk operation finishes and the wpf binding mechanism refreshes the labels.
-      // To do so the UI dispatcher needs to explicitly refresh each label once a model property change is triggered.
-      // 
-      //_uiElementsDicionary = new Dictionary<string, UIElement>(triggeringObjectsDictionary.Count);
+    ///// <summary>
+    ///// Removes event subscriptions of this view model.
+    ///// </summary>
+    ///// <param name="triggeringControlsDictionary">The controls whose events will be stopped being observed.</param>
+    //public void UnsubscribeFromEvents(Dictionary<string, object> triggeringControlsDictionary) {
       
-      //foreach (string key in triggeringObjectsDictionary.Keys) {
-      //  _uiElementsDicionary.Add(key, (UIElement)triggeringObjectsDictionary[key]);
-      //}
-    }
+    //}
 
-    /// <summary>
-    /// Removes event subscriptions of this view model.
-    /// </summary>
-    /// <param name="triggeringObjectsDictionary">The objects whose events will be stopped being observed.</param>
-    public void UnsubscribeFromEvents(Dictionary<string, object> triggeringObjectsDictionary) {
-      // TODO: Unsubscribe from events here.
-
-      // Samples:
-      //Control control1 = (Control)(triggeringObjectsDictionary["controlName"]);
-      //control.Event1 -= new Event1EventHandler(control1_Event1);
-    }
-
-    /// <summary>
-    /// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
-    /// </summary>
-    /// <param name="collectionViewSourcesDictionary">
-    /// The dictionary of <see cref="CollectionViewSource">CollectionViewSources</see>
-    /// that will be used to display data.
-    /// </param>
-    public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
-      // TODO: Add any collection view sources here.
-
-      // Samples:
-      //_collection1ViewSource = collectionViewSourcesDictionary["collection1Name"];
-      //_collection2ViewSource = collectionViewSourcesDictionary["collection2Name"];
-      // ...
-      //_collectionNViewSource = collectionViewSourcesDictionary["collectionNName"];
-
-      // Or use the _collectionViewSourcesDictionary here to do something more systematic.
-    }
+    ///// <summary>
+    ///// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
+    ///// </summary>
+    ///// <param name="collectionViewSourcesDictionary">
+    ///// The dictionary of <see cref="CollectionViewSource">CollectionViewSources</see>
+    ///// that will be used to display data.
+    ///// </param>
+    //public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
+      
+    //}
 
     #endregion
 

@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="500">
-
+  
   <UserControl.Resources>
     <CollectionViewSource x:Key="usersViewSource"
                           Source="{Binding Path=Model.Users, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" />

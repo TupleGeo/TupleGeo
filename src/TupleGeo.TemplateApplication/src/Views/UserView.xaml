@@ -7,13 +7,6 @@
              mc:Ignorable="d"
              d:DesignWidth="300"
              Height="138">
-
-  <!--<UserControl.Resources>
-    <CollectionViewSource x:Key="userModelViewSource"
-                          d:DesignSource="{d:DesignInstance {x:Type Models:UserModel}, CreateList=True}" />
-  </UserControl.Resources>-->
-
-  <!--DataContext="{StaticResource userModelViewSource}"-->
   
   <Grid x:Name="userModelGrid"
         HorizontalAlignment="Stretch"

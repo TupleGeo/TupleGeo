@@ -24,7 +24,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The shell view model.
   /// </summary>
-  public sealed class ShellViewModel : BaseViewModel<ShellModel>, IViewModel {
+  public sealed class ShellViewModel : BaseViewModel<ShellModel> {
 
     #region Member Variables
 
@@ -235,71 +235,71 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region IViewModel Members
 
-    private const string _name = "ShellViewModel";
+    //private const string _name = "ShellViewModel";
 
-    /// <summary>
-    /// Gets the name of the view model.
-    /// </summary>
-    public string Name {
-      get {
-        return _name;
-      }
-    }
+    ///// <summary>
+    ///// Gets the name of the view model.
+    ///// </summary>
+    //public string Name {
+    //  get {
+    //    return _name;
+    //  }
+    //}
 
-    /// <summary>
-    /// Binds this view model to events raised by its corresponding view.
-    /// </summary>
-    /// <param name="triggeringObjectsDictionary">The object whose events will be observed.</param>
-    public void SubscribeToEvents(Dictionary<string, object> triggeringObjectsDictionary) {
-      // TODO: Subscribe to events here.
+    ///// <summary>
+    ///// Binds this view model to events raised by its corresponding view.
+    ///// </summary>
+    ///// <param name="triggeringControlsDictionary">The controls whose events will be observed.</param>
+    //public void SubscribeToEvents(Dictionary<string, object> triggeringControlsDictionary) {
+    //  // TODO: Subscribe to events here.
 
-      // Sample 1
-      //Control control1 = (Control)(triggeringObjectsDictionary["control1Name"]);
-      //control1.Event1 += new Event1EventHandler(control1_Event1);
-      // etc ...
+    //  // Sample 1
+    //  //Control control1 = (Control)(triggeringObjectsDictionary["control1Name"]);
+    //  //control1.Event1 += new Event1EventHandler(control1_Event1);
+    //  // etc ...
 
-      // Sample 2
-      // In this sample the triggeringObjectsDictionary holds only labels.
-      // During bulk operations the labels need to be refreshed every time the associated model changes
-      // and not only once the bulk operation finishes and the wpf binding mechanism refreshes the labels.
-      // To do so the UI dispatcher needs to explicitly refresh each label once a model property change is triggered.
-      // 
-      //_uiElementsDicionary = new Dictionary<string, UIElement>(triggeringObjectsDictionary.Count);
+    //  // Sample 2
+    //  // In this sample the triggeringObjectsDictionary holds only labels.
+    //  // During bulk operations the labels need to be refreshed every time the associated model changes
+    //  // and not only once the bulk operation finishes and the wpf binding mechanism refreshes the labels.
+    //  // To do so the UI dispatcher needs to explicitly refresh each label once a model property change is triggered.
+    //  // 
+    //  //_uiElementsDicionary = new Dictionary<string, UIElement>(triggeringObjectsDictionary.Count);
 
-      //foreach (string key in triggeringObjectsDictionary.Keys) {
-      //  _uiElementsDicionary.Add(key, (UIElement)triggeringObjectsDictionary[key]);
-      //}
-    }
+    //  //foreach (string key in triggeringObjectsDictionary.Keys) {
+    //  //  _uiElementsDicionary.Add(key, (UIElement)triggeringObjectsDictionary[key]);
+    //  //}
+    //}
 
-    /// <summary>
-    /// Removes event subscriptions of this view model.
-    /// </summary>
-    /// <param name="triggeringObjectsDictionary">The objects whose events will be stopped being observed.</param>
-    public void UnsubscribeFromEvents(Dictionary<string, object> triggeringObjectsDictionary) {
-      // TODO: Unsubscribe from events here.
+    ///// <summary>
+    ///// Removes event subscriptions of this view model.
+    ///// </summary>
+    ///// <param name="triggeringControlsDictionary">The controls whose events will be stopped being observed.</param>
+    //public void UnsubscribeFromEvents(Dictionary<string, object> triggeringControlsDictionary) {
+    //  // TODO: Unsubscribe from events here.
 
-      // Samples:
-      //Control control1 = (Control)(triggeringObjectsDictionary["controlName"]);
-      //control.Event1 -= new Event1EventHandler(control1_Event1);
-    }
+    //  // Samples:
+    //  //Control control1 = (Control)(triggeringObjectsDictionary["controlName"]);
+    //  //control.Event1 -= new Event1EventHandler(control1_Event1);
+    //}
 
-    /// <summary>
-    /// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
-    /// </summary>
-    /// <param name="collectionViewSourcesDictionary">
-    /// The Dictionary of collection view sources that will be used to display data.
-    /// </param>
-    public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
-      // TODO: Add any collection view sources here.
+    ///// <summary>
+    ///// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
+    ///// </summary>
+    ///// <param name="collectionViewSourcesDictionary">
+    ///// The Dictionary of collection view sources that will be used to display data.
+    ///// </param>
+    //public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
+    //  // TODO: Add any collection view sources here.
 
-      // Samples:
-      //_collection1ViewSource = collectionViewSourcesDictionary["collection1Name"];
-      //_collection2ViewSource = collectionViewSourcesDictionary["collection2Name"];
-      // ...
-      //_collectionNViewSource = collectionViewSourcesDictionary["collectionNName"];
+    //  // Samples:
+    //  //_collection1ViewSource = collectionViewSourcesDictionary["collection1Name"];
+    //  //_collection2ViewSource = collectionViewSourcesDictionary["collection2Name"];
+    //  // ...
+    //  //_collectionNViewSource = collectionViewSourcesDictionary["collectionNName"];
 
-      // Or use the _collectionViewSourcesDictionary here to do something more systematic.
-    }
+    //  // Or use the _collectionViewSourcesDictionary here to do something more systematic.
+    //}
     
     #endregion
 

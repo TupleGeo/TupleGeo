@@ -28,7 +28,7 @@ namespace TupleGeo.Apps.Presentation {
   /// All Views inherit from this class.
   /// </summary>
   /// <typeparam name="T">The model which is associated with this view.</typeparam>
-  public class BaseViewModel<T> : ObservableObject<BaseViewModel<T>> where T : class {
+  public abstract class BaseViewModel<T> : ObservableObject<BaseViewModel<T>>, IViewModel where T : class {
 
     #region Constructors - Destructors
 
@@ -36,7 +36,7 @@ namespace TupleGeo.Apps.Presentation {
     /// Initializes a new instance of the <see cref="BaseViewModel{T}"/> class.
     /// </summary>
     /// <param name="model">The model.</param>
-    public BaseViewModel(T model) {
+    protected BaseViewModel(T model) {
       this._model = model;
     }
 
@@ -44,14 +44,6 @@ namespace TupleGeo.Apps.Presentation {
 
     #region Public Properties
 
-    /// <summary>
-    /// Gets the title of the view model.
-    /// </summary>
-    public virtual string Title {
-      get {
-        return string.Empty;
-      }
-    }
     
     private T _model;
 
@@ -73,6 +65,36 @@ namespace TupleGeo.Apps.Presentation {
 
     #endregion
 
+    #region IViewModel Members
+
+    public virtual string Name {
+      get {
+        throw new NotImplementedException();
+      }
+    }
+
+    /// <summary>
+    /// Gets the title of the view model.
+    /// </summary>
+    public virtual string Title {
+      get {
+        return string.Empty;
+      }
+    }
+    
+    public virtual void SubscribeToEvents(Dictionary<string, object> triggeringControlsDictionary) {
+      throw new NotImplementedException();
+    }
+
+    public virtual void UnsubscribeFromEvents(Dictionary<string, object> triggeringControlsDictionary) {
+      throw new NotImplementedException();
+    }
+
+    public virtual void SetCollectionViewSources(Dictionary<string, System.Windows.Data.CollectionViewSource> collectionViewSourcesDictionary) {
+      throw new NotImplementedException();
+    }
+
+    #endregion
   }
 
 }

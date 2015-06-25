@@ -55,9 +55,9 @@ namespace TupleGeo.Apps.Presentation {
       this._weakPropertyChangedEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(ModelPropertyChanged);
       this._weakCollectionChangedEventListener = new WeakEventManagerBase<NotifyCollectionChangedEventArgs>(CollectionChanged);
     }
-    
-    #endregion
 
+    #endregion
+    
     #region Public Properties
 
     private TModel _model;
@@ -70,11 +70,10 @@ namespace TupleGeo.Apps.Presentation {
         return _model;
       }
       set {
-        if (_model == value) {
-          return;
+        if (_model != value) {
+          _model = value;
+          OnPropertyChanged(vm => vm.Model);
         }
-        _model = value;
-        OnPropertyChanged(vm => vm.Model);
       }
     }
 
@@ -181,7 +180,7 @@ namespace TupleGeo.Apps.Presentation {
       }
 
       observableObject.PropertyChanged += new PropertyChangedEventHandler(ObservableObject_PropertyChanged);
-
+      
       return this;
 
     }

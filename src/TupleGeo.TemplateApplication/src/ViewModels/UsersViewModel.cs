@@ -76,7 +76,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       //sampleModel.PropertyChanged += new PropertyChangedEventHandler(SampleModel_PropertyChanged);
 
       //this.AddPropertyChangedListener<UsersModel>(this.Model, m => m.CurrentUser);
-      this.AddPropertyChangedListener<UserModel>((TupleGeo.General.ComponentModel.ObservableObject<UserModel>)this.Model.CurrentUser);
+      this.AddPropertyChangedListener<UsersModel>(this.Model);
 
       InitializeCommands();
 
@@ -135,7 +135,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         _userViewModel.Model = this.Model.CurrentUser;
       }
     }
-
+    
     #endregion
 
     #region Private Procedures

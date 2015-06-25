@@ -52,8 +52,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     // TODO: 'Sample 2' of SubscribeToEvents method.
     //private Dictionary<string, UIElement> _uiElementsDicionary;
 
-    private readonly WeakEventManagerBase<PropertyChangedEventArgs> _weakEventListener;
-
     #endregion
 
     #region Constructors - Destructors
@@ -77,9 +75,8 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       // Force all property changes of SampleModel to be handled by only one event handler.
       //sampleModel.PropertyChanged += new PropertyChangedEventHandler(SampleModel_PropertyChanged);
 
-      this._weakEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(PropChanged);
-      
-      this.AddListener<UsersModel>(this.Model, m => m.CurrentUser);
+      //this.AddPropertyChangedListener<UsersModel>(this.Model, m => m.CurrentUser);
+      this.AddPropertyChangedListener<UserModel>((TupleGeo.General.ComponentModel.ObservableObject<UserModel>)this.Model.CurrentUser);
 
       InitializeCommands();
 
@@ -129,12 +126,12 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     //}
 
     /// <summary>
-    /// Fires when a property changes.
+    /// Occurs when a model property changes.
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
-    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
-    private void PropChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
-      if (propertyChangedEventArgs.PropertyName == "CurrentUser") {
+    /// <param name="e">The PropertyEventArgs.</param>
+    public override void ModelPropertyChanged(object sender, PropertyChangedEventArgs e) {
+      if (e.PropertyName == "CurrentUser") {
         _userViewModel.Model = this.Model.CurrentUser;
       }
     }
@@ -174,19 +171,19 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     }
 
-    /// <summary>
-    /// Adds a listener.
-    /// </summary>
-    /// <typeparam name="TEntity">The entity used.</typeparam>
-    /// <param name="source">The source of the command.</param>
-    /// <param name="property">The property of the <typeparamref name="TEntity"/>.</param>
-    /// <returns>A UsersViewModel.</returns>
-    private UsersViewModel AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
-      string propertyName = Prop.GetPropertyName<TEntity>(property);
-      PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
+    //***/// <summary>
+    ///// Adds a listener.
+    ///// </summary>
+    ///// <typeparam name="TEntity">The entity used.</typeparam>
+    ///// <param name="source">The source of the command.</param>
+    ///// <param name="property">The property of the <typeparamref name="TEntity"/>.</param>
+    ///// <returns>A UsersViewModel.</returns>
+    //private UsersViewModel AddListener<TEntity>(INotifyPropertyChanged source, Expression<Func<TEntity, object>> property) {
+    //  string propertyName = Prop.GetPropertyName<TEntity>(property);
+    //  PropertyChangedEventManager.AddListener(source, _weakEventListener, propertyName);
 
-      return this;
-    }
+    //  return this;
+    //}
     
     /// <summary>
     /// Adds users in the user collection.
@@ -282,6 +279,17 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region BaseViewModel Members
 
+    private const string _name = "UsersViewModel";
+
+    /// <summary>
+    /// Gets the name of the view model.
+    /// </summary>
+    public override string Name {
+      get {
+        return _name;
+      }
+    }
+
     /// <summary>
     /// Gets the title for this view model.
     /// </summary>
@@ -290,48 +298,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         return this.Model.ModelName;
       }
     }
-
-    #endregion
-
-    #region IViewModel Members
-
-    //private const string _name = "UsersViewModel";
-
-    ///// <summary>
-    ///// Gets the name of the view model.
-    ///// </summary>
-    //public string Name {
-    //  get {
-    //    return _name;
-    //  }
-    //}
-
-    ///// <summary>
-    ///// Binds this view model to events raised by its corresponding view.
-    ///// </summary>
-    ///// <param name="triggeringControlsDictionary">The controls whose events will be observed.</param>
-    //public void SubscribeToEvents(Dictionary<string, object> triggeringControlsDictionary) {
-      
-    //}
-
-    ///// <summary>
-    ///// Removes event subscriptions of this view model.
-    ///// </summary>
-    ///// <param name="triggeringControlsDictionary">The controls whose events will be stopped being observed.</param>
-    //public void UnsubscribeFromEvents(Dictionary<string, object> triggeringControlsDictionary) {
-      
-    //}
-
-    ///// <summary>
-    ///// Sets the <see cref="CollectionViewSource">CollectionViewSources</see> for this model.
-    ///// </summary>
-    ///// <param name="collectionViewSourcesDictionary">
-    ///// The dictionary of <see cref="CollectionViewSource">CollectionViewSources</see>
-    ///// that will be used to display data.
-    ///// </param>
-    //public void SetCollectionViewSources(Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary) {
-      
-    //}
 
     #endregion
 

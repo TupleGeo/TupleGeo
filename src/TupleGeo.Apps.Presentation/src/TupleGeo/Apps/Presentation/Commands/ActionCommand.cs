@@ -85,7 +85,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     }
 
     /// <summary>
-    /// Adds a listener to an ObservableObject of <typeparamref name="TEntity"/>.
+    /// Adds a listener to an <see cref="ObservableObject{T}">ObservableObject</see> of <typeparamref name="TEntity"/>.
     /// </summary>
     /// <typeparam name="TEntity">The entity used.</typeparam>
     /// <param name="observableObject">The observable object.</param>

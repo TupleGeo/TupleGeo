@@ -72,12 +72,12 @@ namespace TupleGeo.TemplateApplication.Views {
           //shellViewModel.SubscribeToEvents(observedControlsDictionary);
 
           // Get any CollectionViewSources defined in the view as resources.
-          Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary = new Dictionary<string, CollectionViewSource>();
-          CollectionViewSource usersViewSource = (CollectionViewSource)(this.Resources["usersViewSource"]);
-          collectionViewSourcesDictionary.Add("usersViewSource", usersViewSource);
+          //Dictionary<string, CollectionViewSource> collectionViewSourcesDictionary = new Dictionary<string, CollectionViewSource>();
+          //CollectionViewSource usersViewSource = (CollectionViewSource)(this.Resources["usersViewSource"]);
+          //collectionViewSourcesDictionary.Add("usersViewSource", usersViewSource);
           
           // Set the collection view sources in the viewmodel.
-          usersViewModel.SetCollectionViewSources(collectionViewSourcesDictionary);
+          //usersViewModel.SetCollectionViewSources(collectionViewSourcesDictionary);
         }
       }
       catch (Exception ex) {

@@ -24,6 +24,7 @@
               CellStyle="{StaticResource selectedCellStyle}"
               EnableRowVirtualization="True"
               Grid.Row="0"
+              IsReadOnly="True"
               ItemsSource="{Binding Source={StaticResource usersViewSource}}"
               Margin="8,8,8,4"
               RowStyle="{StaticResource selectedRowStyle}"

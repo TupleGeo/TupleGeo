@@ -47,7 +47,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
       if (handler == null) {
         throw new ArgumentNullException("handler");
       }
-
+      
       realHandler = handler;
     }
 

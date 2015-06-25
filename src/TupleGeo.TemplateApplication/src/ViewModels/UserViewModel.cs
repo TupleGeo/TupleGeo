@@ -125,6 +125,17 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region BaseViewModel Members
 
+    private const string _name = "UserViewModel";
+
+    /// <summary>
+    /// Gets the name of the view model.
+    /// </summary>
+    public override string Name {
+      get {
+        return _name;
+      }
+    }
+
     /// <summary>
     /// Gets the title for this view model.
     /// </summary>
@@ -137,17 +148,6 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     #endregion
 
     #region IViewModel Members
-
-    //private const string _name = "UserViewModel";
-
-    ///// <summary>
-    ///// Gets the name of the view model.
-    ///// </summary>
-    //public string Name {
-    //  get {
-    //    return _name;
-    //  }
-    //}
 
     ///// <summary>
     ///// Binds this view model to events raised by its corresponding view.

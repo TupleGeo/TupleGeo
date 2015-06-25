@@ -47,10 +47,16 @@
     <Compile Include="TupleGeo\Apps\Presentation\BaseViewModel`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Commands\ActionCommand.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\IViewModel.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\IViewModelMethods.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\IViewModelListeners.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\PropertyObserver`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\WeakEventManagerBase`1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.451.csproj">
+      <Project>{8113a9a5-5588-459f-b6b2-2baddb2fce80}</Project>
+      <Name>TupleGeo.Apps.451</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.451.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
       <Name>TupleGeo.General.451</Name>

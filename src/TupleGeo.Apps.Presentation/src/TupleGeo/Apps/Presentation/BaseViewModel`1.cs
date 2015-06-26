@@ -4,7 +4,7 @@
 // Member of        : TupleGeo.Apps.Presentation.dll
 // Description      : All Views inherit from this class.
 // Created by       : 17/01/2012, 18:17, Vasilis Vlastaras.
-// Updated by       : 25/06/2015, 00:26, Vasilis Vlastaras.
+// Updated by       : 26/06/2015, 17:16, Vasilis Vlastaras.
 //                    1.1.0 - BaseViewModel inherits from IViewModel.
 // Version          : 1.1.0
 // Contact Details  : TupleGeo.
@@ -35,7 +35,7 @@ namespace TupleGeo.Apps.Presentation {
   /// All Views inherit from this class.
   /// </summary>
   /// <typeparam name="TModel">The model which is associated with this view.</typeparam>
-  public abstract class BaseViewModel<TModel> : ObservableObject<BaseViewModel<TModel>>, IViewModel where TModel : class {
+  public abstract class BaseViewModel<TModel> : ObservableObject<BaseViewModel<TModel>>, IViewModel where TModel : IModel {
 
     #region Constructors - Destructors
 
@@ -61,7 +61,7 @@ namespace TupleGeo.Apps.Presentation {
         return _model;
       }
       set {
-        if (_model != value) {
+        if ((IModel)_model != (IModel)value) {
           _model = value;
           OnPropertyChanged(vm => vm.Model);
         }

@@ -48,7 +48,8 @@
     <Compile Include="TupleGeo\Apps\Presentation\Commands\ActionCommand.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\IViewModel.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\IViewModelMethods.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\IViewModelListeners.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\Observers\IListeners.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\Observers\CentralizedObserver.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\PropertyObserver`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\WeakEventManagerBase`1.cs" />
   </ItemGroup>

@@ -33,7 +33,8 @@ namespace TupleGeo.Apps.Presentation.Observers {
   /// The CentralizedObserver provides the abstract implementation of an observer that can be used to attach listeners
   /// for property and collection changes when there is a need for these changes to be managed centrally.
   /// </summary>
-  public abstract class CentralizedObserver<T> {
+  /// <typeparam name="T">The type parameter is used to refer to an object inherited this abstract class.</typeparam>
+  public abstract class CentralizedObserver<T> : IListeners<T> where T : IListeners<T> {
 
     #region Imported Namespaces
 
@@ -45,88 +46,11 @@ namespace TupleGeo.Apps.Presentation.Observers {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the <see cref="CentralizedObserver"/>.
+    /// Initializes the <see cref="CentralizedObserver{T}">CentralizedObserver</see> of <typeparamref name="T"/>
     /// </summary>
     protected CentralizedObserver() {
       this._weakPropertyChangedEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(RequeryCanExecute);
       this._weakCollectionChangedEventListener = new WeakEventManagerBase<NotifyCollectionChangedEventArgs>(RequeryCanExecute);
-    }
-
-    #endregion
-
-    #region Public Methods
-
-    /// <summary>
-    /// Adds a weak listener to the property of an object that implements the <see cref="INotifyPropertyChanged"/> interface.
-    /// </summary>
-    /// <typeparam name="T">The object that implements the <see cref="INotifyPropertyChanged"/> interface.</typeparam>
-    /// <param name="source">The source of the command.</param>
-    /// <param name="property">The property of the <typeparamref name="TEntity"/>.</param>
-    /// <remarks>The method can be used to chain together multiple listeners.</remarks>
-    /// <returns>A CentralizedObserver.</returns>
-    public CentralizedObserver AddPropertyChangedListener<T>(INotifyPropertyChanged source, Expression<Func<T, object>> prop) {
-      string propertyName = Prop.GetPropertyName<T>(prop);
-
-      PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventListener, propertyName);
-
-      return this;
-    }
-
-    /// <summary>
-    /// Adds a listener to an <see cref="ObservableObject{T}">ObservableObject</see> of <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">The entity used.</typeparam>
-    /// <param name="observableObject">The observable object.</param>
-    /// <returns>A CentralizedObserver.</returns>
-    public CentralizedObserver AddPropertyChangedListener<T>(ObservableObject<T> observableObject) {
-      if (observableObject == null) {
-        throw new ArgumentNullException("observableObject", "ObservableObject could not be null.");
-      }
-
-      observableObject.PropertyChanged += new PropertyChangedEventHandler(ObservableObject_PropertyChanged);
-
-      return this;
-    }
-
-    /// <summary>
-    /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
-    /// </summary>
-    /// <param name="source">The source of the command.</param>
-    /// <remarks>The method can be used to chain together multiple listeners.</remarks>
-    /// <returns>A CentralizedObserver.</returns>
-    public CentralizedObserver AddObservableCollectionListener(INotifyCollectionChanged source) {
-      CollectionChangedEventManager.AddListener(source, _weakCollectionChangedEventListener);
-
-      return this;
-    }
-
-    /// <summary>
-    /// Adds a listener to an ObservableCollection of <typeparamref name="TEntity"/>.
-    /// </summary>
-    /// <typeparam name="TEntity">The entity used.</typeparam>
-    /// <param name="observableCollection">The observable collection used.</param>
-    /// <exception cref="ArgumentNullException">
-    /// Thrown when <paramref name="observableCollection"/> is <c>null</c>.
-    /// </exception>
-    /// <remarks>The method can be used to chain together multiple listeners.</remarks>
-    /// <returns>An ActionCommand.</returns>
-    public ActionCommand AddObservableCollectionListener<TEntity>(ObservableCollection<TEntity> observableCollection) {
-      if (observableCollection == null) {
-        throw new ArgumentNullException("observableCollection", "ObservableCollection could not be NULL.");
-      }
-
-      observableCollection.CollectionChanged += new NotifyCollectionChangedEventHandler(ObservableCollection_CollectionChanged);
-
-      return this;
-    }
-
-    /// <summary>
-    /// Fires when <see cref="ActionCommand.CanExecute">CanExecute</see> has been changed.
-    /// </summary>
-    public void OnCanExecuteChanged() {
-      if (CanExecuteChanged != null) {
-        CanExecuteChanged(this, EventArgs.Empty);
-      }
     }
 
     #endregion
@@ -161,7 +85,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="sender">The sender of the event.</param>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
     private void RequeryCanExecute(object sender) {
-      OnCanExecuteChanged();
+      //OnCanExecuteChanged();
     }
 
     /// <summary>
@@ -170,7 +94,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
     private void RequeryCanExecute(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
-      OnCanExecuteChanged();
+      //OnCanExecuteChanged();
     }
 
     /// <summary>
@@ -179,13 +103,37 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
     private void RequeryCanExecute(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
-      OnCanExecuteChanged();
+      //OnCanExecuteChanged();
     }
 
     #endregion
 
+    #region IListeners<T> Members
 
+    public virtual T AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel {
 
+      //string propertyName = Prop.GetPropertyName(prop);
+
+      //PropertyChangedEventManager.AddListener(source, _weakCollectionChangedEventListener, propertyName);
+
+      //return T;
+
+      throw new NotImplementedException();
+    }
+
+    public virtual T AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel {
+      throw new NotImplementedException();
+    }
+
+    public virtual T AddCollectionChangedListener(INotifyCollectionChanged source) {
+      throw new NotImplementedException();
+    }
+
+    public virtual T AddCollectionChangedListener<TModel>(System.Collections.ObjectModel.ObservableCollection<TModel> observableCollection) where TModel : IModel {
+      throw new NotImplementedException();
+    }
+
+    #endregion
 
   }
 

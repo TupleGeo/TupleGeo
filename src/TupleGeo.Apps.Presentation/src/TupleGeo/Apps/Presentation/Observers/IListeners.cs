@@ -3,7 +3,7 @@
 // Title Name       : IListeners.
 // Member of        : TupleGeo.Apps.Presentation.dll
 // Description      : Provides listeners for property and collection changes.
-// Created by       : 02/07/2015, 18:19, Vasilis Vlastaras.
+// Created by       : 08/07/2015, 15:18, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -32,7 +32,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
   /// <summary>
   /// Provides listeners for property and collection changes.
   /// </summary>
-  public interface IListeners<T> where T : IListeners<T> {
+  public interface IListeners {
 
     #region Public Methods
 
@@ -43,8 +43,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="source">The source of the command.</param>
     /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
     /// <remarks>The method can be used to chain multiple listeners.</remarks>
-    /// <returns>Returns itself so as to allow chaining multiple listeners.</returns>
-    T AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel;
+    void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel;
 
     /// <summary>
     /// Adds a listener to an <see cref="ObservableObject{TModel}">ObservableObject</see> of <typeparamref name="TModel"/>.
@@ -52,16 +51,14 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="observableObject">The observable object.</param>
     /// <remarks>The method can be used to chain multiple listeners.</remarks>
-    /// <returns>Returns itself so as to allow chaining multiple listeners.</returns>
-    T AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel;
+    void AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel;
 
     /// <summary>
     /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the command.</param>
     /// <remarks>The method can be used to chain multiple listeners.</remarks>
-    /// <returns>Returns itself so as to allow chaining multiple listeners.</returns>
-    T AddCollectionChangedListener(INotifyCollectionChanged source);
+    void AddCollectionChangedListener(INotifyCollectionChanged source);
 
     /// <summary>
     /// Adds a listener to an <see cref="ObservableCollection{TModel}">ObservableCollection</see> of <typeparamref name="TModel"/>.
@@ -69,8 +66,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="observableCollection">The observable collection used.</param>
     /// <remarks>The method can be used to chain multiple listeners.</remarks>
-    /// <returns>Returns itself so as to allow chaining multiple listeners.</returns>
-    T AddCollectionChangedListener<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel;
+    void AddCollectionChangedListener<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel;
 
     #endregion
 

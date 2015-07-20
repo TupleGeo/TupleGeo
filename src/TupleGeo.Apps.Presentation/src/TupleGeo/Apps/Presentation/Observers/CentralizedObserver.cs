@@ -33,8 +33,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
   /// The CentralizedObserver provides the abstract implementation of an observer that can be used to attach listeners
   /// for property and collection changes when there is a need for these changes to be managed centrally.
   /// </summary>
-  /// <typeparam name="T">The type parameter is used to refer to an object inherited this abstract class.</typeparam>
-  public abstract class CentralizedObserver<T> : IListeners<T> where T : IListeners<T> {
+  public abstract class CentralizedObserver : IListeners {
 
     #region Imported Namespaces
 
@@ -108,33 +107,45 @@ namespace TupleGeo.Apps.Presentation.Observers {
 
     #endregion
 
-    #region IListeners<T> Members
+    #region IListeners Members
 
-    public virtual T AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel {
-
-      //string propertyName = Prop.GetPropertyName(prop);
-
-      //PropertyChangedEventManager.AddListener(source, _weakCollectionChangedEventListener, propertyName);
-
-      //return T;
-
+    /// <summary>
+    /// Adds a weak listener to the property of an object that implements the <see cref="INotifyPropertyChanged"/> interface.
+    /// </summary>
+    /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
+    /// <param name="source">The source of the command.</param>
+    /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
+    public void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel {
       throw new NotImplementedException();
     }
 
-    public virtual T AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="observableObject"></param>
+    public void AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel {
       throw new NotImplementedException();
     }
 
-    public virtual T AddCollectionChangedListener(INotifyCollectionChanged source) {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="source"></param>
+    public void AddCollectionChangedListener(INotifyCollectionChanged source) {
       throw new NotImplementedException();
     }
 
-    public virtual T AddCollectionChangedListener<TModel>(System.Collections.ObjectModel.ObservableCollection<TModel> observableCollection) where TModel : IModel {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
+    /// <param name="observableCollection"></param>
+    public void AddCollectionChangedListener<TModel>(System.Collections.ObjectModel.ObservableCollection<TModel> observableCollection) where TModel : IModel {
       throw new NotImplementedException();
     }
 
     #endregion
-
   }
 
 }

@@ -42,7 +42,6 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="source">The source of the command.</param>
     /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
-    /// <remarks>The method can be used to chain multiple listeners.</remarks>
     void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel;
 
     /// <summary>
@@ -50,14 +49,12 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// </summary>
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="observableObject">The observable object.</param>
-    /// <remarks>The method can be used to chain multiple listeners.</remarks>
     void AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel;
 
     /// <summary>
     /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the command.</param>
-    /// <remarks>The method can be used to chain multiple listeners.</remarks>
     void AddCollectionChangedListener(INotifyCollectionChanged source);
 
     /// <summary>
@@ -65,7 +62,6 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// </summary>
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="observableCollection">The observable collection used.</param>
-    /// <remarks>The method can be used to chain multiple listeners.</remarks>
     void AddCollectionChangedListener<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel;
 
     #endregion

@@ -48,8 +48,39 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Initializes the <see cref="CentralizedObserver{T}">CentralizedObserver</see> of <typeparamref name="T"/>
     /// </summary>
     protected CentralizedObserver() {
-      this._weakPropertyChangedEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(RequeryCanExecute);
-      this._weakCollectionChangedEventListener = new WeakEventManagerBase<NotifyCollectionChangedEventArgs>(RequeryCanExecute);
+      this._weakPropertyChangedEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(OnPropertyChanged);
+      this._weakCollectionChangedEventListener = new WeakEventManagerBase<NotifyCollectionChangedEventArgs>(OnCollectionChanged);
+    }
+
+    #endregion
+
+    #region Public Methods
+
+    ///// <summary>
+    ///// Fires when a property has been changed.
+    ///// </summary>
+    ///// <param name="sender">The sender of the event.</param>
+    //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
+    //public virtual void OnPropertyChanged(object sender) {
+      
+    //}
+
+    /// <summary>
+    /// Fires when a property has been changed.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
+    public virtual void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+      
+    }
+
+    /// <summary>
+    /// Fires when a collection has been changed.
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
+    public virtual void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
+      
     }
 
     #endregion
@@ -62,7 +93,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The PropertyChangedEventArgs.</param>
     private void ObservableObject_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-      RequeryCanExecute(sender);
+      OnPropertyChanged(sender, e);
     }
 
     /// <summary>
@@ -71,38 +102,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The NotifyCollectionChangedEventArgs.</param>
     private void ObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-      RequeryCanExecute(sender);
-    }
-
-    #endregion
-
-    #region Private Procedures
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
-    private void RequeryCanExecute(object sender) {
-      //OnCanExecuteChanged();
-    }
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
-    private void RequeryCanExecute(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
-      //OnCanExecuteChanged();
-    }
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
-    private void RequeryCanExecute(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
-      //OnCanExecuteChanged();
+      OnCollectionChanged(sender, e);
     }
 
     #endregion
@@ -116,7 +116,8 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="source">The source of the command.</param>
     /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
     public void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel {
-      throw new NotImplementedException();
+      string propertyName = Prop.GetPropertyName<TModel>(prop);
+      PropertyChangedEventManager.AddListener(source, _weakCollectionChangedEventListener, propertyName);
     }
 
     /// <summary>
@@ -125,7 +126,10 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel"></typeparam>
     /// <param name="observableObject"></param>
     public void AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel {
-      throw new NotImplementedException();
+      if (observableObject == null) {
+        throw new ArgumentNullException("observableObject", "ObservableObject could not be null.");
+      }
+      observableObject.PropertyChanged += new PropertyChangedEventHandler(ObservableObject_PropertyChanged);
     }
 
     /// <summary>
@@ -133,7 +137,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// </summary>
     /// <param name="source"></param>
     public void AddCollectionChangedListener(INotifyCollectionChanged source) {
-      throw new NotImplementedException();
+      CollectionChangedEventManager.AddListener(source, _weakCollectionChangedEventListener);
     }
 
     /// <summary>
@@ -142,10 +146,14 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel"></typeparam>
     /// <param name="observableCollection"></param>
     public void AddCollectionChangedListener<TModel>(System.Collections.ObjectModel.ObservableCollection<TModel> observableCollection) where TModel : IModel {
-      throw new NotImplementedException();
+      if (observableCollection == null) {
+        throw new ArgumentNullException("observableCollection", "ObservableCollection could not be NULL.");
+      }
+      observableCollection.CollectionChanged += new NotifyCollectionChangedEventHandler(ObservableCollection_CollectionChanged);
     }
 
     #endregion
+
   }
 
 }

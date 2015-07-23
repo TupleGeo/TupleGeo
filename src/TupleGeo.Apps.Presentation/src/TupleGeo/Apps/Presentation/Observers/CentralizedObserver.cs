@@ -3,7 +3,7 @@
 // Title Name       : CentralizedObserver.
 // Member of        : TupleGeo.Apps.Presentation.Observers.dll
 // Description      : 
-// Created by       : 26/06/2015, 17:50, 
+// Created by       : 23/07/2015, 15:29, 
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -45,7 +45,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the <see cref="CentralizedObserver{T}">CentralizedObserver</see> of <typeparamref name="T"/>
+    /// Initializes the <see cref="CentralizedObserver"/>.
     /// </summary>
     protected CentralizedObserver() {
       this._weakPropertyChangedEventListener = new WeakEventManagerBase<PropertyChangedEventArgs>(OnPropertyChanged);
@@ -117,7 +117,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
     public void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel {
       string propertyName = Prop.GetPropertyName<TModel>(prop);
-      PropertyChangedEventManager.AddListener(source, _weakCollectionChangedEventListener, propertyName);
+      PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventListener, propertyName);
     }
 
     /// <summary>

@@ -35,6 +35,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentat
 		TupleGeo.Base.451.Markdown.shfbproj = TupleGeo.Base.451.Markdown.shfbproj
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.Tests.451", "src\TupleGeo.Apps.Presentation\tests\TupleGeo.Apps.Presentation.Tests.451.csproj", "{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug451|Any CPU = Debug451|Any CPU
@@ -93,6 +95,10 @@ Global
 		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Debug451|Any CPU.Build.0 = Debug451|Any CPU
 		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Release451|Any CPU.ActiveCfg = Release451|Any CPU
 		{21C99ABD-41BF-4365-8A3D-399D76A6311B}.Release451|Any CPU.Build.0 = Release451|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Debug451|Any CPU.ActiveCfg = Debug451|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Debug451|Any CPU.Build.0 = Debug451|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Release451|Any CPU.ActiveCfg = Release451|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Release451|Any CPU.Build.0 = Release451|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,9 +1,11 @@
 ﻿
 #region Header
 // Title Name       : CentralizedObserver.
-// Member of        : TupleGeo.Apps.Presentation.Observers.dll
-// Description      : 
-// Created by       : 23/07/2015, 15:29, 
+// Member of        : TupleGeo.Apps.Presentation.dll
+// Description      : The CentralizedObserver provides the abstract implementation of an observer that can be used
+//                    to attach listeners for property and collection changes when there is a need for these changes
+//                    to be managed centrally.
+// Created by       : 24/07/2015, 11:08, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -16,6 +18,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
@@ -56,17 +59,9 @@ namespace TupleGeo.Apps.Presentation.Observers {
 
     #region Public Methods
 
-    ///// <summary>
-    ///// Fires when a property has been changed.
-    ///// </summary>
-    ///// <param name="sender">The sender of the event.</param>
-    //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
-    //public virtual void OnPropertyChanged(object sender) {
-      
-    //}
-
     /// <summary>
-    /// Fires when a property has been changed.
+    /// <para>Fires when a property has been changed.</para>
+    /// <para>Override this to listen to property changes and to provide custom reaction logic to these changes.</para>
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
@@ -75,7 +70,8 @@ namespace TupleGeo.Apps.Presentation.Observers {
     }
 
     /// <summary>
-    /// Fires when a collection has been changed.
+    /// <para>Fires when a collection has been changed.</para>
+    /// <para>Override this to listen to property changes and to provide custom reaction logic to these changes.</para>
     /// </summary>
     /// <param name="sender">The sender of the event.</param>
     /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
@@ -121,10 +117,10 @@ namespace TupleGeo.Apps.Presentation.Observers {
     }
 
     /// <summary>
-    /// 
+    /// Adds a listener to an <see cref="ObservableObject{TModel}">ObservableObject</see> of <typeparamref name="TModel"/>.
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="observableObject"></param>
+    /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
+    /// <param name="observableObject">The observable object.</param>
     public void AddPropertyChangedListener<TModel>(ObservableObject<TModel> observableObject) where TModel : IModel {
       if (observableObject == null) {
         throw new ArgumentNullException("observableObject", "ObservableObject could not be null.");
@@ -133,19 +129,19 @@ namespace TupleGeo.Apps.Presentation.Observers {
     }
 
     /// <summary>
-    /// 
+    /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
-    /// <param name="source"></param>
-    public void AddCollectionChangedListener(INotifyCollectionChanged source) {
+    /// <param name="source">The source of the command.</param>
+    public void AddCollectionChangedWeakListener(INotifyCollectionChanged source) {
       CollectionChangedEventManager.AddListener(source, _weakCollectionChangedEventListener);
     }
 
     /// <summary>
-    /// 
+    /// Adds a listener to an <see cref="ObservableCollection{TModel}">ObservableCollection</see> of <typeparamref name="TModel"/>.
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
-    /// <param name="observableCollection"></param>
-    public void AddCollectionChangedListener<TModel>(System.Collections.ObjectModel.ObservableCollection<TModel> observableCollection) where TModel : IModel {
+    /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
+    /// <param name="observableCollection">The observable collection used.</param>
+    public void AddCollectionChangedListener<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel {
       if (observableCollection == null) {
         throw new ArgumentNullException("observableCollection", "ObservableCollection could not be NULL.");
       }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,7 @@ namespace TupleGeo.Apps.Presentation.Tests {
 
     private Observer _observer = new Observer();
     private CarModel _carModel;
+    private ObservableCollection<CarModel> _carModels = new ObservableCollection<CarModel>();
 
     #endregion
 
@@ -46,7 +48,7 @@ namespace TupleGeo.Apps.Presentation.Tests {
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void SetupObserver_Click(object sender, RoutedEventArgs e) {
+    private void SetupWeakPropertyObserver_Click(object sender, RoutedEventArgs e) {
 
       _carModel = new CarModel() {
         Id = 1,
@@ -66,11 +68,128 @@ namespace TupleGeo.Apps.Presentation.Tests {
     /// </summary>
     /// <param name="sender"></param>
     /// <param name="e"></param>
-    private void TestObserver_Click(object sender, RoutedEventArgs e) {
+    private void SetupHardPropertyObserver_Click(object sender, RoutedEventArgs e) {
+
+      _carModel = new CarModel() {
+        Id = 1,
+        Brand = "Ford",
+        Colour = "Red",
+        Weight = 1200
+      };
+
+      _observer.AddPropertyChangedListener<CarModel>(_carModel);
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void SetupWeakCollectionObserver_Click(object sender, RoutedEventArgs e) {
+
+      _carModels.Add(new CarModel() {
+        Id = 1,
+        Brand = "Ford",
+        Colour = "Red",
+        Weight = 1200
+      });
+      _carModels.Add(new CarModel() {
+        Id = 2,
+        Brand = "Mercedes",
+        Colour = "Gray",
+        Weight = 1800
+      });
+      _carModels.Add(new CarModel() {
+        Id = 3,
+        Brand = "Kia",
+        Colour = "Yellow",
+        Weight = 800
+      });
+      _carModels.Add(new CarModel() {
+        Id = 4,
+        Brand = "Peugeot",
+        Colour = "Green",
+        Weight = 1400
+      });
+
+      _observer.AddCollectionChangedWeakListener(_carModels);
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void SetupHardCollectionObserver_Click(object sender, RoutedEventArgs e) {
+
+      _carModels.Add(new CarModel() {
+        Id = 1,
+        Brand = "Ford",
+        Colour = "Red",
+        Weight = 1200
+      });
+      _carModels.Add(new CarModel() {
+        Id = 2,
+        Brand = "Mercedes",
+        Colour = "Gray",
+        Weight = 1800
+      });
+      _carModels.Add(new CarModel() {
+        Id = 3,
+        Brand = "Kia",
+        Colour = "Yellow",
+        Weight = 800
+      });
+      _carModels.Add(new CarModel() {
+        Id = 4,
+        Brand = "Peugeot",
+        Colour = "Green",
+        Weight = 1400
+      });
+
+      _observer.AddCollectionChangedListener<CarModel>(_carModels);
+      
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TestPropertyObserver_Click(object sender, RoutedEventArgs e) {
 
       _carModel.Brand = "Mazda";
       _carModel.Colour = "Blue";
       _carModel.Weight = 1500;
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TestCollectionObserver_Click(object sender, RoutedEventArgs e) {
+
+      _carModels.RemoveAt(2);
+
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="sender"></param>
+    /// <param name="e"></param>
+    private void TestGeneral_Click(object sender, RoutedEventArgs e) {
+
+      Type viewType = typeof(TestView);
+      
+      Type viewInterface = viewType.GetInterface("IView2");
+
+
+
 
     }
 

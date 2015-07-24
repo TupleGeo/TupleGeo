@@ -48,8 +48,10 @@ namespace TupleGeo.Apps.Presentation.Tests.ObserverTests {
         return _id;
       }
       set {
-        _id = value;
-        this.OnPropertyChanged(m => m.Id);
+        if (_id != value) {
+          _id = value;
+          this.OnPropertyChanged(m => m.Id);
+        }
       }
     }
 
@@ -63,8 +65,10 @@ namespace TupleGeo.Apps.Presentation.Tests.ObserverTests {
         return _brand;
       }
       set {
-        _brand = value;
-        this.OnPropertyChanged(m => m.Brand);
+        if (_brand != value) {
+          _brand = value;
+          this.OnPropertyChanged(m => m.Brand);
+        }
       }
     }
 
@@ -78,8 +82,10 @@ namespace TupleGeo.Apps.Presentation.Tests.ObserverTests {
         return _weight;
       }
       set {
-        _weight = value;
-        this.OnPropertyChanged(m => m.Weight);
+        if (_weight != value) {
+          _weight = value;
+          this.OnPropertyChanged(m => m.Weight);
+        }
       }
     }
 
@@ -93,8 +99,10 @@ namespace TupleGeo.Apps.Presentation.Tests.ObserverTests {
         return _colour;
       }
       set {
-        _colour = value;
-        this.OnPropertyChanged(m => m.Colour);
+        if (_colour != value) {
+          _colour = value;
+          this.OnPropertyChanged(m => m.Colour);
+        }
       }
     }
 

@@ -42,6 +42,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// <typeparam name="TModel">A model entity whose properties will be observed.</typeparam>
     /// <param name="source">The source of the command.</param>
     /// <param name="prop">The property of the <typeparamref name="TModel"/>.</param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1006:DoNotNestGenericTypesInMemberSignatures")]
     void AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> prop) where TModel : IModel;
 
     /// <summary>
@@ -55,7 +56,7 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the command.</param>
-    void AddCollectionChangedListener(INotifyCollectionChanged source);
+    void AddCollectionChangedWeakListener(INotifyCollectionChanged source);
 
     /// <summary>
     /// Adds a listener to an <see cref="ObservableCollection{TModel}">ObservableCollection</see> of <typeparamref name="TModel"/>.

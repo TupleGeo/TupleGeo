@@ -7,8 +7,8 @@
   
   <Grid>
     <Grid.ColumnDefinitions>
-      <ColumnDefinition Width="80*" />
-      <ColumnDefinition Width="20*" />
+      <ColumnDefinition Width="60*" />
+      <ColumnDefinition Width="200" />
     </Grid.ColumnDefinitions>
     
     <Grid.RowDefinitions>
@@ -16,25 +16,75 @@
       <RowDefinition Height="31" />
       <RowDefinition Height="31" />
       <RowDefinition Height="31" />
+      <RowDefinition Height="31" />
+      <RowDefinition Height="31" />
+      <RowDefinition Height="31" />
+      <RowDefinition Height="31" />
+      <RowDefinition Height="31" />
     </Grid.RowDefinitions>
 
-    <Button x:Name="SetupObserver"
-            Content="Setup Observer"
+    <Button x:Name="SetupWeakPropertyObserver"
+            Content="Setup Weak Property Observer"
             Grid.Column="1"
             Grid.Row="0"
             HorizontalAlignment="Stretch"
             Margin="6,4,6,2"
             VerticalAlignment="Stretch"
-            Click="SetupObserver_Click" />
+            Click="SetupWeakPropertyObserver_Click" />
 
-    <Button x:Name="TestObserver"
-            Content="Test Observer"
+    <Button x:Name="SetupHardPropertyObserver"
+            Content="Setup Hard Property Observer"
             Grid.Column="1"
             Grid.Row="1"
             HorizontalAlignment="Stretch"
+            Margin="6,4,6,2"
+            VerticalAlignment="Stretch"
+            Click="SetupHardPropertyObserver_Click" />
+    
+    <Button x:Name="SetupWeakCollectionObserver"
+            Content="Setup Weak Collection Observer"
+            Grid.Column="1"
+            Grid.Row="2"
+            HorizontalAlignment="Stretch"
+            Margin="6,4,6,2"
+            VerticalAlignment="Stretch"
+            Click="SetupWeakCollectionObserver_Click" />
+
+    <Button x:Name="SetupHardCollectionObserver"
+            Content="Setup Hard Collection Observer"
+            Grid.Column="1"
+            Grid.Row="3"
+            HorizontalAlignment="Stretch"
+            Margin="6,4,6,2"
+            VerticalAlignment="Stretch"
+            Click="SetupHardCollectionObserver_Click" />
+    
+    <Button x:Name="TestPropertyObserver"
+            Content="Test Property Observer"
+            Grid.Column="1"
+            Grid.Row="5"
+            HorizontalAlignment="Stretch"
             Margin="6,2,6,2"
             VerticalAlignment="Stretch"
-            Click="TestObserver_Click" />
+            Click="TestPropertyObserver_Click" />
+
+    <Button x:Name="TestCollectionObserver"
+            Content="Test Collection Observer"
+            Grid.Column="1"
+            Grid.Row="6"
+            HorizontalAlignment="Stretch"
+            Margin="6,2,6,2"
+            VerticalAlignment="Stretch"
+            Click="TestCollectionObserver_Click" />
+
+    <Button x:Name="TestGeneral"
+            Content="Test General"
+            Grid.Column="1"
+            Grid.Row="6"
+            HorizontalAlignment="Stretch"
+            Margin="6,2,6,2"
+            VerticalAlignment="Stretch"
+            Click="TestGeneral_Click" />
     
   </Grid>
   

@@ -1,7 +1,7 @@
 ﻿
 #region Header
 // Title Name       : WeakEventManagerBase<TEventArgs>.
-// Member of        : TupleGeo.Apps.Presentation.Observers.dll
+// Member of        : TupleGeo.Apps.Presentation.dll
 // Description      : The base class for a WeakEventManager.
 // Created by       : 31/05/2012, 12:58, 
 // Updated by       : 

@@ -58,7 +58,7 @@ namespace TupleGeo.TemplateApplication.Views {
         // Make sure this executes in runtime.
         if (!DesignerProperties.GetIsInDesignMode(this)) {
           // The viewmodel of this view acts as a datacontext. Bind the viewmodel here.
-          SampleViewModel sampleViewModel = (SampleViewModel)((IViewModel)(Catalog.GetViewModel(this.GetType())));
+          SampleViewModel sampleViewModel = (SampleViewModel)((IViewModel)(AppEngine.Instance.Catalog.GetViewModel(this.GetType())));
           this.DataContext = sampleViewModel;
 
           // The event procedures reside in to the viewmodel. Binding is performed by calling the

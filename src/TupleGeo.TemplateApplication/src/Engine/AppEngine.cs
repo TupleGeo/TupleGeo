@@ -13,10 +13,14 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows;
+using TupleGeo.Apps.Presentation;
 using TupleGeo.General.ComponentModel;
 using TupleGeo.General.FileSystem;
+using TupleGeo.TemplateApplication.Models;
 using TupleGeo.TemplateApplication.Models.Application;
 using TupleGeo.TemplateApplication.Properties;
+using TupleGeo.TemplateApplication.ViewModels;
+using TupleGeo.TemplateApplication.Views;
 
 #endregion
 
@@ -38,6 +42,8 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// </summary>
     private AppEngine() {
       _applicationModel = new ApplicationModel();
+      _catalog = new AppCatalog();
+      InitializeAppCatalog();
     }
 
     #endregion
@@ -69,6 +75,17 @@ namespace TupleGeo.TemplateApplication.Engine {
           _applicationModel = value;
           this.OnPropertyChanged(m => m.ApplicationModel);
         }
+      }
+    }
+
+    private AppCatalog _catalog;
+
+    /// <summary>
+    /// Gets the <see cref="AppCatalog"/> of the application.
+    /// </summary>
+    public AppCatalog Catalog {
+      get {
+        return _catalog;
       }
     }
 
@@ -202,6 +219,38 @@ namespace TupleGeo.TemplateApplication.Engine {
       finally {
         streamWriter.Close(); // Close is enough since it calls Dispose internally.
       }
+
+    }
+
+    #endregion
+
+    #region Private Procedures
+
+    /// <summary>
+    /// Initializes the application 's catalog.
+    /// </summary>
+    private void InitializeAppCatalog() {
+      
+      // Register all view models and models here:
+
+      
+      // Register ViewModels.
+      _catalog.RegisterViewModel(typeof(UserView), typeof(UserViewModel));
+      _catalog.RegisterViewModel(typeof(UsersView), typeof(UsersViewModel));
+      _catalog.RegisterViewModel(typeof(SampleView), typeof(SampleViewModel));
+      //_catalog.RegisterViewModel(typeof(Sample1View), typeof(Sample1ViewModel));
+      //_catalog.RegisterViewModel(typeof(Sample2View), typeof(Sample2ViewModel));
+      // etc ...
+      _catalog.RegisterViewModel(typeof(ShellView), typeof(ShellViewModel));
+
+      // Register Models.
+      _catalog.RegisterModel(typeof(UserViewModel), typeof(UserModel));
+      _catalog.RegisterModel(typeof(UsersViewModel), typeof(UsersModel));
+      _catalog.RegisterModel(typeof(SampleViewModel), typeof(SampleModel));
+      //_catalog.RegisterModel(typeof(Sample1ViewModel), typeof(Sample1Model));
+      //_catalog.RegisterModel(typeof(Sample2ViewModel), typeof(Sample2Model));
+      // etc ...
+      _catalog.RegisterModel(typeof(ShellViewModel), typeof(ShellModel));
 
     }
 

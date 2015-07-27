@@ -67,7 +67,7 @@
       <DependentUpon>Bootstrapper.xaml</DependentUpon>
     </Compile>
     <Compile Include="Engine\AppEngine.cs" />
-    <Compile Include="Engine\Catalog.cs" />
+    <None Include="Engine\Catalog.cs" />
     <Compile Include="Models\Application\ApplicationModel.cs" />
     <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Models\ShellModel.cs" />

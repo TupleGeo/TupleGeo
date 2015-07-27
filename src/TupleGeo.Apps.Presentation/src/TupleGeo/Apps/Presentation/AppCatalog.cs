@@ -3,7 +3,7 @@
 // Title Name       : AppCatalog
 // Member of        : TupleGeo.Apps.Presentation.dll
 // Description      : The application catalog provides a registry of models, views and viewmodels.
-// Created by       : 24/07/2015, 17:00, 
+// Created by       : 27/07/2015, 19:32, 
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -32,28 +32,17 @@ namespace TupleGeo.Apps.Presentation {
 
     #region Member Variables
 
-    private static Dictionary<Type, Type> _mappedViewModels = new Dictionary<Type,Type>(); // view type, view model type.
-    private static Dictionary<Type, IViewModel> _viewModelInstances = new Dictionary<Type,IViewModel>(); // view type, IViewModel instance.
-    private static Dictionary<Type, Type> _mappedModels = new Dictionary<Type,Type>(); // view model type, model type.
-    private static Dictionary<Type, IView> _singletonViewInstances = new Dictionary<Type,IView>(); // view type, IView instance.
-
-    #endregion
-
-    #region Constructors - Destructors
-
-    ///// <summary>
-    ///// Initializes the <see cref="AppCatalog"/>.
-    ///// </summary>
-    //public AppCatalog() {
-
-    //}
+    private Dictionary<Type, Type> _mappedViewModels = new Dictionary<Type,Type>(); // view type, view model type.
+    private Dictionary<Type, IViewModel> _viewModelInstances = new Dictionary<Type,IViewModel>(); // view type, IViewModel instance.
+    private Dictionary<Type, Type> _mappedModels = new Dictionary<Type,Type>(); // view model type, model type.
+    private Dictionary<Type, IView> _singletonViewInstances = new Dictionary<Type,IView>(); // view type, IView instance.
 
     #endregion
 
     #region Public Methods
 
     /// <summary>
-    /// Registers the view models.
+    /// Registers a <see cref="IViewModel">view model</see>.
     /// </summary>
     /// <param name="viewType">The type of the view which is used as the key in the registry.</param>
     /// <param name="viewModelType">The type of the viewmodel which is used as the value in the registry.</param>
@@ -64,7 +53,7 @@ namespace TupleGeo.Apps.Presentation {
     /// must implement the <see cref="IViewModel"/> interface.
     /// </para>
     /// </remarks>
-    public static void RegisterViewModels(Type viewType, Type viewModelType) {
+    public void RegisterViewModel(Type viewType, Type viewModelType) {
 
       if (viewType == null) {
         throw new ArgumentNullException("viewType");
@@ -87,7 +76,7 @@ namespace TupleGeo.Apps.Presentation {
     }
 
     /// <summary>
-    /// Registers the models.
+    /// Registers a <see cref="IModel">model</see>.
     /// </summary>
     /// <param name="viewModelType">The type of view model which is used as the key in the registry.</param>
     /// <param name="modelType">The type of the model which is used as the value in the registry.</param>
@@ -98,7 +87,7 @@ namespace TupleGeo.Apps.Presentation {
     /// must implement the <see cref="IModel"/> interface.
     /// </para>
     /// </remarks>
-    public static void RegisterModels(Type viewModelType, Type modelType) {
+    public void RegisterModel(Type viewModelType, Type modelType) {
 
       if (viewModelType == null) {
         throw new ArgumentNullException("viewModelType");
@@ -125,7 +114,16 @@ namespace TupleGeo.Apps.Presentation {
     /// </summary>
     /// <param name="viewType">The <see cref="Type"/> of the view.</param>
     /// <returns>An <see cref="IView"/> instance.</returns>
-    public static object GetSingletonView(Type viewType) {
+    public object GetSingletonView(Type viewType) {
+
+      if (viewType == null) {
+        throw new ArgumentNullException("viewType");
+      }
+
+      if (viewType.GetInterface("IView") == null) {
+        throw new ArgumentException("viewType must implement interface IView.", "viewType");
+      }
+
       // Check if a view instance already exists.
       if (!_singletonViewInstances.ContainsKey(viewType)) {
         // Create the view instance and add it in to the relevant dictionary.
@@ -134,6 +132,7 @@ namespace TupleGeo.Apps.Presentation {
 
       // Return the view instance.
       return _singletonViewInstances[viewType];
+
     }
 
     /// <summary>
@@ -142,8 +141,18 @@ namespace TupleGeo.Apps.Presentation {
     /// <param name="viewType">The <see cref="Type"/> of the view.</param>
     /// <returns>An <see cref="IView"/> instance.</returns>
     /// <remarks>This instance is not registered in the relevant dictionary.</remarks>
-    public static IView GetNewView(Type viewType) {
+    public IView GetNewView(Type viewType) {
+
+      if (viewType == null) {
+        throw new ArgumentNullException("viewType");
+      }
+
+      if (viewType.GetInterface("IView") == null) {
+        throw new ArgumentException("viewType must implement interface IView.", "viewType");
+      }
+
       return (IView)(Activator.CreateInstance(viewType));
+
     }
 
     /// <summary>
@@ -151,7 +160,16 @@ namespace TupleGeo.Apps.Presentation {
     /// </summary>
     /// <param name="viewType">The <see cref="Type"/> of the view.</param>
     /// <returns>An <see cref="IViewModel"/> instance.</returns>
-    public static IViewModel GetViewModel(Type viewType) {
+    public IViewModel GetViewModel(Type viewType) {
+
+      if (viewType == null) {
+        throw new ArgumentNullException("viewType");
+      }
+
+      if (viewType.GetInterface("IView") == null) {
+        throw new ArgumentException("viewType must implement interface IView.", "viewType");
+      }
+
       // Check if a view model instance already exists.
       if (!_viewModelInstances.ContainsKey(viewType)) {
         // Get the view model type from the relevant dictionary.
@@ -168,6 +186,7 @@ namespace TupleGeo.Apps.Presentation {
 
       // Return the view model instance.
       return _viewModelInstances[viewType];
+
     }
 
     #endregion

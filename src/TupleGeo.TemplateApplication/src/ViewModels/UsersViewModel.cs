@@ -49,7 +49,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
       AddUsers();
       
-      _userViewModel = (UserViewModel)(Catalog.GetViewModel(typeof(UserView)));
+      _userViewModel = (UserViewModel)(AppEngine.Instance.Catalog.GetViewModel(typeof(UserView)));
       
       this.Model.PropertyChanged += new PropertyChangedEventHandler(UsersModel_PropertyChanged);
 

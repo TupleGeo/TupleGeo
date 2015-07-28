@@ -141,7 +141,7 @@ namespace TupleGeo.Apps.Presentation {
     /// <param name="viewType">The <see cref="Type"/> of the view.</param>
     /// <returns>An <see cref="IView"/> instance.</returns>
     /// <remarks>This instance is not registered in the relevant dictionary.</remarks>
-    public IView GetNewView(Type viewType) {
+    public static IView GetNewView(Type viewType) {
 
       if (viewType == null) {
         throw new ArgumentNullException("viewType");

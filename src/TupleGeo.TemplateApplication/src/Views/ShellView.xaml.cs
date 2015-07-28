@@ -21,6 +21,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TupleGeo.Apps;
+using TupleGeo.TemplateApplication.Engine;
 
 #endregion
 
@@ -58,13 +59,17 @@ namespace TupleGeo.TemplateApplication.Views {
           //ShellViewModel shellViewModel = (ShellViewModel)((IViewModel)(Catalog.GetViewModel(this.GetType())));
           //this.DataContext = shellViewModel;
 
-          // The event procedures reside in to the viewmodel. Bind the view model event procedures here.
+          // The event procedures reside in to the viewmodel. Binding is performed by calling the
+          // 'SubscribeToEvents' method of the view model passing a dictionary of controls.
+          // Bind the view model event procedures here.
 
           // The dictionary of the controls needed to be observed by the viewmodel.
           //Dictionary<string, object> observedControlsDictionary = new Dictionary<string, object>();
           // Add the controls.
-          //observedControlsDictionary.Add(this.layoutGrid.Name, this.layoutGrid);
-
+          //observedControlsDictionary.Add(this.control1.Name, this.control1); // TODO: Change key and value here.
+          //observedControlsDictionary.Add(this.control2.Name, this.control2); // TODO: Change key and value here.
+          // ...
+          //observedControlsDictionary.Add(this.controlN.Name, this.controlN); // TODO: Change key and value here.
           // Call the SubscribeToEvents method of the viewmodel.
           //shellViewModel.SubscribeToEvents(observedControlsDictionary);
 
@@ -79,12 +84,12 @@ namespace TupleGeo.TemplateApplication.Views {
           //collectionViewSourcesDictionary.Add("collectionNViewSourceName", collectionNViewSource); // TODO: Change key and value here.
 
           // Set the collection view sources in the viewmodel.
-          //sampleViewModel.SetCollectionViewSources(collectionViewSourcesDictionary);
+          //shellViewModel.SetCollectionViewSources(collectionViewSourcesDictionary);
         }
       }
       catch (Exception ex) {
-        //AppEngine.Instance.LogError(ex, "ShellView - InitializeView()");
-        string error = "An Error has occurred during data binding in 'ShellView'\r\n\r\n" +
+        AppEngine.LogError(ex, "ShellView - InitializeView()");
+        string error = "An Error has occurred while binding to the view 'ShellView'\r\n\r\n" +
                        "Error Message: " + ex.Message + "\r\n\r\n";
         if (ex.InnerException != null) {
           error += string.Format(CultureInfo.InvariantCulture, "Inner Exception: {0}", ex.InnerException.Message);

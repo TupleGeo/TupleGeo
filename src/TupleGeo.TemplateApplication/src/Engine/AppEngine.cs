@@ -232,8 +232,7 @@ namespace TupleGeo.TemplateApplication.Engine {
     private void InitializeAppCatalog() {
       
       // Register all view models and models here:
-
-      
+            
       // Register ViewModels.
       _catalog.RegisterViewModel(typeof(UserView), typeof(UserViewModel));
       _catalog.RegisterViewModel(typeof(UsersView), typeof(UsersViewModel));

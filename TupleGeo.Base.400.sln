@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.TemplateApplication.400", "src\TupleGeo.TemplateApplication\src\TupleGeo.TemplateApplication.400.csproj", "{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.Tests.400", "src\TupleGeo.Apps.Presentation\tests\TupleGeo.Apps.Presentation.Tests.400.csproj", "{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug400|Any CPU = Debug400|Any CPU
@@ -87,6 +89,10 @@ Global
 		{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
 		{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
 		{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}.Release400|Any CPU.Build.0 = Release400|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Debug400|Any CPU.ActiveCfg = Debug400|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Debug400|Any CPU.Build.0 = Debug400|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Release400|Any CPU.ActiveCfg = Release400|Any CPU
+		{4D4A7F84-134E-4F5D-B9EC-1B216E8623C9}.Release400|Any CPU.Build.0 = Release400|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

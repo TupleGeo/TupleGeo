@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B3188DE-D91A-4963-B2FF-B18CD187BA6B}</ProjectGuid>
+    <ProjectGuid>{21C99ABD-41BF-4365-8A3D-399D76A6311B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TupleGeo.TemplateApplication</RootNamespace>
     <AssemblyName>TupleGeo.TemplateApplication</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -28,39 +28,40 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug400|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug460|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\..\bin\Any_CPU.Debug400\TupleGeo.TemplateApplication\</OutputPath>
+    <OutputPath>..\..\..\bin\Any_CPU.Debug460\TupleGeo.TemplateApplication\</OutputPath>
     <DefineConstants>TRACE;DEBUG;NONET350</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\bin\Any_CPU.Debug400\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Debug460\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release400|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release460|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\..\bin\Any_CPU.Release400\TupleGeo.TemplateApplication\</OutputPath>
+    <OutputPath>..\..\..\bin\Any_CPU.Release460\TupleGeo.TemplateApplication\</OutputPath>
     <DefineConstants>TRACE;NONET350</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\..\bin\Any_CPU.Release400\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release460\TupleGeo.TemplateApplication\TupleGeo.TemplateApplication.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
-    <Reference Include="System.Xml" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.xaml.cs">
@@ -70,8 +71,8 @@
     <Compile Include="Models\Application\ApplicationModel.cs" />
     <Compile Include="Models\SampleModel.cs" />
     <Compile Include="Models\ShellModel.cs" />
-    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Models\UsersModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -85,10 +86,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="ViewModels\SampleViewModel.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\UsersViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
+    <Compile Include="ViewModels\SampleViewModel.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\SampleView.xaml.cs">
       <DependentUpon>SampleView.xaml</DependentUpon>
     </Compile>
@@ -106,6 +107,8 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Configuration\ApplicationConfiguration.config" />
+    <None Include="Properties\DataSources\TupleGeo.TemplateApplication.Models.UserModel.datasource" />
+    <None Include="Properties\DataSources\TupleGeo.TemplateApplication.Models.UsersModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -135,17 +138,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.460.csproj">
       <Project>{dd20a19f-e078-4d99-9e48-234802d66219}</Project>
-      <Name>TupleGeo.Apps.Presentation.400</Name>
+      <Name>TupleGeo.Apps.Presentation.460</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.460.csproj">
       <Project>{8113a9a5-5588-459f-b6b2-2baddb2fce80}</Project>
-      <Name>TupleGeo.Apps.400</Name>
+      <Name>TupleGeo.Apps.460</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.400.csproj">
+    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.460.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
-      <Name>TupleGeo.General.400</Name>
+      <Name>TupleGeo.General.460</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -157,8 +160,8 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Page Include="Resources\Styles\ControlStylesResourceDictionary.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SampleView.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -169,17 +172,18 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\UsersView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\UserView.xaml">
-      <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Readme.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

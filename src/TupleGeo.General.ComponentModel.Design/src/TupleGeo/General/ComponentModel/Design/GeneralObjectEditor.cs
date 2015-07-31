@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing.Design;
 
-#if NET35
+#if NET350
 using System.Security.Permissions;
 #endif
 
@@ -35,7 +35,7 @@ namespace TupleGeo.General.ComponentModel.Design {
   /// <summary>
   /// A general editor used to edit an object using a property grid.
   /// </summary>
-#if NET35
+#if NET350
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
   public sealed class GeneralObjectEditor : UITypeEditor, IDisposable {
@@ -109,7 +109,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// Thrown when <paramref name="value"/> is not of the expected <see cref="Type"/>.
     /// </exception>
     /// <returns>The edited object.</returns>
-#if NET35
+#if NET350
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
     public override object EditValue(
@@ -181,7 +181,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// </summary>
     /// <param name="context">The ITypeDescriptorContext.</param>
     /// <returns>The UITypeEditorEditStyle.</returns>
-#if NET35
+#if NET350
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
     public override UITypeEditorEditStyle GetEditStyle(ITypeDescriptorContext context) {
@@ -195,7 +195,7 @@ namespace TupleGeo.General.ComponentModel.Design {
     /// <returns>
     /// A value indicating whether the paint value is supported or not.
     /// </returns>
-#if NET35
+#if NET350
     [PermissionSet(SecurityAction.LinkDemand, Name = "FullTrust")]
 #endif
     public override bool GetPaintValueSupported(System.ComponentModel.ITypeDescriptorContext context) {

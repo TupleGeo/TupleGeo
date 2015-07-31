@@ -96,7 +96,7 @@ namespace TupleGeo.TemplateApplication.Engine {
     /// <summary>
     /// Reads the configuration of the application from the configuration file.
     /// </summary>
-    public static void ReadConfiguration() {
+    public void ReadConfiguration() {
       string configFile = string.Format(
         CultureInfo.InvariantCulture,
         "{0}{1}",
@@ -234,8 +234,10 @@ namespace TupleGeo.TemplateApplication.Engine {
       // Register all view models and models here:
             
       // Register ViewModels.
+#if !NET350
       _catalog.RegisterViewModel(typeof(UserView), typeof(UserViewModel));
       _catalog.RegisterViewModel(typeof(UsersView), typeof(UsersViewModel));
+#endif
       _catalog.RegisterViewModel(typeof(SampleView), typeof(SampleViewModel));
       //_catalog.RegisterViewModel(typeof(Sample1View), typeof(Sample1ViewModel));
       //_catalog.RegisterViewModel(typeof(Sample2View), typeof(Sample2ViewModel));
@@ -243,8 +245,10 @@ namespace TupleGeo.TemplateApplication.Engine {
       _catalog.RegisterViewModel(typeof(ShellView), typeof(ShellViewModel));
 
       // Register Models.
+#if !NET350
       _catalog.RegisterModel(typeof(UserViewModel), typeof(UserModel));
       _catalog.RegisterModel(typeof(UsersViewModel), typeof(UsersModel));
+#endif
       _catalog.RegisterModel(typeof(SampleViewModel), typeof(SampleModel));
       //_catalog.RegisterModel(typeof(Sample1ViewModel), typeof(Sample1Model));
       //_catalog.RegisterModel(typeof(Sample2ViewModel), typeof(Sample2Model));

@@ -137,33 +137,33 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     private void AddUsers() {
       this.Model.Users.Add(new UserModel() {
         Age = 42,
-        Department = "CUPS",
-        Name = "Vasilis",
-        Surname = "Vlastaras"
+        Department = "Dept1",
+        Name = "John",
+        Surname = "Doe"
       });
       this.Model.Users.Add(new UserModel() {
         Age = 39,
-        Department = "Eratosthenes",
-        Name = "Konstantinos",
-        Surname = "Daras"
+        Department = "Dept2",
+        Name = "George",
+        Surname = "Foe"
       });
       this.Model.Users.Add(new UserModel() {
         Age = 30,
-        Department = "Eratosthenes",
-        Name = "Eleanna",
-        Surname = "Kalantidi"
+        Department = "Dept1",
+        Name = "Elena",
+        Surname = "Kala"
       });
       this.Model.Users.Add(new UserModel() {
         Age = 44,
-        Department = "Planning",
+        Department = "Dept1",
         Name = "Richard",
-        Surname = "Kingston"
+        Surname = "None"
       });
       this.Model.Users.Add(new UserModel() {
         Age = 35,
-        Department = "Home",
+        Department = "Dept2",
         Name = "Alexandra",
-        Surname = "Fomenko"
+        Surname = "Fun"
       });
     }
 

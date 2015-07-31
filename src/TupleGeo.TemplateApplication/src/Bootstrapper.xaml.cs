@@ -35,7 +35,7 @@ namespace TupleGeo.TemplateApplication {
 
       // TODO: Uncomment if saving the configuration is needed.
       //AppEngine.Instance.SaveConfiguration();
-
+      
     }
 
     /// <summary>
@@ -79,10 +79,10 @@ namespace TupleGeo.TemplateApplication {
     private void Initialize() {
 
       // Catch unhandled exceptions.
-      AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException); // Let's hope Dichpatcher unhandled exception is sufficient enough.
+      AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException); // Let's hope Dispatcher unhandled exception is sufficient enough.
 
       // Read the configuration file.
-      AppEngine.ReadConfiguration();
+      AppEngine.Instance.ReadConfiguration();
 
     }
 

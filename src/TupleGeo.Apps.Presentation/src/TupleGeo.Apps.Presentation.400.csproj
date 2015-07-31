@@ -53,6 +53,10 @@
     <Compile Include="TupleGeo\Apps\Presentation\Observers\WeakEventManagerBase`1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.400.csproj">
+      <Project>{8113a9a5-5588-459f-b6b2-2baddb2fce80}</Project>
+      <Name>TupleGeo.Apps.400</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.400.csproj">
       <Project>{e303f1f2-2643-4100-b4f9-0d6109669837}</Project>
       <Name>TupleGeo.General.400</Name>

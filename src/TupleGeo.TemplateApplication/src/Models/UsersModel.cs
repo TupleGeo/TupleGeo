@@ -7,11 +7,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using TupleGeo.General.ComponentModel;
 using TupleGeo.Apps;
-using System.Collections.ObjectModel;
+using TupleGeo.General.ComponentModel;
 
 #endregion
 

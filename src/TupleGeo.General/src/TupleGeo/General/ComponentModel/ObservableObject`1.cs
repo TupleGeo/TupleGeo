@@ -5,10 +5,12 @@
 // Description      : An object that its property value changes can be observed by other objects.
 // Created by       : 26/05/2011, 15:08, Vasilis Vlastaras.
 // Updated by       : 09/06/2011, 14:43, Vasilis Vlastaras. - Added overloaded OnPropertyChanged event procedure.
-// Version          : 1.0.1
+//                    17/05/2021, 12:11, Vasilis Vlastaras.
+//                    1.1.0 - Modernized OnPropertyChanged event procedures.
+// Version          : 1.1.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2011 - 2015.
+// Copyright        : TupleGeo, 2011 - 2021.
 // Comments         : 
 #endregion
 
@@ -44,6 +46,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="prop">The property.</param>
     protected virtual void OnPropertyChanged(Expression<Func<T, object>> prop) {
+
       if (prop == null || prop.Body == null) {
         return;
       }
@@ -62,10 +65,8 @@ namespace TupleGeo.General.ComponentModel {
       //var constantExpression = memberExpression.Expression as ConstantExpression;
       var propertyInfo = memberExpression.Member as PropertyInfo;
 
-      PropertyChangedEventHandler handler = PropertyChanged;
-      if (handler != null) {
-        handler(this, new PropertyChangedEventArgs(propertyInfo.Name));
-      }
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyInfo.Name));
+
     }
 
     /// <summary>
@@ -73,10 +74,7 @@ namespace TupleGeo.General.ComponentModel {
     /// </summary>
     /// <param name="propertyName">The property name.</param>
     protected virtual void OnPropertyChanged(string propertyName) {
-      PropertyChangedEventHandler handler = PropertyChanged;
-      if (handler != null) {
-        handler(this, new PropertyChangedEventArgs(propertyName));
-      }
+      PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
     #endregion

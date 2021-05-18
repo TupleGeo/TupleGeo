@@ -4,11 +4,11 @@
 // Member of        : TupleGeo.Apps.Presentation.dll
 // Description      : An object that its property value changes can be observed by other objects.
 // Created by       : 30/05/2012, 13:38
-// Updated by       : 
-// Version          : 1.0.0
+// Updated by       : 18/05/2021, 02:36 - 1.0.1 Minor changes.
+// Version          : 1.0.1
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2012 - 2015.
+// Copyright        : TupleGeo, 2012 - 2021.
 // Comments         : Code originally developed by Josh Smith, found at:
 //                    https://joshsmithonwpf.wordpress.com/2009/07/11/one-way-to-avoid-messy-propertychanged-event-handling/
 #endregion
@@ -173,10 +173,8 @@ namespace TupleGeo.Apps.Presentation.Observers {
             handled = true;
           }
           else {
-            Action<TPropertySource> handler;
-            if (_propertyNameToHandlerMap.TryGetValue(propertyName, out handler)) {
+            if (_propertyNameToHandlerMap.TryGetValue(propertyName, out Action<TPropertySource> handler)) {
               handler(propertySource);
-
               handled = true;
             }
           }

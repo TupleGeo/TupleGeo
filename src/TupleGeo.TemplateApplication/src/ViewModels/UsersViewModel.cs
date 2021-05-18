@@ -125,10 +125,9 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         }
       );
       // Add listeners here.
-      ((ActionCommand)this.DeleteUserCommand).AddListener<UsersModel>(this.Model, m => m.CurrentUser)
-                                             .AddListener<UsersModel>(this.Model, m => m.Users)
-                                             .AddObservableCollectionListener(this.Model.Users);
-
+      ((ActionCommand)this.DeleteUserCommand).AddPropertyChangedListener<UsersModel>(this.Model, m => m.CurrentUser)
+                                             .AddPropertyChangedListener<UsersModel>(this.Model, m => m.Users)
+                                             .AddCollectionChangedListener(this.Model.Users);
     }
 
     /// <summary>

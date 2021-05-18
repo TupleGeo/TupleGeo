@@ -1,0 +1,109 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31229.75
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documentation", "Documentation", "{22B48DD6-9972-44FF-B642-E7AE1A96D5C9}"
+	ProjectSection(SolutionItems) = preProject
+		TupleGeo.Base.460.Html.shfbproj = TupleGeo.Base.460.Html.shfbproj
+		TupleGeo.Base.460.Markdown.shfbproj = TupleGeo.Base.460.Markdown.shfbproj
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.480", "src\TupleGeo.Apps\src\TupleGeo.Apps.480.csproj", "{886882AC-E1D9-4D2A-9119-BDD67A41D267}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.480", "src\TupleGeo.Apps.Presentation\src\TupleGeo.Apps.Presentation.480.csproj", "{13D4019C-F840-4082-B11B-55D833A01222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Apps.Presentation.Tests.480", "src\TupleGeo.Apps.Presentation\tests\TupleGeo.Apps.Presentation.Tests.480.csproj", "{3D183BE5-B021-4882-8B18-9B1DB7EB6DCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.480", "src\TupleGeo.General\src\TupleGeo.General.480.csproj", "{C4A18DCD-5DA2-451F-B7D7-C9DC01336465}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Tests.480", "src\TupleGeo.General\tests\TupleGeo.General.Tests.480.csproj", "{F0828D4B-6190-4C23-9C28-1CE0D14A2655}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentModel.Design.480", "src\TupleGeo.General.ComponentModel.Design\src\TupleGeo.General.ComponentModel.Design.480.csproj", "{D735C373-4EF5-4AF6-A119-23C2BFF497BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.ComponentModel.Design.Tests.480", "src\TupleGeo.General.ComponentModel.Design\tests\TupleGeo.General.ComponentModel.Design.Tests.480.csproj", "{25FEBCEC-ADBB-4446-A023-775B45B1CB23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Text.Greek.480", "src\TupleGeo.General.Text.Greek\src\TupleGeo.General.Text.Greek.480.csproj", "{C0F9B277-73D3-469E-B5C1-5AAA3821B131}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Forms.480", "src\TupleGeo.General.Windows.Forms\src\TupleGeo.General.Windows.Forms.480.csproj", "{FBB0194A-D11D-4977-86C6-D81D7B083FF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.480", "src\TupleGeo.General.Windows.Presentation\src\TupleGeo.General.Windows.Presentation.480.csproj", "{D2A9C791-2CB3-4D79-A6FA-88D8BFA20CD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.General.Windows.Presentation.Tests.480", "src\TupleGeo.General.Windows.Presentation\tests\TupleGeo.General.Windows.Presentation.Tests.480.csproj", "{1A7BB578-AFEA-484B-8DBC-1E5F4E25E42F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Presentation.Forms.480", "src\TupleGeo.Presentation.Forms\src\TupleGeo.Presentation.Forms.480.csproj", "{FEDF9590-CF87-4D90-ADEA-FFD18C0AE76E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.Resources.480", "src\TupleGeo.Resources\src\TupleGeo.Resources.480.csproj", "{C3D60607-C580-46B8-A60A-0865167A29F9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TupleGeo.TemplateApplication.480", "src\TupleGeo.TemplateApplication\src\TupleGeo.TemplateApplication.480.csproj", "{ADAC6171-C07A-46E5-AF65-9E0D6D062A24}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug480|Any CPU = Debug480|Any CPU
+		Release480|Any CPU = Release480|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{886882AC-E1D9-4D2A-9119-BDD67A41D267}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{886882AC-E1D9-4D2A-9119-BDD67A41D267}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{886882AC-E1D9-4D2A-9119-BDD67A41D267}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{886882AC-E1D9-4D2A-9119-BDD67A41D267}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{13D4019C-F840-4082-B11B-55D833A01222}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{13D4019C-F840-4082-B11B-55D833A01222}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{13D4019C-F840-4082-B11B-55D833A01222}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{13D4019C-F840-4082-B11B-55D833A01222}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{3D183BE5-B021-4882-8B18-9B1DB7EB6DCE}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{3D183BE5-B021-4882-8B18-9B1DB7EB6DCE}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{3D183BE5-B021-4882-8B18-9B1DB7EB6DCE}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{3D183BE5-B021-4882-8B18-9B1DB7EB6DCE}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{C4A18DCD-5DA2-451F-B7D7-C9DC01336465}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{C4A18DCD-5DA2-451F-B7D7-C9DC01336465}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{C4A18DCD-5DA2-451F-B7D7-C9DC01336465}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{C4A18DCD-5DA2-451F-B7D7-C9DC01336465}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{F0828D4B-6190-4C23-9C28-1CE0D14A2655}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{F0828D4B-6190-4C23-9C28-1CE0D14A2655}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{F0828D4B-6190-4C23-9C28-1CE0D14A2655}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{F0828D4B-6190-4C23-9C28-1CE0D14A2655}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{D735C373-4EF5-4AF6-A119-23C2BFF497BC}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{D735C373-4EF5-4AF6-A119-23C2BFF497BC}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{D735C373-4EF5-4AF6-A119-23C2BFF497BC}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{D735C373-4EF5-4AF6-A119-23C2BFF497BC}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{25FEBCEC-ADBB-4446-A023-775B45B1CB23}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{25FEBCEC-ADBB-4446-A023-775B45B1CB23}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{25FEBCEC-ADBB-4446-A023-775B45B1CB23}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{25FEBCEC-ADBB-4446-A023-775B45B1CB23}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{C0F9B277-73D3-469E-B5C1-5AAA3821B131}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{C0F9B277-73D3-469E-B5C1-5AAA3821B131}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{C0F9B277-73D3-469E-B5C1-5AAA3821B131}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{C0F9B277-73D3-469E-B5C1-5AAA3821B131}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{FBB0194A-D11D-4977-86C6-D81D7B083FF7}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{FBB0194A-D11D-4977-86C6-D81D7B083FF7}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{FBB0194A-D11D-4977-86C6-D81D7B083FF7}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{FBB0194A-D11D-4977-86C6-D81D7B083FF7}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{D2A9C791-2CB3-4D79-A6FA-88D8BFA20CD8}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{D2A9C791-2CB3-4D79-A6FA-88D8BFA20CD8}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{D2A9C791-2CB3-4D79-A6FA-88D8BFA20CD8}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{D2A9C791-2CB3-4D79-A6FA-88D8BFA20CD8}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{1A7BB578-AFEA-484B-8DBC-1E5F4E25E42F}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{1A7BB578-AFEA-484B-8DBC-1E5F4E25E42F}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{1A7BB578-AFEA-484B-8DBC-1E5F4E25E42F}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{1A7BB578-AFEA-484B-8DBC-1E5F4E25E42F}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{FEDF9590-CF87-4D90-ADEA-FFD18C0AE76E}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{FEDF9590-CF87-4D90-ADEA-FFD18C0AE76E}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{FEDF9590-CF87-4D90-ADEA-FFD18C0AE76E}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{FEDF9590-CF87-4D90-ADEA-FFD18C0AE76E}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{C3D60607-C580-46B8-A60A-0865167A29F9}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{C3D60607-C580-46B8-A60A-0865167A29F9}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{C3D60607-C580-46B8-A60A-0865167A29F9}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{C3D60607-C580-46B8-A60A-0865167A29F9}.Release480|Any CPU.Build.0 = Release480|Any CPU
+		{ADAC6171-C07A-46E5-AF65-9E0D6D062A24}.Debug480|Any CPU.ActiveCfg = Debug480|Any CPU
+		{ADAC6171-C07A-46E5-AF65-9E0D6D062A24}.Debug480|Any CPU.Build.0 = Debug480|Any CPU
+		{ADAC6171-C07A-46E5-AF65-9E0D6D062A24}.Release480|Any CPU.ActiveCfg = Release480|Any CPU
+		{ADAC6171-C07A-46E5-AF65-9E0D6D062A24}.Release480|Any CPU.Build.0 = Release480|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E1CD6372-37E7-40FF-9662-11E6F22402E0}
+	EndGlobalSection
+EndGlobal

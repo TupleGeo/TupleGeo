@@ -34,15 +34,24 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="TupleGeo\Apps\AppCatalog.cs" />
+    <Compile Include="TupleGeo\Apps\AssociatedViewModelAttribute.cs" />
     <Compile Include="TupleGeo\Apps\IModel.cs" />
     <Compile Include="TupleGeo\Apps\IView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TupleGeo\Apps\IViewModel.cs" />
     <Compile Include="TupleGeo\Apps\Model.cs" />
+    <Compile Include="TupleGeo\Apps\ViewModel`1.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.480.csproj">
+      <Project>{c4a18dcd-5da2-451f-b7d7-c9dc01336465}</Project>
+      <Name>TupleGeo.General.480</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

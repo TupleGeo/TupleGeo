@@ -23,7 +23,7 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release480|AnyCPU'">
     <OutputPath>..\..\..\bin\Any_CPU.Release480\TupleGeo.Apps.Presentation\</OutputPath>
@@ -34,6 +34,8 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationFramework" />
@@ -43,15 +45,12 @@
   <ItemGroup>
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\AppCatalog.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\BaseViewModel`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Commands\ActionCommand.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\IViewModel.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\IViewModelMethods.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\Observers\IListeners`1.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\Observers\CentralizedObserver.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\Observers\ChangesObserver.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\Observers\IChangesObserverMethods`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\PropertyObserver`1.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\Observers\WeakEventManagerBase`1.cs" />
+    <Compile Include="TupleGeo\Apps\Presentation\Observers\WeakEventManager`1.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.480.csproj">

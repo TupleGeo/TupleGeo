@@ -1,53 +1,42 @@
 ﻿
 #region Header
-// Title Name       : ActionCommand.
+// Title Name       : ChangesObserver.
 // Member of        : TupleGeo.Apps.Presentation.dll
-// Description      : ActionCommand is a custom ICommand used in Model - View - ViewModel.
-// Created by       : 04/01/2012, 13:51, Vasilis Vlastaras.
-// Updated by       : 08/03/2012, 21:36, Vasilis Vlastaras.
-//                    1.0.1 - Added observed collection support.
-// Updated by       : 24/06/2015, 18:15, Vasilis Vlastaras.
-//                    1.0.2 - Changed AddListener<TEntity> and AddObservableCollectionListener<TEntity> methods.
-//                    19/05/2021, 20:58, Vasilis Vlastaras.
-//                    2.0.0 - Implemented the newly IObservationMethods<T> interface using as T the ActionCommand. 
-// Version          : 2.0.0
+// Description      : The ChangesObserver provides an abstract base observer that can be used to implement observers
+//                    to provide listeners/handlers for property and collection changes when there is a need
+//                    for these changes to be managed centrally.
+// Created by       : 19/05/2021, 20:51, Vasilis Vlastaras.
+// Updated by       : 
+// Version          : 1.0.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2012 - 2021.
+// Copyright        : TupleGeo, 2021.
 // Comments         : 
 #endregion
 
 #region Imported Namespaces
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Reflection;
+//using System.Linq.Expressions;
 using System.Runtime.CompilerServices; // TODO: ???
-using System.Text;
-using System.Windows.Input;
-using TupleGeo.Apps.Presentation.Observers;
-using TupleGeo.General.ComponentModel;
-using TupleGeo.General.Linq.Expressions;
+//using TupleGeo.General.Linq.Expressions;
 
 #endregion
 
-namespace TupleGeo.Apps.Presentation.Commands {
-  
+namespace TupleGeo.Apps.Presentation.Observers {
+
   /// <summary>
-  /// ActionCommand is a custom <see cref="ICommand"/> used in Model - View - ViewModel.
+  /// The ChangesObserver provides an abstract base observer that can be used to implement observers
+  /// to provide listeners/handlers for property and collection changes when there is a need
+  /// for these changes to be managed centrally.
   /// </summary>
-  public sealed class ActionCommand : ICommand, IChangesObserverMethods<ActionCommand> {
+  public abstract class CentralizedChangesObserver : IChangesObserverMethods<CentralizedChangesObserver> {
 
-    #region Member Variables
-
-    private readonly Func<object, bool> _canExecuteFunction;
-    private readonly Action<object> _executeAction;
-
+    #region Imported Namespaces
+    
     private readonly WeakEventManager<PropertyChangedEventArgs> _weakPropertyChangedEventManager;
     private readonly WeakEventManager<NotifyCollectionChangedEventArgs> _weakCollectionChangedEventManager;
 
@@ -56,15 +45,11 @@ namespace TupleGeo.Apps.Presentation.Commands {
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the <see cref="ActionCommand"/>.
+    /// Initializes the <see cref="CentralizedChangesObserver"/>.
     /// </summary>
-    /// <param name="executeAction">The action to be executed.</param>
-    /// <param name="canExecuteFunction">The function which determines if the action can be executed.</param>
-    public ActionCommand(Action<object> executeAction, Func<object, bool> canExecuteFunction) {
-      this._executeAction = executeAction;
-      this._canExecuteFunction = canExecuteFunction;
-      this._weakPropertyChangedEventManager = new WeakEventManager<PropertyChangedEventArgs>(RequeryCanExecute);
-      this._weakCollectionChangedEventManager = new WeakEventManager<NotifyCollectionChangedEventArgs>(RequeryCanExecute);
+    public CentralizedChangesObserver() {
+      this._weakPropertyChangedEventManager = new WeakEventManager<PropertyChangedEventArgs>(OnPropertyChanged);
+      this._weakCollectionChangedEventManager = new WeakEventManager<NotifyCollectionChangedEventArgs>(OnCollectionChanged);
     }
 
     #endregion
@@ -72,10 +57,23 @@ namespace TupleGeo.Apps.Presentation.Commands {
     #region Public Methods
 
     /// <summary>
-    /// Fires when <see cref="ActionCommand.CanExecute">CanExecute</see> has been changed.
+    /// <para>Fires when a property has been changed.</para>
+    /// <para>Override this to listen to property changes and to provide custom reaction logic to these changes.</para>
     /// </summary>
-    public void OnCanExecuteChanged() {
-      CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
+    public virtual void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+      
+    }
+
+    /// <summary>
+    /// <para>Fires when a collection has been changed.</para>
+    /// <para>Override this to listen to property changes and to provide custom reaction logic to these changes.</para>
+    /// </summary>
+    /// <param name="sender">The sender of the event.</param>
+    /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
+    public virtual void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
+      
     }
 
     #endregion
@@ -88,7 +86,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The PropertyChangedEventArgs.</param>
     private void ObservableObject_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-      RequeryCanExecute(sender);
+      OnPropertyChanged(sender, e);
     }
 
     /// <summary>
@@ -97,75 +95,12 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="sender">The sender of the event.</param>
     /// <param name="e">The NotifyCollectionChangedEventArgs.</param>
     private void ObservableCollection_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e) {
-      RequeryCanExecute(sender);
+      OnCollectionChanged(sender, e);
     }
 
     #endregion
 
-    #region Private Procedures
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA1801:ReviewUnusedParameters", MessageId = "sender")]
-    private void RequeryCanExecute(object sender) {
-      OnCanExecuteChanged();
-    }
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="propertyChangedEventArgs">The PropertyChangedEventArgs.</param>
-    private void RequeryCanExecute(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
-      OnCanExecuteChanged();
-    }
-
-    /// <summary>
-    /// Re-queries whether the command can execute or not.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="notifyCollectionChangedEventArgs">The NotifyCollectionChangedEventArgs.</param>
-    private void RequeryCanExecute(object sender, NotifyCollectionChangedEventArgs notifyCollectionChangedEventArgs) {
-      OnCanExecuteChanged();
-    }
-
-    #endregion
-
-    #region ICommand Members
-
-    /// <summary>
-    /// Indicates whether the command can execute or not.
-    /// </summary>
-    /// <param name="parameter">The parameter of the command.</param>
-    /// <returns>A value indicating whether the command can execute or not.</returns>
-    public bool CanExecute(object parameter) {
-
-      if (_canExecuteFunction == null) {
-        return false;
-      }
-
-      return _canExecuteFunction(parameter);
-
-    }
-
-    /// <summary>
-    /// Fires when the <see cref="ActionCommand.CanExecute">CanExecute</see> has been changed.
-    /// </summary>
-    public event EventHandler CanExecuteChanged;
-
-    /// <summary>
-    /// Executes the command.
-    /// </summary>
-    /// <param name="parameter">The parameter of the command.</param>
-    public void Execute(object parameter) {
-      _executeAction?.Invoke(parameter);
-    }
-
-    #endregion
-
-    #region IListeners<CentralizedChangesObserver> Members
+    #region IObservationMethods<CentralizedChangesObserver> Members
 
     ///// <summary>
     ///// Adds a weak listener to the property of an object that implements the <see cref="INotifyPropertyChanged"/> interface.
@@ -173,9 +108,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     ///// <typeparam name="TModel">The entity used.</typeparam>
     ///// <param name="source">The source of the property that has been changed.</param>
     ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    ///// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    ///// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    //public CentralizedChangesObserver AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
     //  string propertyName = Prop.GetPropertyName<TModel>(property);
     //  PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, propertyName);
@@ -190,9 +125,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     ///// <typeparam name="TModel">The entity used.</typeparam>
     ///// <param name="source">The source of the property that has been changed.</param>
     ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    ///// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    ///// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    //public CentralizedChangesObserver RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
     //  string propertyName = Prop.GetPropertyName<TModel>(property);
     //  PropertyChangedEventManager.RemoveListener(source, _weakPropertyChangedEventManager, propertyName);
@@ -207,9 +142,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedListener<TModel>(INotifyPropertyChanged source,  [CallerMemberName] string propertyName = "") where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = "") where TModel : IModel {
 
       PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, propertyName);
 
@@ -223,9 +158,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = "") where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = "") where TModel : IModel {
 
       PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, propertyName);
 
@@ -238,10 +173,10 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// </summary>
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedListener<TModel>(INotifyPropertyChanged source) where TModel : IModel {
-
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddPropertyChangedListener<TModel>(INotifyPropertyChanged source) where TModel : IModel {
+      
       PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, string.Empty);
 
       return this;
@@ -253,9 +188,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// </summary>
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source) where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source) where TModel : IModel {
 
       PropertyChangedEventManager.RemoveListener(source, _weakPropertyChangedEventManager, string.Empty);
 
@@ -269,9 +204,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     ///// <typeparam name="TModel">The entity used.</typeparam>
     ///// <param name="source">The source of the property that has been changed.</param>
     ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    ///// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    ///// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    //public CentralizedChangesObserver AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
     //  string propertyName = Prop.GetPropertyName<TModel>(property);
     //  PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, propertyName);
@@ -286,9 +221,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     ///// <typeparam name="TModel">The entity used.</typeparam>
     ///// <param name="source">The source of the property that has been changed.</param>
     ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    ///// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    ///// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    //public CentralizedChangesObserver RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
     //  string propertyName = Prop.GetPropertyName<TModel>(property);
     //  PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, propertyName);
@@ -303,9 +238,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = "") where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source,  [CallerMemberName] string propertyName = "") where TModel : IModel {
 
       PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, propertyName);
 
@@ -319,9 +254,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = "") where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source,  [CallerMemberName] string propertyName = "") where TModel : IModel {
 
       PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, propertyName);
 
@@ -334,9 +269,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// </summary>
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source) where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source) where TModel : IModel {
 
       PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, string.Empty);
 
@@ -349,9 +284,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// </summary>
     /// <typeparam name="TModel">The entity used.</typeparam>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source) where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source) where TModel : IModel {
 
       PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, string.Empty);
 
@@ -363,9 +298,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Adds a weak listener to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddCollectionChangedListener(INotifyCollectionChanged source) {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddCollectionChangedListener(INotifyCollectionChanged source) {
 
       CollectionChangedEventManager.AddListener(source, _weakCollectionChangedEventManager);
 
@@ -377,9 +312,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Removes a weak listener from a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemoveCollectionChangedListener(INotifyCollectionChanged source) {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemoveCollectionChangedListener(INotifyCollectionChanged source) {
 
       CollectionChangedEventManager.RemoveListener(source, _weakCollectionChangedEventManager);
 
@@ -391,9 +326,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Adds an event handler to a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddCollectionChangedHandler(INotifyCollectionChanged source) {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddCollectionChangedHandler(INotifyCollectionChanged source) {
 
       CollectionChangedEventManager.AddHandler(source, ObservableCollection_CollectionChanged);
 
@@ -405,9 +340,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// Removes an event handler from a collection implementing the <see cref="INotifyCollectionChanged"/>.
     /// </summary>
     /// <param name="source">The source of the property that has been changed.</param>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemoveCollectionChangedHandler(INotifyCollectionChanged source) {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemoveCollectionChangedHandler(INotifyCollectionChanged source) {
 
       CollectionChangedEventManager.RemoveHandler(source, ObservableCollection_CollectionChanged);
 
@@ -423,9 +358,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <exception cref="ArgumentNullException">
     /// Thrown when <paramref name="observableCollection"/> is <c>null</c>.
     /// </exception>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddObservableCollectionChangedHandler<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver AddObservableCollectionChangedHandler<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel {
 
       CollectionChangedEventManager.AddHandler(observableCollection, ObservableCollection_CollectionChanged);
 
@@ -441,9 +376,9 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <exception cref="ArgumentNullException">
     /// Thrown when <paramref name="observableCollection"/> is <c>null</c>.
     /// </exception>
-    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemoveObservableCollectionChangedHandler<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel {
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="CentralizedChangesObserver"/> methods.</remarks>
+    /// <returns>Itself (<see cref="CentralizedChangesObserver"/>).</returns>
+    public CentralizedChangesObserver RemoveObservableCollectionChangedHandler<TModel>(ObservableCollection<TModel> observableCollection) where TModel : IModel {
 
       CollectionChangedEventManager.RemoveHandler(observableCollection, ObservableCollection_CollectionChanged);
 

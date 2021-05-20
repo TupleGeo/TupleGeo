@@ -62,6 +62,7 @@
     <Compile Include="TupleGeo\General\Attributes\ResourceDescriptionAttribute.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\EnumDescriptionConverter.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\EnumNameDescriptionPair.cs" />
+    <Compile Include="TupleGeo\General\ComponentModel\ObservableObject.cs" />
     <Compile Include="TupleGeo\General\ComponentModel\ObservableObject`1.cs" />
     <Compile Include="TupleGeo\General\Data\FilterType.cs" />
     <None Include="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />

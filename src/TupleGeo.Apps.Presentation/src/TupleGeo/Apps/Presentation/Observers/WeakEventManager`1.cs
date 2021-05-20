@@ -1,14 +1,15 @@
 ﻿
 #region Header
-// Title Name       : WeakEventManagerBase<TEventArgs>.
+// Title Name       : WeakEventManager<TEventArgs>.
 // Member of        : TupleGeo.Apps.Presentation.dll
-// Description      : The base class for a WeakEventManager.
-// Created by       : 31/05/2012, 12:58, 
-// Updated by       : 
-// Version          : 1.0.0
+// Description      : The WeakEventManager provides a way to take advantage of the weak event patttern.
+// Created by       : 31/05/2012, 12:58, Vasilis Vlastaras.
+// Updated by       : 18/05/2021, 20:18, Vasilis Vlastaras.
+//                    2.0.0 - Changed the name of the class and polished it a bit.
+// Version          : 2.0.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2012 - 2015.
+// Copyright        : TupleGeo, 2012 - 2021.
 // Comments         : 
 #endregion
 
@@ -25,30 +26,26 @@ using System.Windows;
 namespace TupleGeo.Apps.Presentation.Observers {
 
   /// <summary>
-  /// The base class for a WeakEventManager.
+  /// The WeakEventManager provides a way to take advantage of the weak event pattern.
   /// </summary>
   /// <typeparam name="TEventArgs">The event arguments.</typeparam>
-  public sealed class WeakEventManagerBase<TEventArgs> : IWeakEventListener where TEventArgs : EventArgs {
+  public sealed class WeakEventManager<TEventArgs> : IWeakEventListener where TEventArgs : EventArgs {
 
     #region Member Variables
 
-    private readonly EventHandler<TEventArgs> realHandler;
-
+    private readonly EventHandler<TEventArgs> _handler;
+    
     #endregion
 
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="WeakEventManagerBase{TEventArgs}"/>.
+    /// Initializes a new instance of the <see cref="WeakEventManager{TEventArgs}"/> of <typeparamref name="TEventArgs"/>.
     /// </summary>
     /// <param name="handler">The handler for the event.</param>
     /// <exception cref="ArgumentNullException">Thrown when <paramref name="handler"/> is <c>null</c>.</exception>
-    public WeakEventManagerBase(EventHandler<TEventArgs> handler) {
-      if (handler == null) {
-        throw new ArgumentNullException("handler");
-      }
-      
-      realHandler = handler;
+    public WeakEventManager(EventHandler<TEventArgs> handler) {
+      _handler = handler ?? throw new ArgumentNullException("handler");
     }
 
     #endregion
@@ -70,11 +67,13 @@ namespace TupleGeo.Apps.Presentation.Observers {
     /// if it receives an event that it does not recognize or handle.
     /// </remarks>
     bool IWeakEventListener.ReceiveWeakEvent(Type managerType, object sender, EventArgs e) {
-      TEventArgs realArgs = (TEventArgs)e;
       
-      realHandler(sender, realArgs);
+      TEventArgs args = (TEventArgs)e;
+      
+      _handler(sender, args);
 
       return true;
+
     }
 
     #endregion

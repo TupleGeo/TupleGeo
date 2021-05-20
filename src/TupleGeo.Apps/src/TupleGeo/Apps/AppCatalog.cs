@@ -1,14 +1,15 @@
 ﻿
 #region Header
 // Title Name       : AppCatalog
-// Member of        : TupleGeo.Apps.Presentation.dll
+// Member of        : TupleGeo.Apps.dll
 // Description      : The application catalog provides a registry of models, views and viewmodels.
-// Created by       : 27/07/2015, 19:32, 
-// Updated by       : 
-// Version          : 1.0.0
+// Created by       : 27/07/2015, 19:32, Vasilis Vlastaras.
+// Updated by       : 19/05/2021, 17:26, Vasilis Vlastaras.
+//                    1.1.0 - Moved the class from assembly TupleGeo.Apps.Presentation.dll
+// Version          : 1.1.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
-// Copyright        : TupleGeo, 2015.
+// Copyright        : TupleGeo, 2015 - 2021.
 // Comments         : 
 #endregion
 
@@ -17,13 +18,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using TupleGeo.Apps;
-using TupleGeo.Apps.Presentation;
+using System.Reflection;
 
 #endregion
 
-namespace TupleGeo.Apps.Presentation {
+namespace TupleGeo.Apps {
 
   /// <summary>
   /// The application catalog provides a registry of models, views and viewmodels.
@@ -40,6 +39,27 @@ namespace TupleGeo.Apps.Presentation {
     #endregion
 
     #region Public Methods
+
+
+    public void RegisterViews(Assembly assembly) {
+
+      IEnumerable<Type> types = assembly.GetTypes().ToList();
+
+      foreach (Type type in types) {
+
+        if (type.FindInterfaces())
+
+      }
+      
+
+
+
+    
+    }
+
+
+
+
 
     /// <summary>
     /// Registers a <see cref="IViewModel">view model</see>.

@@ -21,7 +21,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// The model used by the shell.
   /// </summary>
-  public sealed class ShellModel : ObservableObject<ShellModel>, IModel {
+  public sealed class ShellModel : ObservableObject, IModel {
 
     #region Constructors - Destructors
 

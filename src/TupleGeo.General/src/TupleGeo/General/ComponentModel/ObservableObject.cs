@@ -32,6 +32,7 @@ namespace TupleGeo.General.ComponentModel {
     /// Called when a property value changes.
     /// </summary>
     /// <param name="propertyName">The name of the property that has been changed.</param>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1026:DefaultParametersShouldNotBeUsed")]
     protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) {
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }

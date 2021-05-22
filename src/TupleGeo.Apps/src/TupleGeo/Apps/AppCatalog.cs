@@ -6,7 +6,9 @@
 // Created by       : 27/07/2015, 19:32, Vasilis Vlastaras.
 // Updated by       : 19/05/2021, 17:26, Vasilis Vlastaras.
 //                    1.1.0 - Moved the class from assembly TupleGeo.Apps.Presentation.dll
-// Version          : 1.1.0
+//                  : 22/05/2021, 02:44, Vasilis Vlastaras.
+//                    2.0.0 - Extensive rewrite of the AppCatalog class.
+// Version          : 2.0.0
 // Contact Details  : TupleGeo.
 // License          : Apache License.
 // Copyright        : TupleGeo, 2015 - 2021.
@@ -17,7 +19,7 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Globalization;
 using System.Reflection;
 
 #endregion
@@ -31,101 +33,69 @@ namespace TupleGeo.Apps {
 
     #region Member Variables
 
-    private Dictionary<Type, Type> _mappedViewModels = new Dictionary<Type,Type>(); // view type, view model type.
-    private Dictionary<Type, IViewModel> _viewModelInstances = new Dictionary<Type,IViewModel>(); // view type, IViewModel instance.
-    private Dictionary<Type, Type> _mappedModels = new Dictionary<Type,Type>(); // view model type, model type.
-    private Dictionary<Type, IView> _singletonViewInstances = new Dictionary<Type,IView>(); // view type, IView instance.
+    private readonly Dictionary<Type, MovelViewBinderRecord> _modelViewBinderDictionary =
+      new Dictionary<Type, MovelViewBinderRecord>();
+
+    private readonly Dictionary<Type, IView> _singletonViewInstances = new Dictionary<Type, IView>();
 
     #endregion
 
     #region Public Methods
 
-
-    public void RegisterViews(Assembly assembly) {
-
-      IEnumerable<Type> types = assembly.GetTypes().ToList();
-
-      foreach (Type type in types) {
-
-        if (type.FindInterfaces())
-
-      }
-      
-
-
-
-    
-    }
-
-
-
-
-
     /// <summary>
-    /// Registers a <see cref="IViewModel">view model</see>.
+    /// Creates an instance of <see cref="IViewModel"/>.
     /// </summary>
-    /// <param name="viewType">The type of the view which is used as the key in the registry.</param>
-    /// <param name="viewModelType">The type of the viewmodel which is used as the value in the registry.</param>
-    /// <remarks>
-    /// <para>Types of view models are registered using a dictionary having the types of views as keys.</para>
-    /// <para>
-    /// The view must implement the <see cref="IView"/> interface and the view model
-    /// must implement the <see cref="IViewModel"/> interface.
-    /// </para>
-    /// </remarks>
-    public void RegisterViewModel(Type viewType, Type viewModelType) {
+    /// <param name="viewType">The <see cref="Type"/> of the view.</param>
+    /// <returns>An <see cref="IViewModel"/> instance.</returns>
+    public IViewModel InstantiateViewModel(Type viewType) {
+
+      // Check if a valid viewType has been passed.
 
       if (viewType == null) {
         throw new ArgumentNullException("viewType");
       }
 
-      if (viewModelType == null) {
-        throw new ArgumentNullException("viewModelType");
+      if (viewType.GetInterface("IView") == typeof(IView)) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IView interface", viewType.Name)
+        );
       }
 
-      if (viewType.GetInterface("IView") == null) {
-        throw new ArgumentException("viewType must implement interface IView.", "viewType");
+      // Get the type of the view model associated with the view.
+
+      AssociatedViewModelAttribute viewModelAttribute =
+        (AssociatedViewModelAttribute)viewType.GetCustomAttribute(typeof(AssociatedViewModelAttribute));
+
+      Type viewModelType = viewModelAttribute.ViewModelType;
+
+      // Get the type of the model associated with the view model.
+
+      Type[] genericTypeArguments = viewModelType.GenericTypeArguments;
+
+      if (genericTypeArguments.Length != 1) {
+        throw new TypeLoadException(
+          string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid number of arguments; must be only one", viewModelType.Name)
+        );
       }
 
-      if (viewModelType.GetInterface("IViewModel") == null) {
-        throw new ArgumentException("viewModelType must implement interface IViewModel.", "viewType");
-      }
-      
-      _mappedViewModels.Add(viewType, viewModelType);
+      Type modelType = genericTypeArguments[0];
 
-    }
-
-    /// <summary>
-    /// Registers a <see cref="IModel">model</see>.
-    /// </summary>
-    /// <param name="viewModelType">The type of view model which is used as the key in the registry.</param>
-    /// <param name="modelType">The type of the model which is used as the value in the registry.</param>
-    /// <remarks>
-    /// <para>Types of models are registered using a dictionary having the types of view models as keys.</para>
-    /// <para>
-    /// The view model must implement the <see cref="IViewModel"/> interface and the model
-    /// must implement the <see cref="IModel"/> interface.
-    /// </para>
-    /// </remarks>
-    public void RegisterModel(Type viewModelType, Type modelType) {
-
-      if (viewModelType == null) {
-        throw new ArgumentNullException("viewModelType");
+      if (modelType.GetInterface("IModel") == typeof(IModel)) {
+        throw new TypeLoadException(
+          string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name)
+        );
       }
 
-      if (modelType == null) {
-        throw new ArgumentNullException("modelType");
+      // Register the model, view, and view model.
+      if (!_modelViewBinderDictionary.ContainsKey(viewType)) {
+        _modelViewBinderDictionary.Add(viewType, new MovelViewBinderRecord(modelType, viewType, viewModelType));
       }
 
-      if (viewModelType.GetInterface("IViewModel") == null) {
-        throw new ArgumentException("viewModelType must implement interface IViewModel.", "viewModelType");
-      }
+      // Create the constructor parameters for the view model.
+      object[] constructorParams = new object[1] { Activator.CreateInstance(modelType) };
 
-      if (modelType.GetInterface("IModel") == null) {
-        throw new ArgumentException("modelType must implement interface IModel.", "modelType");
-      }
-      
-      _mappedModels.Add(viewModelType, modelType);
+      // Create the view model instance and return it to the caller.
+      return (IViewModel)(Activator.CreateInstance(viewModelType, constructorParams));
 
     }
 
@@ -175,41 +145,71 @@ namespace TupleGeo.Apps {
 
     }
 
+    #endregion
+
     /// <summary>
-    /// Gets the view model associated with the specified view type;
+    /// The class used to register all the triplets if Model, View and Binder (ViewModel).
     /// </summary>
-    /// <param name="viewType">The <see cref="Type"/> of the view.</param>
-    /// <returns>An <see cref="IViewModel"/> instance.</returns>
-    public IViewModel GetViewModel(Type viewType) {
+    private class MovelViewBinderRecord {
 
-      if (viewType == null) {
-        throw new ArgumentNullException("viewType");
+      #region Constructors - Destructors
+
+      /// <summary>
+      /// Initializes the <see cref="MovelViewBinderRecord"/>.
+      /// </summary>
+      public MovelViewBinderRecord(Type modelType, Type viewType, Type viewModelType) {
+
+        if (modelType.GetInterface("IModel") == typeof(IModel)) {
+          throw new ArgumentException(
+            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name)
+          );
+        }
+        this.ModelType = modelType;
+
+        if (viewType.GetInterface("IView") == typeof(IView)) {
+          throw new ArgumentException(
+            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IView interface", viewType.Name)
+          );
+        }
+        this.ViewType = viewType;
+
+        if (viewModelType.GetInterface("IViewModel") == typeof(IView)) {
+          throw new ArgumentException(
+            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IViewModel interface", viewModelType.Name)
+          );
+        }
+        this.ViewModelType = viewModelType;
+
       }
 
-      if (viewType.GetInterface("IView") == null) {
-        throw new ArgumentException("viewType must implement interface IView.", "viewType");
+      #endregion
+
+      #region Properties
+
+      /// <summary>
+      /// Gets the type of the model.
+      /// </summary>
+      public Type ModelType {
+        get; private set;
       }
 
-      // Check if a view model instance already exists.
-      if (!_viewModelInstances.ContainsKey(viewType)) {
-        // Get the view model type from the relevant dictionary.
-        Type viewModelType = _mappedViewModels[viewType];
-        // Get the model type from the relevant dictionary.
-        Type modelType = _mappedModels[viewModelType];
-
-        // Create the constructor parameters for the view model.
-        object[] constructorParams = new object[1] { Activator.CreateInstance(modelType) };
-
-        // Create the view model instance and add it in to the relevant dictionary.
-        _viewModelInstances.Add(viewType, (IViewModel)(Activator.CreateInstance(viewModelType, constructorParams)));
+      /// <summary>
+      /// Gets the type of the view.
+      /// </summary>
+      public Type ViewType {
+        get; private set;
       }
 
-      // Return the view model instance.
-      return _viewModelInstances[viewType];
+      /// <summary>
+      /// Gets the type of the view model.
+      /// </summary>
+      public Type ViewModelType {
+        get; private set;
+      }
+
+      #endregion
 
     }
-
-    #endregion
 
   }
 

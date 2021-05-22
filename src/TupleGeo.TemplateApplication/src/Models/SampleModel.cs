@@ -19,7 +19,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// 
   /// </summary>
-  public sealed class SampleModel : ObservableObject<SampleModel>, IModel {
+  public sealed class SampleModel : ObservableObject, IModel {
 
     #region Member Variables
 
@@ -37,6 +37,51 @@ namespace TupleGeo.TemplateApplication.Models {
     #endregion
 
     #region Public Properties
+
+    private int _property1;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public int Property1 {
+      get {
+        return _property1;
+      }
+      set {
+        _property1 = value;
+        OnPropertyChanged();
+      }
+    }
+
+    private int _property2;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public int Property2 {
+      get {
+        return _property2;
+      }
+      set {
+        _property2 = value;
+        OnPropertyChanged();
+      }
+    }
+
+    private string _property3;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public string Property3 {
+      get {
+        return _property3;
+      }
+      set {
+        _property3 = value;
+        OnPropertyChanged();
+      }
+    }
 
     #endregion
 

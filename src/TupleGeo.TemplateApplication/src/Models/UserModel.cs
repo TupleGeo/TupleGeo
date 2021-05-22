@@ -19,7 +19,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// The model that describes a user.
   /// </summary>
-  public sealed class UserModel : ObservableObject<UserModel>, IModel {
+  public sealed class UserModel : ObservableObject, IModel {
 
     #region Member Variables
 
@@ -63,7 +63,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_name != value) {
           _name = value;
-          this.OnPropertyChanged(m => m.Name);
+          OnPropertyChanged();
         }
       }
     }
@@ -80,7 +80,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_surname != value) {
           _surname = value;
-          this.OnPropertyChanged(m => m.Surname);
+          OnPropertyChanged();
         }
       }
     }
@@ -97,7 +97,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_age != value) {
           _age = value;
-          this.OnPropertyChanged(m => m.Age);
+          OnPropertyChanged();
         }
       }
     }
@@ -114,7 +114,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_department != value) {
           _department = value;
-          this.OnPropertyChanged(m => m.Department);
+          OnPropertyChanged();
         }
       }
     }

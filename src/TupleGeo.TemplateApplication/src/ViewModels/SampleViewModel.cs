@@ -23,7 +23,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The view model used by the <see cref="Views.SampleView">SampleView</see>.
   /// </summary>
-  public sealed class SampleViewModel : BaseViewModel<SampleModel>, IViewModelMethods {
+  public sealed class SampleViewModel : ViewModel<SampleModel>, IViewModelMethods {
 
     #region Member Variables
 
@@ -132,8 +132,9 @@ namespace TupleGeo.TemplateApplication.ViewModels {
         }
       );
       // Add listeners here.
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property1);
-      //((SampleCommand)this.Command1Command).AddListener<SampleModel>(this.Model, m => m.Property2);
+
+      ((ActionCommand)this.Command1Command).AddPropertyChangedListener<SampleModel>(this.Model, m => m.Property1);
+      ((ActionCommand)this.Command1Command).AddPropertyChangedListener<SampleModel>(this.Model, m => m.Property2);
       //((SampleCommand)this.Command1Command).AddObservableCollectionListener<SampleModel>(this.Model.ObservableCollection1);
 
       // Command2Command.

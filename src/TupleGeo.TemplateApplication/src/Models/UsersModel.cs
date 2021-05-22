@@ -20,7 +20,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// The model that describes a user.
   /// </summary>
-  public sealed class UsersModel : ObservableObject<UsersModel>, IModel {
+  public sealed class UsersModel : ObservableObject, IModel {
 
     #region Member Variables
 
@@ -62,7 +62,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_currentUser != value) {
           _currentUser = value;
-          this.OnPropertyChanged(m => m.CurrentUser);
+          OnPropertyChanged();
         }
       }
     }

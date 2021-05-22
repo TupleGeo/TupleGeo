@@ -22,7 +22,7 @@ namespace TupleGeo.TemplateApplication.Models.Application {
   /// </summary>
   [SerializableAttribute()]
   [XmlRootAttribute(Namespace = "urn:TupleGeo.TemplateApplication.Models", ElementName = "applicationConfiguration")]
-  public sealed class ApplicationModel : ObservableObject<ApplicationModel>, IModel {
+  public sealed class ApplicationModel : ObservableObject, IModel {
 
     #region Constructors - Destructors
 
@@ -55,7 +55,6 @@ namespace TupleGeo.TemplateApplication.Models.Application {
       set {
         if (_caption != value) {
           _caption = value;
-          this.OnPropertyChanged(m => m.Caption);
         }
       }
     }

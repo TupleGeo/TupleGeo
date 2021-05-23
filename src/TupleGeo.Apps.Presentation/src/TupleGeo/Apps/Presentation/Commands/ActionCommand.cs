@@ -8,7 +8,7 @@
 //                    1.0.1 - Added observed collection support.
 // Updated by       : 24/06/2015, 18:15, Vasilis Vlastaras.
 //                    1.0.2 - Changed AddListener<TEntity> and AddObservableCollectionListener<TEntity> methods.
-//                    19/05/2021, 20:58, Vasilis Vlastaras.
+//                    22/05/2021, 15:45, Vasilis Vlastaras.
 //                    2.0.0 - Implemented the newly IObservationMethods<T> interface using as T the ActionCommand. 
 // Version          : 2.0.0
 // Contact Details  : TupleGeo.
@@ -20,18 +20,12 @@
 #region Imported Namespaces
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
-//using System.Runtime.CompilerServices; // TODO: ???
-using System.Text;
 using System.Windows.Input;
 using TupleGeo.Apps.Presentation.Observers;
-using TupleGeo.General.ComponentModel;
 using TupleGeo.General.Linq.Expressions;
 
 #endregion
@@ -209,7 +203,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
     /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
     /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = null) where TModel : IModel {
+    public ActionCommand AddPropertyChangedListener<TModel>(INotifyPropertyChanged source, string propertyName) where TModel : IModel {
 
       PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, propertyName);
 
@@ -225,7 +219,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
     /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
     /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = null) where TModel : IModel {
+    public ActionCommand RemovePropertyChangedListener<TModel>(INotifyPropertyChanged source, string propertyName) where TModel : IModel {
 
       PropertyChangedEventManager.AddListener(source, _weakPropertyChangedEventManager, propertyName);
 
@@ -263,39 +257,39 @@ namespace TupleGeo.Apps.Presentation.Commands {
 
     }
 
-    ///// <summary>
-    ///// Adds an event handler to the property of an object that implement the <see cref="INotifyPropertyChanged"/> interface.
-    ///// </summary>
-    ///// <typeparam name="TModel">The entity used.</typeparam>
-    ///// <param name="source">The source of the property that has been changed.</param>
-    ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    /// <summary>
+    /// Adds an event handler to the property of an object that implement the <see cref="INotifyPropertyChanged"/> interface.
+    /// </summary>
+    /// <typeparam name="TModel">The entity used.</typeparam>
+    /// <param name="source">The source of the property that has been changed.</param>
+    /// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
+    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
+    public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
-    //  string propertyName = Prop.GetPropertyName<TModel>(property);
-    //  PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, propertyName);
+      string propertyName = Prop.GetPropertyName<TModel>(property);
+      PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, propertyName);
 
-    //  return this;
+      return this;
 
-    //}
+    }
 
-    ///// <summary>
-    ///// Removes an event handler from the property of an object that implements the <see cref="INotifyPropertyChanged"/> interface.
-    ///// </summary>
-    ///// <typeparam name="TModel">The entity used.</typeparam>
-    ///// <param name="source">The source of the property that has been changed.</param>
-    ///// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
-    ///// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
-    ///// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    //public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
+    /// <summary>
+    /// Removes an event handler from the property of an object that implements the <see cref="INotifyPropertyChanged"/> interface.
+    /// </summary>
+    /// <typeparam name="TModel">The entity used.</typeparam>
+    /// <param name="source">The source of the property that has been changed.</param>
+    /// <param name="property">The property of the <typeparamref name="TModel"/>.</param>
+    /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
+    /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
+    public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, Expression<Func<TModel, object>> property) where TModel : IModel {
 
-    //  string propertyName = Prop.GetPropertyName<TModel>(property);
-    //  PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, propertyName);
+      string propertyName = Prop.GetPropertyName<TModel>(property);
+      PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, propertyName);
 
-    //  return this;
+      return this;
 
-    //}
+    }
 
     /// <summary>
     /// Adds an event handler to the property of an object that implement the <see cref="INotifyPropertyChanged"/> interface.
@@ -305,7 +299,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
     /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
     /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = null) where TModel : IModel {
+    public ActionCommand AddPropertyChangedHandler<TModel>(INotifyPropertyChanged source, string propertyName) where TModel : IModel {
 
       PropertyChangedEventManager.AddHandler(source, ObservableObject_PropertyChanged, propertyName);
 
@@ -321,7 +315,7 @@ namespace TupleGeo.Apps.Presentation.Commands {
     /// <param name="propertyName">The property name of the <typeparamref name="TModel"/>.</param>
     /// <remarks>The method can be used to chain together multiple calls of <see cref="ActionCommand"/> methods.</remarks>
     /// <returns>Itself (<see cref="ActionCommand"/>).</returns>
-    public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, [CallerMemberName] string propertyName = null) where TModel : IModel {
+    public ActionCommand RemovePropertyChangedHandler<TModel>(INotifyPropertyChanged source, string propertyName) where TModel : IModel {
 
       PropertyChangedEventManager.RemoveHandler(source, ObservableObject_PropertyChanged, propertyName);
 

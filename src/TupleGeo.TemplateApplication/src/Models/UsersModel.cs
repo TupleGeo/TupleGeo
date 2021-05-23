@@ -39,7 +39,7 @@ namespace TupleGeo.TemplateApplication.Models {
 
     #region Public Properties
 
-    private ObservableCollection<UserModel> _users;
+    private readonly ObservableCollection<UserModel> _users;
 
     /// <summary>
     /// The users collection.
@@ -62,7 +62,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_currentUser != value) {
           _currentUser = value;
-          OnPropertyChanged();
+          this.OnPropertyChanged();
         }
       }
     }

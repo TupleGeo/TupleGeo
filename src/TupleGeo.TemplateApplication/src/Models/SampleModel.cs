@@ -49,7 +49,7 @@ namespace TupleGeo.TemplateApplication.Models {
       }
       set {
         _property1 = value;
-        OnPropertyChanged();
+        this.OnPropertyChanged();
       }
     }
 
@@ -64,7 +64,7 @@ namespace TupleGeo.TemplateApplication.Models {
       }
       set {
         _property2 = value;
-        OnPropertyChanged();
+        this.OnPropertyChanged();
       }
     }
 
@@ -79,7 +79,7 @@ namespace TupleGeo.TemplateApplication.Models {
       }
       set {
         _property3 = value;
-        OnPropertyChanged();
+        this.OnPropertyChanged();
       }
     }
 

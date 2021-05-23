@@ -40,7 +40,7 @@ namespace TupleGeo.TemplateApplication.Models {
 
     #region Public Properties
 
-    private int _id;
+    private readonly int _id;
 
     /// <summary>
     /// Gets / Sets the user id.
@@ -63,7 +63,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_name != value) {
           _name = value;
-          OnPropertyChanged();
+          this.OnPropertyChanged();
         }
       }
     }
@@ -80,7 +80,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_surname != value) {
           _surname = value;
-          OnPropertyChanged();
+          this.OnPropertyChanged();
         }
       }
     }
@@ -97,7 +97,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_age != value) {
           _age = value;
-          OnPropertyChanged();
+          this.OnPropertyChanged();
         }
       }
     }
@@ -114,7 +114,7 @@ namespace TupleGeo.TemplateApplication.Models {
       set {
         if (_department != value) {
           _department = value;
-          OnPropertyChanged();
+          this.OnPropertyChanged();
         }
       }
     }

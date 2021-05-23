@@ -55,6 +55,7 @@ namespace TupleGeo.TemplateApplication.Models.Application {
       set {
         if (_caption != value) {
           _caption = value;
+          this.OnPropertyChanged();
         }
       }
     }

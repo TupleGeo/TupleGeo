@@ -112,7 +112,7 @@ namespace TupleGeo.Apps.Presentation.Tests {
         Weight = 1400
       });
 
-      _observer.AddCollectionChangedWeakListener(_carModels);
+      _observer.AddCollectionChangedListener(_carModels);
 
     }
 
@@ -148,7 +148,7 @@ namespace TupleGeo.Apps.Presentation.Tests {
         Weight = 1400
       });
 
-      _observer.AddCollectionChangedListener<CarModel>(_carModels);
+      _observer.AddCollectionChangedListener(_carModels);
       
     }
 
@@ -186,9 +186,6 @@ namespace TupleGeo.Apps.Presentation.Tests {
       Type viewType = typeof(TestView);
       
       Type viewInterface = viewType.GetInterface("IView2");
-
-
-
 
     }
 

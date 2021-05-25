@@ -27,9 +27,8 @@ using TupleGeo.General.Linq.Expressions;
 namespace TupleGeo.Apps.Presentation.Observers {
 
   /// <summary>
-  /// The CentralizedChangesObserver2 provides an abstract base observer that can be used to implement observers
-  /// to provide listeners/handlers for property and collection changes when there is a need
-  /// for these changes to be managed centrally.
+  /// The CentralizedChangesObserver2 is an observer inherited from ChangesObserver which
+  /// provides listeners/handlers for property and collection changes that are managed centrally.
   /// </summary>
   public sealed class CentralizedChangesObserver2 : IChangesObserverMethods<CentralizedChangesObserver2> {
 

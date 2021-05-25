@@ -19,7 +19,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// 
   /// </summary>
-  public sealed class SampleModel : ObservableObject, IModel {
+  public sealed class SampleModel : Model {
 
     #region Member Variables
 
@@ -93,18 +93,12 @@ namespace TupleGeo.TemplateApplication.Models {
 
     #endregion
 
-    #region IModel Members
-
-    private const string _modelName = "SampleModel";
+    #region Model Members
 
     /// <summary>
     /// Gets the name of the model.
     /// </summary>
-    public string ModelName {
-      get {
-        return _modelName;
-      }
-    }
+    public override string ModelName => "SampleModel";
 
     #endregion
 

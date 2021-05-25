@@ -4,7 +4,7 @@
 // Member of        : TupleGeo.General.dll
 // Description      : The AssociatedViewModel Attribute is applied on a
 //                    View class to mark the ViewModel controling the View.
-// Created by       : 19/05/2021, 12:46, Vasilis Vlastaras.
+// Created by       : 24/05/2021, 18:47, Vasilis Vlastaras.
 // Updated by       : 
 // Version          : 1.0.0
 // Contact Details  : TupleGeo.
@@ -38,15 +38,15 @@ namespace TupleGeo.Apps {
     public AssociatedViewModelAttribute(Type viewModelType, Type viewType) {
 
       if (viewModelType == null) {
-        throw new ArgumentNullException("viewModelType", "viewModelType can not be null.");
+        throw new ArgumentNullException("viewModelType", "viewModelType could not be null.");
       }
 
       if (viewType == null) {
-        throw new ArgumentNullException("viewType", "viewType can not be null.");
+        throw new ArgumentNullException("viewType", "viewType could not be null.");
       }
 
       if (viewType.GetInterface("IView") == null) {
-        throw new ArgumentException("The attribute has not been used on a View Class", "viewType");
+        throw new ArgumentException("The attribute has not been used on a view class", "viewType");
       }
 
       _viewModelType = viewModelType;

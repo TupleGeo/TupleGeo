@@ -48,6 +48,9 @@
     <Compile Include="TupleGeo\Apps\ViewModel`1.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.480.csproj">
       <Project>{c4a18dcd-5da2-451f-b7d7-c9dc01336465}</Project>
       <Name>TupleGeo.General.480</Name>

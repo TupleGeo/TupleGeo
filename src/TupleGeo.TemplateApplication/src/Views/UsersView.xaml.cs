@@ -33,6 +33,7 @@ namespace TupleGeo.TemplateApplication.Views {
   /// <summary>
   /// The Users View.
   /// </summary>
+  [AssociatedViewModelAttribute(typeof(UsersViewModel), typeof(UsersView))]
   public partial class UsersView : UserControl, IView {
 
     #region Constructors - Destructors
@@ -58,7 +59,7 @@ namespace TupleGeo.TemplateApplication.Views {
         // Make sure this executes in runtime.
         if (!DesignerProperties.GetIsInDesignMode(this)) {
           // The viewmodel of this view acts as a datacontext. Bind the viewmodel here.
-          UsersViewModel usersViewModel = (UsersViewModel)((IViewModel)(AppEngine.Instance.Catalog.GetViewModel(this.GetType())));
+          UsersViewModel usersViewModel = (UsersViewModel)((IViewModel)(AppEngine.Instance.Catalog.GetSingletonViewModel(this)));
           this.DataContext = usersViewModel;
 
           // The event procedures reside in to the viewmodel. Binding is performed by calling the

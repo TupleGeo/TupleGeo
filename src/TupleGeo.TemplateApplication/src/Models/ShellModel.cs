@@ -21,12 +21,16 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// The model used by the shell.
   /// </summary>
-  public sealed class ShellModel : ObservableObject, IModel {
+  public sealed class ShellModel : Model {
+
+    #region Member Variables
+
+    #endregion
 
     #region Constructors - Destructors
 
     /// <summary>
-    /// Initializes the ShellModel.
+    /// Initializes the <see cref="ShellModel"/>.
     /// </summary>
     public ShellModel() {
 
@@ -57,18 +61,16 @@ namespace TupleGeo.TemplateApplication.Models {
 
     #endregion
 
-    #region IModel Members
+    #region Private Procedures
 
-    private const string _modelName = "ShellModel";
+    #endregion
+
+    #region Model Members
 
     /// <summary>
     /// Gets the name of the model.
     /// </summary>
-    public string ModelName {
-      get {
-        return _modelName;
-      }
-    }
+    public override string ModelName => "ShellModel";
 
     #endregion
 

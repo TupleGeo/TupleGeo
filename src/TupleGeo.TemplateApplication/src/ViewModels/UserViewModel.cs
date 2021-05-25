@@ -23,7 +23,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The view model used by the <see cref="Views.UserView">UserView</see>.
   /// </summary>
-  public sealed class UserViewModel : BaseViewModel<UserModel> {
+  public sealed class UserViewModel : ViewModel<UserModel> {
 
     #region Member Variables
 
@@ -62,7 +62,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #endregion
 
-    #region BaseViewModel Members
+    #region ViewModel Members
 
     private const string _name = "UserViewModel";
 

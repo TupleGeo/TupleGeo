@@ -22,6 +22,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TupleGeo.Apps;
 using TupleGeo.TemplateApplication.Engine;
+using TupleGeo.TemplateApplication.ViewModels;
 
 #endregion
 
@@ -30,6 +31,7 @@ namespace TupleGeo.TemplateApplication.Views {
   /// <summary>
   /// The Shell View of the application.
   /// </summary>
+  [AssociatedViewModelAttribute(typeof(ShellViewModel), typeof(ShellView))]
   public partial class ShellView : Window, IView {
 
     #region Constructors - Destructors
@@ -56,7 +58,7 @@ namespace TupleGeo.TemplateApplication.Views {
         // Make sure this executes in runtime.
         if (!DesignerProperties.GetIsInDesignMode(this)) {
           // The viewmodel of this view acts as a datacontext. Bind the viewmodel here.
-          //ShellViewModel shellViewModel = (ShellViewModel)((IViewModel)(Catalog.GetViewModel(this.GetType())));
+          //ShellViewModel shellViewModel = (ShellViewModel)((IViewModel)(Catalog.GetSingletonViewModel(this)));
           //this.DataContext = shellViewModel;
 
           // The event procedures reside in to the viewmodel. Binding is performed by calling the

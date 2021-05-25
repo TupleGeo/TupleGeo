@@ -17,7 +17,7 @@ namespace TupleGeo.Apps.Presentation.Tests.ObserverTests {
   /// <summary>
   /// 
   /// </summary>
-  public class Observer : CentralizedObserver {
+  public class Observer : ChangesObserver {
 
     /// <summary>
     /// 

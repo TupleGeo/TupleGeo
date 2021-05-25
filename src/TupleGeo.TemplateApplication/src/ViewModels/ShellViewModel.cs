@@ -24,7 +24,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The shell view model.
   /// </summary>
-  public sealed class ShellViewModel : BaseViewModel<ShellModel>, IViewModelMethods {
+  public sealed class ShellViewModel : ViewModel<ShellModel>, IViewModelMethods {
 
     #region Member Variables
 
@@ -220,7 +220,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #endregion
 
-    #region BaseViewModel Members
+    #region ViewModel Members
 
     private const string _name = "ShellViewModel";
 

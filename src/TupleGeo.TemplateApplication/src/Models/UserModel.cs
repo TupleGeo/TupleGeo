@@ -19,7 +19,7 @@ namespace TupleGeo.TemplateApplication.Models {
   /// <summary>
   /// The model that describes a user.
   /// </summary>
-  public sealed class UserModel : ObservableObject, IModel {
+  public sealed class UserModel : Model {
 
     #region Member Variables
 
@@ -129,18 +129,12 @@ namespace TupleGeo.TemplateApplication.Models {
 
     #endregion
 
-    #region IModel Members
-
-    private const string _modelName = "UserModel";
+    #region Model Members
 
     /// <summary>
     /// Gets the name of the model.
     /// </summary>
-    public string ModelName {
-      get {
-        return _modelName;
-      }
-    }
+    public override string ModelName => "UserModel";
 
     #endregion
 

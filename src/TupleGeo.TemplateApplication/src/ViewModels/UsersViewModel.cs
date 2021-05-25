@@ -30,11 +30,12 @@ namespace TupleGeo.TemplateApplication.ViewModels {
   /// <summary>
   /// The view model used by the <see cref="Views.UsersView">UsersView</see>.
   /// </summary>
-  public sealed class UsersViewModel : BaseViewModel<UsersModel> {
+  public sealed class UsersViewModel : ViewModel<UsersModel> {
 
     #region Member Variables
 
     private UserViewModel _userViewModel;
+    private CentralizedChangesObserver _centralizedChangesObserver;
     
     #endregion
 
@@ -49,8 +50,15 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
       AddUsers();
       
-      _userViewModel = (UserViewModel)(AppEngine.Instance.Catalog.GetViewModel(typeof(UserView)));
-      
+      _userViewModel = (UserViewModel)(AppEngine.Instance.Catalog.GetSingletonViewModel(typeof(UserView)));
+
+      //_centralizedChangesObserver = new CentralizedChangesObserver();
+
+      //Action<object, PropertyChangedEventArgs> showCurrentUserAction = new Action<object, PropertyChangedEventArgs>(UsersModel_PropertyChanged);
+
+      _centralizedChangesObserver.AddPropertyChangedListener<UsersModel>(this.Model);
+      //_centralizedChangesObserver.OnPropertyChanged(;
+
       this.Model.PropertyChanged += new PropertyChangedEventHandler(UsersModel_PropertyChanged);
 
       InitializeCommands();
@@ -222,7 +230,7 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #endregion
 
-    #region BaseViewModel Members
+    #region ViewModel Members
 
     private const string _name = "UsersViewModel";
 

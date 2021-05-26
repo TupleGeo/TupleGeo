@@ -6,7 +6,7 @@
 // Created by       : 27/07/2015, 19:32, Vasilis Vlastaras.
 // Updated by       : 19/05/2021, 17:26, Vasilis Vlastaras.
 //                    1.1.0 - Moved the class from assembly TupleGeo.Apps.Presentation.dll
-//                  : 25/05/2021, 02:08, Vasilis Vlastaras.
+//                  : 26/05/2021, 00:54, Vasilis Vlastaras.
 //                    2.0.0 - Extensive rewrite of the AppCatalog class.
 //                            Only Singleton instances are supported in this version.
 // Version          : 2.0.0
@@ -23,6 +23,7 @@ using System.Collections.Generic;
 using System.Globalization;
 //using System.Linq;
 using System.Reflection;
+using TupleGeo.General;
 
 #endregion
 
@@ -55,17 +56,18 @@ namespace TupleGeo.Apps {
         throw new ArgumentNullException("viewType", "The argument 'viewType' could not be null.");
       }
 
-      if (viewType.GetInterface("IView") != typeof(IView)) {
-        throw new ArgumentException(
-          string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IView interface", viewType.Name)
-        );
+      // Check if a singletons triplet exist.
+      if (_viewToSingletonsTripletDictionary.ContainsKey(viewType)) {
+        
+        // Check if the singletons triplet has an instance of view model.
+        if (_viewToSingletonsTripletDictionary[viewType].ViewModel != null) {
+          return _viewToSingletonsTripletDictionary[viewType].ViewModel;
+        }
+
       }
 
-      if (!_viewModelToSingletonsTripletDictionary.ContainsKey(viewType)) {
-        throw new KeyNotFoundException("The view was not found");
-      }
-
-      return _viewModelToSingletonsTripletDictionary[viewType].ViewModel;
+      // No instances triplet has been found, so proceed to create one.
+      return CreateSingletonViewModel(viewType);
 
     }
 
@@ -87,111 +89,25 @@ namespace TupleGeo.Apps {
 
       Type viewType = view.GetType();
 
-      // Get the type of the view model associated with the view.
+      IViewModel viewModel = GetSingletonViewModel(viewType);
 
-      AssociatedViewModelAttribute viewModelAttribute =
-        (AssociatedViewModelAttribute)viewType.GetCustomAttribute(typeof(AssociatedViewModelAttribute));
-
-      if (viewModelAttribute == null) {
-        throw new NullReferenceException("No AssociatedViewModelAttribute was found in the specified view.");
+      // Update the View values in the instances triplet.
+      if (_viewToSingletonsTripletDictionary[viewType].View == null) {
+        _viewToSingletonsTripletDictionary[viewType].View = (IView)view;
       }
-
-      Type viewModelType = viewModelAttribute.ViewModelType;
-
-      //
-      // Check if viewModelType is valid.
-      //
-
-      if (viewModelType == null) {
-        throw new ArgumentNullException("viewModelType");
+      if (_viewModelToSingletonsTripletDictionary[viewModel.GetType()].View == null) {
+        _viewModelToSingletonsTripletDictionary[viewModel.GetType()].View = (IView)view;
       }
-
-      //if (viewModelType.GetInterface("IViewModel") == typeof(IViewModel)) {
-      //  throw new ArgumentException(
-      //    string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IViewModel interface", viewModelType.Name)
-      //  );
-      //}
-
-      // Check if an instances triplet exists and return the view model instance.
-      if (_viewToSingletonsTripletDictionary.ContainsKey(viewType)) {
-        return _viewToSingletonsTripletDictionary[viewType].ViewModel;
-      }
-
-      //
-      // No instances triplet has been found, so proceed to create one.
-      // Get the type of the model associated with the view model.
-      //
-
-      if (viewModelType.BaseType == null) {
-        throw new NullReferenceException(
-          string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", viewModelType.Name)
-        );
-      }
-
-      if (!(viewModelType.BaseType.Namespace == "TupleGeo.Apps" && viewModelType.BaseType.Name == "ViewModel`1")) {
-        throw new TypeLoadException(
-          string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", viewModelType.Name)
-        );
-      }
-
-      Type[] genericTypeArguments = viewModelType.BaseType.GenericTypeArguments;
-
-      if (genericTypeArguments.Length != 1) {
-        throw new TypeLoadException(
-          string.Format(CultureInfo.InvariantCulture, "The base type of {0} has an invalid number of generic arguments; must be only one.", viewModelType.Name)
-        );
-      }
-
-      Type modelType = genericTypeArguments[0];
-
-      if (modelType.BaseType == null) {
-        throw new NullReferenceException(
-          string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", modelType.Name)
-        );
-      }
-
-      if (!(modelType.BaseType.Namespace == "TupleGeo.Apps" && modelType.BaseType.Name == "Model")) {
-        throw new TypeLoadException(
-          string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", modelType.Name)
-        );
-      }
-
-      if (modelType.BaseType.GetInterface("IModel") != typeof(IModel)) {
-        throw new TypeLoadException(
-          string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name)
-        );
-      }
-
-      // Create the types triplet if one does not exist.
-      if (!_viewToTypesTripletDictionary.ContainsKey(viewType)) {
-        ModelViewViewModelTypesRecord mvvmTypesRecord = new ModelViewViewModelTypesRecord(modelType, viewType, viewModelType);
-        _viewToTypesTripletDictionary.Add(viewType, mvvmTypesRecord);
-        _viewModelToTypesTripletDictionary.Add(viewModelType, mvvmTypesRecord);
-      }
-
-      // Create the model instance.
-      IModel model = (IModel)(Activator.CreateInstance(modelType));
-
-      // Create the constructor parameters for the view model.
-      object[] constructorParams = new object[1] { model };
-
-      // Create the view model instance.
-      IViewModel viewModel = (IViewModel)(Activator.CreateInstance(viewModelType, constructorParams));
-
-      // Create the instances triplet.
-      ModelViewViewModelInstancesRecord mvvmInstancesRecord = new ModelViewViewModelInstancesRecord(model, view, viewModel);
-      _viewToSingletonsTripletDictionary.Add(viewType, mvvmInstancesRecord);
-      _viewModelToSingletonsTripletDictionary.Add(viewModelType, mvvmInstancesRecord);
 
       return viewModel;
 
     }
 
     /// <summary>
-    /// Gets 
+    /// Gets the singleton <see cref="IView"/>.
     /// </summary>
-    /// <param name="viewType"></param>
-    /// <returns></returns>
+    /// <param name="viewType">The <see cref="Type"/> of the view.</param>
+    /// <returns>The <see cref="IView"/> singleton instance.</returns>
     public IView GetSingletonView(Type viewType) {
 
       if (viewType == null) {
@@ -207,7 +123,12 @@ namespace TupleGeo.Apps {
 
       // Check if an instance of a triplet of singletons is present.
       if (_viewToSingletonsTripletDictionary.ContainsKey(viewType)) {
-        return _viewToSingletonsTripletDictionary[viewType].View;
+
+        // Check if an instance of a view exists in the triplet of singletons.
+        if (_viewToSingletonsTripletDictionary[viewType].View != null) {
+          return _viewToSingletonsTripletDictionary[viewType].View;
+        }
+        
       }
 
       // Create a view singleton instance.
@@ -271,6 +192,114 @@ namespace TupleGeo.Apps {
 
     #endregion
 
+    #region Private Methods
+
+    /// <summary>
+    /// Creates a view model that is used in a singleton model, view, view model triplet.
+    /// </summary>
+    /// <param name="viewType">The <see cref="Type"/> of the view.</param>
+    /// <returns>The <see cref="IViewModel"/> associated with the view.</returns>
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Naming", "CA2204:Literals should be spelled correctly", MessageId = "AssociatedViewModelAttribute")]
+    private IViewModel CreateSingletonViewModel(Type viewType) {
+
+      // Get the type of the view model associated with the view.
+
+      AssociatedViewModelAttribute viewModelAttribute =
+        (AssociatedViewModelAttribute)viewType.GetCustomAttribute(typeof(AssociatedViewModelAttribute));
+
+      if (viewModelAttribute == null) {
+        throw new GeneralException("No AssociatedViewModelAttribute was found in the specified view.");
+      }
+
+      Type viewModelType = viewModelAttribute.ViewModelType;
+
+      //
+      // Check if viewModelType is valid.
+      //
+
+      if (viewModelType == null) {
+        throw new ArgumentException("The type of the view Model associated with the view could not be null.", "viewType");
+      }
+
+      //
+      // Get the type of the model associated with the view model.
+      //
+
+      if (viewModelType.BaseType == null) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", viewModelType.Name),
+          "viewType"
+        );
+      }
+
+      if (!(viewModelType.BaseType.Namespace == "TupleGeo.Apps" && viewModelType.BaseType.Name == "ViewModel`1")) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", viewModelType.Name),
+          "viewType"
+        );
+      }
+
+      Type[] genericTypeArguments = viewModelType.BaseType.GenericTypeArguments;
+
+      if (genericTypeArguments.Length != 1) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "The base type of {0} has an invalid number of generic arguments; must be only one.", viewModelType.Name),
+          "viewType"
+        );
+      }
+
+      Type modelType = genericTypeArguments[0];
+
+      if (modelType.BaseType == null) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", modelType.Name),
+          "viewType"
+        );
+      }
+
+      if (!(modelType.BaseType.Namespace == "TupleGeo.Apps" && modelType.BaseType.Name == "Model")) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", modelType.Name),
+          "viewType"
+        );
+      }
+
+      if (modelType.BaseType.GetInterface("IModel") != typeof(IModel)) {
+        throw new ArgumentException(
+          string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name),
+          "viewType"
+        );
+      }
+
+      // Create the types triplet if one does not exist.
+      if (!_viewToTypesTripletDictionary.ContainsKey(viewType)) {
+        ModelViewViewModelTypesRecord mvvmTypesRecord = new ModelViewViewModelTypesRecord(viewType, viewModelType);
+        _viewToTypesTripletDictionary.Add(viewType, mvvmTypesRecord);
+        _viewModelToTypesTripletDictionary.Add(viewModelType, mvvmTypesRecord);
+      }
+
+      // Create the model instance.
+      IModel model = (IModel)(Activator.CreateInstance(modelType));
+
+      // Create the constructor parameters for the view model.
+      object[] constructorParams = new object[1] { model };
+
+      // Create the view model instance.
+      IViewModel viewModel = (IViewModel)(Activator.CreateInstance(viewModelType, constructorParams));
+
+      // Create the instances triplet.
+      ModelViewViewModelInstancesRecord mvvmInstancesRecord = new ModelViewViewModelInstancesRecord(model, null, viewModel);
+      _viewToSingletonsTripletDictionary.Add(viewType, mvvmInstancesRecord);
+      _viewModelToSingletonsTripletDictionary.Add(viewModelType, mvvmInstancesRecord);
+
+      return viewModel;
+
+    }
+
+    #endregion
+
+    #region Private Classes
+
     /// <summary>
     /// The class used to register all the type triplets of Model, View and ViewModel.
     /// </summary>
@@ -281,83 +310,68 @@ namespace TupleGeo.Apps {
       /// <summary>
       /// Creates a <see cref="ModelViewViewModelTypesRecord"/>.
       /// </summary>
-      /// <param name="modelType">The type of the model.</param>
       /// <param name="viewType">The type of the view.</param>
       /// <param name="viewModelType">The type of the view model.</param>
-      public ModelViewViewModelTypesRecord(Type modelType, Type viewType, Type viewModelType) {
+      public ModelViewViewModelTypesRecord(Type viewType = null, Type viewModelType = null) {
 
-        if (modelType == null) {
-          throw new ArgumentNullException("modelType", "The 'modelType' argument could not be null.");
-        }
-        if (viewType == null) {
-          throw new ArgumentNullException("viewType", "The 'viewType' argument could not be null.");
-        }
-        if (viewModelType == null) {
-          throw new ArgumentNullException("viewModelType", "The 'viewModelType' argument could not be null.");
-        }
+        Type modelType = null;
 
-        if (modelType.BaseType == null) {
-          throw new NullReferenceException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", modelType.Name)
-          );
+        if (viewType != null) {
+          if (viewType.GetInterface("IView") != typeof(IView)) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "Invalid type. The {0} must implement the TupleGeo.Apps.IView interface.", viewType.Name),
+              "viewType"
+            );
+          }
         }
 
-        if (!(modelType.BaseType.Namespace == "TupleGeo.Apps" && modelType.BaseType.Name == "Model")) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", modelType.Name)
-          );
-        }
+        if (viewModelType != null) {
+          if (viewModelType.BaseType == null) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "Invalid type. The {0} has no base type.", viewModelType.Name),
+              "viewModelType"
+            );
+          }
 
-        if (modelType.BaseType.GetInterface("IModel") != typeof(IModel)) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name)
-          );
-        }
+          if (!(viewModelType.BaseType.Namespace == "TupleGeo.Apps" && viewModelType.BaseType.Name == "ViewModel`1")) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", viewModelType.Name),
+              "viewModelType"
+            );
+          }
 
-        if (viewType.GetInterface("IView") != typeof(IView)) {
-          throw new ArgumentException(
-            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IView interface.", viewType.Name)
-          );
-        }
+          Type[] genericTypeArguments = viewModelType.BaseType.GenericTypeArguments;
 
-        if (viewModelType.BaseType == null) {
-          throw new NullReferenceException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", viewModelType.Name)
-          );
-        }
+          if (genericTypeArguments.Length != 1) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "The base type of {0} has an invalid number of generic arguments; must be only one.", viewModelType.Name),
+              "viewModelType"
+            );
+          }
 
-        if (!(viewModelType.BaseType.Namespace == "TupleGeo.Apps" && viewModelType.BaseType.Name == "ViewModel`1")) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", viewModelType.Name)
-          );
-        }
+          modelType = genericTypeArguments[0];
 
-        Type[] genericTypeArguments = viewModelType.BaseType.GenericTypeArguments;
+          if (modelType.BaseType == null) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", modelType.Name),
+              "viewModelType"
+            );
+          }
 
-        if (genericTypeArguments.Length != 1) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "The base type of {0} has an invalid number of generic arguments; must be only one.", viewModelType.Name)
-          );
-        }
+          if (!(modelType.BaseType.Namespace == "TupleGeo.Apps" && modelType.BaseType.Name == "Model")) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", modelType.Name),
+              "viewModelType"
+            );
+          }
 
-        Type modelType2 = genericTypeArguments[0];
-
-        if (modelType2.BaseType == null) {
-          throw new NullReferenceException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has no base type.", modelType2.Name)
-          );
-        }
-
-        if (!(modelType2.BaseType.Namespace == "TupleGeo.Apps" && modelType2.BaseType.Name == "Model")) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "The {0} has an invalid base type.", modelType2.Name)
-          );
-        }
-
-        if (modelType2.BaseType.GetInterface("IModel") != typeof(IModel)) {
-          throw new TypeLoadException(
-            string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType2.Name)
-          );
+          if (modelType.BaseType.GetInterface("IModel") != typeof(IModel)) {
+            throw new ArgumentException(
+              string.Format(CultureInfo.InvariantCulture, "Invalid type. {0} must implement the TupleGeo.Apps.IModel interface", modelType.Name),
+              "viewModelType"
+            );
+          }
+          
         }
 
         this.ModelType = modelType;
@@ -374,14 +388,14 @@ namespace TupleGeo.Apps {
       /// Gets/Sets the type of the model.
       /// </summary>
       public Type ModelType {
-        get; private set;
+        get; set;
       }
 
       /// <summary>
       /// Gets the type of the view.
       /// </summary>
       public Type ViewType {
-        get; private set;
+        get; set;
       }
 
       /// <summary>
@@ -396,7 +410,7 @@ namespace TupleGeo.Apps {
     }
 
     /// <summary>
-    /// The class used to register all the isntance triplets of Model, View and ViewModel.
+    /// The class used to register all the instance triplets of Model, View and ViewModel.
     /// </summary>
     private class ModelViewViewModelInstancesRecord {
 
@@ -405,20 +419,10 @@ namespace TupleGeo.Apps {
       /// <summary>
       /// Creates a <see cref="ModelViewViewModelInstancesRecord"/>.
       /// </summary>
-      /// <param name="model">The <see cref="IModel"/></param>
-      /// <param name="view"></param>
-      /// <param name="viewModel"></param>
-      public ModelViewViewModelInstancesRecord(IModel model, IView view, IViewModel viewModel) {
-
-        if (model == null) {
-          throw new ArgumentNullException("modelType", "The 'model' argument could not be null.");
-        }
-        if (view == null) {
-          throw new ArgumentNullException("viewType", "The 'view' argument could not be null.");
-        }
-        if (viewModel == null) {
-          throw new ArgumentNullException("viewModelType", "The 'viewModel' argument could not be null.");
-        }
+      /// <param name="model">The <see cref="IModel"/>.</param>
+      /// <param name="view">The <see cref="IView"/>.</param>
+      /// <param name="viewModel">The <see cref="IViewModel"/>.</param>
+      public ModelViewViewModelInstancesRecord(IModel model = null, IView view = null, IViewModel viewModel = null) {
 
         this.Model = model;
         this.View = view;
@@ -434,26 +438,28 @@ namespace TupleGeo.Apps {
       /// Gets/Sets the model.
       /// </summary>
       public IModel Model {
-        get; private set;
+        get; set;
       }
 
       /// <summary>
       /// Gets the view.
       /// </summary>
       public IView View {
-        get; private set;
+        get; set;
       }
 
       /// <summary>
       /// Gets the view model.
       /// </summary>
       public IViewModel ViewModel {
-        get; private set;
+        get; set;
       }
 
       #endregion
 
     }
+
+    #endregion
 
   }
 

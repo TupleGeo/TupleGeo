@@ -35,8 +35,9 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     #region Member Variables
 
     private UserViewModel _userViewModel;
-    private CentralizedChangesObserver _centralizedChangesObserver;
-    
+    private ViewModelChangesObserver _currentUserChangesObserver;
+    //protected Action<object, PropertyChangedEventArgs> _updateCurrentUserAction;
+
     #endregion
 
     #region Constructors - Destructors
@@ -52,14 +53,24 @@ namespace TupleGeo.TemplateApplication.ViewModels {
       
       _userViewModel = (UserViewModel)(AppEngine.Instance.Catalog.GetSingletonViewModel(typeof(UserView)));
 
-      //_centralizedChangesObserver = new CentralizedChangesObserver();
+      _currentUserChangesObserver = new ViewModelChangesObserver {
+        UserViewModel = _userViewModel
+      };
 
-      //Action<object, PropertyChangedEventArgs> showCurrentUserAction = new Action<object, PropertyChangedEventArgs>(UsersModel_PropertyChanged);
+      //Action<object, PropertyChangedEventArgs> showCurrentUserAction = new Action<object, PropertyChangedEventArgs>(_currentUserChangesObserver.OnPropertyChanged);
+      //_updateCurrentUserAction = (sender, pcea) => {
+      //  _userViewModel.Model = ((UsersModel)sender).CurrentUser;
+      //};
 
-      _centralizedChangesObserver.AddPropertyChangedListener<UsersModel>(this.Model);
-      //_centralizedChangesObserver.OnPropertyChanged(;
+      //Action<object, PropertyChangedEventArgs> showCurrentUserAction = (s, e) => {
+      //  _currentUserChangesObserver.OnPropertyChanged(s, e);
+      //};
 
-      this.Model.PropertyChanged += new PropertyChangedEventHandler(UsersModel_PropertyChanged);
+
+
+      _currentUserChangesObserver.AddPropertyChangedListener<UsersModel>(this.Model, "CurrentUser");
+      
+      //this.Model.PropertyChanged += new PropertyChangedEventHandler(UsersModel_PropertyChanged);
 
       InitializeCommands();
       
@@ -93,17 +104,17 @@ namespace TupleGeo.TemplateApplication.ViewModels {
 
     #region Event Procedures
     
-    /// <summary>
-    /// Occurs when a model property changes.
-    /// </summary>
-    /// <param name="sender">The sender of the event.</param>
-    /// <param name="e">The PropertyEventArgs.</param>
-    private void UsersModel_PropertyChanged(object sender, PropertyChangedEventArgs e) {
-      if (e.PropertyName == "CurrentUser") {
-        _userViewModel.Model = this.Model.CurrentUser;
-      }
-    }
-    
+    ///// <summary>
+    ///// Occurs when a model property changes.
+    ///// </summary>
+    ///// <param name="sender">The sender of the event.</param>
+    ///// <param name="e">The PropertyEventArgs.</param>
+    //private void UsersModel_PropertyChanged(object sender, PropertyChangedEventArgs e) {
+    //  if (e.PropertyName == "CurrentUser") {
+    //    _userViewModel.Model = this.Model.CurrentUser;
+    //  }
+    //}
+
     #endregion
 
     #region Private Procedures
@@ -253,6 +264,29 @@ namespace TupleGeo.TemplateApplication.ViewModels {
     }
 
     #endregion
+
+    private class ViewModelChangesObserver : ChangesObserver {
+
+      private UserViewModel _userViewModel;
+
+      public UserViewModel UserViewModel {
+        get {
+          return _userViewModel;
+        }
+        set {
+          _userViewModel = value;
+        }
+      }
+
+      public override void OnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs) {
+        //base.OnPropertyChanged(sender, propertyChangedEventArgs);
+
+        //_updateCurrentUserAction(sender, propertyChangedEventArgs);
+        this.UserViewModel.Model = ((UsersModel)sender).CurrentUser;
+
+      }
+
+    }
 
   }
 

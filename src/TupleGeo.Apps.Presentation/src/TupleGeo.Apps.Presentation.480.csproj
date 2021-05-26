@@ -47,8 +47,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Commands\ActionCommand.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\IViewModelMethods.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\Observers\CentralizedChangesObserver.cs" />
-    <Compile Include="TupleGeo\Apps\Presentation\Observers\CentralizedChangesObserver2.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\ChangesObserver.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\IChangesObserverMethods`1.cs" />
     <Compile Include="TupleGeo\Apps\Presentation\Observers\PropertyObserver`1.cs" />

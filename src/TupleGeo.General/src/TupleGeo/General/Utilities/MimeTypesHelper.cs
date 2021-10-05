@@ -42,7 +42,7 @@ namespace TupleGeo.General.Utilities {
     /// </remarks>
     public static string GetMimeType(string fileExtension) {
       string mimeType = "application/unknown";
-
+      // TODO: This needs to be moved to another assembly (Windows only) with a reference to 'Microsoft.Win32' DLL to allow for the method to work in .NET5
       if (!string.IsNullOrEmpty(fileExtension)) {
         RegistryKey regKey = Registry.ClassesRoot.OpenSubKey(fileExtension);
 

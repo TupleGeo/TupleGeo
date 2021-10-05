@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TupleGeo.General</RootNamespace>
+    <Configurations>Debug500;Release500</Configurations>
+    <AssemblyName>TupleGeo.General</AssemblyName>
+    <Version>2.2.0</Version>
+    <AssemblyVersion>2.2.0.0</AssemblyVersion>
+    <Description>Generic foundation for building .NET Applications.</Description>
+    <Authors>Vasilis Vlastaras</Authors>
+    <Company>TupleGeo</Company>
+    <Copyright>Copyright © 2009 - 2021, TupleGeo.</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug500|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\..\bin\Any_CPU.Debug500\TupleGeo.General\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Debug500\TupleGeo.General\TupleGeo.General.XML</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release500|AnyCPU'">
+    <OutputPath>..\..\..\bin\Any_CPU.Release500\TupleGeo.General\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release500\TupleGeo.General\TupleGeo.General.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+    <Compile Remove="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Linq\IEnumerableExtensions_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\ClassFactory_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\LinqXmlSerializer_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\PropertyCaller_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Utilities\MimeTypesHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />
+    <None Include="TupleGeo\General\Linq\IEnumerableExtensions_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\ClassFactory_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\LinqXmlSerializer_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\PropertyCaller_NoCompile.cs" />
+    <None Include="TupleGeo\General\Utilities\MimeTypesHelper.cs" />
+  </ItemGroup>
+
+</Project>

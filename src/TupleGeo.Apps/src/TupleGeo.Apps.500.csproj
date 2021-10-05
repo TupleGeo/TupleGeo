@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TupleGeo.Apps</RootNamespace>
+    <AssemblyName>TupleGeo.Apps</AssemblyName>
+    <Configurations>Debug500;Release500</Configurations>
+    <Company>TupleGeo</Company>
+    <Description>TupleGeo's library for building applications.</Description>
+    <Authors>Vasilis Vlastaras</Authors>
+    <Version>1.1.0</Version>
+    <Copyright>Copyright © 2021, TupleGeo</Copyright>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug500|AnyCPU'">
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <OutputPath>..\..\..\bin\Any_CPU.Debug500\TupleGeo.Apps\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Debug500\TupleGeo.Apps\TupleGeo.Apps.xml</DocumentationFile>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release500|AnyCPU'">
+    <OutputPath>..\..\..\bin\Any_CPU.Release500\TupleGeo.Apps\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release500\TupleGeo.Apps\TupleGeo.Apps.XML</DocumentationFile>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.500.csproj" />
+  </ItemGroup>
+
+</Project>

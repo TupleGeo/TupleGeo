@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>TupleGeo.Apps.Presentation</RootNamespace>
+    <Configurations>Debug500;Release500</Configurations>
+    <AssemblyName>TupleGeo.Apps.Presentation</AssemblyName>
+    <Version>2.0.0</Version>
+    <Authors>Vasilis Vlastaras</Authors>
+    <Company>TupleGeo</Company>
+    <Description>TupleGeo's library for building WPF applications.</Description>
+    <Copyright>Copyright © 2015 - 2021, TupleGeo.</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug500|AnyCPU'">
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <OutputPath>..\..\..\bin\Any_CPU.Debug500\TupleGeo.Apps.Presentation\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Debug500\TupleGeo.Apps.Presentation\TupleGeo.Apps.Presentation.XML</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release500|AnyCPU'">
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\bin\Any_CPU.Release500\TupleGeo.Apps.Presentation\</OutputPath>
+    <DocumentationFile>..\..\..\bin\Any_CPU.Release500\TupleGeo.Apps.Presentation\TupleGeo.Apps.Presentation.XML</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\TupleGeo.Apps\src\TupleGeo.Apps.500.csproj" />
+    <ProjectReference Include="..\..\TupleGeo.General\src\TupleGeo.General.500.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\" />
+  </ItemGroup>
+
+</Project>

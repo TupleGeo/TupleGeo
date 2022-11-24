@@ -1,6 +1,6 @@
 ﻿
 #region Header
-// Title Name       : AssemblyHelper
+// Title Name       : AssemblyExtensions
 // Member of        : TupleGeo.General.dll
 // Description      : Provides methods for manipulating the Assembly object more efficiently.
 // Created by       : 17/05/2009, 19:49, Vasilis Vlastaras.

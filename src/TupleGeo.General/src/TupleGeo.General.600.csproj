@@ -1,0 +1,111 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>TupleGeo.General</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <Configurations>Debug600;Release600;Debug;Release</Configurations>
+    <BaseOutputPath>..\..\..\bin\TupleGeo.General\</BaseOutputPath>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <DocumentationFile>..\..\..\bin\TupleGeo.General\TupleGeo.General.XML</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release600|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="TupleGeo\General\Attributes\AttributeHelper.cs" />
+    <Compile Remove="TupleGeo\General\Attributes\DescriptionAttribute.cs" />
+    <Compile Remove="TupleGeo\General\Attributes\ResourceDescriptionAttribute.cs" />
+    <Compile Remove="TupleGeo\General\ComponentModel\EnumDescriptionConverter.cs" />
+    <Compile Remove="TupleGeo\General\ComponentModel\EnumNameDescriptionPair.cs" />
+    <Compile Remove="TupleGeo\General\ComponentModel\ObservableObject.cs" />
+    <Compile Remove="TupleGeo\General\ComponentModel\ObservableObject`1.cs" />
+    <Compile Remove="TupleGeo\General\Data\FilterType.cs" />
+    <Compile Remove="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Data\SqlServer\ConnectionDetails.cs" />
+    <Compile Remove="TupleGeo\General\Data\SqlServer\ConnectionDetailsException.cs" />
+    <Compile Remove="TupleGeo\General\Data\SqlServer\SqlServerUser.cs" />
+    <Compile Remove="TupleGeo\General\FileSystem\PathsUtility.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\EsriFileType.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\ExecutableFileType.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\RasterFileType.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\SystemFileType.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\TextFileType.cs" />
+    <Compile Remove="TupleGeo\General\FileTypes\VectorFileType.cs" />
+    <Compile Remove="TupleGeo\General\Linq\Expressions\Prop.cs" />
+    <Compile Remove="TupleGeo\General\Linq\IEnumerableExtensions_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Linq\IQueryableExtensions.cs" />
+    <Compile Remove="TupleGeo\General\Reflection\AssemblyExtensions.cs" />
+    <Compile Remove="TupleGeo\General\Security\CryptographicString.cs" />
+    <Compile Remove="TupleGeo\General\Security\CryptographicStringException.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\ClassFactory_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\LinqXmlSerializer_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\PropertyCaller_NoCompile.cs" />
+    <Compile Remove="TupleGeo\General\Serialization\XmlSerializer.cs" />
+    <Compile Remove="TupleGeo\General\Text\CodePage.cs" />
+    <Compile Remove="TupleGeo\General\Utilities\MimeTypesHelper.cs" />
+    <Compile Remove="TupleGeo\General\Utilities\UniqueCheckedItemsGroup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="TupleGeo\General\Attributes\AttributeHelper.cs" />
+    <None Include="TupleGeo\General\Attributes\DescriptionAttribute.cs" />
+    <None Include="TupleGeo\General\Attributes\ResourceDescriptionAttribute.cs" />
+    <None Include="TupleGeo\General\ComponentModel\EnumDescriptionConverter.cs" />
+    <None Include="TupleGeo\General\ComponentModel\EnumNameDescriptionPair.cs" />
+    <None Include="TupleGeo\General\ComponentModel\ObservableObject.cs" />
+    <None Include="TupleGeo\General\ComponentModel\ObservableObject`1.cs" />
+    <None Include="TupleGeo\General\Data\FilterType.cs" />
+    <None Include="TupleGeo\General\Data\Linq\TableExtensions_NoCompile.cs" />
+    <None Include="TupleGeo\General\Data\SqlServer\ConnectionDetails.cs" />
+    <None Include="TupleGeo\General\Data\SqlServer\ConnectionDetailsException.cs" />
+    <None Include="TupleGeo\General\Data\SqlServer\SqlServerUser.cs" />
+    <None Include="TupleGeo\General\FileSystem\PathsUtility.cs" />
+    <None Include="TupleGeo\General\FileTypes\EsriFileType.cs" />
+    <None Include="TupleGeo\General\FileTypes\ExecutableFileType.cs" />
+    <None Include="TupleGeo\General\FileTypes\RasterFileType.cs" />
+    <None Include="TupleGeo\General\FileTypes\SystemFileType.cs" />
+    <None Include="TupleGeo\General\FileTypes\TextFileType.cs" />
+    <None Include="TupleGeo\General\FileTypes\VectorFileType.cs" />
+    <None Include="TupleGeo\General\Linq\Expressions\Prop.cs" />
+    <None Include="TupleGeo\General\Linq\IEnumerableExtensions_NoCompile.cs" />
+    <None Include="TupleGeo\General\Linq\IQueryableExtensions.cs" />
+    <None Include="TupleGeo\General\Reflection\AssemblyExtensions.cs" />
+    <None Include="TupleGeo\General\Security\CryptographicString.cs" />
+    <None Include="TupleGeo\General\Security\CryptographicStringException.cs" />
+    <None Include="TupleGeo\General\Serialization\ClassFactory_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\LinqXmlSerializer_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\PropertyCaller_NoCompile.cs" />
+    <None Include="TupleGeo\General\Serialization\XmlSerializer.cs" />
+    <None Include="TupleGeo\General\Text\CodePage.cs" />
+    <None Include="TupleGeo\General\Utilities\MimeTypesHelper.cs" />
+    <None Include="TupleGeo\General\Utilities\UniqueCheckedItemsGroup.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
